@@ -1,0 +1,369 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:方糖音乐播放器"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Name="window" x:Class="方糖音乐播放器.程序设置"
+        mc:Ignorable="d"
+        Title="程序设置" Height="600" Width="400" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" ShowInTaskbar="False" ResizeMode="NoResize">
+    <Window.Resources>
+        <Storyboard x:Key="窗体打开">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="window">
+                <EasingDoubleKeyFrame KeyTime="0" Value="88.125"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="600"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="window">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="窗体关闭">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="window">
+                <EasingDoubleKeyFrame KeyTime="0" Value="600"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="window">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Style x:Key="ToggleButtonStyle1" TargetType="{x:Type ToggleButton}">
+            <Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <Style>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" SnapsToDevicePixels="True" Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" StrokeThickness="1" StrokeDashArray="1 2"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+            <Setter Property="Background" Value="{DynamicResource PrimaryHueMidBrush}"/>
+            <Setter Property="materialDesign:ToggleButtonAssist.SwitchTrackOnBackground" Value="{DynamicResource PrimaryHueLightBrush}"/>
+            <Setter Property="materialDesign:ToggleButtonAssist.SwitchTrackOffBackground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="0,1,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <ControlTemplate.Resources>
+                            <SineEase x:Key="RippleEasingFunction" EasingMode="EaseInOut"/>
+                            <Storyboard x:Key="HideRipple">
+                                <DoubleAnimation Duration="0:0:0.3" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="RippleThumb">
+                                    <DoubleAnimation.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                            <Storyboard x:Key="ShowRipple">
+                                <DoubleAnimation Duration="0" To="0.26" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="RippleThumb">
+                                    <DoubleAnimation.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Duration="0:0:0.2" From="1" To="2.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" Storyboard.TargetName="RippleThumb">
+                                    <DoubleAnimation.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Duration="0:0:0.2" From="1" To="2.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" Storyboard.TargetName="RippleThumb">
+                                    <DoubleAnimation.EasingFunction>
+                                        <SineEase EasingMode="EaseInOut"/>
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Viewbox Width="34">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CheckStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition From="*" GeneratedDuration="0" GeneratedEasingFunction="{x:Null}" To="Checked">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="ThumbHolder">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="23.5">
+                                                        <EasingDoubleKeyFrame.EasingFunction>
+                                                            <QuadraticEase EasingMode="EaseOut"/>
+                                                        </EasingDoubleKeyFrame.EasingFunction>
+                                                    </EasingDoubleKeyFrame>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualTransition>
+                                        <VisualTransition From="Checked" GeneratedDuration="0" GeneratedEasingFunction="{x:Null}" To="Unchecked">
+                                            <Storyboard>
+                                                <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="ThumbHolder">
+                                                    <EasingDoubleKeyFrame KeyTime="0" Value="23.5"/>
+                                                    <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
+                                                        <EasingDoubleKeyFrame.EasingFunction>
+                                                            <QuadraticEase EasingMode="EaseOut"/>
+                                                        </EasingDoubleKeyFrame.EasingFunction>
+                                                    </EasingDoubleKeyFrame>
+                                                </DoubleAnimationUsingKeyFrames>
+                                            </Storyboard>
+                                        </VisualTransition>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Checked">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="23.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="ThumbHolder"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unchecked">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0" Storyboard.TargetProperty="(UIElement.RenderTransform).(TranslateTransform.X)" Storyboard.TargetName="ThumbHolder"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid>
+                                <Rectangle x:Name="Track" Fill="{Binding (materialDesign:ToggleButtonAssist.SwitchTrackOffBackground), RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="Left" Height="15" Margin="4.211,5,4.211,0" Opacity="0.26" RadiusY="7.5" RadiusX="7.5" Stroke="{x:Null}" VerticalAlignment="Top" Width="40"/>
+                                <Grid x:Name="ThumbHolder" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                    <Grid.RenderTransform>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </Grid.RenderTransform>
+                                    <Ellipse x:Name="RippleThumb" Fill="{DynamicResource PrimaryHueLightBrush}" HorizontalAlignment="Center" Height="25" IsHitTestVisible="False" Margin="0" Opacity="0.26" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Center" Width="25">
+                                        <Ellipse.RenderTransform>
+                                            <ScaleTransform ScaleY="1" ScaleX="1"/>
+                                        </Ellipse.RenderTransform>
+                                    </Ellipse>
+                                    <AdornerDecorator CacheMode="{Binding (materialDesign:ShadowAssist.CacheMode), RelativeSource={RelativeSource Self}}">
+                                        <Ellipse x:Name="Thumb" Effect="{DynamicResource MaterialDesignShadowDepth1}" Fill="#FFFAFAFA" HorizontalAlignment="Center" Height="25" Margin="0" RenderTransformOrigin="0.5,0.5" Stroke="{x:Null}" VerticalAlignment="Center" Width="25"/>
+                                    </AdornerDecorator>
+                                    <ContentPresenter x:Name="ContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" FlowDirection="LeftToRight" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" d:IsHidden="True"/>
+                                </Grid>
+                            </Grid>
+                        </Viewbox>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter Property="Fill" TargetName="Thumb" Value="{Binding Background, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Setter Property="Fill" TargetName="Track" Value="{Binding (materialDesign:ToggleButtonAssist.SwitchTrackOnBackground), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+                            </Trigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsChecked" Value="True"/>
+                                    <Condition Property="materialDesign:ToggleButtonAssist.HasOnContent" Value="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Content" TargetName="ContentPresenter" Value="{Binding (materialDesign:ToggleButtonAssist.OnContent), RelativeSource={RelativeSource TemplatedParent}}"/>
+                                <Setter Property="ContentTemplate" TargetName="ContentPresenter" Value="{Binding (materialDesign:ToggleButtonAssist.OnContentTemplate), RelativeSource={RelativeSource TemplatedParent}}"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                            </Trigger>
+                            <Trigger Property="Button.IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0.26" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="RippleThumb">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Duration="0:0:0.2" From="1" To="2.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleX)" Storyboard.TargetName="RippleThumb">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                            <DoubleAnimation Duration="0:0:0.2" From="1" To="2.5" Storyboard.TargetProperty="(UIElement.RenderTransform).(ScaleTransform.ScaleY)" Storyboard.TargetName="RippleThumb">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0:0:0.3" To="0" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="RippleThumb">
+                                                <DoubleAnimation.EasingFunction>
+                                                    <SineEase EasingMode="EaseInOut"/>
+                                                </DoubleAnimation.EasingFunction>
+                                            </DoubleAnimation>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Fill" TargetName="Thumb" Value="#FFBDBDBD"/>
+                                <Setter Property="Fill" TargetName="Track">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="Black" Opacity="0.12"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="RichTextBoxStyle1" TargetType="{x:Type RichTextBox}">
+            <Setter Property="materialDesign:TextFieldAssist.TextBoxViewMargin" Value="-4,0,1,0"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type TextBoxBase}">
+                    <Setter Property="Foreground" Value="{Binding (TextElement.Foreground), RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type FrameworkElement}}}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignTextBoxBorder}"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                    <Setter Property="materialDesign:TextFieldAssist.TextBoxViewMargin" Value="1,0"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="CaretBrush" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                    <Setter Property="KeyboardNavigation.TabNavigation" Value="Local"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalContentAlignment" Value="Top"/>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <Setter Property="AllowDrop" Value="True"/>
+                    <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                    <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                    <Setter Property="Validation.ErrorTemplate">
+                        <Setter.Value>
+                            <ControlTemplate/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="materialDesign:TextFieldAssist.IncludeSpellingSuggestions" Value="{Binding (SpellCheck.IsEnabled), RelativeSource={RelativeSource Self}}"/>
+                    <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                    <Setter Property="materialDesign:HintAssist.Foreground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu>
+                                <MenuItem Command="ApplicationCommands.Cut">
+                                    <MenuItem.Icon>
+                                        <materialDesign:PackIcon Kind="Scissors"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Command="ApplicationCommands.Copy">
+                                    <MenuItem.Icon>
+                                        <materialDesign:PackIcon Kind="ContentCopy"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Command="ApplicationCommands.Paste">
+                                    <MenuItem.Icon>
+                                        <materialDesign:PackIcon Kind="ContentPaste"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <Separator/>
+                                <MenuItem Command="ApplicationCommands.SelectAll">
+                                    <MenuItem.Icon>
+                                        <materialDesign:PackIcon Kind="SelectAll"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsInactiveSelectionHighlightEnabled" Value="True"/>
+                                <Condition Property="IsSelectionActive" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+        </Style>
+        <Storyboard x:Key="帮助关闭">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="grid1">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="410,0,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid1">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="帮助打开">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="grid1">
+                <EasingThicknessKeyFrame KeyTime="0" Value="410,0,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid1">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Canvas x:Name="grid" Clip="M0.5,10.5 C0.5,4.9771525 4.9771525,0.5 10.5,0.5 L389.5,0.5 C395.02285,0.5 399.5,4.9771525 399.5,10.5 L399.5,589.5 C399.5,595.02285 395.02285,599.5 389.5,599.5 L10.5,599.5 C4.9771525,599.5 0.5,595.02285 0.5,589.5 z">
+        <Rectangle Fill="White" HorizontalAlignment="Left" Height="600" RadiusY="10" RadiusX="10" Stroke="{Binding Background, ElementName=默认}" VerticalAlignment="Top" Width="400"/>
+        <Grid x:Name="标题" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="392" MouseMove="标题_MouseMove" Canvas.Top="20">
+            <materialDesign:PackIcon HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40" Kind="CogOutline" Margin="10,0,0,0" Foreground="{Binding Background, ElementName=默认}"/>
+            <Label Content="程序默认设置      " HorizontalAlignment="Left" Height="40" Margin="50,0,0,0" VerticalAlignment="Top" Width="342" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/>
+            <ListBox HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Margin="352,0,0,0">
+                <ListBoxItem Height="40" ToolTip="我需要帮助" HorizontalContentAlignment="Center" MouseUp="ListBoxItem_MouseUp" Padding="1,8,-1,8">
+                    <materialDesign:PackIcon Kind="AccountQuestionOutline"  HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="30" Height="30" Foreground="{Binding Background, ElementName=默认}"/>
+                </ListBoxItem>
+            </ListBox>
+        </Grid>
+        <Button x:Name="默认" Content="恢复默认" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="115" BorderBrush="{x:Null}" Click="默认_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="10" Canvas.Top="545"/>
+        <Button x:Name="保存" Content="保存更改" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="115" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="保存_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="275" Canvas.Top="545"/>
+        <Button x:Name="取消" Content="取消更改" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="120" Background="{Binding Background, ElementName=默认}" BorderBrush="{x:Null}" Click="取消_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="140" Canvas.Top="545"/>
+        <ListBox HorizontalAlignment="Left" Height="455" Style="{DynamicResource SimpleListBox}" VerticalAlignment="Top" Width="360" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Background="{x:Null}" BorderBrush="{Binding Background, ElementName=默认}" Canvas.Left="20" Canvas.Top="80">
+            <ListBoxItem x:Name="默认背景" Height="45" VerticalAlignment="Center" MouseUp="默认背景_MouseUp">
+                <Grid Height="28" Width="337" VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                    <materialDesign:PackIcon HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="29" Kind="ImageSizeSelectActual" Foreground="{Binding Background, ElementName=默认}"/>
+                    <Label Content="修改程序默认背景图片" HorizontalAlignment="Left" Height="28" Margin="29,0,0,0" VerticalAlignment="Top" Width="305" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Foreground="Black"/>
+                </Grid>
+            </ListBoxItem>
+            <Grid Height="30" Width="340">
+                <RadioButton x:Name="原始" Content="原始" Margin="94,3.966,196,6.034" Background="{Binding Background, ElementName=默认}" BorderBrush="{x:Null}" IsChecked="True" Click="原始_Click"/>
+                <Label Content="缩放模式：" Margin="0,0,266,0.667" VerticalContentAlignment="Center" FontSize="14"/>
+                <RadioButton x:Name="填充" Content="填充" Margin="149,3.966,141,6.034" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="填充_Click" IsChecked="True"/>
+                <RadioButton x:Name="居中" Content="拉伸" Margin="264,4.1,21,5.9" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="拉伸_Click"/>
+                <RadioButton x:Name="拉伸" Content="居中" Margin="204,4.1,81,5.9" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="居中_Click"/>
+            </Grid>
+            <Grid Height="40" Width="335" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Slider x:Name="模糊" HorizontalAlignment="Center" Height="20" Margin="39,11,10,9" VerticalAlignment="Center" Width="286" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=默认}" Maximum="30" SmallChange="1" Value="5" ValueChanged="模糊_ValueChanged"/>
+                <Label Content="模糊&#xA;" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="39" VerticalContentAlignment="Center" Margin="0,9,0,6" FontSize="16" Padding="4,2,4,4" Foreground="Black"/>
+            </Grid>
+            <ListBoxItem x:Name="歌词路径" Height="45" VerticalAlignment="Center">
+                <Grid Height="28" Width="337" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Grid_MouseUp">
+                    <materialDesign:PackIcon HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="29" Kind="PlusBoxMultipleOutline" Foreground="{Binding Background, ElementName=默认}"/>
+                    <Label Content="设置歌词默认路径" HorizontalAlignment="Left" Height="28" Margin="29,0,0,0" VerticalAlignment="Top" Width="305" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Foreground="Black"/>
+                </Grid>
+            </ListBoxItem>
+            <Label x:Name="路径" Content="当前路径：无" HorizontalAlignment="Left" VerticalAlignment="Top" Width="340" Margin="0,-6,0,0" FontSize="14" VerticalContentAlignment="Center" Foreground="Black" MouseUp="路径_MouseUp"/>
+            <Grid Height="63" Width="340" Margin="0,-14,0,0">
+                <ToggleButton x:Name="歌词" Content="" HorizontalAlignment="Left" Height="17" Margin="64,10,0,0" VerticalAlignment="Top" Width="55" Background="{Binding Background, ElementName=默认}" Foreground="{Binding Background, ElementName=默认}" Click="歌词_Click" IsChecked="True"/>
+                <Label Content="显示歌词" HorizontalAlignment="Left" Height="25" Margin="0,5,0,0" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
+                <Label Content="平滑滚动" HorizontalAlignment="Left" Height="25" Margin="110,5,0,0" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
+                <ToggleButton x:Name="平滑" Content="" HorizontalAlignment="Left" Height="17" Margin="174.5,10,0,0" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" Click="平滑_Click" IsChecked="True" IsEnabled="False"/>
+                <Label x:Name="桌面歌词" Content="桌面歌词" HorizontalAlignment="Left" Height="25" Margin="224,5,0,0" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
+                <ToggleButton x:Name="桌面歌词1" Content="" HorizontalAlignment="Left" Height="17" Margin="285,10,0,0" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" UseLayoutRounding="False" Click="桌面歌词1_Click"/>
+                <ToggleButton x:Name="独立播放1" Content="" HorizontalAlignment="Left" Height="17" Margin="64,39.2,0,-1.2" VerticalAlignment="Top" Width="55" Background="{Binding Background, ElementName=默认}" Foreground="{Binding Background, ElementName=默认}" IsChecked="True" Style="{DynamicResource ToggleButtonStyle1}"/>
+                <Label x:Name="独立播放" Content="独立播放" HorizontalAlignment="Left" Height="25" Margin="0,35,0,-5" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
+                <Label x:Name="嵌入歌词" Content="嵌入歌词" HorizontalAlignment="Left" Height="25" Margin="110,35,0,-5" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
+                <ToggleButton x:Name="嵌入歌词1" Content="" HorizontalAlignment="Left" Height="17" Margin="174.5,39.2,0,-1.2" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" UseLayoutRounding="False"/>
+            </Grid>
+        </ListBox>
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="400" Visibility="Collapsed">
+            <Rectangle Fill="#FFF4F4F5" Stroke="{Binding Background, ElementName=默认}" RadiusX="10" RadiusY="10"/>
+            <Grid HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="400" MouseMove="Grid_MouseMove_1">
+                <materialDesign:PackIcon Kind="TimelineHelpOutline" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="40" Width="45" Margin="10,0,0,0" Foreground="{Binding Background, ElementName=默认}"/>
+                <Label Content="程序帮助" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="60,0,0,0" Height="40" Width="300" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/>
+            </Grid>
+            <Button ToolTip="返回" HorizontalAlignment="Left" Height="27.167" Margin="10,562.833,0,0" VerticalAlignment="Top" Width="35" Padding="-4,4,-3,4" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="Button_Click">
+                <materialDesign:PackIcon Kind="KeyboardReturn" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20"/>
+            </Button>
+            <TextBlock HorizontalAlignment="Left" Height="497.833" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Foreground="#FF426ECD" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="修改程序默认背景图片："/><Run Foreground="Black" Text="可以修改默认背景图片，支持的格式有"/><Run Foreground="Black" Text="JPG、PNG、JPGE、BMP"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="缩放模式："/><Run Foreground="Black" Text="设置背景图片的在程序中的缩放模式，默认是&quot;填充&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="模糊："/><Run Foreground="Black" Text="设置背景图片在程序中的模糊程度，默认是&quot;5&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="设置歌词路径："/><Run Foreground="Black" Text="可以将歌词文件放置到一个文件夹中，播放时会自动读取，歌词读取优先级；&quot;歌曲内嵌→指定文件夹→歌曲目录下&quot;"/><LineBreak/><LineBreak/><Run Text="当前路径："/><Run Foreground="Black" Text="显示用户设置的歌词目录，单击可以打开目录"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="显示歌词："/><Run Foreground="Black" Text="是否显示滚动歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="平滑滚动："/><Run Foreground="Black" Text="设置歌词滚动方式"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="桌面歌词："/><Run Foreground="Black" Text="打开/关闭桌面歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="独立播放："/><Run Foreground="Black" Text="在独立窗口播放视频"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="嵌入歌词："/><Run Foreground="Black" Text="当读取到有效歌词且歌曲没有内嵌歌词的情况下，可以自动将歌词嵌入歌曲内"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="恢复默认："/><Run Foreground="Black" Text="将所有设置恢复默认状态"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="取消更改："/><Run Foreground="Black" Text="取消对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="保存更改："/><Run Foreground="Black" Text="保存对设置做出的更改"/></TextBlock>
+        </Grid>
+    </Canvas>
+</Window>

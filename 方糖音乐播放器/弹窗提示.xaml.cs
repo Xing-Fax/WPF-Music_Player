@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -30,11 +31,14 @@ namespace 方糖音乐播放器.Properties
             BeginStoryboard(story);
         }
         public event Func<int, int> fcc1;
-        public 弹窗提示(int parameter, Color color,int Other_parameters)
+
+        [Obsolete]
+        public 弹窗提示(int parameter, Color color,int Other_parameters,string file)
         {
             InitializeComponent();
             模板一.Visibility = Visibility.Collapsed;
             模板二.Visibility = Visibility.Collapsed;
+            模板三.Visibility = Visibility.Collapsed;
             单文件.Background = new SolidColorBrush(color);
             if (parameter == 0)
             {
@@ -52,6 +56,45 @@ namespace 方糖音乐播放器.Properties
                     提示.Content = "共扫描到了" + Other_parameters + "首歌曲";
                 }
             }
+            else if(parameter == 2)
+            {
+                模板三.Visibility = Visibility.Visible;
+                TagLib.File Read_information = TagLib.File.Create(file);
+                文件名称.Text = System.IO.Path.GetFileName(file);
+                歌曲名称.Text = Read_information.Tag.Title;
+                for (int i = 0; i < Read_information.Tag.Artists.Length; i++)
+                {
+                    if (i > 0) { 歌手信息.Text += ";" + Read_information.Tag.Artists[i]; }
+                    else { 歌手信息.Text = Read_information.Tag.Artists[i]; }
+                }
+                专辑信息.Text = Read_information.Tag.Album;
+                音频比特.Text = Read_information.Properties.AudioBitrate + " kbps";
+                音频频道.Text = Convert.ToString(Read_information.Properties.AudioChannels) + " 声道";
+                音频采样.Text = Convert.ToString(Read_information.Properties.AudioSampleRate) + " Hz";
+                播放时长.Text = Convert.ToString(Read_information.Properties.Duration);
+                文件描述.Text = Read_information.Properties.Description;
+                文件路径.Text = file;
+                if (Read_information.Tag.Lyrics != null) { 嵌入歌词.Text = "有内嵌歌词"; }
+                else { 嵌入歌词.Text = "无嵌入歌词"; }
+                if (Read_information.Tag.Pictures != null && Read_information.Tag.Pictures.Length != 0) { 专辑图片.Text = "有专辑图片"; }
+                else { 专辑图片.Text = "没有专辑图片"; }
+                System.IO.FileInfo f = new FileInfo(file);
+                文件大小.Text = GetFileSize(f.Length);
+                文件类型.Text = System.IO.Path.GetExtension(file);
+                创建日期.Text = f.CreationTimeUtc.ToString();
+                修改日期.Text = f.LastWriteTimeUtc.ToString();
+            }
+        }
+
+        //字节转单位
+        public static string GetFileSize(long size)
+        {
+            var num = 1024.00; //byte
+            if (size < num) { return size + "B"; }    
+            if (size < Math.Pow(num, 2)) { return (size / num).ToString("f2") + "KB"; }
+            if (size < Math.Pow(num, 3)) { return (size / Math.Pow(num, 2)).ToString("f2") + "MB"; }
+            if (size < Math.Pow(num, 4)) { return (size / Math.Pow(num, 3)).ToString("f2") + "GB"; }
+            return (size / Math.Pow(num, 4)).ToString("f2") + "TB"; //T
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -107,6 +150,11 @@ namespace 方糖音乐播放器.Properties
         private void Window_Activated(object sender, EventArgs e)
         {
             动画播放("打开");
+        }
+
+        private void 关闭程序_Click(object sender, RoutedEventArgs e)
+        {
+            exit();
         }
     }
 }

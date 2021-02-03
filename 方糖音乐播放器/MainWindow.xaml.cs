@@ -116,7 +116,9 @@ namespace 方糖音乐播放器
         //        return null;
         //    }
         //}
-        [System.Runtime.InteropServices.DllImport("kernel32.dll")]
+        //回收内存
+
+        [System.Runtime.InteropServices.DllImport("kernel32.dll")]//立即回收内存
         public static extern bool SetProcessWorkingSetSize(IntPtr proc, int min, int max);
         public void FlushMemory()
         {
@@ -128,6 +130,7 @@ namespace 方糖音乐播放器
             }
         }
 
+        [Obsolete]
         private void Song_scanning(int a,string file)//1全盘2单文件夹，文件夹路径
         {
             Kill();
@@ -147,7 +150,7 @@ namespace 方糖音乐播放器
                 Properties.Settings.Default.歌单路径 = file;
                 Properties.Settings.Default.歌单路径参数 = 1;
             }
-            Tips = new 弹窗提示(1, color3, Number_of_songs);
+            Tips = new 弹窗提示(1, color3, Number_of_songs,null);
             Tips.ShowDialog();
         }
         //秒转分钟函数
@@ -291,17 +294,10 @@ namespace 方糖音乐播放器
         private void 打印歌词()
         {
             for (int i = 0; i < lrc_time.Length; i++)
-            {
-                if (lrc_lyrics[i] != null)
-                {
-                    填充菜单(歌词滚动显示, lrc_lyrics[i], null, 470, 35, 15, true);
-                }
+            { //遍历打印歌词
+                if (lrc_lyrics[i] != null) { 填充菜单(歌词滚动显示, lrc_lyrics[i], null, 470, 35, 15, true); }
             }
-            try
-            {
-                歌词滚动显示.SelectedIndex = 0;
-                ((ListBoxItem)歌词滚动显示.SelectedItem).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
-            }
+            try { ((ListBoxItem)歌词滚动显示.Items[0]).Foreground = new SolidColorBrush(color); }//将第一句歌词颜色该为红色
             catch { }
             if (歌词滚动显示 .Items .Count > 2)
             {
@@ -445,6 +441,26 @@ namespace 方糖音乐播放器
             box.Items.Add(item);//将控件添加到集合里
         }
 
+        private string Embedded_lyrics()
+        {
+            string a = "";
+            for (int i = 0; i < lrc_time.Length; i++)
+            {
+                if (lrc_time[i] != null) { a += "[" + lrc_time[i] + "]" + lrc_lyrics[i] + "\n"; }
+            }
+            return a;
+        }
+        //图片转bitmapImage对象，防止图片被占用
+        private BitmapImage Album_pictures(string file)
+        {
+            BitmapImage bitmapImage = new BitmapImage();
+            bitmapImage.BeginInit();
+            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+            bitmapImage.UriSource = new Uri(file);//图片的全路径
+            bitmapImage.EndInit();
+            bitmapImage.Freeze();
+            return bitmapImage;
+        }
         //播放音乐函数
         private string Song_time;//存储歌曲最大时间单位00：00
         private int Geci = 0;//决定是否要播放歌词
@@ -459,13 +475,12 @@ namespace 方糖音乐播放器
                 string namestr = Read_information.Tag.Lyrics;//获取歌词
                 string[] artist = Read_information.Tag.Artists;//获取歌手
                 Song_time = Convert.ToString(Read_information.Properties.Duration).Substring(3, 5);//获取时长
-                int second = int.Parse(Convert.ToString(Read_information.Properties.Duration).Substring(3, 2)) * 60 + int.Parse(Convert.ToString(Read_information.Properties.Duration).Substring(6, 2));//计算歌曲秒数
-                进度条.Maximum = second;//将进度条最大值赋值
+                进度条.Maximum = int.Parse(Convert.ToString(Read_information.Properties.Duration).Substring(3, 2)) * 60 + int.Parse(Convert.ToString(Read_information.Properties.Duration).Substring(6, 2));//计算歌曲秒数//将进度条最大值赋值
                 string Singer_collection = "";//存储歌手集合
                 //如果有多位艺术家可将他们叠加到一起，分隔符“：”
                 for (int i = 0; i < artist.Length; i++)
                 {
-                    if (i > 0) { Singer_collection += "," + artist[i]; }
+                    if (i > 0) { Singer_collection += ";" + artist[i]; }
                     else { Singer_collection = artist[i]; }
                 }
                 //写入歌词名称专辑...到控件
@@ -494,18 +509,9 @@ namespace 方糖音乐播放器
                 {//如果用户设置了目录，并且目录存在,并且目录下存在与歌曲名称同名的歌词文件
                     读取歌词(Properties.Settings.Default.歌词目录 + @"\" + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".lrc");
                     Geci = 0;
-
                     if (Properties.Settings.Default.嵌入歌词 == true)
                     {
-                        string a = "";
-                        for (int i = 0; i < lrc_time.Length; i++)
-                        {
-                            if (lrc_time[i] != null)
-                            {
-                                a += "[" + lrc_time[i] + "]" + lrc_lyrics[i] + "\n";
-                            }
-                        }
-                        Read_information.Tag.Lyrics = a;
+                        Read_information.Tag.Lyrics = Embedded_lyrics();
                         Read_information.Save();
                     }
 
@@ -516,15 +522,7 @@ namespace 方糖音乐播放器
                     Geci = 0;
                     if(Properties.Settings.Default.嵌入歌词 == true)
                     {
-                        string a = "";
-                        for (int i = 0;i < lrc_time .Length;i ++)
-                        {
-                            if (lrc_time[i] != null)
-                            {
-                                a += "[" + lrc_time[i] + "]" + lrc_lyrics[i] + "\n";
-                            }
-                        }
-                        Read_information.Tag.Lyrics = a;
+                        Read_information.Tag.Lyrics = Embedded_lyrics();
                         Read_information.Save();
                     }
                 }
@@ -548,14 +546,7 @@ namespace 方糖音乐播放器
                         {
                             try//如果成功
                             {
-                                BitmapImage bitmapImage = new BitmapImage();//用于读取专辑图片，防止文件占用
-                                bitmapImage.BeginInit();
-                                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                                bitmapImage.UriSource = new Uri(System.IO.Path.GetTempPath() + @"方糖音乐\" + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".png");//szPath为图片的全路径
-                                bitmapImage.EndInit();
-                                bitmapImage.Freeze();
-                                播放栏专辑.Source = bitmapImage;
-                                bitmapImage = null;
+                                播放栏专辑.Source = Album_pictures(System.IO.Path.GetTempPath() + @"方糖音乐\" + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".png");
                             }
                             catch { }
                         }
@@ -572,14 +563,7 @@ namespace 方糖音乐播放器
                     {
                         try//如果成功
                         {
-                            BitmapImage bitmapImage = new BitmapImage();//用于读取专辑图片，防止文件占用
-                            bitmapImage.BeginInit();
-                            bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                            bitmapImage.UriSource = new Uri(System.IO.Path.GetTempPath() + @"方糖音乐\" + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".png");//szPath为图片的全路径
-                            bitmapImage.EndInit();
-                            bitmapImage.Freeze();
-                            播放栏专辑.Source = bitmapImage;
-                            bitmapImage = null;
+                            播放栏专辑.Source = Album_pictures(System.IO.Path.GetTempPath() + @"方糖音乐\" + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".png");
                         }
                         catch { }
                     }
@@ -1072,11 +1056,38 @@ namespace 方糖音乐播放器
             }
         }
 
-
-
+        //private string CheckTrueFileName(string file)
+        //{
+        //    string path = file;
+        //    System.IO.FileStream fs = new System.IO.FileStream(path, System.IO.FileMode.Open, System.IO.FileAccess.Read);
+        //    System.IO.BinaryReader r = new System.IO.BinaryReader(fs);
+        //    string bx = " ";
+        //    byte buffer;
+        //    try
+        //    {
+        //        buffer = r.ReadByte();
+        //        bx = buffer.ToString();
+        //        buffer = r.ReadByte();
+        //        bx += buffer.ToString();
+        //    }
+        //    catch (Exception exc) { Console.WriteLine(exc.Message); }
+        //    r.Close();
+        //    fs.Close();
+        //    Console.WriteLine(bx);
+        //    return bx;
+        //}
+        [Obsolete]
         private void 大专辑_MouseUp(object sender, MouseButtonEventArgs e)
         {
-
+            if (主页的播放列表.SelectedIndex != -1)
+            {
+                Tips = new 弹窗提示(2, color3, 0, Number[主页的播放列表.SelectedIndex]);
+                Tips.ShowDialog();
+            }
+            //MessageBox.Show(CheckTrueFileName(@"E:\歌曲\MusicDownload\爱的奇妙物语 - 张子枫.flac"));
+            //System.IO.FileInfo f = new FileInfo(@"E:\歌曲\MusicDownload\爱的奇妙物语 - 张子枫.flac");
+            ////double a = GetFileSize(f.Length);
+            //MessageBox.Show(GetFileSize(f.Length));
             //BitmapImage bitmapImage = new BitmapImage();//用于读取专辑图片，防止文件占用
             //bitmapImage.BeginInit();
             //bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
@@ -1313,7 +1324,9 @@ namespace 方糖音乐播放器
                 }
             }
         }
+
         //添加文件夹单文件夹
+        [Obsolete]
         private void 添加歌曲_MouseUp(object sender, MouseButtonEventArgs e)
         {
             try
@@ -1328,7 +1341,9 @@ namespace 方糖音乐播放器
             }
             catch { }
         }
+
         //全盘扫描歌曲
+        [Obsolete]
         private void 扫描歌曲_MouseUp(object sender, MouseButtonEventArgs e)
         {
             try
@@ -1744,7 +1759,7 @@ namespace 方糖音乐播放器
             }
             else
             {
-                弹窗提示 Tips = new 弹窗提示(0, color3,0);
+                弹窗提示 Tips = new 弹窗提示(0, color3,0,null);
                 Tips.fcc1 += Return_value;
                 Tips.ShowDialog();
                 if (Return_value1 == 1)//单文件夹

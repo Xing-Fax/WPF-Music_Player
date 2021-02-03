@@ -238,6 +238,16 @@ namespace 方糖音乐播放器
             {
                 音量显示.Content = (int)音量条.Value + "%";
                 播放器.Volume = 音量条.Value / 100;
+                if (音量条.Value == 0)
+                {
+                    有.Visibility = Visibility.Collapsed;
+                    无.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    有.Visibility = Visibility.Visible;
+                    无.Visibility = Visibility.Collapsed;
+                }
             }
             temp = 1;
         }

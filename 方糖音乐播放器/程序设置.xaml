@@ -300,7 +300,41 @@
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="关于打开">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="grid2">
+                <EasingThicknessKeyFrame KeyTime="0" Value="-405,0,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid2">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="关于关闭">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="grid2">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.2" Value="-405,0,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid2">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grid2">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource 关于打开}"/>
+            <BeginStoryboard Storyboard="{StaticResource 关于关闭}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <Canvas x:Name="grid" Clip="M0.5,10.5 C0.5,4.9771525 4.9771525,0.5 10.5,0.5 L389.5,0.5 C395.02285,0.5 399.5,4.9771525 399.5,10.5 L399.5,589.5 C399.5,595.02285 395.02285,599.5 389.5,599.5 L10.5,599.5 C4.9771525,599.5 0.5,595.02285 0.5,589.5 z">
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="600" RadiusY="10" RadiusX="10" Stroke="{Binding Background, ElementName=默认}" VerticalAlignment="Top" Width="400"/>
         <Grid x:Name="标题" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="392" MouseMove="标题_MouseMove" Canvas.Top="20">
@@ -364,6 +398,29 @@
                 <materialDesign:PackIcon Kind="KeyboardReturn" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20"/>
             </Button>
             <TextBlock HorizontalAlignment="Left" Height="497.833" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Foreground="#FF426ECD" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="修改程序默认背景图片："/><Run Foreground="Black" Text="可以修改默认背景图片，支持的格式有"/><Run Foreground="Black" Text="JPG、PNG、JPGE、BMP"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="缩放模式："/><Run Foreground="Black" Text="设置背景图片的在程序中的缩放模式，默认是&quot;填充&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="模糊："/><Run Foreground="Black" Text="设置背景图片在程序中的模糊程度，默认是&quot;5&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="设置歌词路径："/><Run Foreground="Black" Text="可以将歌词文件放置到一个文件夹中，播放时会自动读取，歌词读取优先级；&quot;歌曲内嵌→指定文件夹→歌曲目录下&quot;"/><LineBreak/><LineBreak/><Run Text="当前路径："/><Run Foreground="Black" Text="显示用户设置的歌词目录，单击可以打开目录"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="显示歌词："/><Run Foreground="Black" Text="是否显示滚动歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="平滑滚动："/><Run Foreground="Black" Text="设置歌词滚动方式"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="桌面歌词："/><Run Foreground="Black" Text="打开/关闭桌面歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="独立播放："/><Run Foreground="Black" Text="在独立窗口播放视频"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="嵌入歌词："/><Run Foreground="Black" Text="当读取到有效歌词且歌曲没有内嵌歌词的情况下，可以自动将歌词嵌入歌曲内"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="恢复默认："/><Run Foreground="Black" Text="将所有设置恢复默认状态"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="取消更改："/><Run Foreground="Black" Text="取消对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="保存更改："/><Run Foreground="Black" Text="保存对设置做出的更改"/></TextBlock>
+            <Button Content="关于程序" HorizontalAlignment="Left" Height="25" Margin="300,565,0,0" VerticalAlignment="Top" Width="90" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{Binding Background, ElementName=默认}" Click="Button_Click_2"/>
+        </Grid>
+        <Grid x:Name="grid2" Height="600" Width="400" MouseMove="Grid_MouseMove" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="53*"/>
+                <RowDefinition Height="7*"/>
+            </Grid.RowDefinitions>
+            <Rectangle Fill="#FFF4F4F5" Stroke="{Binding Background, ElementName=默认}" RadiusX="10" RadiusY="10" Grid.RowSpan="2"/>
+            <Image HorizontalAlignment="Left" Height="130" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Source="Resources/图标.png">
+                <Image.Effect>
+                    <DropShadowEffect BlurRadius="20" Opacity="0.5"/>
+                </Image.Effect>
+            </Image>
+            <TextBlock HorizontalAlignment="Left" Height="25" Margin="155,35,0,0" TextWrapping="Wrap" Text="软件名称：方糖音乐播放器" VerticalAlignment="Top" Width="235" FontSize="18"/>
+            <TextBlock HorizontalAlignment="Left" Height="15" Margin="258.167,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131.833" FontFamily="黑体" Grid.Row="1"><Span Foreground="#FFA31515" FontSize="12.6666666666667"><Run Text="Copyright ©XCZ  2021"/></Span></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="95" Margin="155,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220"><Run Text="一款本地化音乐播放器，可以播放本地音频"/><Run Text="、"/><Run Text="视频"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="版本：                     1.0.0.0"/><LineBreak/><Run Text="邮箱：    "/><Run Text=" "/><Run Text="  xczzhouqian@gmail.com"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,165,0,0" TextWrapping="Wrap" Text="使用声明：" VerticalAlignment="Top" Width="120" FontSize="16" Foreground="{Binding Background, ElementName=默认}"/>
+            <TextBlock HorizontalAlignment="Left" Height="200" Margin="10,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Span><Run Text="1."/></Span><Span><Run Text="本软件只限于自然人及非商业用途的使用。这表示任何自然人均可在中华人民共和国境内以非商业用途免费使用本软件。任何组织使用本软件，或任何自然人基于商业用途使用本软件均构成对许可人及其附属合作伙伴的权利侵害，可能导致民事或刑事追究。"/></Span><LineBreak/><Span><Run Text="2."/></Span><Span><Run Text="任何人均不得违反中国相关法律、法规及政策的规定使用本软件，或将本软件用于任何违法目的。"/></Span><LineBreak/><Span><Run Text="3."/></Span><Span><Run Text="用户在使用本软件过程中应尊重权利人的知识产权，不得修改或去除本软件所附带的版权及其它知识产权标识。"/></Span><LineBreak/><Run Text="4.本程序仅供学习交流编程技术使用，如果侵犯您的合法权利，请联系本人第一时间删除。"/><LineBreak/><Run Text="5"/><Run Text="."/><Span><Run Text="安装并使用本软件意味着接受本许可的这些条款和条件。如果您不同意本许可的条款，您必须从您的存储设备中删除本软件全部文件并终止使用本软件。"/></Span></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,390,0,0" TextWrapping="Wrap" Text="引用及参考：" VerticalAlignment="Top" Width="105" FontSize="16" Foreground="{Binding Background, ElementName=默认}"/>
+            <TextBlock HorizontalAlignment="Left" Height="160" Margin="10,410,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="285" Grid.RowSpan="2" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="Costura.Fody"/><LineBreak/><Run Text="Fody"/><LineBreak/><Run Text="MaterialDesignColors"/><LineBreak/><Run Text="MaterialDesignThemes"/><LineBreak/><Run Text="WindowsAPICodePack-Core"/><LineBreak/><Run Text="WindowsAPICodePack-Shell"/><LineBreak/><Run Text="Taglib-Sharp.dll"/><LineBreak/><Run Text="System.Windows.Interactivity.dll"/><LineBreak/><Run Text="Microsoft.Expression.Interactions.d"/><Run Text="ll"/></TextBlock>
+            <Button ToolTip="返回" HorizontalAlignment="Left" Height="27.167" Margin="10,32.833,0,0" VerticalAlignment="Top" Width="35" Padding="-4,4,-3,4" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Grid.Row="1" Click="Button_Click_1">
+                <materialDesign:PackIcon Kind="KeyboardReturn" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20"/>
+            </Button>
         </Grid>
     </Canvas>
 </Window>

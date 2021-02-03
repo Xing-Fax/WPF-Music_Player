@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:方糖音乐播放器.Properties"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Class="方糖音乐播放器.Properties.弹窗提示"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:CircularProgressBar="clr-namespace:MaterialDesignThemes.Wpf.Converters.CircularProgressBar;assembly=MaterialDesignThemes.Wpf" x:Class="方糖音乐播放器.Properties.弹窗提示"
         mc:Ignorable="d"
         Title="弹窗提示" Height="272" Width="555" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True" Background="{x:Null}" Activated="Window_Activated">
     <Window.Resources>
@@ -103,8 +103,174 @@
             <Setter Property="TextWrapping" Value="NoWrap"/>
             <Setter Property="TextTrimming" Value="None"/>
         </Style>
+        <Style x:Key="ProgressBarStyle1" TargetType="{x:Type ProgressBar}">
+            <Setter Property="Foreground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Width" Value="20"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ProgressBar}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="IsIndeterminateStoryboard" RepeatBehavior="Forever" Storyboard.TargetProperty="Angle" Storyboard.TargetName="RotateTransform">
+                                <DoubleAnimation Duration="0:0:2" From="0" To="359"/>
+                            </Storyboard>
+                            <Storyboard x:Key="IsFullyIndeterminateStoryboard">
+                                <DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="FullyIndeterminateGridScaleTransform">
+                                    <SplineDoubleKeyFrame KeyTime="0" Value="0"/>
+                                    <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                                    <SplineDoubleKeyFrame KeyTime="0:0:4" Value="0"/>
+                                </DoubleAnimationUsingKeyFrames>
+                                <DoubleAnimation Duration="0:0:1.25" From="0" RepeatBehavior="Forever" To="359" Storyboard.TargetProperty="Angle" Storyboard.TargetName="RotateTransform"/>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid x:Name="TemplateRoot" ClipToBounds="False">
+                            <Grid x:Name="FullyIndeterminateGrid">
+                                <Grid.RenderTransform>
+                                    <ScaleTransform ScaleX="0"/>
+                                </Grid.RenderTransform>
+                            </Grid>
+                            <Grid x:Name="PathGrid" Margin="2"/>
+                            <Canvas>
+                                <Ellipse Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+                                <Path x:Name="Path" Canvas.Left="2" RenderTransformOrigin="0,0" Stroke="{TemplateBinding Foreground}" StrokeThickness="3" Canvas.Top="2">
+                                    <Path.Data>
+                                        <PathGeometry>
+                                            <PathFigure>
+                                                <PathFigure.StartPoint>
+                                                    <Binding ElementName="PathGrid" Mode="OneWay" Path="ActualWidth">
+                                                        <Binding.Converter>
+                                                            <CircularProgressBar:StartPointConverter/>
+                                                        </Binding.Converter>
+                                                    </Binding>
+                                                </PathFigure.StartPoint>
+                                                <ArcSegment SweepDirection="Clockwise">
+                                                    <ArcSegment.Point>
+                                                        <MultiBinding ConverterParameter="MidPoint" UpdateSourceTrigger="Default">
+                                                            <MultiBinding.Converter>
+                                                                <CircularProgressBar:ArcEndPointConverter/>
+                                                            </MultiBinding.Converter>
+                                                            <Binding ElementName="PathGrid" Path="ActualWidth"/>
+                                                            <Binding Path="Value" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                                            <Binding Path="Minimum" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                                            <Binding Path="Maximum" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                                            <Binding ElementName="FullyIndeterminateGridScaleTransform" Path="ScaleX"/>
+                                                        </MultiBinding>
+                                                    </ArcSegment.Point>
+                                                    <ArcSegment.Size>
+                                                        <Binding ElementName="PathGrid" Mode="OneWay" Path="ActualWidth">
+                                                            <Binding.Converter>
+                                                                <CircularProgressBar:ArcSizeConverter/>
+                                                            </Binding.Converter>
+                                                        </Binding>
+                                                    </ArcSegment.Size>
+                                                </ArcSegment>
+                                                <ArcSegment SweepDirection="Clockwise">
+                                                    <ArcSegment.Point>
+                                                        <MultiBinding UpdateSourceTrigger="Default">
+                                                            <MultiBinding.Converter>
+                                                                <CircularProgressBar:ArcEndPointConverter/>
+                                                            </MultiBinding.Converter>
+                                                            <Binding ElementName="PathGrid" Path="ActualWidth"/>
+                                                            <Binding Path="Value" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                                            <Binding Path="Minimum" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                                            <Binding Path="Maximum" RelativeSource="{RelativeSource TemplatedParent}"/>
+                                                            <Binding ElementName="FullyIndeterminateGridScaleTransform" Path="ScaleX"/>
+                                                        </MultiBinding>
+                                                    </ArcSegment.Point>
+                                                    <ArcSegment.Size>
+                                                        <Binding ElementName="PathGrid" Mode="OneWay" Path="ActualWidth">
+                                                            <Binding.Converter>
+                                                                <CircularProgressBar:ArcSizeConverter/>
+                                                            </Binding.Converter>
+                                                        </Binding>
+                                                    </ArcSegment.Size>
+                                                </ArcSegment>
+                                            </PathFigure>
+                                        </PathGeometry>
+                                    </Path.Data>
+                                    <Path.RenderTransform>
+                                        <TransformGroup>
+                                            <RotateTransform>
+                                                <RotateTransform.CenterY>
+                                                    <Binding ElementName="PathGrid" Mode="OneWay" Path="ActualWidth">
+                                                        <Binding.Converter>
+                                                            <CircularProgressBar:RotateTransformCentreConverter/>
+                                                        </Binding.Converter>
+                                                    </Binding>
+                                                </RotateTransform.CenterY>
+                                                <RotateTransform.CenterX>
+                                                    <Binding ElementName="PathGrid" Mode="OneWay" Path="ActualWidth">
+                                                        <Binding.Converter>
+                                                            <CircularProgressBar:RotateTransformCentreConverter/>
+                                                        </Binding.Converter>
+                                                    </Binding>
+                                                </RotateTransform.CenterX>
+                                            </RotateTransform>
+                                        </TransformGroup>
+                                    </Path.RenderTransform>
+                                </Path>
+                            </Canvas>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding IsIndeterminate, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                    <Condition Binding="{Binding IsVisible, RelativeSource={RelativeSource Self}}" Value="True"/>
+                                    <Condition Value="True">
+                                        <Condition.Binding>
+                                            <Binding Path="Value" RelativeSource="{RelativeSource Self}">
+                                                <Binding.Converter>
+                                                    <materialDesign:NotZeroConverter/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </Condition.Binding>
+                                    </Condition>
+                                </MultiDataTrigger.Conditions>
+                                <MultiDataTrigger.EnterActions>
+                                    <BeginStoryboard x:Name="IsIndeterminateStoryboard">
+                                        <Storyboard RepeatBehavior="Forever" Storyboard.TargetProperty="Angle" Storyboard.TargetName="RotateTransform">
+                                            <DoubleAnimation Duration="0:0:2" From="0" To="359"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiDataTrigger.EnterActions>
+                                <MultiDataTrigger.ExitActions>
+                                    <RemoveStoryboard BeginStoryboardName="IsIndeterminateStoryboard"/>
+                                </MultiDataTrigger.ExitActions>
+                            </MultiDataTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsIndeterminate" Value="True"/>
+                                    <Condition Property="IsVisible" Value="True"/>
+                                    <Condition Property="Value" Value="0"/>
+                                </MultiTrigger.Conditions>
+                                <MultiTrigger.EnterActions>
+                                    <BeginStoryboard x:Name="IsFullyIndeterminateStoryboard">
+                                        <Storyboard>
+                                            <DoubleAnimationUsingKeyFrames RepeatBehavior="Forever" Storyboard.TargetProperty="ScaleX" Storyboard.TargetName="FullyIndeterminateGridScaleTransform">
+                                                <SplineDoubleKeyFrame KeyTime="0" Value="0"/>
+                                                <SplineDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                                                <SplineDoubleKeyFrame KeyTime="0:0:4" Value="0"/>
+                                            </DoubleAnimationUsingKeyFrames>
+                                            <DoubleAnimation Duration="0:0:1.25" From="0" RepeatBehavior="Forever" To="359" Storyboard.TargetProperty="Angle" Storyboard.TargetName="RotateTransform"/>
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </MultiTrigger.EnterActions>
+                                <MultiTrigger.ExitActions>
+                                    <RemoveStoryboard BeginStoryboardName="IsFullyIndeterminateStoryboard"/>
+                                </MultiTrigger.ExitActions>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65*"/>
+            <RowDefinition Height="207*"/>
+        </Grid.RowDefinitions>
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -113,8 +279,8 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <Rectangle x:Name="rectangle" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="272" Stroke="{Binding Background, ElementName=单文件}" VerticalAlignment="Top" Width="555" RadiusX="10" RadiusY="10"/>
-        <Canvas x:Name="模板一" d:IsHidden="True" Visibility="Collapsed">
+        <Rectangle x:Name="rectangle" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="272" Stroke="{Binding Background, ElementName=单文件}" VerticalAlignment="Top" Width="555" RadiusX="10" RadiusY="10" Grid.RowSpan="2"/>
+        <Canvas x:Name="模板一" d:IsHidden="True" Visibility="Collapsed" Grid.RowSpan="2">
 
             <Button x:Name="单文件" Content="单文件夹扫描" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" Background="#FF673AB7" BorderBrush="{x:Null}" Click="单文件_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="10" Canvas.Top="200"/>
             <Button x:Name="全文件" Content="全文件夹扫描" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=单文件}" Click="全文件_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="190" Canvas.Top="200"/>
@@ -122,17 +288,17 @@
             <Label Content="检测到您拖入了文件夹，请问是但文件夹扫描&#xA;还是全文件夹扫描？" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="380" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="120" Canvas.Top="35"/>
             <Button x:Name="取消" Content="什么也不做" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=单文件}" Click="取消_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="370" Canvas.Top="200"/>
         </Canvas>
-        <Canvas x:Name="模板二" d:IsHidden="True" Visibility="Collapsed">
+        <Canvas x:Name="模板二" d:IsHidden="True" Visibility="Collapsed" Grid.RowSpan="2">
             <Button x:Name="确定" Content="我知道了" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=单文件}" Click="确定_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="190" Canvas.Top="200"/>
             <materialDesign:PackIcon Kind="AlertCircleOutline" HorizontalAlignment="Left" VerticalAlignment="Top" Height="80" Width="80" Foreground="{Binding Background, ElementName=单文件}" Canvas.Left="40" Canvas.Top="45"/>
             <Label x:Name="提示" Content="提示信息" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="380" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="120" Canvas.Top="35"/>
 
         </Canvas>
-        <Canvas x:Name="模板三" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555">
+        <Canvas x:Name="模板三" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" Grid.RowSpan="2">
             <Rectangle HorizontalAlignment="Left" Height="242" RadiusY="5" RadiusX="5" VerticalAlignment="Top" Width="535" Canvas.Left="10" Canvas.Top="20" Stroke="{Binding Stroke, ElementName=rectangle}"/>
-            <Label Content="歌曲详细信息：" Height="25" Width="105" FontSize="14" Canvas.Left="10" Foreground="Black"/>
+            <Label Content="歌曲详细信息：" Height="25" Width="105" FontSize="14" Canvas.Left="10" Foreground="Black" FontFamily="{Binding FontFamily, ElementName=textBlock}"/>
             <Canvas HorizontalAlignment="Left" Height="227" VerticalAlignment="Top" Width="230" Canvas.Left="10" Canvas.Top="25">
-                <TextBlock x:Name="textBlock" Height="227" Canvas.Left="20" TextWrapping="Wrap" Width="65"><Run Text="文件名称："/><LineBreak/><Run/><LineBreak/><Run Text="歌曲名称："/><LineBreak/><Run/><LineBreak/><Run Text="歌手信息："/><LineBreak/><Run/><LineBreak/><Run Text="专辑信息："/><LineBreak/><Run/><LineBreak/><Run Text="音频比特："/><LineBreak/><Run/><LineBreak/><Run Text="音频频道："/><LineBreak/><Run/><LineBreak/><Run Text="音频采样："/><LineBreak/><Run/><LineBreak/><Run Text="播放时长："/></TextBlock>
+                <TextBlock x:Name="textBlock" Height="227" Canvas.Left="20" TextWrapping="Wrap" Width="65" UseLayoutRounding="False" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="文件名称："/><LineBreak/><Run/><LineBreak/><Run Text="歌曲名称："/><LineBreak/><Run/><LineBreak/><Run Text="歌手信息："/><LineBreak/><Run/><LineBreak/><Run Text="专辑信息："/><LineBreak/><Run/><LineBreak/><Run Text="音频比特："/><LineBreak/><Run/><LineBreak/><Run Text="音频频道："/><LineBreak/><Run/><LineBreak/><Run Text="音频采样："/><LineBreak/><Run/><LineBreak/><Run Text="播放时长："/></TextBlock>
                 <materialDesign:PackIcon Kind="FileChartOutline"  Height="15" Width="20"/>
                 <materialDesign:PackIcon Kind="BookmarkMusicOutline" Height="15" Width="20" Canvas.Top="30"/>
                 <materialDesign:PackIcon Kind="Account" Height="15" Width="20" Canvas.Top="60"/>
@@ -175,7 +341,7 @@
                     VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="210" />
             </Canvas>
             <Canvas HorizontalAlignment="Left" Height="227" VerticalAlignment="Top" Width="295" Canvas.Left="245" Canvas.Top="25">
-                <TextBlock x:Name="textBlock1" Height="227" Canvas.Left="20" TextWrapping="Wrap" Width="65"><Run Text="文件"/><Run Text="描述"/><Run Text="："/><Run/><LineBreak/><Run/><LineBreak/><Run Text="文件路径："/><LineBreak/><Run/><LineBreak/><Run Text="嵌入歌词"/><Run Text="："/><LineBreak/><Run/><LineBreak/><Run Text="专辑图片"/><Run Text="："/><LineBreak/><Run/><Run/><LineBreak/><Run Text="文件大小："/><LineBreak/><Run/><LineBreak/><Run Text="文件类型："/><LineBreak/><Run/><LineBreak/><Run Text="创建日期："/><LineBreak/><Run/><LineBreak/><Run Text="修改日期："/><LineBreak/><Run/><LineBreak/></TextBlock>
+                <TextBlock x:Name="textBlock1" Height="227" Canvas.Left="20" TextWrapping="Wrap" Width="65" FontFamily="{Binding FontFamily, ElementName=textBlock}"><Run Text="文件"/><Run Text="描述"/><Run Text="："/><Run/><LineBreak/><Run/><LineBreak/><Run Text="文件路径："/><LineBreak/><Run/><LineBreak/><Run Text="嵌入歌词"/><Run Text="："/><LineBreak/><Run/><LineBreak/><Run Text="专辑图片"/><Run Text="："/><LineBreak/><Run/><Run/><LineBreak/><Run Text="文件大小："/><LineBreak/><Run/><LineBreak/><Run Text="文件类型："/><LineBreak/><Run/><LineBreak/><Run Text="创建日期："/><LineBreak/><Run/><LineBreak/><Run Text="修改日期："/><LineBreak/><Run/><LineBreak/></TextBlock>
                 <materialDesign:PackIcon Kind="TextBoxOutline"  Height="15" Width="20"/>
                 <materialDesign:PackIcon Kind="FileReplaceOutline"  Height="15" Width="20" Canvas.Top="30"/>
                 <materialDesign:PackIcon Kind="CardBulletedSettingsOutline" Height="15" Width="20" Canvas.Top="60"/>
@@ -223,6 +389,14 @@
             materialDesign:ShadowAssist.ShadowDepth="Depth2" FontSize="22" BorderBrush="{x:Null}" Click="关闭程序_Click" Height="16.5" Width="20" Canvas.Left="532.917" Foreground="#DD000000" Canvas.Top="3.5" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{x:Null}">
                 <materialDesign:PackIcon Kind="WindowClose"   Height="16.416" Width="20.001" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </Button>
+        </Canvas>
+        <Canvas x:Name="模板四" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" d:IsHidden="True" Grid.RowSpan="2">
+            <ProgressBar
+  Style="{StaticResource MaterialDesignCircularProgressBar}"
+  Value="0" Canvas.Left="110" Canvas.Top="75" Height="35" Width="35" IsIndeterminate="True" Foreground="{Binding Stroke, ElementName=rectangle}" />
+            <Label Content="正在扫描歌曲中，青耐心等待！" Height="36.647" Canvas.Left="150" Canvas.Top="63.353" Width="295" FontSize="16"/>
+            <TextBlock x:Name="模式" Height="80" Canvas.Left="155" TextWrapping="Wrap" Canvas.Top="105" Width="295"><Run Text="扫描模式："/><LineBreak/><Run Text="扫描目录："/></TextBlock>
+            <Button Content="取消扫描" Height="55" VerticalAlignment="Top" HorizontalAlignment="Center" Width="185" FontSize="16" Canvas.Left="190" Canvas.Top="207" BorderBrush="{x:Null}" Background="{Binding Stroke, ElementName=rectangle}"/>
         </Canvas>
 
     </Grid>

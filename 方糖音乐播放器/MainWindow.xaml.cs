@@ -137,6 +137,8 @@ namespace 方糖音乐播放器
             主页的播放列表.Items.Clear();//清空原始歌曲
             播放列队.Items.Clear();
             Array.Clear(Number, 0, Number.Length);//清空数组
+            //Tips = new 弹窗提示(3, color3, a, file);
+            //Tips.Show();
             if (a == 1)
             {
                 ListFiles(new DirectoryInfo(file));
@@ -150,6 +152,7 @@ namespace 方糖音乐播放器
                 Properties.Settings.Default.歌单路径 = file;
                 Properties.Settings.Default.歌单路径参数 = 1;
             }
+            //Tips.Close();
             Tips = new 弹窗提示(1, color3, Number_of_songs,null);
             Tips.ShowDialog();
         }
@@ -375,7 +378,6 @@ namespace 方糖音乐播放器
                         sum ++;
                         填充菜单(主页的播放列表, System.IO.Path.GetFileNameWithoutExtension(dir), System.IO.Path.GetFileNameWithoutExtension(dir), 315, 40, 16, false);
                         填充菜单(播放列队, System.IO.Path.GetFileNameWithoutExtension(dir), System.IO.Path.GetFileNameWithoutExtension(dir), 315, 40, 16, false);
-
                     }
                 }
                 catch { }
@@ -419,7 +421,7 @@ namespace 方糖音乐播放器
                 }
                 catch (UnauthorizedAccessException ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message + "可以提升权限解决");
                 }
             }
             歌曲数量.Content = "共" + Number_Serial + "首歌曲";
@@ -691,85 +693,82 @@ namespace 方糖音乐播放器
                      }
                  }));
         }
+        //this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
+        //{
+        //    try
+        //    {
+        //        for (int i = 0; i < lrc_time.Length; i++)
+        //        {
+        //            if (lrc_time[i] != null && lrc_time[i].Substring(0, 7) == Convert.ToString(播放器.Position).Substring(3, 7) && lyrics_display == true)
+        //            {
+        //                歌词滚动显示.SelectedIndex = i;
+        //                ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
+        //                if (Rolling_condition == 0)
+        //                {
+        //                    歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
+        //                }
+        //                for (int j = 0; j < 歌词滚动显示.SelectedIndex; j++)
+        //                {
+        //                    ((ListBoxItem)歌词滚动显示.Items[j]).Foreground = new SolidColorBrush(color2);
+        //                }
+        //                for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o--)
+        //                {
+        //                    ((ListBoxItem)歌词滚动显示.Items[o]).Foreground = new SolidColorBrush(color2);
+        //                }
+        //                if (Get != null)
+        //                {
+        //                    Get.主.Content = lrc_lyrics[i];
+        //                    Get.父.Content = lrc_lyrics[i + 1];
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch { }
+        //});
+        //new Thread(() =>
+        //{
+        //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+        //        new Action(() =>
+        //        {
+        //            try
+        //            {
+        //                for (int i = 0; i < lrc_time.Length; i++)
+        //                {
+        //                    if (lrc_time[i] != null && lrc_time[i].Substring(0, 7) == Convert.ToString(播放器.Position).Substring(3, 7) && lyrics_display == true)
+        //                    {
+        //                        歌词滚动显示.SelectedIndex = i;
+        //                        ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
+        //                        if (Rolling_condition == 0)
+        //                        {
+        //                            歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
+        //                        }
+        //                        for (int j = 0; j < 歌词滚动显示.SelectedIndex; j++)
+        //                        {
+        //                            ((ListBoxItem)歌词滚动显示.Items[j]).Foreground = new SolidColorBrush(color2);
+        //                        }
+        //                        for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o--)
+        //                        {
+        //                            ((ListBoxItem)歌词滚动显示.Items[o]).Foreground = new SolidColorBrush(color2);
+        //                        }
+        //                        if (Get != null)
+        //                        {
+        //                            Get.主.Content = lrc_lyrics[i];
+        //                            Get.父.Content = lrc_lyrics[i + 1];
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            catch { }
+        //            //Thread.Sleep(TimeSpan.FromSeconds(2));
+        //            //this.lblHello.Content = "欢迎你光临WPF的世界,Dispatche 异步方法！！" + DateTime.Now.ToString();
+        //        }));
+        //}).Start();
 
         //刷新歌词计时器事件
         Color color = (Color)ColorConverter.ConvertFromString("#F8BF2424");//红色
         Color color2 = (Color)ColorConverter.ConvertFromString("#FF000000");//黑色
         public void theout1(object source, System.Timers.ElapsedEventArgs e)
         {
-            //this.Dispatcher.Invoke(DispatcherPriority.Normal, (ThreadStart)delegate ()
-            //{
-            //    try
-            //    {
-            //        for (int i = 0; i < lrc_time.Length; i++)
-            //        {
-            //            if (lrc_time[i] != null && lrc_time[i].Substring(0, 7) == Convert.ToString(播放器.Position).Substring(3, 7) && lyrics_display == true)
-            //            {
-            //                歌词滚动显示.SelectedIndex = i;
-            //                ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
-            //                if (Rolling_condition == 0)
-            //                {
-            //                    歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
-            //                }
-            //                for (int j = 0; j < 歌词滚动显示.SelectedIndex; j++)
-            //                {
-            //                    ((ListBoxItem)歌词滚动显示.Items[j]).Foreground = new SolidColorBrush(color2);
-            //                }
-            //                for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o--)
-            //                {
-            //                    ((ListBoxItem)歌词滚动显示.Items[o]).Foreground = new SolidColorBrush(color2);
-            //                }
-            //                if (Get != null)
-            //                {
-            //                    Get.主.Content = lrc_lyrics[i];
-            //                    Get.父.Content = lrc_lyrics[i + 1];
-            //                }
-            //            }
-            //        }
-            //    }
-            //    catch { }
-            //});
-            //new Thread(() =>
-            //{
-            //    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
-            //        new Action(() =>
-            //        {
-            //            try
-            //            {
-            //                for (int i = 0; i < lrc_time.Length; i++)
-            //                {
-            //                    if (lrc_time[i] != null && lrc_time[i].Substring(0, 7) == Convert.ToString(播放器.Position).Substring(3, 7) && lyrics_display == true)
-            //                    {
-            //                        歌词滚动显示.SelectedIndex = i;
-            //                        ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
-            //                        if (Rolling_condition == 0)
-            //                        {
-            //                            歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
-            //                        }
-            //                        for (int j = 0; j < 歌词滚动显示.SelectedIndex; j++)
-            //                        {
-            //                            ((ListBoxItem)歌词滚动显示.Items[j]).Foreground = new SolidColorBrush(color2);
-            //                        }
-            //                        for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o--)
-            //                        {
-            //                            ((ListBoxItem)歌词滚动显示.Items[o]).Foreground = new SolidColorBrush(color2);
-            //                        }
-            //                        if (Get != null)
-            //                        {
-            //                            Get.主.Content = lrc_lyrics[i];
-            //                            Get.父.Content = lrc_lyrics[i + 1];
-            //                        }
-            //                    }
-            //                }
-            //            }
-            //            catch { }
-            //            //Thread.Sleep(TimeSpan.FromSeconds(2));
-            //            //this.lblHello.Content = "欢迎你光临WPF的世界,Dispatche 异步方法！！" + DateTime.Now.ToString();
-            //        }));
-            //}).Start();
-
-
-
             Dispatcher.Invoke(//同步线程
                   new Action(
                 delegate
@@ -805,12 +804,12 @@ namespace 方糖音乐播放器
                     catch { }
                 }));
         }
+
         private string[] lrc_time = new string[200];//存储时间
         private string[] lrc_lyrics = new string[200];//存储与时间对应的歌词
         private string[] Number = new string[2000];//存储歌单列表，格式为绝对路径
         private bool lyrics_display;//决定是否要显示滚动歌词
         private int Number_of_songs = 0;//存储歌曲数量
-
         private int Rolling_condition = 0;
         System.Timers.Timer t1 = new System.Timers.Timer(50);//实例化Timer类用于刷新歌词
         System.Timers.Timer t2 = new System.Timers.Timer(80);//实例化Timer类用于更新时间
@@ -819,15 +818,16 @@ namespace 方糖音乐播放器
 
         //private bool Dynamic = false;
         //public event Func<string,string, int> Fcc1;//定义委托.刷新桌面歌词
-
         //System.Timers.Timer t3 = new System.Timers.Timer(10);//实例化Timer类用于刷新歌词
         //System.Timers.Timer t4 = new System.Timers.Timer(10);//实例化Timer类用于刷新歌词
+        [Obsolete]
         public MainWindow()
         {
             InitializeComponent();
             //Tips.fcc1 += Return_value;
             速度.Visibility = Visibility.Collapsed;
-
+            RenderOptions.SetBitmapScalingMode(歌词滚动显示, BitmapScalingMode.NearestNeighbor );
+            RenderOptions.SetBitmapScalingMode(播放列队框架 , BitmapScalingMode.NearestNeighbor);
             if (false == System.IO.Directory.Exists(System.IO.Path.GetTempPath() + @"方糖音乐\"))//判断目录是否存在
             {
                 //创建临时目录
@@ -906,6 +906,7 @@ namespace 方糖音乐播放器
             if (Properties.Settings.Default.桌面歌词 == true)
             {
                 Get = new 桌面歌词(color3);
+                Get.fcc1 += Playback_status;
                 Get.Show();
             }
             播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标.png"));//从资源文件加载图片
@@ -1079,9 +1080,9 @@ namespace 方糖音乐播放器
         [Obsolete]
         private void 大专辑_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (主页的播放列表.SelectedIndex != -1)
+            if (播放器.Source != null)
             {
-                Tips = new 弹窗提示(2, color3, 0, Number[主页的播放列表.SelectedIndex]);
+                Tips = new 弹窗提示(2, color3, 0, 播放器.Source.ToString());
                 Tips.ShowDialog();
             }
             //MessageBox.Show(CheckTrueFileName(@"E:\歌曲\MusicDownload\爱的奇妙物语 - 张子枫.flac"));
@@ -1783,6 +1784,51 @@ namespace 方糖音乐播放器
         {
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effects = DragDropEffects.Link;
             else e.Effects = DragDropEffects.None;
+        }
+        //void bw_DoWork(object sender, DoWorkEventArgs e)//主
+        //{
+        //    ListFiles(new DirectoryInfo(@"E:\歌曲"));
+        //}
+        //void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)//返回
+        //{
+        //    MessageBox.Show("");
+        //}
+        //[Obsolete]
+        private void 播放歌曲名称_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+
+
+
+            //Tips = new 弹窗提示(3, color3, 0, "");
+            //Tips.Show();
+            // using (BackgroundWorker bw = new BackgroundWorker())
+            // {
+            //    bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+            //   bw.DoWork += new DoWorkEventHandler(bw_DoWork);
+            //   bw.RunWorkerAsync("Tank");
+            //}
+        }
+
+        [Obsolete]
+        private int Playback_status(int a)
+        {
+            if (a == 1)
+            {
+                播放_Click(null, null);
+            }
+            else if(a == 2)
+            {
+                暂停_Click(null, null);
+            }
+            else if (a == 3)
+            {
+                上一曲_Click(null, null);
+            }
+            else if (a == 4)
+            {
+                下一曲_Click(null, null);
+            }
+            return 0;
         }
 
         private void 音量调节_MouseLeave(object sender, MouseEventArgs e)

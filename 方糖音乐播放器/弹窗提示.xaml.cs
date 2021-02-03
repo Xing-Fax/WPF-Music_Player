@@ -39,6 +39,7 @@ namespace 方糖音乐播放器.Properties
             模板一.Visibility = Visibility.Collapsed;
             模板二.Visibility = Visibility.Collapsed;
             模板三.Visibility = Visibility.Collapsed;
+            模板四.Visibility = Visibility.Collapsed;
             单文件.Background = new SolidColorBrush(color);
             if (parameter == 0)
             {
@@ -83,6 +84,18 @@ namespace 方糖音乐播放器.Properties
                 文件类型.Text = System.IO.Path.GetExtension(file);
                 创建日期.Text = f.CreationTimeUtc.ToString();
                 修改日期.Text = f.LastWriteTimeUtc.ToString();
+            }
+            else if(parameter == 3)
+            {
+                模板四.Visibility = Visibility.Visible;
+                if (Other_parameters == 1)
+                {
+                    模式.Text = "扫描模式:" + "全路径扫描" + "\n" + "扫描路径:" + file;
+                }
+                else
+                {
+                    模式.Text = "扫描模式:" + "单路径扫描" + "\n" + "扫描路径:" + file;
+                }
             }
         }
 
@@ -147,9 +160,14 @@ namespace 方糖音乐播放器.Properties
                     }));
             }).Start();
         }
+        int a = 0;
         private void Window_Activated(object sender, EventArgs e)
         {
-            动画播放("打开");
+            if (a == 0)
+            {
+                动画播放("打开");
+            }
+            a = 1;
         }
 
         private void 关闭程序_Click(object sender, RoutedEventArgs e)

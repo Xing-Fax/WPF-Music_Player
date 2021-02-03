@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
@@ -19,6 +20,15 @@ namespace 方糖音乐播放器
     /// </summary>
     public partial class 桌面歌词 : Window
     {
+        public event Func<int, int> fcc1;
+        //播放动画函数
+        Storyboard story;
+        private void 动画播放(string a)
+        {
+            story = (Storyboard)FindResource(a);
+            BeginStoryboard(story);
+        }
+
         public 桌面歌词(Color color)
         {
 
@@ -35,14 +45,39 @@ namespace 方糖音乐播放器
             }
         }
 
+        [Obsolete]
         private void 桌面歌词主窗口_MouseEnter(object sender, MouseEventArgs e)
         {
-            //桌面歌词主窗口.Background.Opacity = 30;
+            动画播放("打开");
+
         }
 
         private void 桌面歌词主窗口_MouseLeave(object sender, MouseEventArgs e)
         {
-            //桌面歌词主窗口.Background.Opacity = 1;
+            动画播放("关闭");
+        }
+
+        [Obsolete]
+        private void 播放_Click(object sender, RoutedEventArgs e)
+        {
+            fcc1(1);
+            //MainWindow main = new MainWindow();
+            //main.歌曲名称.Content = "111";
+        }
+
+        private void 下一曲_Click(object sender, RoutedEventArgs e)
+        {
+            fcc1(4);
+        }
+
+        private void 上一曲_Click(object sender, RoutedEventArgs e)
+        {
+            fcc1(3);
+        }
+
+        private void 暂停_Click(object sender, RoutedEventArgs e)
+        {
+            fcc1(2);
         }
     }
 }

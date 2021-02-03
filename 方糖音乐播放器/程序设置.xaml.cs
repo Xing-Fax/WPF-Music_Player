@@ -269,6 +269,22 @@ namespace 方糖音乐播放器
             }
         }
 
+        private void Grid_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
 
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            动画播放("关于关闭");
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            动画播放("关于打开");
+        }
     }
 }

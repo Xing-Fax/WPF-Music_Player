@@ -33,7 +33,6 @@ namespace 方糖音乐播放器
             story = (Storyboard)FindResource(a);
             BeginStoryboard(story);
         }
-        //弹窗提示 Tips;
         public event Func<string, int> fcc1;//定义委托
         public event Func<int, int> fcc2;
         public event Func<int, int> fcc3;
@@ -42,11 +41,11 @@ namespace 方糖音乐播放器
         public event Func<int, int> fcc6;
         private string 背景路径;
         private string 歌词目录;
-        //public Color color3;
         public 程序设置(Color color)
         {
             InitializeComponent();
-            //color3 = color;
+            grid1.Visibility = Visibility.Collapsed;
+            grid2.Visibility = Visibility.Collapsed;
             默认.Background = new SolidColorBrush(color);
             模糊.Value = Properties.Settings.Default.背景模糊程度;
             歌词.IsChecked = Properties.Settings.Default.是否歌词显示;
@@ -346,6 +345,7 @@ namespace 方糖音乐播放器
         {
             try { System.Diagnostics.Process.Start("https://github.com/xingchuanzhen/WPF-Music_Player"); }
             catch(UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); }
+            fcc5(0);
             exit();
         }
 

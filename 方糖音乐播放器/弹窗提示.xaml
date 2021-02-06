@@ -356,7 +356,7 @@
         <Canvas x:Name="模板二" Visibility="Visible" d:IsHidden="True">
             <Button x:Name="确定" Content="我知道了" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=单文件}" Click="确定_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="190" Canvas.Top="200"/>
             <materialDesign:PackIcon Kind="AlertCircleOutline" HorizontalAlignment="Left" VerticalAlignment="Top" Height="80" Width="80" Foreground="{Binding Background, ElementName=单文件}" Canvas.Left="40" Canvas.Top="45"/>
-            <TextBlock x:Name="提示" HorizontalAlignment="Center" Height="130" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Width="330" TextAlignment="Justify" Canvas.Left="140" Canvas.Top="65" FontSize="14"/>
+            <TextBlock x:Name="提示" HorizontalAlignment="Center" Height="130" TextWrapping="Wrap" Text="提示信息" VerticalAlignment="Center" Width="330" TextAlignment="Justify" Canvas.Left="140" Canvas.Top="65" FontSize="16"/>
 
         </Canvas>
         <Canvas x:Name="模板三" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" d:IsHidden="True">
@@ -460,13 +460,13 @@
   Style="{StaticResource MaterialDesignCircularProgressBar}"
   Value="0" Canvas.Left="110" Canvas.Top="75" Height="35" Width="35" IsIndeterminate="True" Foreground="{Binding Stroke, ElementName=rectangle}" />
             <Label Content="正在扫描歌曲中，青耐心等待！" Height="36.647" Canvas.Left="150" Canvas.Top="63.353" Width="295" FontSize="16"/>
-            <TextBlock x:Name="模式" Height="80" Canvas.Left="155" TextWrapping="Wrap" Canvas.Top="105" Width="295"><Run Text="扫描模式："/><LineBreak/><Run Text="扫描目录："/></TextBlock>
+            <TextBlock x:Name="模式" Height="80" Canvas.Left="150" TextWrapping="Wrap" Canvas.Top="105" Width="295"><Run Text="扫描模式："/><LineBreak/><Run Text="扫描目录："/></TextBlock>
             <Button Content="取消扫描" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Width="175" FontSize="16" Canvas.Left="190" Canvas.Top="200" BorderBrush="{x:Null}" Background="{Binding Stroke, ElementName=rectangle}"/>
         </Canvas>
-        <Canvas x:Name="模板五" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555">
+        <Canvas x:Name="模板五" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" d:IsHidden="True">
             <Button x:Name="知道了" Content="我知道了" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Width="175" FontSize="16" Canvas.Left="190" Canvas.Top="217" BorderBrush="{x:Null}" Background="{Binding Stroke, ElementName=rectangle}" Click="知道了_Click"/>
             <materialDesign:PackIcon Kind="AlertOutline"   HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Canvas.Left="10" Canvas.Top="10" Foreground="{Binding Stroke, ElementName=rectangle}"/>
-            <TextBlock HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="555" FontSize="24" TextAlignment="Center" Canvas.Top="15"><Run Text="程序可能遇到问题"/><Run/><LineBreak/><Run FontSize="12" Text="以下信息或许可以帮助到您"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="555" FontSize="24" TextAlignment="Center" Canvas.Top="15"><Run Text="你的"/><Run Text="程序可能遇到问题"/><Run/><LineBreak/><Run FontSize="12" Text="以下信息或许可以帮助到您"/></TextBlock>
             <ScrollViewer x:Name="xx" HorizontalAlignment="Center" Height="147" VerticalAlignment="Center" Width="535" Canvas.Left="10" Canvas.Top="65" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalScrollBarVisibility="Visible">
                 <TextBox x:Name="问题"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"

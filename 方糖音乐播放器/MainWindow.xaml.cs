@@ -160,6 +160,7 @@ namespace 方糖音乐播放器
                 Properties.Settings.Default.歌单路径 = file;
                 Properties.Settings.Default.歌单路径参数 = 1;
             }
+
             Tips = new 弹窗提示(1, color3, Number_of_songs,null);
             Tips.ShowDialog();
         }
@@ -168,7 +169,7 @@ namespace 方糖音乐播放器
         {
             TimeSpan ts = new TimeSpan(0, 0, Convert.ToInt32(duration));
             string str = "";
-            if (ts.Hours > 0)
+            if (ts.Hours > 0) 
             {
                 str = String.Format("{0:00}", ts.Hours) + ":" + String.Format("{0:00}", ts.Minutes) + ":" + String.Format("{0:00}", ts.Seconds);
             }
@@ -265,7 +266,10 @@ namespace 方糖音乐播放器
         //    }
         //}
         //利用字符串indexof截取时间
-        public static string Substring(string sourse, string startstr, string endstr)
+        //
+
+
+        private string Substring(string sourse, string startstr, string endstr)        //截取字符串
         {
             string result = string.Empty;
             int startindex, endindex;
@@ -311,7 +315,7 @@ namespace 方糖音乐播放器
         {
             string msg;
             string lrc = "";
-            using (StreamReader reader = new StreamReader(file, Encoding.Default))
+            using (StreamReader reader = new StreamReader(file, Encoding.Default ))
             {
                 while ((msg = reader.ReadLine()) != null) { lrc += msg + "\n"; }//!=  不等于   
             }
@@ -475,20 +479,14 @@ namespace 方糖音乐播放器
             item.Height = height;//设置高度
             item.FontSize = fontsize;//设置字号
             item.ToolTip = tooltip;//设置提示
-            if (Centered == true)
-            {
-                item.HorizontalContentAlignment = HorizontalAlignment.Center;//设置文本上下左右居中
-            }
+            if (Centered == true) { item.HorizontalContentAlignment = HorizontalAlignment.Center; }//设置文本上下左右居中
             box.Items.Add(item);//将控件添加到集合里
         }
 
         private string Embedded_lyrics()
         {
             string a = "";
-            for (int i = 0; i < lrc_time.Length; i++)
-            {
-                if (lrc_time[i] != null) { a += "[" + lrc_time[i] + "]" + lrc_lyrics[i] + "\n"; }
-            }
+            for (int i = 0; i < lrc_time.Length; i++) { if (lrc_time[i] != null) { a += "[" + lrc_time[i] + "]" + lrc_lyrics[i] + "\n"; } }
             return a;
         }
 
@@ -585,8 +583,12 @@ namespace 方糖音乐播放器
                     }//歌词不存在，不打印歌词
 
                     //读取专辑图片
-                    if (GetCover(File_s) != null) { 播放栏专辑.Source = GetCover(File_s); }
-                    else { 播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标.png")); }
+                    if (Read_information.Tag.Pictures != null && Read_information.Tag.Pictures.Length != 0)
+                    {
+                        if (GetCover(File_s) != null) { 播放栏专辑.Source = GetCover(File_s); }
+                        else { 播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标.png")); }
+                    }
+
 
                     进度条.IsEnabled = true;//进度条可用
                     播放.Visibility = Visibility.Collapsed;
@@ -829,12 +831,12 @@ namespace 方糖音乐播放器
                 }));
         }
 
-        private string[] lrc_time = new string[200];//存储时间
-        private string[] lrc_lyrics = new string[200];//存储与时间对应的歌词
-        private string[] Number = new string[2000];//存储歌单列表，格式为绝对路径
-        private bool lyrics_display;//决定是否要显示滚动歌词
-        private int Number_of_songs = 0;//存储歌曲数量
-        private int Rolling_condition = 0;
+        string[] lrc_time = new string[200];//存储时间
+        string[] lrc_lyrics = new string[200];//存储与时间对应的歌词
+        string[] Number = new string[2000];//存储歌单列表，格式为绝对路径
+        bool lyrics_display;//决定是否要显示滚动歌词
+        int Number_of_songs = 0;//存储歌曲数量
+        int Rolling_condition = 0;
         System.Timers.Timer t1 = new System.Timers.Timer(50);//实例化Timer类用于刷新歌词
         System.Timers.Timer t2 = new System.Timers.Timer(80);//实例化Timer类用于更新时间
         桌面歌词 Get;
@@ -844,6 +846,11 @@ namespace 方糖音乐播放器
         //public event Func<string,string, int> Fcc1;//定义委托.刷新桌面歌词
         //System.Timers.Timer t3 = new System.Timers.Timer(10);//实例化Timer类用于刷新歌词
         //System.Timers.Timer t4 = new System.Timers.Timer(10);//实例化Timer类用于刷新歌词
+        //if (false == System.IO.Directory.Exists(System.IO.Path.GetTempPath() + @"方糖音乐\"))//判断目录是否存在
+        //{
+        //    //创建临时目录
+        //    System.IO.Directory.CreateDirectory(System.IO.Path.GetTempPath() + @"方糖音乐\");
+        //}
         [Obsolete]
         public MainWindow()
         {
@@ -853,11 +860,7 @@ namespace 方糖音乐播放器
                 速度.Visibility = Visibility.Collapsed;
                 RenderOptions.SetBitmapScalingMode(歌词滚动显示, BitmapScalingMode.NearestNeighbor);
                 RenderOptions.SetBitmapScalingMode(播放列队框架, BitmapScalingMode.NearestNeighbor);
-                //if (false == System.IO.Directory.Exists(System.IO.Path.GetTempPath() + @"方糖音乐\"))//判断目录是否存在
-                //{
-                //    //创建临时目录
-                //    System.IO.Directory.CreateDirectory(System.IO.Path.GetTempPath() + @"方糖音乐\");
-                //}
+
                 t1.Elapsed += new System.Timers.ElapsedEventHandler(theout1);//到达时间的时候执行事件
                 t1.AutoReset = true;//设置是执行一次（false）还是一直执行(true)
                 t1.Enabled = false;//是否执行System.Timers.Timer.Elapsed事件
@@ -1078,7 +1081,6 @@ namespace 方糖音乐播放器
             {
                 if (歌词滚动显示.SelectedIndex <= 5)
                 {
-                    //歌词滚动显示.SelectedIndex = 0;
                     歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex]);
                 }
                 else
@@ -1124,6 +1126,28 @@ namespace 方糖音乐播放器
         //    Console.WriteLine(bx);
         //    return bx;
         //}
+        //MessageBox.Show(CheckTrueFileName(@"E:\歌曲\MusicDownload\爱的奇妙物语 - 张子枫.flac"));
+        //System.IO.FileInfo f = new FileInfo(@"E:\歌曲\MusicDownload\爱的奇妙物语 - 张子枫.flac");
+        ////double a = GetFileSize(f.Length);
+        //MessageBox.Show(GetFileSize(f.Length));
+        //BitmapImage bitmapImage = new BitmapImage();//用于读取专辑图片，防止文件占用
+        //bitmapImage.BeginInit();
+        //bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+        //bitmapImage.UriSource = new Uri(@"C:\Users\邢传真\AppData\Local\Temp\方糖音乐\白月光与朱砂痣 - 大籽.png");//szPath为图片的全路径
+        //bitmapImage.EndInit();
+        //bitmapImage.Freeze();
+        //播放栏专辑.Source = bitmapImage;
+        //播放栏专辑.Source = new BitmapImage(new Uri(@"C:\Users\邢传真\AppData\Local\Temp\方糖音乐\空山新雨后 - 音阙诗听&锦零.png"));
+        //Get = new 桌面歌词();
+        //Get.Show();
+        //Get.主.Content = "11";
+        //Fcc1("", "");
+        //桌面歌词 child = new 桌面歌词();
+        //child.Show();
+        //FileStream Stream = System.IO.File.Open(@"D:\白月光与朱砂痣 - 大籽.png", FileMode.Open);
+        //BitmapImage bitmap = new BitmapImage();
+        //bitmap.StreamSource = Stream;
+        //播放栏专辑.Source = bitmap;
         [Obsolete]
         private void 大专辑_MouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -1132,29 +1156,6 @@ namespace 方糖音乐播放器
                 Tips = new 弹窗提示(2, color3, 0, 播放器.Source.ToString());
                 Tips.ShowDialog();
             }
-            //MessageBox.Show(CheckTrueFileName(@"E:\歌曲\MusicDownload\爱的奇妙物语 - 张子枫.flac"));
-            //System.IO.FileInfo f = new FileInfo(@"E:\歌曲\MusicDownload\爱的奇妙物语 - 张子枫.flac");
-            ////double a = GetFileSize(f.Length);
-            //MessageBox.Show(GetFileSize(f.Length));
-            //BitmapImage bitmapImage = new BitmapImage();//用于读取专辑图片，防止文件占用
-            //bitmapImage.BeginInit();
-            //bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-            //bitmapImage.UriSource = new Uri(@"C:\Users\邢传真\AppData\Local\Temp\方糖音乐\白月光与朱砂痣 - 大籽.png");//szPath为图片的全路径
-            //bitmapImage.EndInit();
-            //bitmapImage.Freeze();
-            //播放栏专辑.Source = bitmapImage;
-            //播放栏专辑.Source = new BitmapImage(new Uri(@"C:\Users\邢传真\AppData\Local\Temp\方糖音乐\空山新雨后 - 音阙诗听&锦零.png"));
-            //Get = new 桌面歌词();
-            //Get.Show();
-            //Get.主.Content = "11";
-            //Fcc1("", "");
-            //桌面歌词 child = new 桌面歌词();
-            //child.Show();
-            //FileStream Stream = System.IO.File.Open(@"D:\白月光与朱砂痣 - 大籽.png", FileMode.Open);
-            //BitmapImage bitmap = new BitmapImage();
-            //bitmap.StreamSource = Stream;
-            //播放栏专辑.Source = bitmap;
-
         }
 
         //在左键按下的时候不会刷新进度条
@@ -1733,16 +1734,6 @@ namespace 方糖音乐播放器
             主界面菜单选择.SelectedIndex = -1;
         }
 
-        private void colorZone_MouseEnter(object sender, MouseEventArgs e)
-        {
-            //动画播放("顶部透明开");
-        }
-
-        private void colorZone_MouseLeave(object sender, MouseEventArgs e)
-        {
-            //动画播放("顶部透明关");
-        }
-
         private void 进度条_MouseEnter(object sender, MouseEventArgs e)
         {
             t2.Interval = 1000;
@@ -1757,7 +1748,6 @@ namespace 方糖音乐播放器
         {
             if (速度框架.Visibility == Visibility.Collapsed) { 动画播放("速度打开"); }
             else { 动画播放("速度关闭"); }
-
         }
 
         private void 速度框架_MouseLeave(object sender, MouseEventArgs e)
@@ -1773,7 +1763,6 @@ namespace 方糖音乐播放器
                 速度显示.Content = 速度条.Value + "倍速";
             }
             axvb = 1;
-
         }
 
         private void 速度调节_MouseLeave(object sender, MouseEventArgs e)
@@ -1850,21 +1839,13 @@ namespace 方糖音乐播放器
             if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effects = DragDropEffects.Link;
             else e.Effects = DragDropEffects.None;
         }
-        //void bw_DoWork(object sender, DoWorkEventArgs e)//主
-        //{
-        //    ListFiles(new DirectoryInfo(@"E:\歌曲"));
-        //}
-        //void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)//返回
-        //{
-        //    MessageBox.Show("");
-        //}
-        //[Obsolete]
+
         private void 播放歌曲名称_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            string a = "sdaffaf\naffafaf\ndfsdsgsgs\n";
-            string[] temp = a.Split('\n');
-            MessageBox.Show(temp[0]);
-            MessageBox.Show(temp[1]);
+            //string a = "sdaffaf\naffafaf\ndfsdsgsgs\n";
+            //string[] temp = a.Split('\n');
+            //MessageBox.Show(temp[0]);
+            //MessageBox.Show(temp[1]);
             //string[] temp = Vote.Text.Split('\n');
 
 

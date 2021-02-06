@@ -48,17 +48,15 @@ namespace 方糖音乐播放器.Properties
             }
             else if (parameter == 1)
             {
-
                 模板二.Visibility = Visibility.Visible;
-                提示.Text = file;
-                //if (Other_parameters == 0)
-                //{
-                //    提示.Content = "共扫描到了" + Other_parameters + "首歌曲，似乎神马也木有扫" + "\n" + "描到(＃°Д°)";
-                //}
-                //else
-                //{
-                //    提示.Content = "共扫描到了" + Other_parameters + "首歌曲";
-                //}
+                if (Other_parameters == 0)
+                {
+                    提示.Text = "共扫描到了" + Other_parameters + "首歌曲，似乎神马也木有扫描到(＃°Д°)";
+                }
+                else
+                {
+                    提示.Text = "共扫描到了" + Other_parameters + "首歌曲";
+                }
             }
             else if(parameter == 2)
             {

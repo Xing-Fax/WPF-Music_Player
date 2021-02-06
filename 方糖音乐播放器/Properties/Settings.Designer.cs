@@ -202,5 +202,17 @@ namespace 方糖音乐播放器.Properties {
                 this["嵌入歌词"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool 错误报告 {
+            get {
+                return ((bool)(this["错误报告"]));
+            }
+            set {
+                this["错误报告"] = value;
+            }
+        }
     }
 }

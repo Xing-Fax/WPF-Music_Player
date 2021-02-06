@@ -40,6 +40,7 @@ namespace 方糖音乐播放器.Properties
             模板二.Visibility = Visibility.Collapsed;
             模板三.Visibility = Visibility.Collapsed;
             模板四.Visibility = Visibility.Collapsed;
+            模板五.Visibility = Visibility.Collapsed;
             单文件.Background = new SolidColorBrush(color);
             if (parameter == 0)
             {
@@ -47,15 +48,17 @@ namespace 方糖音乐播放器.Properties
             }
             else if (parameter == 1)
             {
+
                 模板二.Visibility = Visibility.Visible;
-                if (Other_parameters == 0)
-                {
-                    提示.Content = "共扫描到了" + Other_parameters + "首歌曲，似乎神马也木有扫" + "\n" + "描到(＃°Д°)";
-                }
-                else
-                {
-                    提示.Content = "共扫描到了" + Other_parameters + "首歌曲";
-                }
+                提示.Text = file;
+                //if (Other_parameters == 0)
+                //{
+                //    提示.Content = "共扫描到了" + Other_parameters + "首歌曲，似乎神马也木有扫" + "\n" + "描到(＃°Д°)";
+                //}
+                //else
+                //{
+                //    提示.Content = "共扫描到了" + Other_parameters + "首歌曲";
+                //}
             }
             else if(parameter == 2)
             {
@@ -76,7 +79,7 @@ namespace 方糖音乐播放器.Properties
                 文件描述.Text = Read_information.Properties.Description;
                 文件路径.Text = file;
                 if (Read_information.Tag.Lyrics != null) { 嵌入歌词.Text = "有内嵌歌词"; }
-                else { 嵌入歌词.Text = "无嵌入歌词"; }
+                else { 嵌入歌词.Text = "没有嵌入歌词"; }
                 if (Read_information.Tag.Pictures != null && Read_information.Tag.Pictures.Length != 0) { 专辑图片.Text = "有专辑图片"; }
                 else { 专辑图片.Text = "没有专辑图片"; }
                 System.IO.FileInfo f = new FileInfo(file);
@@ -96,6 +99,11 @@ namespace 方糖音乐播放器.Properties
                 {
                     模式.Text = "扫描模式:" + "单路径扫描" + "\n" + "扫描路径:" + file;
                 }
+            }
+            else if (parameter == 4)
+            {
+                模板五.Visibility = Visibility.Visible;
+                问题.Text  = file;
             }
         }
 
@@ -173,6 +181,16 @@ namespace 方糖音乐播放器.Properties
         private void 关闭程序_Click(object sender, RoutedEventArgs e)
         {
             exit();
+        }
+
+        private void 知道了_Click(object sender, RoutedEventArgs e)
+        {
+            exit();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(问题.Text);
         }
     }
 }

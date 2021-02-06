@@ -17,6 +17,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using 方糖音乐播放器.Properties;
 
 namespace 方糖音乐播放器
 {
@@ -32,6 +33,7 @@ namespace 方糖音乐播放器
             story = (Storyboard)FindResource(a);
             BeginStoryboard(story);
         }
+        //弹窗提示 Tips;
         public event Func<string, int> fcc1;//定义委托
         public event Func<int, int> fcc2;
         public event Func<int, int> fcc3;
@@ -40,15 +42,18 @@ namespace 方糖音乐播放器
         public event Func<int, int> fcc6;
         private string 背景路径;
         private string 歌词目录;
+        //public Color color3;
         public 程序设置(Color color)
         {
             InitializeComponent();
+            //color3 = color;
             默认.Background = new SolidColorBrush(color);
             模糊.Value = Properties.Settings.Default.背景模糊程度;
             歌词.IsChecked = Properties.Settings.Default.是否歌词显示;
             独立播放1.IsChecked = Properties.Settings.Default.独立播放视频;
             桌面歌词1.IsChecked = Properties.Settings.Default.桌面歌词;
             嵌入歌词1.IsChecked = Properties.Settings.Default.嵌入歌词;
+            错误.IsChecked = Properties.Settings.Default.错误报告;
             if (Properties.Settings.Default.背景填充 == 1) { 原始.IsChecked = true; }
             else if (Properties.Settings.Default.背景填充 == 2) { 填充.IsChecked = true; }
             else if (Properties.Settings.Default.背景填充 == 3) { 居中.IsChecked = true; }
@@ -65,7 +70,8 @@ namespace 方糖音乐播放器
                 DragMove();
             }
         }
-        
+
+        [Obsolete]
         private void 默认背景_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Topmost = false;
@@ -73,8 +79,16 @@ namespace 方糖音乐播放器
             Open1.Filter = "图片文件(*.jpg,*.png,*.jpeg,*.bmp)|*.jpg;*.png;*.jpeg;*.bmp";
             if (Open1.ShowDialog(this) == true)
             {
-                fcc1(Open1.FileName);
-                背景路径 = Open1.FileName;
+                try
+                {
+                    fcc1(Open1.FileName);
+                    背景路径 = Open1.FileName;
+                }
+                catch //(Exception ex)
+                {
+                   // MessageBox.Show(ex.ToString());
+                    //Tips = new 弹窗提示(4, color3, 0, "问题详情:" + ex);
+                }
             }
             Topmost = true;
         }
@@ -133,6 +147,7 @@ namespace 方糖音乐播放器
             Properties.Settings.Default.桌面歌词 = (bool)桌面歌词1.IsChecked;
             Properties.Settings.Default.嵌入歌词 = (bool)嵌入歌词1.IsChecked;
             Properties.Settings.Default.背景模糊程度 = 模糊.Value;
+            Properties.Settings.Default.错误报告 = (bool)错误.IsChecked;
             Properties.Settings.Default.Save();//保存设置
 
             fcc5(0);
@@ -192,12 +207,10 @@ namespace 方糖音乐播放器
             Properties.Settings.Default.嵌入歌词 = false;
             Properties.Settings.Default.独立播放视频 = true;
             Properties.Settings.Default.桌面歌词 = false;
+            Properties.Settings.Default.错误报告 = true;
             Properties.Settings.Default.Save();
             fcc5(0);
             fcc6(2);
-
-            //fcc3(6);
-
             填充.IsChecked = true;
             fcc1("默认");
             exit();
@@ -285,6 +298,67 @@ namespace 方糖音乐播放器
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             动画播放("关于打开");
+            动画播放("恐龙跳2");
         }
+        Color color = (Color)ColorConverter.ConvertFromString("#FF000000");//黑色
+        Color color2 = (Color)ColorConverter.ConvertFromString("#FF595959");//灰色
+        private void Github_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Github .Foreground = new SolidColorBrush(color);
+        }
+
+        private void Github_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Github.Foreground = new SolidColorBrush(color2);
+        }
+
+        private void Csharp_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Csharp.Foreground = new SolidColorBrush(color);
+        }
+
+        private void Csharp_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Csharp.Foreground = new SolidColorBrush(color2);
+        }
+
+        private void Net_MouseEnter(object sender, MouseEventArgs e)
+        {
+            Net.Foreground = new SolidColorBrush(color);
+        }
+
+        private void Net_MouseLeave(object sender, MouseEventArgs e)
+        {
+            Net.Foreground = new SolidColorBrush(color2);
+        }
+
+        private void _32位版本__MouseEnter(object sender, MouseEventArgs e)
+        {
+            _32位版本_.Foreground = new SolidColorBrush(color);
+        }
+
+        private void _32位版本__MouseLeave(object sender, MouseEventArgs e)
+        {
+            _32位版本_.Foreground = new SolidColorBrush(color2);
+        }
+
+        private void Github_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            try { System.Diagnostics.Process.Start("https://github.com/xingchuanzhen/WPF-Music_Player"); }
+            catch(UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); }
+            exit();
+        }
+
+        private void image_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            动画播放("旋转");
+        }
+
+        private void packIcon_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            动画播放("恐龙跳2");
+        }
+
+
     }
 }

@@ -328,13 +328,181 @@
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="旋转">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="image">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="360"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="恐龙跳">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="packIcon">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.257" Value="-30">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="-5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="packIcon">
+                <EasingColorKeyFrame KeyTime="0" Value="Black"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.017" Value="#FFD68181"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.033" Value="sc#1, 0.20155625, 0.00651209056, 0.00651209056"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.05" Value="sc#1, 0.5332764, 0.341914415, 0.341914415"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.067" Value="sc#1, 0.313988715, 0.491020858, 0.3277781"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.083" Value="sc#1, 0.0116122449, 0.144128472, 0.0168073755"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.1" Value="sc#1, 0.06847817, 0.010329823, 0.130136475"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.117" Value="sc#1, 0.212230757, 0.0129830325, 0.4677838"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.133" Value="sc#1, 0.287440836, 0.130136475, 0.4125426"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.15" Value="sc#1, 0.111932427, 0.356400132, 0.191201687"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.167" Value="sc#1, 0.300543785, 0.300543785, 0.0930589661"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.183" Value="sc#1, 0.246201321, 0.13286832, 0.07618538"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.2" Value="sc#1, 0.191201687, 0.0595112368, 0.119538426"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.217" Value="sc#1, 0.318546772, 0.0129830325, 0.119538426"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.233" Value="sc#1, 0.423267663, 0.124771819, 0.262250662"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.25" Value="sc#1, 0.03688945, 0.124771819, 0.0998987257"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.257" Value="Black"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.267" Value="#FF4F993F"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.283" Value="sc#1, 0.119538426, 0.0466650873, 0.3049873"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.3" Value="sc#1, 0.396755219, 0.3712377, 0.434153646"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.317" Value="sc#1, 0.0241576321, 0.0109600937, 0.0481718257"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.333" Value="sc#1, 0.04231141, 0.001214108, 0.187820777"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.35" Value="sc#1, 0.1651322, 0.520995557, 0.00699541"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.367" Value="sc#1, 0.0144438436, 0.0027317428, 0.0152085144"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.383" Value="sc#1, 0.0231533665, 0.0231533665, 0.155926466"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.4" Value="sc#1, 0.223227963, 0.223227963, 0.822785735"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.417" Value="sc#1, 0.0152085144, 0.0152085144, 0.0202885624"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.433" Value="Blue"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.45" Value="sc#1, 0, 0.38132602, 0.8962694"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.467" Value="sc#1, 0.09530747, 0.296138257, 0.434153646"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.483" Value="sc#1, 0.002428216, 0.0129830325, 0.0221738853"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.5" Value="sc#1, 0.00477695325, 0.341914415, 0.008023193"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.517" Value="sc#1, 0.01850022, 0.004024717, 0.283148736"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.533" Value="sc#1, 0.1682694, 0.116970666, 0.520995557"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.55" Value="sc#1, 0.278894275, 0.386429429, 0.08650046"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.567" Value="sc#1, 0.396755219, 0.651405632, 0.0409152"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.583" Value="sc#1, 0.337163627, 0.02121901, 0.02121901"/>
+                <EasingColorKeyFrame KeyTime="0:0:0.6" Value="Black"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="恐龙跳2">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="packIcon">
+                <EasingDoubleKeyFrame KeyTime="0" Value="2.5">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-116.058">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-116.058">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.333" Value="-1.058">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)" Storyboard.TargetName="packIcon">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="-360">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="packIcon">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.875">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="packIcon">
+                <EasingColorKeyFrame KeyTime="0" Value="Red">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:0.5" Value="Black">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:0.8" Value="Black">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:0.833" Value="#FF0068FF">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+                <EasingColorKeyFrame KeyTime="0:0:1.333" Value="Black">
+                    <EasingColorKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseInOut"/>
+                    </EasingColorKeyFrame.EasingFunction>
+                </EasingColorKeyFrame>
+            </ColorAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.833" Value="-25">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.833" Value="22.333">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.333" Value="-322.667">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ellipse">
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.8" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.833" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.9" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.3" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.333" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.833" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0.5"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
-            <BeginStoryboard Storyboard="{StaticResource 关于打开}"/>
-            <BeginStoryboard Storyboard="{StaticResource 关于关闭}"/>
-        </EventTrigger>
-    </Window.Triggers>
     <Canvas x:Name="grid" Clip="M0.5,10.5 C0.5,4.9771525 4.9771525,0.5 10.5,0.5 L389.5,0.5 C395.02285,0.5 399.5,4.9771525 399.5,10.5 L399.5,589.5 C399.5,595.02285 395.02285,599.5 389.5,599.5 L10.5,599.5 C4.9771525,599.5 0.5,595.02285 0.5,589.5 z">
         <Rectangle Fill="White" HorizontalAlignment="Left" Height="600" RadiusY="10" RadiusX="10" Stroke="{Binding Background, ElementName=默认}" VerticalAlignment="Top" Width="400"/>
         <Grid x:Name="标题" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="392" MouseMove="标题_MouseMove" Canvas.Top="20">
@@ -386,6 +554,8 @@
                 <Label x:Name="独立播放" Content="独立播放" HorizontalAlignment="Left" Height="25" Margin="0,35,0,-5" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
                 <Label x:Name="嵌入歌词" Content="嵌入歌词" HorizontalAlignment="Left" Height="25" Margin="110,35,0,-5" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
                 <ToggleButton x:Name="嵌入歌词1" Content="" HorizontalAlignment="Left" Height="17" Margin="174.5,39.2,0,-1.2" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" UseLayoutRounding="False"/>
+                <Label x:Name="嵌入歌词_Copy" Content="错误报告" HorizontalAlignment="Left" Height="25" Margin="220.5,35,0,0" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
+                <ToggleButton x:Name="错误" Content="" HorizontalAlignment="Left" Height="17" Margin="285,39.2,0,0" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" UseLayoutRounding="False"/>
             </Grid>
         </ListBox>
         <Grid x:Name="grid1" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="400" Visibility="Collapsed">
@@ -397,7 +567,7 @@
             <Button ToolTip="返回" HorizontalAlignment="Left" Height="27.167" Margin="10,562.833,0,0" VerticalAlignment="Top" Width="35" Padding="-4,4,-3,4" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="Button_Click">
                 <materialDesign:PackIcon Kind="KeyboardReturn" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20"/>
             </Button>
-            <TextBlock HorizontalAlignment="Left" Height="497.833" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Foreground="#FF426ECD" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="修改程序默认背景图片："/><Run Foreground="Black" Text="可以修改默认背景图片，支持的格式有"/><Run Foreground="Black" Text="JPG、PNG、JPGE、BMP"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="缩放模式："/><Run Foreground="Black" Text="设置背景图片的在程序中的缩放模式，默认是&quot;填充&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="模糊："/><Run Foreground="Black" Text="设置背景图片在程序中的模糊程度，默认是&quot;5&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="设置歌词路径："/><Run Foreground="Black" Text="可以将歌词文件放置到一个文件夹中，播放时会自动读取，歌词读取优先级；&quot;歌曲内嵌→指定文件夹→歌曲目录下&quot;"/><LineBreak/><LineBreak/><Run Text="当前路径："/><Run Foreground="Black" Text="显示用户设置的歌词目录，单击可以打开目录"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="显示歌词："/><Run Foreground="Black" Text="是否显示滚动歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="平滑滚动："/><Run Foreground="Black" Text="设置歌词滚动方式"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="桌面歌词："/><Run Foreground="Black" Text="打开/关闭桌面歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="独立播放："/><Run Foreground="Black" Text="在独立窗口播放视频"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="嵌入歌词："/><Run Foreground="Black" Text="当读取到有效歌词且歌曲没有内嵌歌词的情况下，可以自动将歌词嵌入歌曲内"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="恢复默认："/><Run Foreground="Black" Text="将所有设置恢复默认状态"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="取消更改："/><Run Foreground="Black" Text="取消对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="保存更改："/><Run Foreground="Black" Text="保存对设置做出的更改"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="497.833" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Foreground="#FF426ECD" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="修改程序默认背景图片："/><Run Foreground="Black" Text="可以修改默认背景图片，支持的格式有"/><Run Foreground="Black" Text="JPG、PNG、JPGE、BMP"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="缩放模式："/><Run Foreground="Black" Text="设置背景图片的在程序中的缩放模式，默认是&quot;填充&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="模糊："/><Run Foreground="Black" Text="设置背景图片在程序中的模糊程度，默认是&quot;5&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="设置歌词路径："/><Run Foreground="Black" Text="可以将歌词文件放置到一个文件夹中，播放时会自动读取，歌词读取优先级；&quot;歌曲内嵌→指定文件夹→歌曲目录下&quot;"/><LineBreak/><LineBreak/><Run Text="当前路径："/><Run Foreground="Black" Text="显示用户设置的歌词目录，单击可以打开目录"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="显示歌词："/><Run Foreground="Black" Text="是否显示滚动歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="平滑滚动："/><Run Foreground="Black" Text="设置歌词滚动方式"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="桌面歌词："/><Run Foreground="Black" Text="打开/关闭桌面歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="独立播放："/><Run Foreground="Black" Text="在独立窗口播放视频"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="嵌入歌词："/><Run Foreground="Black" Text="当读取到有效歌词且歌曲没有内嵌歌词的情况下，可以自动将歌词嵌入歌曲内"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="恢复默认："/><Run Foreground="Black" Text="将所有设置恢复默认状态"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="取消更改："/><Run Foreground="Black" Text="取消对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="保存更改："/><Run Foreground="Black" Text="保存对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="错误报告："/><Run Foreground="Black" Text="是否向用户发送程序错误原因，以方便排查错误"/></TextBlock>
             <Button Content="关于程序" HorizontalAlignment="Left" Height="25" Margin="300,565,0,0" VerticalAlignment="Top" Width="90" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{Binding Background, ElementName=默认}" Click="Button_Click_2"/>
         </Grid>
         <Grid x:Name="grid2" Height="600" Width="400" MouseMove="Grid_MouseMove" Visibility="Collapsed">
@@ -406,21 +576,56 @@
                 <RowDefinition Height="7*"/>
             </Grid.RowDefinitions>
             <Rectangle Fill="#FFF4F4F5" Stroke="{Binding Background, ElementName=默认}" RadiusX="10" RadiusY="10" Grid.RowSpan="2"/>
-            <Image HorizontalAlignment="Left" Height="130" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Source="Resources/图标.png">
+            <Image x:Name="image" HorizontalAlignment="Left" Height="130" Margin="10,10,0,0" VerticalAlignment="Top" Width="130" Source="Resources/图标.png" RenderTransformOrigin="0.5,0.5" MouseUp="image_MouseUp">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
                 <Image.Effect>
                     <DropShadowEffect BlurRadius="20" Opacity="0.5"/>
                 </Image.Effect>
             </Image>
-            <TextBlock HorizontalAlignment="Left" Height="25" Margin="155,35,0,0" TextWrapping="Wrap" Text="软件名称：方糖音乐播放器" VerticalAlignment="Top" Width="235" FontSize="18"/>
+            <TextBlock HorizontalAlignment="Left" Height="25" Margin="155,35,0,0" TextWrapping="Wrap" Text="软件名称：方糖音乐播放器" VerticalAlignment="Top" Width="235" FontSize="18" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/>
             <TextBlock HorizontalAlignment="Left" Height="15" Margin="258.167,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131.833" FontFamily="黑体" Grid.Row="1"><Span Foreground="#FFA31515" FontSize="12.6666666666667"><Run Text="Copyright ©XCZ  2021"/></Span></TextBlock>
-            <TextBlock HorizontalAlignment="Left" Height="95" Margin="155,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220"><Run Text="一款本地化音乐播放器，可以播放本地音频"/><Run Text="、"/><Run Text="视频"/><LineBreak/><Run/><LineBreak/><Run/><LineBreak/><Run Text="版本：                     1.0.0.0"/><LineBreak/><Run Text="邮箱：    "/><Run Text=" "/><Run Text="  xczzhouqian@gmail.com"/></TextBlock>
-            <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,165,0,0" TextWrapping="Wrap" Text="使用声明：" VerticalAlignment="Top" Width="120" FontSize="16" Foreground="{Binding Background, ElementName=默认}"/>
+            <TextBlock HorizontalAlignment="Left" Height="95" Margin="155,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="220" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="一款本地化音乐播放器，可以播放本地音频"/><Run Text="、"/><Run Text="视频"/><Run/><LineBreak/><Run/><LineBreak/><Run Text="作者：                      XCZ"/><LineBreak/><Run Text="版本：                     1.0.0.0"/><LineBreak/><Run Text="邮箱：    "/><Run Text=" "/><Run Text="  xczzhouqian@gmail.com"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,165,0,0" TextWrapping="Wrap" Text="使用声明：" VerticalAlignment="Top" Width="120" FontSize="16" Foreground="{Binding Background, ElementName=默认}" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/>
             <TextBlock HorizontalAlignment="Left" Height="200" Margin="10,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Span><Run Text="1."/></Span><Span><Run Text="本软件只限于自然人及非商业用途的使用。这表示任何自然人均可在中华人民共和国境内以非商业用途免费使用本软件。任何组织使用本软件，或任何自然人基于商业用途使用本软件均构成对许可人及其附属合作伙伴的权利侵害，可能导致民事或刑事追究。"/></Span><LineBreak/><Span><Run Text="2."/></Span><Span><Run Text="任何人均不得违反中国相关法律、法规及政策的规定使用本软件，或将本软件用于任何违法目的。"/></Span><LineBreak/><Span><Run Text="3."/></Span><Span><Run Text="用户在使用本软件过程中应尊重权利人的知识产权，不得修改或去除本软件所附带的版权及其它知识产权标识。"/></Span><LineBreak/><Run Text="4.本程序仅供学习交流编程技术使用，如果侵犯您的合法权利，请联系本人第一时间删除。"/><LineBreak/><Run Text="5"/><Run Text="."/><Span><Run Text="安装并使用本软件意味着接受本许可的这些条款和条件。如果您不同意本许可的条款，您必须从您的存储设备中删除本软件全部文件并终止使用本软件。"/></Span></TextBlock>
-            <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,390,0,0" TextWrapping="Wrap" Text="引用及参考：" VerticalAlignment="Top" Width="105" FontSize="16" Foreground="{Binding Background, ElementName=默认}"/>
-            <TextBlock HorizontalAlignment="Left" Height="160" Margin="10,410,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="285" Grid.RowSpan="2" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="Costura.Fody"/><LineBreak/><Run Text="Fody"/><LineBreak/><Run Text="MaterialDesignColors"/><LineBreak/><Run Text="MaterialDesignThemes"/><LineBreak/><Run Text="WindowsAPICodePack-Core"/><LineBreak/><Run Text="WindowsAPICodePack-Shell"/><LineBreak/><Run Text="Taglib-Sharp.dll"/><LineBreak/><Run Text="System.Windows.Interactivity.dll"/><LineBreak/><Run Text="Microsoft.Expression.Interactions.d"/><Run Text="ll"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="20" Margin="10,390,0,0" TextWrapping="Wrap" Text="引用及参考：" VerticalAlignment="Top" Width="105" FontSize="16" Foreground="{Binding Background, ElementName=默认}" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/>
+            <TextBlock HorizontalAlignment="Left" Height="160" Margin="10,410,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" Grid.RowSpan="2" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="Costura.Fody"/><LineBreak/><Run Text="Fody"/><LineBreak/><Run Text="MaterialDesignColors"/><LineBreak/><Run Text="MaterialDesignThemes"/><LineBreak/><Run Text="WindowsAPICodePack-Core"/><LineBreak/><Run Text="WindowsAPICodePack-Shell"/><LineBreak/><Run Text="Taglib-Sharp.dll"/><LineBreak/><Run Text="System.Windows.Interactivity.dll"/><LineBreak/><Run Text="Microsoft.Expression.Interactions.d"/><Run Text="ll"/></TextBlock>
             <Button ToolTip="返回" HorizontalAlignment="Left" Height="27.167" Margin="10,32.833,0,0" VerticalAlignment="Top" Width="35" Padding="-4,4,-3,4" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Grid.Row="1" Click="Button_Click_1">
                 <materialDesign:PackIcon Kind="KeyboardReturn" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20"/>
             </Button>
+            <materialDesign:PackIcon x:Name="Net" Kind="DotNet" HorizontalAlignment="Left" Height="25" Margin="178.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" MouseEnter="Net_MouseEnter" MouseLeave="Net_MouseLeave" Background="#FFF4F4F5"/>
+            <materialDesign:PackIcon x:Name="Csharp" Kind="LanguageCsharp"  HorizontalAlignment="Left" Height="25" Margin="138.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" MouseEnter="Csharp_MouseEnter" MouseLeave="Csharp_MouseLeave" Background="#FFF4F4F5"/>
+            <materialDesign:PackIcon x:Name="Github" ToolTip="获取开源项目" Kind="Github" HorizontalAlignment="Left" Height="25" Margin="98.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" MouseEnter="Github_MouseEnter" MouseLeave="Github_MouseLeave" Background="#FFF4F4F5" MouseUp="Github_MouseUp"/>
+            <materialDesign:PackIcon x:Name="packIcon" Kind="GoogleDownasaur" HorizontalAlignment="Left" Height="40" Margin="355,0,0,0" VerticalAlignment="Top" Width="40" Grid.Row="1" RenderTransformOrigin="0.5,0.5" MouseUp="packIcon_MouseUp">
+                <materialDesign:PackIcon.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="-1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </materialDesign:PackIcon.RenderTransform>
+            </materialDesign:PackIcon>
+            <materialDesign:PackIcon x:Name="_32位版本_" Kind="Cpu32Bit"  HorizontalAlignment="Left" Height="25" Margin="218.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" Background="#FFF4F4F5" MouseEnter="_32位版本__MouseEnter" MouseLeave="_32位版本__MouseLeave"/>
+            <Ellipse x:Name="ellipse" Fill="Red" HorizontalAlignment="Left" Height="10" Margin="325,445,0,0" Stroke="Red" VerticalAlignment="Top" Width="10" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                <Ellipse.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Ellipse.RenderTransform>
+                <Ellipse.Effect>
+                    <BlurEffect/>
+                </Ellipse.Effect>
+            </Ellipse>
         </Grid>
     </Canvas>
 </Window>

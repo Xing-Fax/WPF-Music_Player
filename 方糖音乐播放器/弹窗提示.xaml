@@ -8,66 +8,6 @@
         mc:Ignorable="d"
         Title="弹窗提示" Height="272" Width="555" AllowsTransparency="True" WindowStyle="None" MouseDown="Window_MouseDown" ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Topmost="True" Background="{x:Null}" Activated="Window_Activated">
     <Window.Resources>
-        <Storyboard x:Key="打开">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0.892">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0.875">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseOut"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="关闭">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="1">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.765">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="1">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.748">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
         <Style x:Key="GroupBoxStyle1" TargetType="{x:Type GroupBox}">
             <Setter Property="Background" Value="Transparent"/>
             <Setter Property="Foreground" Value="{Binding (TextElement.Foreground), RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type FrameworkElement}}}"/>
@@ -265,12 +205,137 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Storyboard x:Key="打开">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.784">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.691">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="关闭">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.784">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.691">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
+                <SplineDoubleKeyFrame KeyTime="0" Value="1"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Style x:Key="RichTextBoxStyle1" TargetType="{x:Type RichTextBox}">
+            <Setter Property="materialDesign:TextFieldAssist.TextBoxViewMargin" Value="-4,0,1,0"/>
+            <Style.BasedOn>
+                <Style TargetType="{x:Type TextBoxBase}">
+                    <Setter Property="Foreground" Value="{Binding (TextElement.Foreground), RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type FrameworkElement}}}"/>
+                    <Setter Property="BorderBrush" Value="{DynamicResource MaterialDesignTextBoxBorder}"/>
+                    <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                    <Setter Property="materialDesign:TextFieldAssist.TextBoxViewMargin" Value="1,0"/>
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="CaretBrush" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                    <Setter Property="KeyboardNavigation.TabNavigation" Value="Local"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalContentAlignment" Value="Top"/>
+                    <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                    <Setter Property="AllowDrop" Value="True"/>
+                    <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                    <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                    <Setter Property="Validation.ErrorTemplate">
+                        <Setter.Value>
+                            <ControlTemplate/>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="materialDesign:TextFieldAssist.IncludeSpellingSuggestions" Value="{Binding (SpellCheck.IsEnabled), RelativeSource={RelativeSource Self}}"/>
+                    <Setter Property="materialDesign:TextFieldAssist.UnderlineBrush" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                    <Setter Property="materialDesign:HintAssist.Foreground" Value="{DynamicResource PrimaryHueMidBrush}"/>
+                    <Setter Property="ContextMenu">
+                        <Setter.Value>
+                            <ContextMenu>
+                                <MenuItem Command="ApplicationCommands.Cut">
+                                    <MenuItem.Icon>
+                                        <materialDesign:PackIcon Kind="Scissors"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Command="ApplicationCommands.Copy">
+                                    <MenuItem.Icon>
+                                        <materialDesign:PackIcon Kind="ContentCopy"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Command="ApplicationCommands.Paste">
+                                    <MenuItem.Icon>
+                                        <materialDesign:PackIcon Kind="ContentPaste"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <Separator/>
+                                <MenuItem Command="ApplicationCommands.SelectAll">
+                                    <MenuItem.Icon>
+                                        <materialDesign:PackIcon Kind="SelectAll"/>
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate/>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsInactiveSelectionHighlightEnabled" Value="True"/>
+                                <Condition Property="IsSelectionActive" Value="False"/>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                        </MultiTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Style.BasedOn>
+        </Style>
     </Window.Resources>
     <Grid x:Name="grid" RenderTransformOrigin="0.5,0.5">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="65*"/>
-            <RowDefinition Height="207*"/>
-        </Grid.RowDefinitions>
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -279,8 +344,8 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <Rectangle x:Name="rectangle" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="272" Stroke="{Binding Background, ElementName=单文件}" VerticalAlignment="Top" Width="555" RadiusX="10" RadiusY="10" Grid.RowSpan="2"/>
-        <Canvas x:Name="模板一" d:IsHidden="True" Visibility="Collapsed" Grid.RowSpan="2">
+        <Rectangle x:Name="rectangle" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="272" Stroke="{Binding Background, ElementName=单文件}" VerticalAlignment="Top" Width="555" RadiusX="10" RadiusY="10"/>
+        <Canvas x:Name="模板一" Visibility="Visible" d:IsHidden="True">
 
             <Button x:Name="单文件" Content="单文件夹扫描" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" Background="#FF673AB7" BorderBrush="{x:Null}" Click="单文件_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="10" Canvas.Top="200"/>
             <Button x:Name="全文件" Content="全文件夹扫描" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=单文件}" Click="全文件_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="190" Canvas.Top="200"/>
@@ -288,13 +353,13 @@
             <Label Content="检测到您拖入了文件夹，请问是但文件夹扫描&#xA;还是全文件夹扫描？" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="380" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="120" Canvas.Top="35"/>
             <Button x:Name="取消" Content="什么也不做" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=单文件}" Click="取消_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="370" Canvas.Top="200"/>
         </Canvas>
-        <Canvas x:Name="模板二" d:IsHidden="True" Visibility="Collapsed" Grid.RowSpan="2">
+        <Canvas x:Name="模板二" Visibility="Visible" d:IsHidden="True">
             <Button x:Name="确定" Content="我知道了" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=单文件}" Click="确定_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="190" Canvas.Top="200"/>
             <materialDesign:PackIcon Kind="AlertCircleOutline" HorizontalAlignment="Left" VerticalAlignment="Top" Height="80" Width="80" Foreground="{Binding Background, ElementName=单文件}" Canvas.Left="40" Canvas.Top="45"/>
-            <Label x:Name="提示" Content="提示信息" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="380" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="120" Canvas.Top="35"/>
+            <TextBlock x:Name="提示" HorizontalAlignment="Center" Height="130" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Width="330" TextAlignment="Justify" Canvas.Left="140" Canvas.Top="65" FontSize="14"/>
 
         </Canvas>
-        <Canvas x:Name="模板三" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" Grid.RowSpan="2">
+        <Canvas x:Name="模板三" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" d:IsHidden="True">
             <Rectangle HorizontalAlignment="Left" Height="242" RadiusY="5" RadiusX="5" VerticalAlignment="Top" Width="535" Canvas.Left="10" Canvas.Top="20" Stroke="{Binding Stroke, ElementName=rectangle}"/>
             <Label Content="歌曲详细信息：" Height="25" Width="105" FontSize="14" Canvas.Left="10" Foreground="Black" FontFamily="{Binding FontFamily, ElementName=textBlock}"/>
             <Canvas HorizontalAlignment="Left" Height="227" VerticalAlignment="Top" Width="230" Canvas.Left="10" Canvas.Top="25">
@@ -310,35 +375,35 @@
                 <TextBox x:Name="文件名称"
             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
             BorderThickness="0"
-            VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" />
+            VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Background="#FFF4F4F5" />
                 <TextBox x:Name="歌曲名称"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="30" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="30" Background="#FFF4F4F5" />
                 <TextBox x:Name="歌手信息"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="60" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="60" Background="#FFF4F4F5" />
                 <TextBox x:Name="专辑信息"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="90" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="90" Background="#FFF4F4F5" />
                 <TextBox x:Name="音频比特"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="120" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="120" Background="#FFF4F4F5" />
                 <TextBox x:Name="音频频道"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="150" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="150" Background="#FFF4F4F5" />
                 <TextBox x:Name="音频采样"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="180" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="180" Background="#FFF4F4F5" />
                 <TextBox x:Name="播放时长"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="210" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="210" Background="#FFF4F4F5" />
             </Canvas>
             <Canvas HorizontalAlignment="Left" Height="227" VerticalAlignment="Top" Width="295" Canvas.Left="245" Canvas.Top="25">
                 <TextBlock x:Name="textBlock1" Height="227" Canvas.Left="20" TextWrapping="Wrap" Width="65" FontFamily="{Binding FontFamily, ElementName=textBlock}"><Run Text="文件"/><Run Text="描述"/><Run Text="："/><Run/><LineBreak/><Run/><LineBreak/><Run Text="文件路径："/><LineBreak/><Run/><LineBreak/><Run Text="嵌入歌词"/><Run Text="："/><LineBreak/><Run/><LineBreak/><Run Text="专辑图片"/><Run Text="："/><LineBreak/><Run/><Run/><LineBreak/><Run Text="文件大小："/><LineBreak/><Run/><LineBreak/><Run Text="文件类型："/><LineBreak/><Run/><LineBreak/><Run Text="创建日期："/><LineBreak/><Run/><LineBreak/><Run Text="修改日期："/><LineBreak/><Run/><LineBreak/></TextBlock>
@@ -353,35 +418,35 @@
                 <TextBox x:Name="文件描述"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Background="#FFF4F4F5" />
                 <TextBox x:Name="文件路径"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="30" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="30" Background="#FFF4F4F5" />
                 <TextBox x:Name="嵌入歌词"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="60" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="60" Background="#FFF4F4F5" />
                 <TextBox x:Name="专辑图片"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="90" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="90" Background="#FFF4F4F5" />
                 <TextBox x:Name="文件大小"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="120" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="120" Background="#FFF4F4F5" />
                 <TextBox x:Name="文件类型"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="150" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="150" Background="#FFF4F4F5" />
                 <TextBox x:Name="创建日期"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="185" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="180" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="180" Background="#FFF4F4F5" />
                 <TextBox x:Name="修改日期"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="185" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="210" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="20" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="210" Background="#FFF4F4F5" />
             </Canvas>
             <Button x:Name="关闭程序"
             Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
@@ -390,13 +455,26 @@
                 <materialDesign:PackIcon Kind="WindowClose"   Height="16.416" Width="20.001" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </Button>
         </Canvas>
-        <Canvas x:Name="模板四" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" d:IsHidden="True" Grid.RowSpan="2">
+        <Canvas x:Name="模板四" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" d:IsHidden="True">
             <ProgressBar
   Style="{StaticResource MaterialDesignCircularProgressBar}"
   Value="0" Canvas.Left="110" Canvas.Top="75" Height="35" Width="35" IsIndeterminate="True" Foreground="{Binding Stroke, ElementName=rectangle}" />
             <Label Content="正在扫描歌曲中，青耐心等待！" Height="36.647" Canvas.Left="150" Canvas.Top="63.353" Width="295" FontSize="16"/>
             <TextBlock x:Name="模式" Height="80" Canvas.Left="155" TextWrapping="Wrap" Canvas.Top="105" Width="295"><Run Text="扫描模式："/><LineBreak/><Run Text="扫描目录："/></TextBlock>
-            <Button Content="取消扫描" Height="55" VerticalAlignment="Top" HorizontalAlignment="Center" Width="185" FontSize="16" Canvas.Left="190" Canvas.Top="207" BorderBrush="{x:Null}" Background="{Binding Stroke, ElementName=rectangle}"/>
+            <Button Content="取消扫描" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Width="175" FontSize="16" Canvas.Left="190" Canvas.Top="200" BorderBrush="{x:Null}" Background="{Binding Stroke, ElementName=rectangle}"/>
+        </Canvas>
+        <Canvas x:Name="模板五" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555">
+            <Button x:Name="知道了" Content="我知道了" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Width="175" FontSize="16" Canvas.Left="190" Canvas.Top="217" BorderBrush="{x:Null}" Background="{Binding Stroke, ElementName=rectangle}" Click="知道了_Click"/>
+            <materialDesign:PackIcon Kind="AlertOutline"   HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Canvas.Left="10" Canvas.Top="10" Foreground="{Binding Stroke, ElementName=rectangle}"/>
+            <TextBlock HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="555" FontSize="24" TextAlignment="Center" Canvas.Top="15"><Run Text="程序可能遇到问题"/><Run/><LineBreak/><Run FontSize="12" Text="以下信息或许可以帮助到您"/></TextBlock>
+            <ScrollViewer x:Name="xx" HorizontalAlignment="Center" Height="147" VerticalAlignment="Center" Width="535" Canvas.Left="10" Canvas.Top="65" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalScrollBarVisibility="Visible">
+                <TextBox x:Name="问题"
+                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                    BorderThickness="0"
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" Text="暂无信息" Padding="0,-2,0,0" Background="#FFF4F4F5" HorizontalAlignment="Center" />
+            </ScrollViewer>
+            <Button Content="复制问题到剪切板" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="150" Canvas.Left="380" Canvas.Top="226.722" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD0051FF" Click="Button_Click"/>
+            <materialDesign:PackIcon Kind="AlertOutline"   HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Canvas.Left="495" Canvas.Top="10" Foreground="{Binding Stroke, ElementName=rectangle}"/>
         </Canvas>
 
     </Grid>

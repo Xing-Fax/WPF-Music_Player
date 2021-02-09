@@ -89,14 +89,7 @@ namespace 方糖音乐播放器.Properties
             else if(parameter == 3)
             {
                 模板四.Visibility = Visibility.Visible;
-                if (Other_parameters == 1)
-                {
-                    模式.Text = "扫描模式:" + "全路径扫描" + "\n" + "扫描路径:" + file;
-                }
-                else
-                {
-                    模式.Text = "扫描模式:" + "单路径扫描" + "\n" + "扫描路径:" + file;
-                }
+                提示2.Text = file;
             }
             else if (parameter == 4)
             {
@@ -189,6 +182,11 @@ namespace 方糖音乐播放器.Properties
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Clipboard.SetText(问题.Text);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            exit();
         }
     }
 }

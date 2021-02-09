@@ -41,6 +41,7 @@ namespace 方糖音乐播放器
         public event Func<int, int> fcc6;
         private string 背景路径;
         private string 歌词目录;
+        private string 歌曲目录2;
         public 程序设置(Color color)
         {
             InitializeComponent();
@@ -57,8 +58,15 @@ namespace 方糖音乐播放器
             else if (Properties.Settings.Default.背景填充 == 2) { 填充.IsChecked = true; }
             else if (Properties.Settings.Default.背景填充 == 3) { 居中.IsChecked = true; }
             else if (Properties.Settings.Default.背景填充 == 4) { 拉伸.IsChecked = true; }
+
+            if (Properties.Settings.Default.网络接口参数 == "腾讯") { 腾讯.IsChecked = true; }
+            else if (Properties.Settings.Default.网络接口参数 == "网易") { 网易.IsChecked = true; }
+            else if (Properties.Settings.Default.网络接口参数 == "酷狗") { 酷狗.IsChecked = true; }
+            else if (Properties.Settings.Default.网络接口参数 == "虾米") { 虾米.IsChecked = true; }
+
             动画播放("窗体打开");
             路径.Content = "当前路径：" + Properties.Settings.Default.歌词目录;
+            歌曲路径.Content = "当前路径："+ Properties.Settings.Default.网络歌曲缓存目录;
             Topmost = true;
         }
 
@@ -142,6 +150,10 @@ namespace 方糖音乐播放器
             {
                 Properties.Settings.Default.歌词目录 = 歌词目录;
             }
+            if (歌曲目录2 != null)
+            {
+                Properties.Settings.Default.网络歌曲缓存目录 = 歌曲目录2;
+            }
             Properties.Settings.Default.独立播放视频 = (bool)独立播放1.IsChecked;
             Properties.Settings.Default.桌面歌词 = (bool)桌面歌词1.IsChecked;
             Properties.Settings.Default.嵌入歌词 = (bool)嵌入歌词1.IsChecked;
@@ -206,7 +218,9 @@ namespace 方糖音乐播放器
             Properties.Settings.Default.嵌入歌词 = false;
             Properties.Settings.Default.独立播放视频 = true;
             Properties.Settings.Default.桌面歌词 = false;
-            Properties.Settings.Default.错误报告 = true;
+            Properties.Settings.Default.错误报告 = false;
+            Properties.Settings.Default.网络接口参数 = "腾讯";
+            Properties.Settings.Default.网络歌曲缓存目录 = "系统临时目录";
             Properties.Settings.Default.Save();
             fcc5(0);
             fcc6(2);
@@ -227,7 +241,6 @@ namespace 方糖音乐播放器
                 {
                     System.Diagnostics.Process.Start(Properties.Settings.Default.歌词目录);
                 }
-
             }
         }
 
@@ -359,6 +372,51 @@ namespace 方糖音乐播放器
             动画播放("恐龙跳2");
         }
 
+        private void 腾讯_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.网络接口参数 = "腾讯";
+        }
 
+        private void 网易_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.网络接口参数 = "网易";
+        }
+
+        private void 酷狗_Click(object sender, RoutedEventArgs e)
+        {
+            Properties.Settings.Default.网络接口参数 = "酷狗";
+        }
+
+        private void 歌曲路径_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            if (Properties.Settings.Default.网络歌曲缓存目录 != "系统临时目录")
+            {
+                System.Diagnostics.Process.Start(Properties.Settings.Default.网络歌曲缓存目录 + @"\");
+            }
+            else
+            {
+                System.Diagnostics.Process.Start(System.IO.Path.GetTempPath() + @"方糖音乐\");
+            }
+        }
+
+        private void Grid_MouseUp_1(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                Topmost = false;
+                var dialog = new CommonOpenFileDialog();
+                dialog.IsFolderPicker = true;
+                CommonFileDialogResult result = dialog.ShowDialog();
+                if (dialog.FileName != "")
+                {
+                    歌曲目录2 = dialog.FileName;
+                    歌曲路径.Content = "当前路径：" + dialog.FileName;
+                    歌曲路径.ToolTip = dialog.FileName;
+                }
+                Topmost = true;
+            }
+            catch { }
+
+        }
     }
 }

@@ -48,7 +48,13 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="错误报告" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="网络接口参数" Type="System.String" Scope="User">
+      <Value Profile="(Default)">腾讯</Value>
+    </Setting>
+    <Setting Name="网络歌曲缓存目录" Type="System.String" Scope="User">
+      <Value Profile="(Default)">系统临时目录</Value>
     </Setting>
   </Settings>
 </SettingsFile>

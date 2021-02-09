@@ -1536,6 +1536,89 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        <Storyboard x:Key="网络搜索开">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="切换">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="切换">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="网络搜索关">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="切换">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="切换">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="切换动画1">
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="本地播放">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="46,0,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="本地播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="本地播放">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="联网播放">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="联网播放">
+                <EasingThicknessKeyFrame KeyTime="0" Value="-59,0,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="联网播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="切换动画2">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="本地播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="联网播放">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="联网播放">
+                <EasingThicknessKeyFrame KeyTime="0" Value="0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="-50,0,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="联网播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="本地播放">
+                <EasingThicknessKeyFrame KeyTime="0" Value="74,0,0,0"/>
+                <EasingThicknessKeyFrame KeyTime="0:0:0.3" Value="0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="本地播放">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="滚动条打开1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.VerticalScrollBarVisibility)" Storyboard.TargetName="网络搜索结果">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static ScrollBarVisibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static ScrollBarVisibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="滚动条关闭1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.VerticalScrollBarVisibility)" Storyboard.TargetName="网络搜索结果">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static ScrollBarVisibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static ScrollBarVisibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
 
 
@@ -1632,69 +1715,300 @@
                 </StackPanel>
             </DockPanel>
         </materialDesign:ColorZone>
-        <ListBox x:Name="主界面菜单选择"
-            Style="{StaticResource MaterialDesignToolToggleListBox}"
-            Width="315" Background="WhiteSmoke" MouseEnter="主界面菜单选择_MouseEnter" Height="54.072" Canvas.Left="10" Canvas.Top="77">
-            <ListBox.ToolTip>
-                <StackPanel>
-                    <TextBlock
-                        Text="MaterialDesignToolToggleListBox" />
-                    <TextBlock
-                        Text="Exclusive selection" />
-                    <TextBlock
-                        Text="ListBoxAssist.IsToggle allows more natural toggle behaviour" />
-                </StackPanel>
-            </ListBox.ToolTip>
-            <ListBoxItem x:Name="打开音乐" ToolTip="打开音频文件" Width="63" HorizontalContentAlignment="Center" MouseUp="打开音乐_MouseUp">
-                <materialDesign:PackIcon
+        <Grid x:Name="联网播放" HorizontalAlignment="Left" Height="481.999" VerticalAlignment="Top" Width="315" Canvas.Left="10" Canvas.Top="77.667" Visibility="Collapsed">
+            <Rectangle HorizontalAlignment="Left" Height="436.332" StrokeThickness="0" VerticalAlignment="Top" Width="315" RadiusX="5" RadiusY="5" Margin="0,45.667,0,0">
+                <Rectangle.Effect>
+                    <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
+                </Rectangle.Effect>
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="White" Opacity="0.4"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Grid x:Name="搜索框1" Margin="0,0,0,441.332">
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="15" Opacity="0.2"/>
+                </Grid.Effect>
+                <materialDesign:ColorZone
+                    Mode="Standard"
+                    Padding="8 4 8 4"
+                    CornerRadius="2"
+                    Panel.ZIndex="1"
+                    materialDesign:ShadowAssist.ShadowDepth="Depth1" Height="40.667" Style="{DynamicResource ColorZoneStyle1}" d:IsEffectDisabled="True">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="Auto" />
+                            <ColumnDefinition
+                                Width="*" />
+                            <ColumnDefinition
+                                Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            Style="{DynamicResource MaterialDesignToolButton}">
+                            <materialDesign:PackIcon
+                                Kind="Magnify"
+                                Opacity=".56" />
+                        </Button>
+                        <TextBox x:Name="网络搜索"
+                            Grid.Column="1"
+                            Margin="8 0 0 0"
+                            materialDesign:HintAssist.Hint="搜你想听（￣︶￣）↗[Go]"
+                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                            BorderThickness="0"
+                            MinWidth="200"
+                            VerticalAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" KeyUp="网络搜索_KeyUp" />
+                    </Grid>
+                </materialDesign:ColorZone>
+            </Grid>
+            <ListBox x:Name="网络搜索结果" 
+                VirtualizingPanel.VirtualizationMode="Recycling"
+                HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalAlignment="Stretch" Foreground="#FF1F0000" BorderBrush="{Binding Background, ElementName=主页的播放列表}" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden" FontFamily="Resources/#站酷快乐体2016修订版" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SnapsToDevicePixels="True" Margin="0,45.667,0,0" Background="{x:Null}" MouseUp="网络搜索结果_MouseUp" MouseEnter="网络搜索结果_MouseEnter" MouseLeave="网络搜索结果_MouseLeave" Clip="M0,5 C0,2.2385763 2.2385763,0 5,0 L310,0 C312.76142,0 315,2.2385763 315,5 L315,431.332 C315,434.09342 312.76142,436.332 310,436.332 L5,436.332 C2.2385763,436.332 0,434.09342 0,431.332 z"/>
+            <ProgressBar x:Name="加载中"
+  IsIndeterminate="True" Margin="0,477.999,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{Binding Background, ElementName=colorZone}" Visibility="Collapsed" />
+        </Grid>
+        <Grid x:Name="本地播放" Height="482.666" Canvas.Left="10" Canvas.Top="77" Width="315">
+            <ListBox x:Name="主界面菜单选择"
+                Style="{StaticResource MaterialDesignToolToggleListBox}"
+                Width="315" Background="WhiteSmoke" MouseEnter="主界面菜单选择_MouseEnter" Margin="0,0,0,428.594">
+                <ListBox.ToolTip>
+                    <StackPanel>
+                        <TextBlock
+                            Text="MaterialDesignToolToggleListBox" />
+                        <TextBlock
+                            Text="Exclusive selection" />
+                        <TextBlock
+                            Text="ListBoxAssist.IsToggle allows more natural toggle behaviour" />
+                    </StackPanel>
+                </ListBox.ToolTip>
+                <ListBoxItem x:Name="打开音乐" ToolTip="打开音频文件" Width="63" HorizontalContentAlignment="Center" MouseUp="打开音乐_MouseUp">
+                    <materialDesign:PackIcon
 
-                    Kind="Music" Width="30" Height="30" HorizontalAlignment="Left" Foreground="Black" />
-            </ListBoxItem>
-            <ListBoxItem x:Name="打开视频" ToolTip="打开视频文件" Width="63" HorizontalContentAlignment="Center" MouseUp="打开视频_MouseUp">
-                <materialDesign:PackIcon
-                    Kind="MovieOpen" Width="30" Height="30" Foreground="Black"/>
-            </ListBoxItem>
-            <ListBoxItem x:Name="添加歌曲" ToolTip="添加歌曲" Width="63" HorizontalContentAlignment="Center" MouseUp="添加歌曲_MouseUp">
-                <materialDesign:PackIcon
-                    Kind="FolderMultiplePlus" Width="30" Height="30" Foreground="Black" />
-            </ListBoxItem>
-            <ListBoxItem x:Name="扫描歌曲" ToolTip="扫描歌曲" Width="63" HorizontalContentAlignment="Center" MouseUp="扫描歌曲_MouseUp">
-                <materialDesign:PackIcon
-                    Kind="FolderSearch" Width="30" Height="30" Foreground="Black" />
-            </ListBoxItem>
-            <ListBoxItem x:Name="程序设置" ToolTip="程序设置" Width="63" HorizontalContentAlignment="Center" MouseUp="程序设置_MouseUp">
-                <materialDesign:PackIcon
-                    Kind="Cog" Width="30" Height="30" Foreground="#FC000000" />
-            </ListBoxItem>
-        </ListBox>
-        <Rectangle HorizontalAlignment="Left" Height="32.594" VerticalAlignment="Top" Width="315" StrokeThickness="0" DataContext="{Binding DataContext, ElementName=主页的播放列表}" Clip="M0,10 C0,4.4771525 4.4771525,0 10,0 L305,0 C310.52285,0 315,4.4771525 315,10 L315,50 C315,55.522847 310.52285,60 305,60 L10,60 C4.4771525,60 0,55.522847 0,50 z" Canvas.Left="10" Canvas.Top="137.072">
-            <Rectangle.Fill>
-                <SolidColorBrush Color="White" Opacity="0.4"/>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Label  x:Name="播放列表标题"  HorizontalAlignment="Left" Height="32.594" VerticalAlignment="Top" Width="172.68" FontSize="16" VerticalContentAlignment="Center" Padding="4" Effect="{Binding Effect, ElementName=主页的播放列表}" Content="播放列表：" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Foreground="Black" Background="{x:Null}" Canvas.Left="10" Canvas.Top="137.072"/>
-        <Label x:Name="歌曲数量" Content="共XX首歌曲" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Height="32.594" Width="141.32" HorizontalContentAlignment="Right" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" VerticalContentAlignment="Center" Effect="{Binding Effect, ElementName=播放列表标题}" Foreground="Black" Background="{x:Null}" Canvas.Left="183.68" Canvas.Top="137.072"/>
-        <ListBox x:Name="主页的播放列表" 
-            VirtualizingPanel.VirtualizationMode="Recycling"
-            HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalAlignment="Stretch" Foreground="#FF1F0000" BorderBrush="{Binding Background, ElementName=主页的播放列表}" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden" FontFamily="Resources/#站酷快乐体2016修订版" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Clip="M0,-23.594 C0,-29.116847 4.4771525,-33.594 10,-33.594 L305,-33.594 C310.52285,-33.594 315,-29.116847 315,-23.594 L315,379.072 C315,384.59485 310.52285,389.072 305,389.072 L10,389.072 C4.4771525,389.072 0,384.59485 0,379.072 z" MouseUp="主页的播放列表_MouseUp" MouseEnter="主页的播放列表_MouseEnter" MouseLeave="主页的播放列表_MouseLeave" SnapsToDevicePixels="True" Height="390" Canvas.Left="10" Canvas.Top="169.666" Width="315">
-            <ListBox.Background>
-                <SolidColorBrush Color="White" Opacity="0.4"/>
-            </ListBox.Background>
-            <ListBox.Effect>
-                <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
-            </ListBox.Effect>
+                        Kind="Music" Width="30" Height="30" HorizontalAlignment="Left" Foreground="Black" />
+                </ListBoxItem>
+                <ListBoxItem x:Name="打开视频" ToolTip="打开视频文件" Width="63" HorizontalContentAlignment="Center" MouseUp="打开视频_MouseUp">
+                    <materialDesign:PackIcon
+                        Kind="MovieOpen" Width="30" Height="30" Foreground="Black"/>
+                </ListBoxItem>
+                <ListBoxItem x:Name="添加歌曲" ToolTip="添加歌曲" Width="63" HorizontalContentAlignment="Center" MouseUp="添加歌曲_MouseUp">
+                    <materialDesign:PackIcon
+                        Kind="FolderMultiplePlus" Width="30" Height="30" Foreground="Black" />
+                </ListBoxItem>
+                <ListBoxItem x:Name="扫描歌曲" ToolTip="扫描歌曲" Width="63" HorizontalContentAlignment="Center" MouseUp="扫描歌曲_MouseUp">
+                    <materialDesign:PackIcon
+                        Kind="FolderSearch" Width="30" Height="30" Foreground="Black" />
+                </ListBoxItem>
+                <ListBoxItem x:Name="程序设置" ToolTip="程序设置" Width="63" HorizontalContentAlignment="Center" MouseUp="程序设置_MouseUp">
+                    <materialDesign:PackIcon
+                        Kind="Cog" Width="30" Height="30" Foreground="#FC000000" />
+                </ListBoxItem>
+            </ListBox>
+            <Rectangle HorizontalAlignment="Left" Height="32.594" VerticalAlignment="Top" Width="315" StrokeThickness="0" DataContext="{Binding DataContext, ElementName=主页的播放列表}" Clip="M0,10 C0,4.4771525 4.4771525,0 10,0 L305,0 C310.52285,0 315,4.4771525 315,10 L315,50 C315,55.522847 310.52285,60 305,60 L10,60 C4.4771525,60 0,55.522847 0,50 z" OpacityMask="Black" Margin="0,60.072,0,0" Stroke="White">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="White" Opacity="0.4"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label  x:Name="播放列表标题"  HorizontalAlignment="Left" Height="32.594" VerticalAlignment="Top" Width="172.68" FontSize="16" VerticalContentAlignment="Center" Padding="4" Effect="{Binding Effect, ElementName=主页的播放列表}" Content="播放列表：" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Foreground="Black" Background="{x:Null}" Margin="0,60.072,0,0" BorderBrush="White"/>
+            <Label x:Name="歌曲数量" Content="共XX首歌曲" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Height="32.594" Width="141.32" HorizontalContentAlignment="Right" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" VerticalContentAlignment="Center" Effect="{Binding Effect, ElementName=播放列表标题}" Foreground="Black" Background="{x:Null}" Margin="173.68,60.072,0,0" BorderBrush="White"/>
+            <ListBox x:Name="主页的播放列表" 
+                VirtualizingPanel.VirtualizationMode="Recycling"
+                HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalAlignment="Stretch" Foreground="#FF1F0000" BorderBrush="{Binding Background, ElementName=主页的播放列表}" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden" FontFamily="Resources/#站酷快乐体2016修订版" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Clip="M0,-23.594 C0,-29.116847 4.4771525,-33.594 10,-33.594 L305,-33.594 C310.52285,-33.594 315,-29.116847 315,-23.594 L315,379.072 C315,384.59485 310.52285,389.072 305,389.072 L10,389.072 C4.4771525,389.072 0,384.59485 0,379.072 z" MouseUp="主页的播放列表_MouseUp" MouseEnter="主页的播放列表_MouseEnter" MouseLeave="主页的播放列表_MouseLeave" SnapsToDevicePixels="True" Margin="0,93.5,0,-0.834">
+                <ListBox.Background>
+                    <SolidColorBrush Color="White" Opacity="0.4"/>
+                </ListBox.Background>
+                <ListBox.Effect>
+                    <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
+                </ListBox.Effect>
 
-        </ListBox>
+            </ListBox>
+        </Grid>
         <Label x:Name="播放歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="470" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="#F8000000" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="705" Canvas.Top="90" MouseUp="播放歌曲名称_MouseUp"/>
         <Label x:Name="歌手专辑" HorizontalAlignment="Left" Height="23.333" VerticalAlignment="Top" Width="470" HorizontalContentAlignment="Center" Content="" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="705" Canvas.Top="137.072"/>
         <Label x:Name="歌手专辑2" HorizontalAlignment="Left" Height="22.855" VerticalAlignment="Top" Width="470" HorizontalContentAlignment="Center" Content="" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="705" Canvas.Top="160.405"/>
-        <Image x:Name="大专辑" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Right" Width="300" Height="300" VerticalAlignment="Top" Source="{Binding Source, ElementName=播放栏专辑}" MouseUp="大专辑_MouseUp" Stretch="Fill" SnapsToDevicePixels="True" Canvas.Left="375" Canvas.Top="159.072">
+        <ListBox Height="95.335" Canvas.Left="350" Canvas.Top="292.5" Width="20" Margin="-19,0,0,0">
+            <ListBoxItem x:Name="切换" ToolTip="在线播放" HorizontalAlignment="Left" VerticalAlignment="Top" Height="95.335" BorderBrush="{x:Null}" Width="20" Padding="0,8" MouseUp="listBoxItem_MouseUp_1">
+                <ListBoxItem.Template>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" ClipToBounds="{TemplateBinding ClipToBounds}" Margin="{TemplateBinding Margin}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition From="{x:Null}" GeneratedDuration="0:0:0.3" Storyboard="{x:Null}" To="Normal">
+                                            <VisualTransition.GeneratedEasingFunction>
+                                                <CircleEase EasingMode="EaseOut"/>
+                                            </VisualTransition.GeneratedEasingFunction>
+                                        </VisualTransition>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0.1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="MouseOverBorder"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition From="{x:Null}" GeneratedDuration="0:0:0.6" GeneratedEasingFunction="{x:Null}" Storyboard="{x:Null}" To="{x:Null}"/>
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Selected">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0.18" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="SelectedBorder"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="SelectedUnfocused">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0.03" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="SelectedBorder"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid>
+                                <Border x:Name="MouseOverBorder" Opacity="0">
+                                    <Border.Background>
+                                        <TemplateBinding Property="Foreground">
+                                            <TemplateBinding.Converter>
+                                                <materialDesign:BrushRoundConverter HighValue="White" LowValue="Black"/>
+                                            </TemplateBinding.Converter>
+                                        </TemplateBinding>
+                                    </Border.Background>
+                                </Border>
+                                <Border x:Name="SelectedBorder" Opacity="0" RenderTransformOrigin="0.5,0.5">
+                                    <Border.Background>
+                                        <TemplateBinding Property="Foreground">
+                                            <TemplateBinding.Converter>
+                                                <materialDesign:BrushRoundConverter HighValue="White" LowValue="Black"/>
+                                            </TemplateBinding.Converter>
+                                        </TemplateBinding>
+                                    </Border.Background>
+                                    <Border.RenderTransform>
+                                        <ScaleTransform ScaleX="1"/>
+                                    </Border.RenderTransform>
+                                </Border>
+                                <materialDesign:Ripple ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Focusable="False" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" RecognizesAccessKey="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                                    <materialDesign:Ripple.Feedback>
+                                        <TemplateBinding Property="Foreground">
+                                            <TemplateBinding.Converter>
+                                                <materialDesign:BrushRoundConverter HighValue="White" LowValue="Black"/>
+                                            </TemplateBinding.Converter>
+                                        </TemplateBinding>
+                                    </materialDesign:Ripple.Feedback>
+                                </materialDesign:Ripple>
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.56"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </ListBoxItem.Template>
+                <ListBoxItem.Style>
+                    <Style TargetType="{x:Type ListBoxItem}">
+                        <Style.BasedOn>
+                            <Style TargetType="{x:Type ListBoxItem}">
+                                <Setter Property="Background" Value="Transparent"/>
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="HorizontalContentAlignment" Value="{Binding HorizontalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ItemsControl}}}"/>
+                                <Setter Property="VerticalContentAlignment" Value="{Binding VerticalContentAlignment, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type ItemsControl}}}"/>
+                                <Setter Property="Padding" Value="8"/>
+                                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" ClipToBounds="{TemplateBinding ClipToBounds}" Margin="{TemplateBinding Margin}">
+                                                <VisualStateManager.VisualStateGroups>
+                                                    <VisualStateGroup x:Name="CommonStates">
+                                                        <VisualStateGroup.Transitions>
+                                                            <VisualTransition From="{x:Null}" GeneratedDuration="0:0:0.3" Storyboard="{x:Null}" To="Normal">
+                                                                <VisualTransition.GeneratedEasingFunction>
+                                                                    <CircleEase EasingMode="EaseOut"/>
+                                                                </VisualTransition.GeneratedEasingFunction>
+                                                            </VisualTransition>
+                                                        </VisualStateGroup.Transitions>
+                                                        <VisualState x:Name="Normal"/>
+                                                        <VisualState x:Name="MouseOver">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Duration="0" To="0.1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="MouseOverBorder"/>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Disabled"/>
+                                                    </VisualStateGroup>
+                                                    <VisualStateGroup x:Name="SelectionStates">
+                                                        <VisualStateGroup.Transitions>
+                                                            <VisualTransition From="{x:Null}" GeneratedDuration="0:0:0.6" GeneratedEasingFunction="{x:Null}" Storyboard="{x:Null}" To="{x:Null}"/>
+                                                        </VisualStateGroup.Transitions>
+                                                        <VisualState x:Name="Selected">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Duration="0" To="0.18" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="SelectedBorder"/>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                        <VisualState x:Name="Unselected"/>
+                                                        <VisualState x:Name="SelectedUnfocused">
+                                                            <Storyboard>
+                                                                <DoubleAnimation Duration="0" To="0.03" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="SelectedBorder"/>
+                                                            </Storyboard>
+                                                        </VisualState>
+                                                    </VisualStateGroup>
+                                                </VisualStateManager.VisualStateGroups>
+                                                <Grid>
+                                                    <Border x:Name="MouseOverBorder" Opacity="0">
+                                                        <Border.Background>
+                                                            <TemplateBinding Property="Foreground">
+                                                                <TemplateBinding.Converter>
+                                                                    <materialDesign:BrushRoundConverter HighValue="White" LowValue="Black"/>
+                                                                </TemplateBinding.Converter>
+                                                            </TemplateBinding>
+                                                        </Border.Background>
+                                                    </Border>
+                                                    <Border x:Name="SelectedBorder" Opacity="0" RenderTransformOrigin="0.5,0.5">
+                                                        <Border.Background>
+                                                            <TemplateBinding Property="Foreground">
+                                                                <TemplateBinding.Converter>
+                                                                    <materialDesign:BrushRoundConverter HighValue="White" LowValue="Black"/>
+                                                                </TemplateBinding.Converter>
+                                                            </TemplateBinding>
+                                                        </Border.Background>
+                                                        <Border.RenderTransform>
+                                                            <ScaleTransform ScaleX="1"/>
+                                                        </Border.RenderTransform>
+                                                    </Border>
+                                                    <materialDesign:Ripple ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" Focusable="False" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" RecognizesAccessKey="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                                                        <materialDesign:Ripple.Feedback>
+                                                            <TemplateBinding Property="Foreground">
+                                                                <TemplateBinding.Converter>
+                                                                    <materialDesign:BrushRoundConverter HighValue="White" LowValue="Black"/>
+                                                                </TemplateBinding.Converter>
+                                                            </TemplateBinding>
+                                                        </materialDesign:Ripple.Feedback>
+                                                    </materialDesign:Ripple>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsEnabled" Value="False">
+                                                    <Setter Property="Opacity" Value="0.56"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Style.BasedOn>
+                    </Style>
+                </ListBoxItem.Style>
+                <ListBoxItem.Background>
+                    <SolidColorBrush Color="White" Opacity="0.4"/>
+                </ListBoxItem.Background>
+                <materialDesign:PackIcon Kind="ArrowRight" Height="80" Width="20" Foreground="#FF535353"/>
+            </ListBoxItem>
+        </ListBox>
+        <Image x:Name="大专辑" RenderOptions.BitmapScalingMode="HighQuality" HorizontalAlignment="Right" Width="300" Height="300" VerticalAlignment="Top" Source="{Binding Source, ElementName=播放栏专辑}" MouseUp="大专辑_MouseUp" Stretch="Fill" SnapsToDevicePixels="True" Canvas.Left="375" Canvas.Top="160">
             <Image.Effect>
                 <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
             </Image.Effect>
         </Image>
-        <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="705" Canvas.Top="189.072"/>
-        <MediaElement x:Name="播放器" HorizontalAlignment="Left" Height="484" VerticalAlignment="Top" Width="860" LoadedBehavior="Manual" d:IsHidden="True" Volume="1" SpeedRatio="1" SnapsToDevicePixels="True" MediaOpened="播放器_MediaOpened" Canvas.Left="335" Canvas.Top="77">
+        <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="705" Canvas.Top="190"/>
+        <MediaElement x:Name="播放器" HorizontalAlignment="Left" Height="484" VerticalAlignment="Top" Width="860" LoadedBehavior="Manual" Volume="1" SpeedRatio="1" SnapsToDevicePixels="True" MediaOpened="播放器_MediaOpened" Canvas.Left="335" Canvas.Top="77" d:IsHidden="True">
             <MediaElement.Effect>
                 <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
             </MediaElement.Effect>
@@ -1825,7 +2139,7 @@
                     <BlurEffect/>
                 </Rectangle.Effect>
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="White" Opacity="0.5"/>
+                    <SolidColorBrush Color="#F4FFFFFF" Opacity="0.5"/>
                 </Rectangle.Fill>
             </Rectangle>
             <Label Content="播放列队" HorizontalAlignment="Left" Height="33" Margin="10,10,0,0" VerticalAlignment="Top" Width="104" FontSize="24" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016">
@@ -1862,6 +2176,5 @@
                 </TransformGroup>
             </ListBox.RenderTransform>
         </ListBox>
-        <Image x:Name="xss" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="90" Canvas.Left="415" Canvas.Top="369.072"/>
     </Canvas>
 </Window>

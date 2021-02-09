@@ -536,7 +536,7 @@
                 <Slider x:Name="模糊" HorizontalAlignment="Center" Height="20" Margin="39,11,10,9" VerticalAlignment="Center" Width="286" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=默认}" Maximum="30" SmallChange="1" Value="5" ValueChanged="模糊_ValueChanged"/>
                 <Label Content="模糊&#xA;" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="39" VerticalContentAlignment="Center" Margin="0,9,0,6" FontSize="16" Padding="4,2,4,4" Foreground="Black"/>
             </Grid>
-            <ListBoxItem x:Name="歌词路径" Height="45" VerticalAlignment="Center">
+            <ListBoxItem x:Name="歌词路径" Height="43" VerticalAlignment="Center">
                 <Grid Height="28" Width="337" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Grid_MouseUp">
                     <materialDesign:PackIcon HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="29" Kind="PlusBoxMultipleOutline" Foreground="{Binding Background, ElementName=默认}"/>
                     <Label Content="设置歌词默认路径" HorizontalAlignment="Left" Height="28" Margin="29,0,0,0" VerticalAlignment="Top" Width="305" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Foreground="Black"/>
@@ -557,8 +557,22 @@
                 <Label x:Name="嵌入歌词_Copy" Content="错误报告" HorizontalAlignment="Left" Height="25" Margin="220.5,35,0,0" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
                 <ToggleButton x:Name="错误" Content="" HorizontalAlignment="Left" Height="17" Margin="285,39.2,0,0" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" UseLayoutRounding="False"/>
             </Grid>
+            <Grid x:Name="接口" Height="45" Width="340" Margin="0,-9,0,0">
+                <Label Content="音乐接口" Margin="0,11.5,256,10" FontSize="16" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
+                <RadioButton x:Name="腾讯" Content="腾讯" Margin="84,10,196,10" IsChecked="True" Background="{Binding Background, ElementName=默认}" BorderBrush="{x:Null}" Click="腾讯_Click"/>
+                <RadioButton x:Name="网易" Content="网易" Margin="144,10,136,10" IsChecked="True" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="网易_Click"/>
+                <RadioButton x:Name="酷狗" Content="酷狗" Margin="204,10,76,10" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="酷狗_Click"/>
+                <RadioButton x:Name="虾米" Content="虾米" Margin="264,10,16,10" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" IsEnabled="False"/>
+            </Grid>
+            <ListBoxItem x:Name="歌曲目录" Height="41.2" VerticalAlignment="Center" Margin="0" Background="{x:Null}">
+                <Grid Height="28" Width="337" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,1,0,0" MouseUp="Grid_MouseUp_1">
+                    <materialDesign:PackIcon HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="29" Kind="PlusBoxMultipleOutline" Foreground="{Binding Background, ElementName=默认}"/>
+                    <Label Content="设置歌曲缓存目录" HorizontalAlignment="Left" Height="28" Margin="29,0,0,0" VerticalAlignment="Top" Width="305" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Foreground="Black"/>
+                </Grid>
+            </ListBoxItem>
+            <Label x:Name="歌曲路径" Content="当前路径：系统临时目录" HorizontalAlignment="Left" VerticalAlignment="Top" Width="340" FontSize="14" VerticalContentAlignment="Center" Foreground="Black" Margin="0,-6,0,0" MouseUp="歌曲路径_MouseUp"/>
         </ListBox>
-        <Grid x:Name="grid1" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="400" Visibility="Collapsed">
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="400" Visibility="Collapsed" d:IsHidden="True">
             <Rectangle Fill="#FFF4F4F5" Stroke="{Binding Background, ElementName=默认}" RadiusX="10" RadiusY="10"/>
             <Grid HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="400" MouseMove="Grid_MouseMove_1">
                 <materialDesign:PackIcon Kind="TimelineHelpOutline" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="40" Width="45" Margin="10,0,0,0" Foreground="{Binding Background, ElementName=默认}"/>
@@ -570,7 +584,7 @@
             <TextBlock HorizontalAlignment="Left" Height="497.833" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Foreground="#FF426ECD" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="修改程序默认背景图片："/><Run Foreground="Black" Text="可以修改默认背景图片，支持的格式有"/><Run Foreground="Black" Text="JPG、PNG、JPGE、BMP"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="缩放模式："/><Run Foreground="Black" Text="设置背景图片的在程序中的缩放模式，默认是&quot;填充&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="模糊："/><Run Foreground="Black" Text="设置背景图片在程序中的模糊程度，默认是&quot;5&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="设置歌词路径："/><Run Foreground="Black" Text="可以将歌词文件放置到一个文件夹中，播放时会自动读取，歌词读取优先级；&quot;歌曲内嵌→指定文件夹→歌曲目录下&quot;"/><LineBreak/><LineBreak/><Run Text="当前路径："/><Run Foreground="Black" Text="显示用户设置的歌词目录，单击可以打开目录"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="显示歌词："/><Run Foreground="Black" Text="是否显示滚动歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="平滑滚动："/><Run Foreground="Black" Text="设置歌词滚动方式"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="桌面歌词："/><Run Foreground="Black" Text="打开/关闭桌面歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="独立播放："/><Run Foreground="Black" Text="在独立窗口播放视频"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="嵌入歌词："/><Run Foreground="Black" Text="当读取到有效歌词且歌曲没有内嵌歌词的情况下，可以自动将歌词嵌入歌曲内"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="恢复默认："/><Run Foreground="Black" Text="将所有设置恢复默认状态"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="取消更改："/><Run Foreground="Black" Text="取消对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="保存更改："/><Run Foreground="Black" Text="保存对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="错误报告："/><Run Foreground="Black" Text="是否向用户发送程序错误原因，以方便排查错误"/></TextBlock>
             <Button Content="关于程序" HorizontalAlignment="Left" Height="25" Margin="300,565,0,0" VerticalAlignment="Top" Width="90" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{Binding Background, ElementName=默认}" Click="Button_Click_2"/>
         </Grid>
-        <Grid x:Name="grid2" Height="600" Width="400" MouseMove="Grid_MouseMove">
+        <Grid x:Name="grid2" Height="600" Width="400" MouseMove="Grid_MouseMove" d:IsHidden="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="53*"/>
                 <RowDefinition Height="7*"/>

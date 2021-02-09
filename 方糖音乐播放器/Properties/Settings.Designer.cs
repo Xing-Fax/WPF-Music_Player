@@ -205,13 +205,37 @@ namespace 方糖音乐播放器.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool 错误报告 {
             get {
                 return ((bool)(this["错误报告"]));
             }
             set {
                 this["错误报告"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("腾讯")]
+        public string 网络接口参数 {
+            get {
+                return ((string)(this["网络接口参数"]));
+            }
+            set {
+                this["网络接口参数"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("系统临时目录")]
+        public string 网络歌曲缓存目录 {
+            get {
+                return ((string)(this["网络歌曲缓存目录"]));
+            }
+            set {
+                this["网络歌曲缓存目录"] = value;
             }
         }
     }

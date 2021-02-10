@@ -1821,7 +1821,7 @@
 
             </ListBox>
         </Grid>
-        <Label x:Name="播放歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="470" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="30" Foreground="#F8000000" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="705" Canvas.Top="90" MouseUp="播放歌曲名称_MouseUp"/>
+        <Label x:Name="播放歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" Foreground="#F8000000" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="690" Canvas.Top="90" MouseUp="播放歌曲名称_MouseUp" ToolTip="{Binding Content, ElementName=播放歌曲名称}"/>
         <Label x:Name="歌手专辑" HorizontalAlignment="Left" Height="23.333" VerticalAlignment="Top" Width="470" HorizontalContentAlignment="Center" Content="" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="705" Canvas.Top="137.072"/>
         <Label x:Name="歌手专辑2" HorizontalAlignment="Left" Height="22.855" VerticalAlignment="Top" Width="470" HorizontalContentAlignment="Center" Content="" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="705" Canvas.Top="160.405"/>
         <ListBox Height="95.335" Canvas.Left="350" Canvas.Top="292.5" Width="20" Margin="-19,0,0,0">
@@ -2061,7 +2061,7 @@
                         Kind="ShuffleDisabled" Width="25" Height="25" />
                 </ListBoxItem>
             </ListBox>
-            <Label x:Name="歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="35" VerticalAlignment="Bottom" Width="330" VerticalContentAlignment="Center" FontSize="18" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Foreground="#FD000000" Canvas.Left="85" Canvas.Top="26.012"/>
+            <Label x:Name="歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="35" VerticalAlignment="Bottom" VerticalContentAlignment="Center" FontSize="18" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Foreground="#FD000000" Canvas.Left="85" Canvas.Top="26.012" ToolTip="{Binding Content, ElementName=歌曲名称}" MouseUp="歌曲名称_MouseUp" MaxWidth="440"/>
             <Label x:Name="播放时间" Content="00:00-00:00" HorizontalAlignment="Left" Height="28.988" VerticalAlignment="Top" Width="190" FontSize="20" FontFamily="/方糖音乐播放器;component/Resources/#298-CAI978" HorizontalContentAlignment="Right" Canvas.Left="1000" Canvas.Top="20"/>
             <ListBox x:Name="播放列表"
                 Style="{StaticResource MaterialDesignToolToggleListBox}"

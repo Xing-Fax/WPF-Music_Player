@@ -144,6 +144,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="FullScreenHelper.cs" />
+    <Compile Include="Function_list.cs" />
+    <Compile Include="Refresh_lyrics.cs" />
     <Compile Include="弹窗提示.xaml.cs">
       <DependentUpon>弹窗提示.xaml</DependentUpon>
     </Compile>

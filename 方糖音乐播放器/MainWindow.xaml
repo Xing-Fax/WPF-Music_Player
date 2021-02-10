@@ -1619,6 +1619,78 @@
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.1" Value="{x:Static ScrollBarVisibility.Hidden}"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="切换动画开">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="本地播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-337">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseInOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="联网播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-337">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <BackEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="联网播放">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="联网播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="本地播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="切换动画关">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="联网播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-337">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <CircleEase EasingMode="EaseIn"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="本地播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-337">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuarticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="联网播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="本地播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
 
 
@@ -1715,7 +1787,15 @@
                 </StackPanel>
             </DockPanel>
         </materialDesign:ColorZone>
-        <Grid x:Name="联网播放" HorizontalAlignment="Left" Height="481.999" VerticalAlignment="Top" Width="315" Canvas.Left="10" Canvas.Top="77.667" Visibility="Collapsed">
+        <Grid x:Name="联网播放" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="315" Canvas.Left="10" Canvas.Top="77.667" RenderTransformOrigin="1,0.5" d:IsHidden="True">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
             <Rectangle HorizontalAlignment="Left" Height="436.332" StrokeThickness="0" VerticalAlignment="Top" Width="315" RadiusX="5" RadiusY="5" Margin="0,45.667,0,0">
                 <Rectangle.Effect>
                     <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
@@ -1766,7 +1846,15 @@
             <ProgressBar x:Name="加载中"
   IsIndeterminate="True" Margin="0,477.999,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{Binding Background, ElementName=colorZone}" Visibility="Collapsed" />
         </Grid>
-        <Grid x:Name="本地播放" Height="482.666" Canvas.Left="10" Canvas.Top="77" Width="315">
+        <Grid x:Name="本地播放" Height="482" Canvas.Left="10" Canvas.Top="77" Width="315" RenderTransformOrigin="1,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
             <ListBox x:Name="主界面菜单选择"
                 Style="{StaticResource MaterialDesignToolToggleListBox}"
                 Width="315" Background="WhiteSmoke" MouseEnter="主界面菜单选择_MouseEnter" Margin="0,0,0,428.594">
@@ -1821,10 +1909,13 @@
 
             </ListBox>
         </Grid>
-        <Label x:Name="播放歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" Foreground="#F8000000" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="690" Canvas.Top="90" MouseUp="播放歌曲名称_MouseUp" ToolTip="{Binding Content, ElementName=播放歌曲名称}"/>
+        <Label x:Name="播放歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" Foreground="#F8000000" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="690" Canvas.Top="90" ToolTip="{Binding Content, ElementName=播放歌曲名称}"/>
         <Label x:Name="歌手专辑" HorizontalAlignment="Left" Height="23.333" VerticalAlignment="Top" Width="470" HorizontalContentAlignment="Center" Content="" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="705" Canvas.Top="137.072"/>
         <Label x:Name="歌手专辑2" HorizontalAlignment="Left" Height="22.855" VerticalAlignment="Top" Width="470" HorizontalContentAlignment="Center" Content="" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="705" Canvas.Top="160.405"/>
         <ListBox Height="95.335" Canvas.Left="350" Canvas.Top="292.5" Width="20" Margin="-19,0,0,0">
+            <ListBox.Background>
+                <SolidColorBrush Color="White" Opacity="0.4"/>
+            </ListBox.Background>
             <ListBoxItem x:Name="切换" ToolTip="在线播放" HorizontalAlignment="Left" VerticalAlignment="Top" Height="95.335" BorderBrush="{x:Null}" Width="20" Padding="0,8" MouseUp="listBoxItem_MouseUp_1">
                 <ListBoxItem.Template>
                     <ControlTemplate TargetType="{x:Type ListBoxItem}">
@@ -2061,11 +2152,11 @@
                         Kind="ShuffleDisabled" Width="25" Height="25" />
                 </ListBoxItem>
             </ListBox>
-            <Label x:Name="歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="35" VerticalAlignment="Bottom" VerticalContentAlignment="Center" FontSize="18" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Foreground="#FD000000" Canvas.Left="85" Canvas.Top="26.012" ToolTip="{Binding Content, ElementName=歌曲名称}" MouseUp="歌曲名称_MouseUp" MaxWidth="440"/>
+            <Label x:Name="歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="35" VerticalAlignment="Bottom" VerticalContentAlignment="Center" FontSize="18" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Foreground="#FD000000" Canvas.Left="85" Canvas.Top="26.012" ToolTip="{Binding Content, ElementName=歌曲名称}" MaxWidth="440"/>
             <Label x:Name="播放时间" Content="00:00-00:00" HorizontalAlignment="Left" Height="28.988" VerticalAlignment="Top" Width="190" FontSize="20" FontFamily="/方糖音乐播放器;component/Resources/#298-CAI978" HorizontalContentAlignment="Right" Canvas.Left="1000" Canvas.Top="20"/>
             <ListBox x:Name="播放列表"
                 Style="{StaticResource MaterialDesignToolToggleListBox}"
-                Width="50" Background="{Binding Background, ElementName=colorZone}" VerticalAlignment="Top" Height="35" MouseLeave="播放列表_MouseLeave" Canvas.Left="1125" Canvas.Top="60">
+                Width="50" Background="{Binding Background, ElementName=colorZone}" VerticalAlignment="Top" Height="35" MouseLeave="播放列表_MouseLeave" Canvas.Left="1125" Canvas.Top="60" Visibility="Collapsed">
 
                 <ListBoxItem x:Name="右菜单" ToolTip="播放列队" Width="50" Background="{x:Null}" HorizontalContentAlignment="Center" MouseUp="右菜单_MouseUp">
                     <materialDesign:PackIcon  
@@ -2074,7 +2165,7 @@
             </ListBox>
             <ListBox x:Name="音量调节"
                 Style="{StaticResource MaterialDesignToolToggleListBox}"
-                Width="50" Background="{Binding Background, ElementName=colorZone}" HorizontalContentAlignment="Center" MouseLeave="音量调节_MouseLeave" Height="34.512" Canvas.Left="1070" Canvas.Top="60">
+                Width="50" Background="{Binding Background, ElementName=colorZone}" HorizontalContentAlignment="Center" MouseLeave="音量调节_MouseLeave" Height="34.512" Canvas.Left="1070" Canvas.Top="60" Margin="56,0,0,0">
 
                 <ListBoxItem x:Name="音量" ToolTip="音量调节" Width="50" Background="{x:Null}" MouseUp="ListBoxItem_MouseUp" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                     <materialDesign:PackIcon  
@@ -2083,7 +2174,7 @@
             </ListBox>
             <ListBox x:Name="速度调节"
                 Style="{StaticResource MaterialDesignToolToggleListBox}"
-                Width="50" Background="{Binding Background, ElementName=colorZone}" HorizontalContentAlignment="Center" MouseLeave="速度调节_MouseLeave" Height="34.512" Canvas.Left="1015" Canvas.Top="60.488">
+                Width="50" Background="{Binding Background, ElementName=colorZone}" HorizontalContentAlignment="Center" MouseLeave="速度调节_MouseLeave" Height="34.512" Canvas.Left="1015" Canvas.Top="60.488" Margin="56,0,0,0">
 
                 <ListBoxItem x:Name="速度" ToolTip="播放速度" Width="50" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseUp="速度_MouseUp">
                     <materialDesign:PackIcon  
@@ -2110,7 +2201,7 @@
             <materialDesign:PackIcon Kind="BikeFast" HorizontalAlignment="Left" Height="30" Margin="180,10,0,0" VerticalAlignment="Top" Width="30"/>
             <Label x:Name="速度显示" Content="1倍速" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="75,28.271,0,0" Height="21.729" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Width="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
-        <SelectiveScrollingGrid x:Name="音量调节1" HorizontalAlignment="Left" Height="220" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" MouseLeave="音量调节1_MouseLeave" Visibility="Collapsed" Canvas.Left="1056.5" Canvas.Top="399.072">
+        <SelectiveScrollingGrid x:Name="音量调节1" HorizontalAlignment="Left" Height="220" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" MouseLeave="音量调节1_MouseLeave" Canvas.Left="1056.5" Canvas.Top="400" Margin="55,0,0,0" Visibility="Collapsed">
             <SelectiveScrollingGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

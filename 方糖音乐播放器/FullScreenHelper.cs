@@ -33,7 +33,6 @@ namespace 方糖音乐播放器
         {
             //已经是全屏
             if (window.IsFullscreen()) return;
-
             //存储窗体信息
             _windowState = window.WindowState;
             _windowStyle = window.WindowStyle;
@@ -50,12 +49,6 @@ namespace 方糖音乐播放器
             window.WindowStyle = WindowStyle.None;
             window.ResizeMode = ResizeMode.NoResize;
             window.Topmost = true;//最大化后总是在最上面
-
-            ////获取窗口句柄 
-            //var handle = new WindowInteropHelper(window).Handle;
-
-            ////获取当前显示器屏幕
-            //Screen screen = Screen.FromHandle(handle);
 
             //调整窗口最大化,全屏的关键代码就是下面3句
             window.MaxWidth = SystemParameters.PrimaryScreenWidth;

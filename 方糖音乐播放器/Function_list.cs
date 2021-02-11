@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +8,9 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using 方糖音乐播放器.Properties;
 
 namespace 方糖音乐播放器
 {
@@ -135,8 +138,92 @@ namespace 方糖音乐播放器
             item.Height = height;//设置高度
             item.FontSize = fontsize;//设置字号
             item.ToolTip = tooltip;//设置提示
+            //item.Focusable = false;
             if (Centered == true) { item.HorizontalContentAlignment = HorizontalAlignment.Center; }//设置文本上下左右居中
             box.Items.Add(item);//将控件添加到集合里
+        }
+        //读取歌词函数
+        public  static string 读取歌词(string file)
+        {
+            string msg;
+            string lrc = "";
+            using (StreamReader reader = new StreamReader(file, Encoding.Default))
+            {
+                while ((msg = reader.ReadLine()) != null) { lrc += msg + "\n"; }//!=  不等于   
+            }
+            return lrc;
+        }
+        //错误弹窗
+        [Obsolete]
+        public  static void Error_capture(string str,弹窗提示 Tips,Color color3)
+        {
+            if (Properties.Settings.Default.错误报告 == true)
+            {
+                Tips = new 弹窗提示(4, color3, 0, str);
+                Tips.ShowDialog();
+                Tips = null;
+            }
+        }
+
+        //单文件夹扫描歌曲
+        [Obsolete]
+        public static void  query(System.Windows.Controls.ListBox list ,string file, ArrayList array, 弹窗提示 Tips, Color color3)
+        {
+            string[] ssg = { "*.mp3", "*.wav", "*.flac" };//设置过滤器
+            for (int i = 0; i < 3; i++)
+            {
+                try
+                {
+                    string[] dirs = Directory.GetFiles(file + @"\", ssg[i]);
+                    foreach (string dir in dirs)
+                    {
+                        array.Add(dir);
+                        填充菜单(list, System.IO.Path.GetFileNameWithoutExtension(dir), System.IO.Path.GetFileNameWithoutExtension(dir), 315, 40, 16, false);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Error_capture("扫描歌曲时发生异常,异常详细信息:\n" + ex.ToString(), Tips, color3);
+                }
+            }
+        }
+        //全盘递归扫描歌曲
+        [Obsolete]
+        public static void  ListFiles(System.Windows.Controls.ListBox list, FileSystemInfo info, ArrayList array, 弹窗提示 Tips, Color color3)
+        {
+            string Ext;
+            string[] ssgb = { "mp3", "wav", "flac" };//设置过滤器
+            for (int i = 0; i < 3; i++)
+            {
+                Ext = ssgb[i];
+                if (!info.Exists) return ;
+                DirectoryInfo dir = info as DirectoryInfo;
+                //不是目录 
+                if (dir == null) return ;
+                try
+                {
+                    FileSystemInfo[] files = dir.GetFileSystemInfos();
+                    for (int j = 0; j < files.Length; j++)
+                    {
+                        //是文件
+                        if (files[j] is FileInfo file && file.Extension.ToUpper() == "." + Ext.ToUpper())
+                        {
+                            int id = Array.IndexOf(array.ToArray(), file.FullName);
+                            if (id == -1)
+                            {
+                                填充菜单(list, System.IO.Path.GetFileNameWithoutExtension(file.FullName), System.IO.Path.GetFileNameWithoutExtension(file.FullName), 315, 40, 16, false);
+                                array.Add(file.FullName);
+                            }
+                        }
+                        //对于子目录，进行递归调用 
+                        else ListFiles(list, files[j],array ,Tips,color3);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Error_capture("扫描歌曲时发生异常，异常详细信息:\n" + ex.ToString(), Tips, color3);
+                }
+            }
         }
     }
 }

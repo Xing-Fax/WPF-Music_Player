@@ -1787,7 +1787,7 @@
                 </StackPanel>
             </DockPanel>
         </materialDesign:ColorZone>
-        <Grid x:Name="联网播放" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="315" Canvas.Left="10" Canvas.Top="77.667" RenderTransformOrigin="1,0.5" d:IsHidden="True">
+        <Grid x:Name="联网播放" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="315" Canvas.Left="10" Canvas.Top="77.667" RenderTransformOrigin="1,0.5" d:IsHidden="True" SnapsToDevicePixels="True">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -1846,7 +1846,7 @@
             <ProgressBar x:Name="加载中"
   IsIndeterminate="True" Margin="0,477.999,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{Binding Background, ElementName=colorZone}" Visibility="Collapsed" />
         </Grid>
-        <Grid x:Name="本地播放" Height="482" Canvas.Left="10" Canvas.Top="77" Width="315" RenderTransformOrigin="1,0.5">
+        <Grid x:Name="本地播放" Height="482" Canvas.Left="10" Canvas.Top="77" Width="315" RenderTransformOrigin="1,0.5" SnapsToDevicePixels="True">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -2098,7 +2098,7 @@
                 <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
             </Image.Effect>
         </Image>
-        <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="705" Canvas.Top="190"/>
+        <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="705" Canvas.Top="190" Focusable="False"/>
         <MediaElement x:Name="播放器" HorizontalAlignment="Left" Height="484" VerticalAlignment="Top" Width="860" LoadedBehavior="Manual" Volume="1" SpeedRatio="1" SnapsToDevicePixels="True" MediaOpened="播放器_MediaOpened" Canvas.Left="335" Canvas.Top="77" d:IsHidden="True">
             <MediaElement.Effect>
                 <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
@@ -2174,7 +2174,7 @@
             </ListBox>
             <ListBox x:Name="速度调节"
                 Style="{StaticResource MaterialDesignToolToggleListBox}"
-                Width="50" Background="{Binding Background, ElementName=colorZone}" HorizontalContentAlignment="Center" MouseLeave="速度调节_MouseLeave" Height="34.512" Canvas.Left="1015" Canvas.Top="60.488" Margin="56,0,0,0">
+                Width="50" Background="{Binding Background, ElementName=colorZone}" HorizontalContentAlignment="Center" MouseLeave="速度调节_MouseLeave" Height="34.512" Canvas.Left="1015" Canvas.Top="60.488" Margin="56,0,0,0" d:IsHidden="True">
 
                 <ListBoxItem x:Name="速度" ToolTip="播放速度" Width="50" Background="{x:Null}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MouseUp="速度_MouseUp">
                     <materialDesign:PackIcon  

@@ -19,6 +19,90 @@ namespace 方糖音乐播放器
 //紫色#FF7858BD
 //蓝色#FF10AEC2
 //红色#FFED556A
+//private void Lyrics_reset(int i)
+//{
+//    ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color2);
+//}
+
+//private string Time_acquisition()
+//{
+//    try
+//    {
+//        string time = 播放器.Position.ToString().Substring(3, 7);
+//        return time;
+//    }
+//    catch
+//    {
+//        return null;
+//    }
+//}
+
+//private void Lyrics_turn_red(int i)
+//{
+//    歌词滚动显示.SelectedIndex = i;
+//    ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
+//}
+
+//private void Lyrics_in_the_middle()
+//{
+//    歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
+//}
+
+//private int Maximum_quantity()
+//{
+//    return 歌词滚动显示.SelectedIndex;
+//}
+
+//private int Maximum_quantity2()
+//{
+//    return 歌词滚动显示.Items.Count;
+//}
+//刷新歌词计时器事件
+
+//if (Time_acquisition() != null)
+//{
+//    for (int i = 0; i < lrc_time.Count; i++)
+//    {
+//        if (lrc_time[i] != null && lrc_time[i].ToString().Substring(0, 7) == Time_acquisition() && lyrics_display == true)
+//        {
+//            Lyrics_turn_red(i);
+//            歌词滚动显示.SelectedIndex = i;
+//            ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
+//            if (Rolling_condition == 0)
+//            {
+//                Lyrics_in_the_middle();
+//                歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
+//            }
+//            for (int j = 0; j < Maximum_quantity(); j++)
+//            {
+//                Lyrics_reset(j);
+//                ((ListBoxItem)歌词滚动显示.Items[j]).Foreground = new SolidColorBrush(color2);
+//            }
+//            for (int o = Maximum_quantity2() - 5; o > Maximum_quantity(); o--)
+//            {
+//                Lyrics_reset(o);
+//                ((ListBoxItem)歌词滚动显示.Items[o]).Foreground = new SolidColorBrush(color2);
+//            }
+//            if (Get != null)
+//            {
+//                Get.主.Content = lrc_lyrics[i];
+//                Get.父.Content = lrc_lyrics[i + 1];
+//            }
+//        }
+//    }
+//}
+//Dispatcher.Invoke(new Action(delegate
+//{
+
+//}));
+
+//Dispatcher.Invoke(new Action(delegate
+//{
+//    try
+//    {
+//    }
+//    catch { }
+//}));
 //string a = "sdaffaf\naffafaf\ndfsdsgsgs\n";
 //string[] temp = a.Split('\n');
 //MessageBox.Show(temp[0]);

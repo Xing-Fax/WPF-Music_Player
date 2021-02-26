@@ -54,7 +54,7 @@
       <Value Profile="(Default)">腾讯</Value>
     </Setting>
     <Setting Name="网络歌曲缓存目录" Type="System.String" Scope="User">
-      <Value Profile="(Default)">系统临时目录</Value>
+      <Value Profile="(Default)">系统音乐目录</Value>
     </Setting>
   </Settings>
 </SettingsFile>

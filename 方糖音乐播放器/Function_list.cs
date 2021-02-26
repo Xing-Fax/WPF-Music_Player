@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+//using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
+//using System.Threading.Tasks;
+//using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -161,10 +161,8 @@ namespace 方糖音乐播放器
             {
                 Tips = new 弹窗提示(4, color3, 0, str);
                 Tips.ShowDialog();
-                Tips = null;
             }
         }
-
         //单文件夹扫描歌曲
         [Obsolete]
         public static void  query(System.Windows.Controls.ListBox list ,string file, ArrayList array, 弹窗提示 Tips, Color color3)

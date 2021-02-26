@@ -229,7 +229,7 @@ namespace 方糖音乐播放器.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("系统临时目录")]
+        [global::System.Configuration.DefaultSettingValueAttribute("系统音乐目录")]
         public string 网络歌曲缓存目录 {
             get {
                 return ((string)(this["网络歌曲缓存目录"]));

@@ -1,23 +1,23 @@
 ﻿using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
+//using System.Linq;
+//using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+//using System.Windows.Controls;
+//using System.Windows.Data;
+//using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+//using System.Windows.Media.Imaging;
+//using System.Windows.Shapes;
 using System.Windows.Threading;
-using 方糖音乐播放器.Properties;
+//using 方糖音乐播放器.Properties;
 
 namespace 方糖音乐播放器
 {
@@ -33,12 +33,13 @@ namespace 方糖音乐播放器
             story = (Storyboard)FindResource(a);
             BeginStoryboard(story);
         }
-        public event Func<string, int> fcc1;//定义委托
-        public event Func<int, int> fcc2;
-        public event Func<int, int> fcc3;
-        public event Func<int, int> fcc4;
-        public event Func<int, int> fcc5;
-        public event Func<int, int> fcc6;
+
+        public event Func<string, int> fcc1;//修改背景恢复默认图片
+        public event Func<int, int> fcc2;//背景模糊调节
+        public event Func<int, int> fcc3;//歌词显示
+        public event Func<int, int> fcc4;//如果取消修改
+        public event Func<int, int> fcc5;//设置只能打开一个设置窗口
+        public event Func<int, int> fcc6;//背景的
         private string 背景路径;
         private string 歌词目录;
         private string 歌曲目录2;
@@ -66,7 +67,7 @@ namespace 方糖音乐播放器
 
             动画播放("窗体打开");
             路径.Content = "当前路径：" + Properties.Settings.Default.歌词目录;
-            歌曲路径.Content = "当前路径："+ Properties.Settings.Default.网络歌曲缓存目录;
+            歌曲路径.Content = "当前路径：" + Properties.Settings.Default.网络歌曲缓存目录;
             Topmost = true;
         }
 
@@ -91,11 +92,7 @@ namespace 方糖音乐播放器
                     fcc1(Open1.FileName);
                     背景路径 = Open1.FileName;
                 }
-                catch //(Exception ex)
-                {
-                   // MessageBox.Show(ex.ToString());
-                    //Tips = new 弹窗提示(4, color3, 0, "问题详情:" + ex);
-                }
+                catch { }
             }
             Topmost = true;
         }
@@ -122,7 +119,7 @@ namespace 方糖音乐播放器
             {
                 fcc3(2);
             }
-            else if (歌词.IsChecked == false )
+            else if (歌词.IsChecked == false)
             {
                 fcc3(1);
             }
@@ -184,7 +181,6 @@ namespace 方糖音乐播放器
                         Close();
                     }));
             }).Start();
-
         }
         private void Grid_MouseUp(object sender, MouseButtonEventArgs e)
         {
@@ -220,7 +216,7 @@ namespace 方糖音乐播放器
             Properties.Settings.Default.桌面歌词 = false;
             Properties.Settings.Default.错误报告 = false;
             Properties.Settings.Default.网络接口参数 = "腾讯";
-            Properties.Settings.Default.网络歌曲缓存目录 = "系统临时目录";
+            Properties.Settings.Default.网络歌曲缓存目录 = "系统音乐目录";
             Properties.Settings.Default.Save();
             fcc5(0);
             fcc6(2);
@@ -231,7 +227,7 @@ namespace 方糖音乐播放器
 
         private void 路径_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if(Properties.Settings.Default.歌词目录 != "无" && Directory.Exists(Properties.Settings.Default.歌词目录))
+            if (Properties.Settings.Default.歌词目录 != "无" && Directory.Exists(Properties.Settings.Default.歌词目录))
             {
                 if (歌词目录 != null)
                 {
@@ -316,7 +312,7 @@ namespace 方糖音乐播放器
         Color color2 = (Color)ColorConverter.ConvertFromString("#FF595959");//灰色
         private void Github_MouseEnter(object sender, MouseEventArgs e)
         {
-            Github .Foreground = new SolidColorBrush(color);
+            Github.Foreground = new SolidColorBrush(color);
         }
 
         private void Github_MouseLeave(object sender, MouseEventArgs e)
@@ -354,10 +350,20 @@ namespace 方糖音乐播放器
             _32位版本_.Foreground = new SolidColorBrush(color2);
         }
 
+        private void GiftOutline_MouseEnter(object sender, MouseEventArgs e)
+        {
+            GiftOutline.Foreground = new SolidColorBrush(color);
+        }
+
+        private void GiftOutline_MouseLeave(object sender, MouseEventArgs e)
+        {
+            GiftOutline.Foreground = new SolidColorBrush(color2);
+        }
+
         private void Github_MouseUp(object sender, MouseButtonEventArgs e)
         {
             try { System.Diagnostics.Process.Start("https://github.com/xingchuanzhen/WPF-Music_Player"); }
-            catch(UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); }
+            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); }
             fcc5(0);
             exit();
         }
@@ -416,7 +422,6 @@ namespace 方糖音乐播放器
                 Topmost = true;
             }
             catch { }
-
         }
     }
 }

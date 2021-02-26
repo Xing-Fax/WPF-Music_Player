@@ -1,18 +1,18 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Collections.Generic;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+//using System.Windows.Controls;
+//using System.Windows.Data;
+//using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+//using System.Windows.Media.Imaging;
+//using System.Windows.Shapes;
 
 namespace 方糖音乐播放器
 {
@@ -21,25 +21,6 @@ namespace 方糖音乐播放器
     /// </summary>
     public partial class 播放窗口 : Window
     {
-
-        private string sec_to_hms(double duration)
-        {
-            TimeSpan ts = new TimeSpan(0, 0, Convert.ToInt32(duration));
-            string str = "";
-            if (ts.Hours > 0)
-            {
-                str = String.Format("{0:00}", ts.Hours) + ":" + String.Format("{0:00}", ts.Minutes) + ":" + String.Format("{0:00}", ts.Seconds);
-            }
-            if (ts.Hours == 0 && ts.Minutes > 0)
-            {
-                str = "00:" + String.Format("{0:00}", ts.Minutes) + ":" + String.Format("{0:00}", ts.Seconds);
-            }
-            if (ts.Hours == 0 && ts.Minutes == 0)
-            {
-                str = "00:00:" + String.Format("{0:00}", ts.Seconds);
-            }
-            return str;
-        }
         System.Timers.Timer t = new System.Timers.Timer(50);//实例化Timer类用于更新时间
         System.Timers.Timer t2 = new System.Timers.Timer(5000);//实例化Timer类用于关闭底部播放栏
         private string Song_time;
@@ -212,7 +193,7 @@ namespace 方糖音乐播放器
         {
             if (button == 1)
             {
-                播放时间.Content = sec_to_hms(进度条.Value).Substring(3, 5) + "-" + Song_time;
+                播放时间.Content = Function_list.sec_to_hms(进度条.Value).Substring(3, 5) + "-" + Song_time;
             }
         }
 

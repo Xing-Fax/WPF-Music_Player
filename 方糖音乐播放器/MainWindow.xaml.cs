@@ -40,11 +40,11 @@ namespace 方糖音乐播放器
     public partial class MainWindow : Window
     {
         [Obsolete]
-        private void Song_scanning(int a,string file)//1全盘2单文件夹，文件夹路径
+        private void Song_scanning(int a, string file)//1全盘2单文件夹，文件夹路径
         {
             Kill();
             主页的播放列表.Items.Clear();//清空原始歌曲
-            播放列队.Items.Clear();
+            //播放列队.Items.Clear();
             Number.Clear();//清空数组
             if (a == 1)
             {
@@ -62,7 +62,7 @@ namespace 方糖音乐播放器
                 Properties.Settings.Default.歌单路径 = file;
                 Properties.Settings.Default.歌单路径参数 = 1;
             }
-            Tips = new 弹窗提示(1, color3, Number_of_songs,null);
+            Tips = new 弹窗提示(1, color3, Number_of_songs, null);
             Tips.ShowDialog();
         }
 
@@ -70,12 +70,11 @@ namespace 方糖音乐播放器
         {
             int a = 0;
             string[] temp = lrc.Split('\n');
-            for (int i = 0; i < temp.Length; i ++)
+            for (int i = 0; i < temp.Length; i++)
             {
                 //去除歌词前部分歌曲信息
                 if (temp[i] != "" && temp[i].Substring(1, 2) != "ar" && temp[i].Substring(1, 2) != "ti" && temp[i].Substring(1, 2) != "al" && temp[i].Substring(1, 2) != "by" && temp[i].Substring(1, 2) != "of")
                 {
-
                     temp[i] = temp[i].Replace(@"\r", "");
                     lrc_time.Add(Function_list.Substring(temp[i], "[", "]"));
                     lrc_lyrics.Add(temp[i].Substring(lrc_time[a].ToString().Length + 2, temp[i].Length - lrc_time[a].ToString().Length - 2));//截取歌词
@@ -99,7 +98,7 @@ namespace 方糖音乐播放器
             }
             try { ((ListBoxItem)歌词滚动显示.Items[0]).Foreground = new SolidColorBrush(color); }//将第一句歌词颜色该为红色
             catch { }
-            if (歌词滚动显示 .Items .Count > 2)
+            if (歌词滚动显示.Items.Count > 2)
             {
                 for (int i = 0; i < 5; i++) { Function_list.填充菜单(歌词滚动显示, null, null, 470, 35, 15, true); }//多打印空白行5个
             }
@@ -108,7 +107,7 @@ namespace 方糖音乐播放器
         private string Embedded_lyrics()
         {
             string a = "";
-            for (int i = 0; i < lrc_time.Count ; i++) { if (lrc_time[i] != null) { a += "[" + lrc_time[i] + "]" + lrc_lyrics[i] + "\n"; } }
+            for (int i = 0; i < lrc_time.Count; i++) { if (lrc_time[i] != null) { a += "[" + lrc_time[i] + "]" + lrc_lyrics[i] + "\n"; } }
             return a;
         }
 
@@ -354,7 +353,7 @@ namespace 方糖音乐播放器
 
         //更新时间，判断播放状态
         [Obsolete]
-        public void theout2(object source, System.Timers.ElapsedEventArgs e)
+        private void theout2(object source, System.Timers.ElapsedEventArgs e)
         {
             Dispatcher.Invoke(//同步线程
                    new Action(
@@ -377,10 +376,9 @@ namespace 方糖音乐播放器
                  }));
         }
 
-        //刷新歌词计时器事件
         Color color = (Color)ColorConverter.ConvertFromString("#F8BF2424");//红色
         Color color2 = (Color)ColorConverter.ConvertFromString("#FF000000");//黑色
-        public void theout1(object source, System.Timers.ElapsedEventArgs e)
+        private void theout1(object source, System.Timers.ElapsedEventArgs e)
         {
             Dispatcher.Invoke(//同步线程
                   new Action(
@@ -388,9 +386,9 @@ namespace 方糖音乐播放器
                 {
                     try
                     {
-                        for (int i = 0; i < lrc_time.Count ; i++)
+                        for (int i = 0; i < lrc_time.Count; i++)
                         {
-                            if (lrc_time[i] != null && lrc_time[i].ToString().Substring(0, 7) == Convert.ToString(播放器.Position).Substring(3, 7) && lyrics_display == true)
+                            if (lrc_time[i].ToString().Substring(0, 7) == Convert.ToString(播放器.Position).Substring(3, 7) && lyrics_display == true)
                             {
                                 歌词滚动显示.SelectedIndex = i;
                                 ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
@@ -398,11 +396,11 @@ namespace 方糖音乐播放器
                                 {
                                     歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
                                 }
-                                for (int j = 0; j < 歌词滚动显示.SelectedIndex; j++)
+                                for (int j = 0; j < 歌词滚动显示.SelectedIndex; j ++)
                                 {
                                     ((ListBoxItem)歌词滚动显示.Items[j]).Foreground = new SolidColorBrush(color2);
                                 }
-                                for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o--)
+                                for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o --)
                                 {
                                     ((ListBoxItem)歌词滚动显示.Items[o]).Foreground = new SolidColorBrush(color2);
                                 }
@@ -423,24 +421,26 @@ namespace 方糖音乐播放器
         ArrayList Web_search_results = new ArrayList();//存储网络搜索结果
 
         bool current_state = true;//设置是本地还是联网
-        public  string Web_file = System.IO.Path.GetTempPath() + @"方糖音乐\";//跟歌曲缓存目录
+        string Web_file = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\";//跟歌曲缓存目录
 
         bool lyrics_display;//决定是否要显示滚动歌词
         int Number_of_songs = 0;//存储歌曲数量
-        int Rolling_condition = 0;
+        int Rolling_condition = 0;//用户鼠标停留在歌词，歌词不会自动滚动
         System.Timers.Timer t1 = new System.Timers.Timer(50);//实例化Timer类用于刷新歌词
         System.Timers.Timer t2 = new System.Timers.Timer(100);//实例化Timer类用于更新时间
         桌面歌词 Get;
-        弹窗提示 Tips ;
+        弹窗提示 Tips;
         Meting Search_interface;
         [Obsolete]
         public MainWindow()
         {
             InitializeComponent();
+            //MessageBox.Show(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
+            //System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\");
             联网播放.Visibility = Visibility.Collapsed;
             try
             {
-                if (Properties.Settings.Default.网络歌曲缓存目录 != "系统临时目录")
+                if (Properties.Settings.Default.网络歌曲缓存目录 != "系统音乐目录")
                 {
 
                     if (false == System.IO.Directory.Exists(Properties.Settings.Default.网络歌曲缓存目录 + @"\"))//判断目录是否存在
@@ -459,10 +459,10 @@ namespace 方糖音乐播放器
                     }
                 }
 
-                速度.Visibility = Visibility.Collapsed;
+                //速度.Visibility = Visibility.Collapsed;
 
                 RenderOptions.SetBitmapScalingMode(歌词滚动显示, BitmapScalingMode.NearestNeighbor);
-                RenderOptions.SetBitmapScalingMode(播放列队框架, BitmapScalingMode.NearestNeighbor);
+                //RenderOptions.SetBitmapScalingMode(播放列队框架, BitmapScalingMode.NearestNeighbor);
 
                 t1.Elapsed += new System.Timers.ElapsedEventHandler(theout1);//到达时间的时候执行事件
                 t1.AutoReset = true;//设置是执行一次（false）还是一直执行(true)
@@ -473,7 +473,7 @@ namespace 方糖音乐播放器
                 t2.Enabled = false;//是否执行System.Timers.Timer.Elapsed事件
 
                 //初始化网络接口参数
-                if (Properties .Settings .Default .网络接口参数 == "腾讯")
+                if (Properties.Settings.Default.网络接口参数 == "腾讯")
                 {
                     Search_interface = new Meting(ServerProvider.Tencent);
                 }
@@ -485,7 +485,7 @@ namespace 方糖音乐播放器
                 {
                     Search_interface = new Meting(ServerProvider.Kugou);
                 }
-
+                //是否显示歌词
                 if (Properties.Settings.Default.是否歌词显示 == true)
                 {
                     lyrics_display = true;
@@ -749,18 +749,18 @@ namespace 方糖音乐播放器
                 Play_Misic(Number[主页的播放列表.SelectedIndex].ToString());//播放歌曲
             }
         }
-        [Obsolete]
-        private void 播放列队_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            if (播放列队.SelectedIndex != -1)
-            {
-                Temp5 = 0;
-                Kill();//初始化播放器
-                Play_Misic(Number[播放列队.SelectedIndex].ToString());//播放歌曲
-                主页的播放列表.SelectedIndex = 播放列队.SelectedIndex;
-                黑幕_MouseUp(null, null);
-            }
-        }
+        //[Obsolete]
+        //private void 播放列队_MouseUp(object sender, MouseButtonEventArgs e)
+        //{
+        //    if (播放列队.SelectedIndex != -1)
+        //    {
+        //        Temp5 = 0;
+        //        Kill();//初始化播放器
+        //        Play_Misic(Number[播放列队.SelectedIndex].ToString());//播放歌曲
+        //        主页的播放列表.SelectedIndex = 播放列队.SelectedIndex;
+        //        黑幕_MouseUp(null, null);
+        //    }
+        //}
         //单击播放按钮
         private void 播放_Click(object sender, RoutedEventArgs e)
         {
@@ -786,6 +786,17 @@ namespace 方糖音乐播放器
                 播放器.Pause();
                 t1.Stop();
                 t2.Stop();
+            }
+        }
+        //用于后台播放歌曲，预加载
+        private void backstage(int sum)
+        {
+            using (BackgroundWorker bw = new BackgroundWorker())
+            {
+                load = true;//锁定防止连续单击
+                bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);//完成后返回
+                bw.DoWork += new DoWorkEventHandler(bw_DoWork);//建立后台
+                bw.RunWorkerAsync(Web_search_results[sum].ToString());//开始执行
             }
         }
 
@@ -829,26 +840,28 @@ namespace 方糖音乐播放器
                 {
                     if (网络搜索结果.SelectedIndex == 0)
                     {
-                        using (BackgroundWorker bw = new BackgroundWorker())
-                        {
-                            load = true;//锁定防止连续单击
-                            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);//完成后返回
-                            bw.DoWork += new DoWorkEventHandler(bw_DoWork);//建立后台
-                            bw.RunWorkerAsync(Web_search_results[网络搜索结果.Items.Count - 1].ToString());//开始执行
-                            加载中.Visibility = Visibility.Visible;
-                        }
+                        backstage(网络搜索结果.Items.Count - 1);
+                        //using (BackgroundWorker bw = new BackgroundWorker())
+                        //{
+                        //    load = true;//锁定防止连续单击
+                        //    bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);//完成后返回
+                        //    bw.DoWork += new DoWorkEventHandler(bw_DoWork);//建立后台
+                        //    bw.RunWorkerAsync(Web_search_results[网络搜索结果.Items.Count - 1].ToString());//开始执行
+                        //    加载中.Visibility = Visibility.Visible;
+                        //}
                         网络搜索结果.SelectedIndex = 网络搜索结果.Items.Count - 1;
                     }
                     else
                     {
-                        using (BackgroundWorker bw = new BackgroundWorker())
-                        {
-                            load = true;//锁定防止连续单击
-                            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);//完成后返回
-                            bw.DoWork += new DoWorkEventHandler(bw_DoWork);//建立后台
-                            bw.RunWorkerAsync(Web_search_results[网络搜索结果.SelectedIndex - 1].ToString());//开始执行
-                            加载中.Visibility = Visibility.Visible;
-                        }
+                        backstage(网络搜索结果.SelectedIndex - 1);
+                        //using (BackgroundWorker bw = new BackgroundWorker())
+                        //{
+                        //    load = true;//锁定防止连续单击
+                        //    bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);//完成后返回
+                        //    bw.DoWork += new DoWorkEventHandler(bw_DoWork);//建立后台
+                        //    bw.RunWorkerAsync(Web_search_results[网络搜索结果.SelectedIndex - 1].ToString());//开始执行
+                        //    加载中.Visibility = Visibility.Visible;
+                        //}
                         网络搜索结果.SelectedIndex -= 1;
                     }
                 }
@@ -856,26 +869,28 @@ namespace 方糖音乐播放器
                 {
                     if (主页的播放列表.SelectedIndex + 1 == 网络搜索结果.Items.Count)
                     {
-                        using (BackgroundWorker bw = new BackgroundWorker())
-                        {
-                            load = true;//锁定防止连续单击
-                            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);//完成后返回
-                            bw.DoWork += new DoWorkEventHandler(bw_DoWork);//建立后台
-                            bw.RunWorkerAsync(Web_search_results[0].ToString());//开始执行
-                            加载中.Visibility = Visibility.Visible;
-                        }
+                        backstage(0);
+                        //using (BackgroundWorker bw = new BackgroundWorker())
+                        //{
+                        //    load = true;//锁定防止连续单击
+                        //    bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);//完成后返回
+                        //    bw.DoWork += new DoWorkEventHandler(bw_DoWork);//建立后台
+                        //    bw.RunWorkerAsync(Web_search_results[0].ToString());//开始执行
+                        //    加载中.Visibility = Visibility.Visible;
+                        //}
                         网络搜索结果.SelectedIndex = 0;
                     }
                     else
                     {
-                        using (BackgroundWorker bw = new BackgroundWorker())
-                        {
-                            load = true;//锁定防止连续单击
-                            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);//完成后返回
-                            bw.DoWork += new DoWorkEventHandler(bw_DoWork);//建立后台
-                            bw.RunWorkerAsync(Web_search_results[网络搜索结果.SelectedIndex + 1].ToString());//开始执行
-                            加载中.Visibility = Visibility.Visible;
-                        }
+                        backstage(网络搜索结果.SelectedIndex + 1);
+                        //using (BackgroundWorker bw = new BackgroundWorker())
+                        //{
+                        //    load = true;//锁定防止连续单击
+                        //    bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);//完成后返回
+                        //    bw.DoWork += new DoWorkEventHandler(bw_DoWork);//建立后台
+                        //    bw.RunWorkerAsync(Web_search_results[网络搜索结果.SelectedIndex + 1].ToString());//开始执行
+                        //    加载中.Visibility = Visibility.Visible;
+                        //}
                         网络搜索结果.SelectedIndex += 1;
                     }
                 }
@@ -918,7 +933,7 @@ namespace 方糖音乐播放器
                     }
                     else
                     {
-                        if (网络搜索结果 .Items .Count != 0)
+                        if (网络搜索结果.Items.Count != 0)
                         {
                             网络搜索结果.SelectedIndex = 0;
                             下一曲_Click(null, null);
@@ -1134,7 +1149,7 @@ namespace 方糖音乐播放器
             if (搜索框.SelectedIndex != -1 && ID[0] != null)
             {
                 Kill();//清除播放器状态
-                for (int i = 0; i < Number.Count ; i++)
+                for (int i = 0; i < Number.Count; i++)
                 {
                     if (Number[i].ToString() == ID[搜索框.SelectedIndex].ToString())//定位文件
                     {
@@ -1154,7 +1169,7 @@ namespace 方糖音乐播放器
             搜索框关闭 = 1;
             搜索框.Items.Clear();//清空内容
             ID.Clear();//清空数组
-            for (int i = 0; i < Number.Count ; i++)//循环最大长度为歌单列表的最大长度
+            for (int i = 0; i < Number.Count; i++)//循环最大长度为歌单列表的最大长度
             {
                 string s = System.IO.Path.GetFileNameWithoutExtension(Number[i].ToString());//从路径取文件名称
                 string v = 搜索.Text;//获取输入的内容
@@ -1162,13 +1177,13 @@ namespace 方糖音乐播放器
                 {
                     if (s.Contains(v))//用Contains函数判断用户输入的数值是否包含
                     {
-                        ID.Add (Number[i].ToString());//记录文件路径
+                        ID.Add(Number[i].ToString());//记录文件路径
                         //向列表框中添加搜索结果
                         Function_list.填充菜单(搜索框, System.IO.Path.GetFileNameWithoutExtension(Number[i].ToString()), System.IO.Path.GetFileNameWithoutExtension(Number[i].ToString()), 248, 40, 15, false);
                     }
                 }
             }
-            if (ID.Count  == 0 && 搜索.Text != "")
+            if (ID.Count == 0 && 搜索.Text != "")
             {
                 Label item = new Label();
                 item.Content = "什么也木有找到w(ﾟДﾟ)w";//设置显示名称
@@ -1194,20 +1209,21 @@ namespace 方糖音乐播放器
         {
             if (form == false)
             {
-                程序设置 child = new 程序设置(color3);
+                程序设置 child = new 程序设置(color3);//实例化窗口
                 child.fcc1 += background;//添加委托事件
                 child.fcc2 += Vague;
                 child.fcc3 += Truefalse;
                 child.fcc4 += cancel;
                 child.fcc5 += form1;
                 child.fcc6 += Zoom_mode;
-                zoom();
-                child.Show();
+                zoom();//保存当前的背景图片对其方式
+                child.Show();//启动窗口
                 form = true;
-                搜索框_MouseLeave(null, null);
+                //搜索框_MouseLeave(null, null);
             }
         }
         int zoom_temp = 0;
+
         private void zoom()
         {
             if (背景.Stretch == Stretch.None) { zoom_temp = 1; }
@@ -1362,11 +1378,6 @@ namespace 方糖音乐播放器
             return 0;
         }
 
-        private void 播放列表_MouseLeave(object sender, MouseEventArgs e)
-        {
-            播放列表.SelectedIndex = -1;
-        }
-
         private void 主界面菜单选择_MouseEnter(object sender, MouseEventArgs e)
         {
             主界面菜单选择.SelectedIndex = -1;
@@ -1382,38 +1393,11 @@ namespace 方糖音乐播放器
             t2.Interval = 100;
         }
 
-        private void 速度_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            //if (速度框架.Visibility == Visibility.Collapsed) { 动画播放("速度打开"); }
-            //else { 动画播放("速度关闭"); }
-        }
-
-        private void 速度框架_MouseLeave(object sender, MouseEventArgs e)
-        {
-            //if (速度框架.Visibility == Visibility.Visible) { 动画播放("速度关闭"); }
-        }
-
-        //int axvb = 0;
-        private void 速度条_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            //if (axvb == 1)
-            //{
-            //    播放器.SpeedRatio = 速度条.Value;
-            //    速度显示.Content = 速度条.Value + "倍速";
-            //}
-            //axvb = 1;
-        }
-        private void 速度调节_MouseLeave(object sender, MouseEventArgs e)
-        {
-            速度调节.SelectedIndex = -1;
-        }
-
         private void 播放器_MediaOpened(object sender, RoutedEventArgs e)
         {
             try
             {
                 主页的播放列表.ScrollIntoView(主页的播放列表.Items[主页的播放列表.SelectedIndex]);
-                播放列队.ScrollIntoView(播放列队.Items[播放列队.SelectedIndex]);
             }
             catch { }
         }
@@ -1424,15 +1408,14 @@ namespace 方糖音乐播放器
             string[] filePath = (string[])e.Data.GetData(DataFormats.FileDrop);
             if (System.IO.Path.GetExtension(filePath[0]) != "")
             {
-                if(System.IO.Path.GetExtension(filePath[0]) == ".mp3" || System.IO.Path.GetExtension(filePath[0]) == ".wav" || System.IO.Path.GetExtension(filePath[0]) == ".flac")
+                if (System.IO.Path.GetExtension(filePath[0]) == ".mp3" || System.IO.Path.GetExtension(filePath[0]) == ".wav" || System.IO.Path.GetExtension(filePath[0]) == ".flac")
                 {
                     主页的播放列表.SelectedIndex = -1;
                     Kill();
                     Temp5 = 1;
                     Play_Misic(filePath[0]);
-
                 }
-                else if(System.IO.Path.GetExtension(filePath[0]) == ".mp4" || System.IO.Path.GetExtension(filePath[0]) == ".wmv"|| System.IO.Path.GetExtension(filePath[0]) == ".avi")
+                else if (System.IO.Path.GetExtension(filePath[0]) == ".mp4" || System.IO.Path.GetExtension(filePath[0]) == ".wmv" || System.IO.Path.GetExtension(filePath[0]) == ".avi")
                 {
                     if (Properties.Settings.Default.独立播放视频 == true)
                     {
@@ -1452,7 +1435,7 @@ namespace 方糖音乐播放器
             }
             else
             {
-                弹窗提示 Tips = new 弹窗提示(0, color3,0,null);
+                弹窗提示 Tips = new 弹窗提示(0, color3, 0, null);
                 Tips.fcc1 += Return_value;
                 Tips.ShowDialog();
                 if (Return_value1 == 1)//单文件夹
@@ -1482,7 +1465,7 @@ namespace 方糖音乐播放器
         private int Playback_status(int a)
         {
             if (a == 1) { 播放_Click(null, null); }
-            else if(a == 2) { 暂停_Click(null, null); }
+            else if (a == 2) { 暂停_Click(null, null); }
             else if (a == 3) { 上一曲_Click(null, null); }
             else if (a == 4) { 下一曲_Click(null, null); }
             return 0;
@@ -1514,7 +1497,7 @@ namespace 方糖音乐播放器
 
         void bw_DoWork2(object sender, DoWorkEventArgs e)//后台
         {
-            // 获得 json 数据
+            //获得json数据
             jsonStr = Search_interface.FormatMethod(true).Search(e.Argument.ToString(), new Meting4Net.Core.Models.Standard.Options
             {
                 page = 1,//页数
@@ -1545,7 +1528,7 @@ namespace 方糖音乐播放器
 
         private void 网络搜索结果_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (网络搜索结果 .SelectedIndex != -1 && load == false)
+            if (网络搜索结果.SelectedIndex != -1 && load == false)
             {
                 Program_background(Web_search_results[网络搜索结果.SelectedIndex].ToString());
             }
@@ -1579,10 +1562,10 @@ namespace 方糖音乐播放器
         string Song_path = null;//歌曲路径
         string Album_path = null;//专辑图片路径
         string Lyrics_path = null;//歌词路径
-        string[] Album_Singer = new string[3];
+        string[] Album_Singer = new string[3];//存储歌曲信息
         bool temp23 = true;//是否要播放
         [Obsolete]
-        void  bw_DoWork(object sender, DoWorkEventArgs e)//后台
+        void bw_DoWork(object sender, DoWorkEventArgs e)//后台
         {
             try
             {
@@ -1591,20 +1574,21 @@ namespace 方糖音乐播放器
                 name += "-" + Function_list.Substring(song, "[\"", "\"]").Replace("\"", "");//取歌手
                 name += "-" + Function_list.Substring(song, "\"id\":\"", "\"");//取唯一id,避免重复
 
+                //暂时存储歌曲信息
                 Album_Singer[0] = Function_list.Substring(song, "\"name\":\"", "\"");//取名称
                 Album_Singer[1] = Function_list.Substring(song, "[\"", "\"]").Replace("\"", "");//歌手
                 Album_Singer[2] = Function_list.Substring(song, "\"album\":\"", "\"");//专辑
 
-                if (System.IO.File.Exists(Web_file + name + ".mp3"))
+                if (System.IO.File.Exists(Web_file + name + ".mp3"))//判断下载目录是否存在同名称文件
                 {
-                    Song_path = Web_file + name + ".mp3";
+                    Song_path = Web_file + name + ".mp3";//设置下载名称和路径
                 }
                 else
-                {
+                {   //解析歌曲json数据，读取歌曲名称
                     string url = Search_interface.FormatMethod(true).Url(Function_list.Substring(song, "\"id\":\"", "\""), 128);//获取歌曲
-                    if (Function_list.Substring(url, "\"url\":\"", "\"") == "")
+                    if (Function_list.Substring(url, "\"url\":\"", "\"") == "")//如何为空，代表歌曲受版权保护，弹出错误窗口
                     {
-                        temp23 = false;
+                        temp23 = false;//不要播放
                         new Thread(() =>//异步调用
                         {
                             Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
@@ -1615,26 +1599,26 @@ namespace 方糖音乐播放器
                                 }));
                         }).Start();
                     }
-                    else
+                    else//如果歌曲链接可以正常获取
                     {
                         try
                         {
                             Song_path = Web_file + name + ".mp3";
-                            using (var client = new WebClient())
+                            using (var client = new WebClient())//对链接进行下载
                             {
                                 client.DownloadFile(Function_list.Substring(url, "\"url\":\"", "\""), Song_path);//下载文件
                             }
-                            temp23 = true;
+                            temp23 = true;//可以播放
                         }
-                        catch
+                        catch (Exception ex)
                         {
-                            temp23 = false ;
+                            temp23 = false;//下载时出现错误，不播放歌曲弹出错误窗口
                             new Thread(() =>//异步调用
                             {
                                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
                                     new Action(() =>
                                     {
-                                        Tips = new 弹窗提示(3, color3, 0, "播放失败，可能是网络连接超时");
+                                        Tips = new 弹窗提示(3, color3, 0, "播放失败：\n" + ex.ToString());
                                         Tips.ShowDialog();
                                     }));
                             }).Start();
@@ -1642,38 +1626,40 @@ namespace 方糖音乐播放器
                     }
                 }
 
-                if (System.IO.File.Exists(Web_file + name + ".png"))
+                if (System.IO.File.Exists(Web_file + name + ".png"))//判断下载目录是否有歌曲专辑文件
                 {
                     Album_path = Web_file + name + ".png";
                 }
                 else
                 {
                     string pic = Search_interface.FormatMethod(true).Pic(Function_list.Substring(song, "\"pic_id\":\"", "\""), 300);//获取歌曲专辑图片
-                    Album_path = Web_file + name + ".jpg";
-                    using (var client = new WebClient())
+                    Album_path = Web_file + name + ".jpg";//写入路径
+                    using (var client = new WebClient())//对专辑图片下载
                     {
                         client.DownloadFile(Function_list.Substring(pic, "\"url\":\"", "\""), Album_path);//下载文件
                     }
+
+                    //图片转png格式。可以修复部分图片读取失败的方案
                     System.Drawing.Image Dummy = System.Drawing.Image.FromFile(Album_path);
                     Dummy.Save(Path.GetDirectoryName(Album_path) + @"\" + Path.GetFileNameWithoutExtension(Album_path) + ".png", System.Drawing.Imaging.ImageFormat.Bmp);
                     Dummy.Dispose();
-                    System.IO.File.Delete(Album_path);
+                    System.IO.File.Delete(Album_path);//删除源文件
                     Album_path = Web_file + name + ".png";
                 }
 
-                if (System.IO.File.Exists(Web_file + name + ".lrc"))
+                if (System.IO.File.Exists(Web_file + name + ".lrc"))//判断下载目录下是否存在歌词文件
                 {
                     Lyrics_path = Web_file + name + ".lrc";
                 }
                 else
                 {
-                    string lrc = Web_file + name + ".lrc";
+                    string lrc = Web_file + name + ".lrc";//设置路径
                     Lyrics_path = Function_list.Substring(Search_interface.FormatMethod(true).Lyric(Function_list.Substring(song, "\"id\":\"", "\"")), "\"lyric\":\"", "\"");//获取歌词
                     Lyrics_path = Lyrics_path.Replace(@"\n", "\n");//自动换行
                     System.IO.StreamWriter f2 = new System.IO.StreamWriter(lrc, true, System.Text.Encoding.Default);
-                    f2.WriteLine(Lyrics_path);
+                    f2.WriteLine(Lyrics_path);//写入本地文件
                     f2.Close();
-                    f2.Dispose();
+                    f2.Dispose();//关闭文件流
                 }
             }
             catch { }
@@ -1703,6 +1689,16 @@ namespace 方糖音乐播放器
         private void 网络搜索结果_MouseLeave(object sender, MouseEventArgs e)
         {
             动画播放("滚动条关闭1");
+        }
+
+        private void 大专辑_MouseEnter(object sender, MouseEventArgs e)
+        {
+            动画播放("专辑放大");
+        }
+
+        private void 大专辑_MouseLeave(object sender, MouseEventArgs e)
+        {
+            动画播放("专辑缩小");
         }
     }
 }

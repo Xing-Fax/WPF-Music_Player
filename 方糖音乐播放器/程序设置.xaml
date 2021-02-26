@@ -584,7 +584,7 @@
             <TextBlock HorizontalAlignment="Left" Height="497.833" Margin="10,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" Foreground="#FF426ECD" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="修改程序默认背景图片："/><Run Foreground="Black" Text="可以修改默认背景图片，支持的格式有"/><Run Foreground="Black" Text="JPG、PNG、JPGE、BMP"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="缩放模式："/><Run Foreground="Black" Text="设置背景图片的在程序中的缩放模式，默认是&quot;填充&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="模糊："/><Run Foreground="Black" Text="设置背景图片在程序中的模糊程度，默认是&quot;5&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="设置歌词路径："/><Run Foreground="Black" Text="可以将歌词文件放置到一个文件夹中，播放时会自动读取，歌词读取优先级；&quot;歌曲内嵌→指定文件夹→歌曲目录下&quot;"/><LineBreak/><LineBreak/><Run Text="当前路径："/><Run Foreground="Black" Text="显示用户设置的歌词目录，单击可以打开目录"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="显示歌词："/><Run Foreground="Black" Text="是否显示滚动歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="平滑滚动："/><Run Foreground="Black" Text="设置歌词滚动方式"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="桌面歌词："/><Run Foreground="Black" Text="打开/关闭桌面歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="独立播放："/><Run Foreground="Black" Text="在独立窗口播放视频"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="嵌入歌词："/><Run Foreground="Black" Text="当读取到有效歌词且歌曲没有内嵌歌词的情况下，可以自动将歌词嵌入歌曲内"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="恢复默认："/><Run Foreground="Black" Text="将所有设置恢复默认状态"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="取消更改："/><Run Foreground="Black" Text="取消对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="保存更改："/><Run Foreground="Black" Text="保存对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="错误报告："/><Run Foreground="Black" Text="是否向用户发送程序错误原因，以方便排查错误"/></TextBlock>
             <Button Content="关于程序" HorizontalAlignment="Left" Height="25" Margin="300,565,0,0" VerticalAlignment="Top" Width="90" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{Binding Background, ElementName=默认}" Click="Button_Click_2"/>
         </Grid>
-        <Grid x:Name="grid2" Height="600" Width="400" MouseMove="Grid_MouseMove">
+        <Grid x:Name="grid2" Height="600" Width="400" MouseMove="Grid_MouseMove" d:IsHidden="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="53*"/>
                 <RowDefinition Height="7*"/>
@@ -615,7 +615,7 @@
             </Button>
             <materialDesign:PackIcon x:Name="Net" Kind="DotNet" HorizontalAlignment="Left" Height="25" Margin="178.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" MouseEnter="Net_MouseEnter" MouseLeave="Net_MouseLeave" Background="#FFF4F4F5"/>
             <materialDesign:PackIcon x:Name="Csharp" Kind="LanguageCsharp"  HorizontalAlignment="Left" Height="25" Margin="138.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" MouseEnter="Csharp_MouseEnter" MouseLeave="Csharp_MouseLeave" Background="#FFF4F4F5"/>
-            <materialDesign:PackIcon x:Name="Github" Kind="GiftOutline" HorizontalAlignment="Left" Height="25" Margin="98.167,40,0,0" VerticalAlignment="Top" Width="40" Foreground="#FF595959" MouseEnter="Github_MouseEnter" MouseLeave="Github_MouseLeave" Background="#FFF4F4F5" MouseUp="Github_MouseUp" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="12"/>
+            <materialDesign:PackIcon x:Name="GiftOutline" Kind="GiftOutline" HorizontalAlignment="Left" Height="25" Margin="98.167,40,0,0" VerticalAlignment="Top" Width="40" Foreground="#FF595959" Background="#FFF4F4F5" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="12" MouseEnter="GiftOutline_MouseEnter" MouseLeave="GiftOutline_MouseLeave"/>
             <materialDesign:PackIcon x:Name="packIcon" Kind="GoogleDownasaur" HorizontalAlignment="Left" Height="40" Margin="355,0,0,0" VerticalAlignment="Top" Width="40" Grid.Row="1" RenderTransformOrigin="0.5,0.5" MouseUp="packIcon_MouseUp">
                 <materialDesign:PackIcon.RenderTransform>
                     <TransformGroup>
@@ -640,7 +640,7 @@
                     <BlurEffect/>
                 </Ellipse.Effect>
             </Ellipse>
-            <materialDesign:PackIcon x:Name="Github_Copy" ToolTip="获取开源项目" Kind="Github" HorizontalAlignment="Left" Height="25" Margin="58.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" MouseEnter="Github_MouseEnter" MouseLeave="Github_MouseLeave" Background="#FFF4F4F5" MouseUp="Github_MouseUp"/>
+            <materialDesign:PackIcon x:Name="Github" ToolTip="获取开源项目" Kind="Github" HorizontalAlignment="Left" Height="25" Margin="58.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" MouseEnter="Github_MouseEnter" MouseLeave="Github_MouseLeave" Background="#FFF4F4F5" MouseUp="Github_MouseUp"/>
         </Grid>
     </Canvas>
 </Window>

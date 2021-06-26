@@ -103,11 +103,17 @@ namespace 方糖音乐播放器
                 for (int i = 0; i < 5; i++) { Function_list.填充菜单(歌词滚动显示, null, null, 470, 35, 15, true); }//多打印空白行5个
             }
         }
-
+        //自动嵌入歌词函数
         private string Embedded_lyrics()
         {
             string a = "";
-            for (int i = 0; i < lrc_time.Count; i++) { if (lrc_time[i] != null) { a += "[" + lrc_time[i] + "]" + lrc_lyrics[i] + "\n"; } }
+            for (int i = 0; i < lrc_time.Count; i++)
+            { 
+                if (lrc_time[i] != null) 
+                {//将读取到的歌词写格式化写入到字符串
+                    a += "[" + lrc_time[i] + "]" + lrc_lyrics[i] + "\n"; 
+                }
+            }
             return a;
         }
 
@@ -123,7 +129,7 @@ namespace 方糖音乐播放器
                 {//状态正常
                     TagLib.File Read_information = TagLib.File.Create(File_s);
                     string name = Read_information.Tag.Title;//获取歌曲名称
-                    string Albumstr = Read_information.Tag.Album;//获取专辑;
+                    string Albumstr = Read_information.Tag.Album;//获取专辑
                     string namestr = Read_information.Tag.Lyrics;//获取歌词
                     string[] artist = Read_information.Tag.Artists;//获取歌手
                     Song_time = Convert.ToString(Read_information.Properties.Duration).Substring(3, 5);//获取时长
@@ -150,38 +156,45 @@ namespace 方糖音乐播放器
                         歌手专辑.Content = "歌手:" + Singer_collection;
                         歌手专辑2.Content = "专辑:" + Albumstr;
                     }
-                    //读取歌词
-                    if (namestr != null)//判断歌曲是否内嵌入歌词
-                    {//如果有
-                        Read_lyrics_string(namestr);
-                        Geci = 0;
-                    }
-                    else if (Properties.Settings.Default.歌词目录 != "默认" && Directory.Exists(Properties.Settings.Default.歌词目录) && System.IO.File.Exists(Properties.Settings.Default.歌词目录 + @"\" + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".lrc"))//如果没有找到歌词，从用户设置目录读取
-                    {//如果用户设置了目录，并且目录存在,并且目录下存在与歌曲名称同名的歌词文件
-                        Read_lyrics_string(Function_list.读取歌词(Properties.Settings.Default.歌词目录 + @"\" + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".lrc"));
-                        Geci = 0;
-                        if (Properties.Settings.Default.嵌入歌词 == true)
-                        {
-                            Read_information.Tag.Lyrics = Embedded_lyrics();
-                            Read_information.Save();
-                        }
-
-                    }//从歌曲目录下寻找歌词文件
-                    else if (System.IO.File.Exists(Regex.Replace(File_s, System.IO.Path.GetFileName(File_s), string.Empty, RegexOptions.Compiled) + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".lrc"))
-                    {//如果存在
-                        Read_lyrics_string(Function_list.读取歌词(Regex.Replace(File_s, System.IO.Path.GetFileName(File_s), string.Empty, RegexOptions.Compiled) + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".lrc"));
-                        Geci = 0;
-                        if (Properties.Settings.Default.嵌入歌词 == true)
-                        {
-                            Read_information.Tag.Lyrics = Embedded_lyrics();
-                            Read_information.Save();
-                        }
-                    }
-                    else
+                    try
                     {
-                        Read_lyrics_string("[00:05.00]该歌曲为纯音乐,或没有找到歌词文件");
-                        Geci = 1;
-                    }//歌词不存在，不打印歌词
+                        //读取歌词
+                        if (namestr != null)//判断歌曲是否内嵌入歌词
+                        {//如果有
+                            Read_lyrics_string(namestr);
+                            Geci = 0;
+                        }
+                        else if (Properties.Settings.Default.歌词目录 != "默认" && Directory.Exists(Properties.Settings.Default.歌词目录) && System.IO.File.Exists(Properties.Settings.Default.歌词目录 + @"\" + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".lrc"))//如果没有找到歌词，从用户设置目录读取
+                        {//如果用户设置了目录，并且目录存在,并且目录下存在与歌曲名称同名的歌词文件
+                            Read_lyrics_string(Function_list.读取歌词(Properties.Settings.Default.歌词目录 + @"\" + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".lrc"));
+                            Geci = 0;
+                            if (Properties.Settings.Default.嵌入歌词 == true)
+                            {
+                                Read_information.Tag.Lyrics = Embedded_lyrics();
+                                Read_information.Save();
+                            }
+
+                        }//从歌曲目录下寻找歌词文件
+                        else if (System.IO.File.Exists(Regex.Replace(File_s, System.IO.Path.GetFileName(File_s), string.Empty, RegexOptions.Compiled) + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".lrc"))
+                        {//如果存在
+                            Read_lyrics_string(Function_list.读取歌词(Regex.Replace(File_s, System.IO.Path.GetFileName(File_s), string.Empty, RegexOptions.Compiled) + System.IO.Path.GetFileNameWithoutExtension(File_s) + ".lrc"));
+                            Geci = 0;
+                            if (Properties.Settings.Default.嵌入歌词 == true)
+                            {
+                                Read_information.Tag.Lyrics = Embedded_lyrics();
+                                Read_information.Save();
+                            }
+                        }
+                        else
+                        {
+                            Read_lyrics_string("[00:05.00]该歌曲为纯音乐,或没有找到歌词文件");
+                            Geci = 1;
+                        }//歌词不存在，不打印歌词
+                    }
+                    catch (Exception ex)
+                    {
+                        Function_list.Error_capture("读写歌词时发生异常:\n" + ex.ToString(), Tips, color3);
+                    }
 
                     //读取专辑图片
                     if (Read_information.Tag.Pictures != null && Read_information.Tag.Pictures.Length != 0)
@@ -368,9 +381,9 @@ namespace 方糖音乐播放器
                      {//如果没有到底，继续更新时间
                       //刷新播放时间
                          if (button == 0)
-                         {
+                         {//刷新时间
                              播放时间.Content = Convert.ToString(播放器.Position).Substring(3, 5) + "-" + Song_time;
-                             进度条.Value = 播放器.Position.TotalSeconds;
+                             进度条.Value = 播放器.Position.TotalSeconds;//定位进度条
                          }
                      }
                  }));
@@ -396,15 +409,17 @@ namespace 方糖音乐播放器
                                 {
                                     歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
                                 }
-                                for (int j = 0; j < 歌词滚动显示.SelectedIndex; j ++)
+
+                                for (int j = 0; j < 歌词滚动显示.SelectedIndex; j ++)//上面歌词改颜色为黑色
                                 {
                                     ((ListBoxItem)歌词滚动显示.Items[j]).Foreground = new SolidColorBrush(color2);
                                 }
-                                for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o --)
+
+                                for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o --)//下面歌词修改为黑色
                                 {
                                     ((ListBoxItem)歌词滚动显示.Items[o]).Foreground = new SolidColorBrush(color2);
                                 }
-                                if (Get != null)
+                                if (Get != null)//如果启用了桌面歌词
                                 {
                                     Get.主.Content = lrc_lyrics[i];
                                     Get.父.Content = lrc_lyrics[i + 1];
@@ -420,8 +435,8 @@ namespace 方糖音乐播放器
         ArrayList lrc_lyrics = new ArrayList();//存储与时间对应的歌词
         ArrayList Web_search_results = new ArrayList();//存储网络搜索结果
 
-        bool current_state = true;//设置是本地还是联网
-        string Web_file = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\";//跟歌曲缓存目录
+        bool current_state = true;//设置是本地模式还是联网模式
+        string Web_file = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\";//系统默认歌曲目录，用于歌曲默认缓存目录
 
         bool lyrics_display;//决定是否要显示滚动歌词
         int Number_of_songs = 0;//存储歌曲数量
@@ -430,7 +445,7 @@ namespace 方糖音乐播放器
         System.Timers.Timer t2 = new System.Timers.Timer(100);//实例化Timer类用于更新时间
         桌面歌词 Get;
         弹窗提示 Tips;
-        Meting Search_interface;
+        Meting Search_interface;//音乐接口api
         [Obsolete]
         public MainWindow()
         {
@@ -594,7 +609,6 @@ namespace 方糖音乐播放器
         [Obsolete]
         void Exit_from(object sender, DoWorkEventArgs e)
         {
-
             //DeleteDir(System.IO.Path.GetTempPath() + @"方糖音乐");//删除临时目录
             Environment.Exit(0);
         }
@@ -1002,6 +1016,47 @@ namespace 方糖音乐播放器
                     }
                 }
             }
+        }
+
+        private void listBoxItem_MouseUp_1(object sender, MouseButtonEventArgs e)
+        {
+            if (current_state == true)
+            {
+                动画播放("切换动画开");
+                切换.ToolTip = "本地播放";
+                current_state = false;
+            }
+            else
+            {
+                动画播放("切换动画关");
+                切换.ToolTip = "在线播放";
+                current_state = true;
+            }
+        }
+
+        private void 网络搜索结果_MouseEnter(object sender, MouseEventArgs e)
+        {
+            动画播放("滚动条打开1");
+        }
+
+        private void 网络搜索结果_MouseLeave(object sender, MouseEventArgs e)
+        {
+            动画播放("滚动条关闭1");
+        }
+
+        private void 大专辑_MouseEnter(object sender, MouseEventArgs e)
+        {
+            //动画播放("专辑放大");
+        }
+
+        private void 大专辑_MouseLeave(object sender, MouseEventArgs e)
+        {
+            //动画播放("专辑缩小");
+        }
+
+        private void window窗体_Activated(object sender, EventArgs e)
+        {
+            Function_list.FlushMemory();
         }
         //播放视频函数
         private void Play_video(string file)
@@ -1448,6 +1503,7 @@ namespace 方糖音乐播放器
                 }
             }
         }
+
         int Return_value1 = 0;//返回参数
         private int Return_value(int a)
         {
@@ -1495,18 +1551,35 @@ namespace 方糖音乐播放器
             }
         }
 
+        [Obsolete]
         void bw_DoWork2(object sender, DoWorkEventArgs e)//后台
         {
-            //获得json数据
-            jsonStr = Search_interface.FormatMethod(true).Search(e.Argument.ToString(), new Meting4Net.Core.Models.Standard.Options
+            try
             {
-                page = 1,//页数
-                limit = 30//输出30条数据
-            });
+                //获得json数据
+                jsonStr = Search_interface.FormatMethod(true).Search(e.Argument.ToString(), new Meting4Net.Core.Models.Standard.Options
+                {
+                    page = 1,//页数
+                    limit = 30//输出30条数据
+                });
+            }
+            catch
+            {//错误报告，网络超时
+                new Thread(() =>//异步调用
+                {
+                    Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
+                        new Action(() =>
+                        {
+                            Tips = new 弹窗提示(3, color3, 0, "搜索失败，请检查网络后重试！");
+                            Tips.ShowDialog();
+                        }));
+                }).Start();
+            }
         }
 
         void bw_RunWorkerCompleted2(object sender, RunWorkerCompletedEventArgs e)//更新控件
         {
+            MessageBox.Show(jsonStr);
             //序列化数据
             bool temp = true;
             while (temp)
@@ -1586,7 +1659,7 @@ namespace 方糖音乐播放器
                 else
                 {   //解析歌曲json数据，读取歌曲名称
                     string url = Search_interface.FormatMethod(true).Url(Function_list.Substring(song, "\"id\":\"", "\""), 128);//获取歌曲
-                    if (Function_list.Substring(url, "\"url\":\"", "\"") == "")//如何为空，代表歌曲受版权保护，弹出错误窗口
+                    if (Function_list.Substring(url, "\"url\":\"", "\"") == "")//如果为空，代表歌曲受版权保护，弹出错误窗口
                     {
                         temp23 = false;//不要播放
                         new Thread(() =>//异步调用
@@ -1618,7 +1691,7 @@ namespace 方糖音乐播放器
                                 Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal,
                                     new Action(() =>
                                     {
-                                        Tips = new 弹窗提示(3, color3, 0, "播放失败：\n" + ex.ToString());
+                                        Tips = new 弹窗提示(4, color3, 0, "播放失败：\n" + ex.ToString());
                                         Tips.ShowDialog();
                                     }));
                             }).Start();
@@ -1664,42 +1737,5 @@ namespace 方糖音乐播放器
             }
             catch { }
         }
-
-        private void listBoxItem_MouseUp_1(object sender, MouseButtonEventArgs e)
-        {
-            if (current_state == true)
-            {
-                动画播放("切换动画开");
-                切换.ToolTip = "本地播放";
-                current_state = false;
-            }
-            else
-            {
-                动画播放("切换动画关");
-                切换.ToolTip = "在线播放";
-                current_state = true;
-            }
-        }
-
-        private void 网络搜索结果_MouseEnter(object sender, MouseEventArgs e)
-        {
-            动画播放("滚动条打开1");
-        }
-
-        private void 网络搜索结果_MouseLeave(object sender, MouseEventArgs e)
-        {
-            动画播放("滚动条关闭1");
-        }
-
-        private void 大专辑_MouseEnter(object sender, MouseEventArgs e)
-        {
-            动画播放("专辑放大");
-        }
-
-        private void 大专辑_MouseLeave(object sender, MouseEventArgs e)
-        {
-            动画播放("专辑缩小");
-        }
     }
 }
-

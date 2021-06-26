@@ -102,14 +102,14 @@ namespace 方糖音乐播放器
                     bmp.BeginInit();
                     bmp.StreamSource = new MemoryStream(f.Tag.Pictures[0].Data.Data);
                     bmp.EndInit();
-                    return bmp;
+                    return bmp;//返回图片对象
                 }
             }
-            catch //(Exception ex)
+            catch //(Exception ex)如果图片格式不支持
             {
                 FileStream fs = null;
                 try
-                {
+                {//将图片写入到新的路径
                     fs = new FileStream(System.IO.Path.GetTempPath() + "临时文件.png", FileMode.Create, FileAccess.Write);
                     fs.Write(f.Tag.Pictures[0].Data.Data, 0, f.Tag.Pictures[0].Data.Data.Length);
                 }
@@ -118,31 +118,32 @@ namespace 方糖音乐播放器
                 {
                     fs.Close();//释放文件句柄
                     fs.Dispose();
-                }
+                }//图片格式转换
                 System.Drawing.Image Dummy = System.Drawing.Image.FromFile(System.IO.Path.GetTempPath() + "临时文件.png");
                 Dummy.Save(System.IO.Path.GetDirectoryName(path) + @"\" + System.IO.Path.GetFileNameWithoutExtension(path) + ".png", System.Drawing.Imaging.ImageFormat.Bmp);
                 bmp = Function_list.Album_pictures(System.IO.Path.GetDirectoryName(path) + @"\" + System.IO.Path.GetFileNameWithoutExtension(path) + ".png");
                 Dummy.Dispose();
                 System.IO.File.Delete(System.IO.Path.GetDirectoryName(path) + @"\" + System.IO.Path.GetFileNameWithoutExtension(path) + ".png");
                 System.IO.File.Delete(System.IO.Path.GetTempPath() + "临时文件.png");
-                return bmp;
+                return bmp;//返回图片对象
             }
             return null;
         }
-        //填充菜单
-        public static void 填充菜单(System.Windows.Controls.ListBox box, string name, string tooltip, int width, int height, int fontsize, bool Centered)
+        //填充菜单-要填充的对象--名称--鼠标悬浮提示--对象宽度--对象高度--字体大小--文本内容上下居中
+        public static void 填充菜单(ListBox box, string name, string tooltip, int width, int height, int fontsize, bool Centered)
         {
             ListBoxItem item = new ListBoxItem();
             item.Content = name;//设置显示名称
             item.Width = width;//设置宽度
             item.Height = height;//设置高度
+            //item.FontFamily fontFamily = "";
             item.FontSize = fontsize;//设置字号
             item.ToolTip = tooltip;//设置提示
             //item.Focusable = false;
             if (Centered == true) { item.HorizontalContentAlignment = HorizontalAlignment.Center; }//设置文本上下左右居中
             box.Items.Add(item);//将控件添加到集合里
         }
-        //读取歌词函数
+        //读取歌词函数--歌词文件路径
         public  static string 读取歌词(string file)
         {
             string msg;
@@ -164,8 +165,8 @@ namespace 方糖音乐播放器
             }
         }
         //单文件夹扫描歌曲
-        [Obsolete]
-        public static void  query(System.Windows.Controls.ListBox list ,string file, ArrayList array, 弹窗提示 Tips, Color color3)
+        [Obsolete]//--要填充的控件--路径--歌曲目录数组--错误弹窗对象--主题颜色
+        public static void  query(ListBox list ,string file, ArrayList array, 弹窗提示 Tips, Color color3)
         {
             string[] ssg = { "*.mp3", "*.wav", "*.flac" };//设置过滤器
             for (int i = 0; i < 3; i++)
@@ -186,8 +187,8 @@ namespace 方糖音乐播放器
             }
         }
         //全盘递归扫描歌曲
-        [Obsolete]
-        public static void  ListFiles(System.Windows.Controls.ListBox list, FileSystemInfo info, ArrayList array, 弹窗提示 Tips, Color color3)
+        [Obsolete]//--要填充的控件--路径--歌曲目录数组--错误弹窗对象--主题颜色
+        public static void  ListFiles(ListBox list, FileSystemInfo info, ArrayList array, 弹窗提示 Tips, Color color3)
         {
             string Ext;
             string[] ssgb = { "mp3", "wav", "flac" };//设置过滤器

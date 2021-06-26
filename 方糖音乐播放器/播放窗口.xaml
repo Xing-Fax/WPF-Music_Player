@@ -74,7 +74,7 @@
         </Storyboard>
     </Window.Resources>
     <Grid>
-        <MediaElement x:Name="播放器" Volume="1" LoadedBehavior="Manual" MouseUp="播放器_MouseUp" MediaOpened="播放器_MediaOpened" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SnapsToDevicePixels="True" ClipToBounds="True"/>
+        <MediaElement x:Name="播放器" Volume="1" LoadedBehavior="Manual" MediaOpened="播放器_MediaOpened" ScrollViewer.VerticalScrollBarVisibility="Hidden" ScrollViewer.HorizontalScrollBarVisibility="Hidden" SnapsToDevicePixels="True" ClipToBounds="True"/>
         <Grid x:Name="底部播放栏" MinHeight="50" Grid.IsSharedSizeScope="True" SnapsToDevicePixels="True" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5">
             <Grid.RenderTransform>
                 <TransformGroup>
@@ -143,7 +143,7 @@
                 <Slider x:Name="音量条" HorizontalAlignment="Left" Height="25" Margin="40,17.997,0,0" VerticalAlignment="Top" Width="155" BorderBrush="{x:Null}" Foreground="{Binding Fill, ElementName=方块一}" Maximum="100" SmallChange="1" Value="100" ValueChanged="音量条_ValueChanged"/>
                 <Label x:Name="音量显示" Content="100%" HorizontalAlignment="Left" Height="26.665" Margin="190,13.335,0,0" VerticalAlignment="Top" Width="55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#298-CAI978" FontSize="18" Foreground="#DDFFFFFF"/>
                 <materialDesign:PackIcon x:Name="有" Kind="VolumeHigh" HorizontalAlignment="Left" Height="30" Margin="10,12.997,0,0" VerticalAlignment="Top" Width="30" Foreground="White"/>
-                <materialDesign:PackIcon x:Name="无" Kind="VolumeMute" HorizontalAlignment="Left" Height="30" Margin="10,12.997,0,0" VerticalAlignment="Top" Width="30" Foreground="White"/>
+                <materialDesign:PackIcon x:Name="无" Kind="VolumeMute" HorizontalAlignment="Left" Height="30" Margin="10,12.997,0,0" VerticalAlignment="Top" Width="30" Foreground="White" Visibility="Collapsed"/>
             </Grid>
             <CheckBox x:Name="循环" Content="循环" HorizontalAlignment="Right" Height="22" Margin="0,0,98,7" VerticalAlignment="Bottom" Width="60" Background="{Binding Fill, ElementName=方块一}" BorderBrush="{Binding Fill, ElementName=方块一}" Foreground="#BAFFFFFF" Click="循环_Click_1"/>
 

@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:方糖音乐播放器" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:WindowsPresentationFoundation="clr-namespace:Microsoft.WindowsAPICodePack.Controls.WindowsPresentationFoundation;assembly=Microsoft.WindowsAPICodePack.Shell" x:Name="window窗体" x:Class="方糖音乐播放器.MainWindow"
         mc:Ignorable="d"
-        Title="播放器主窗口" Height="675" Width="1200" SizeToContent="WidthAndHeight" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Grid.IsSharedSizeScope="True" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" Icon="Resources/图标.png" KeyUp="window窗体_KeyUp" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowDrop="True" Drop="window窗体_Drop" DragEnter="window窗体_DragEnter">
+        Title="播放器主窗口" Height="675" Width="1200" SizeToContent="WidthAndHeight" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Grid.IsSharedSizeScope="True" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" Icon="Resources/图标.png" KeyUp="window窗体_KeyUp" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowDrop="True" Drop="window窗体_Drop" DragEnter="window窗体_DragEnter" Activated="window窗体_Activated" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016">
     <Window.Resources>
         <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
         <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">
@@ -1889,7 +1889,7 @@
                     <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
                 </Image.Effect>
             </Image>
-            <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="330" Canvas.Top="30" Cursor="Hand"/>
+            <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="330" Canvas.Top="30" Cursor="Hand" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/>
         </Canvas>
         <ListBox x:Name="切换菜单" Height="95.335" Canvas.Left="350" Canvas.Top="292.5" Width="20" Margin="-19,0,0,0" BorderBrush="{x:Null}" Background="{x:Null}">
             <ListBoxItem x:Name="切换" ToolTip="在线播放" HorizontalAlignment="Left" VerticalAlignment="Top" Height="95.335" BorderBrush="{x:Null}" Width="20" Padding="0,8" MouseUp="listBoxItem_MouseUp_1">
@@ -2134,7 +2134,7 @@
             <Label x:Name="播放时间" Content="00:00-00:00" HorizontalAlignment="Left" Height="28.988" VerticalAlignment="Top" Width="190" FontSize="20" FontFamily="/方糖音乐播放器;component/Resources/#298-CAI978" HorizontalContentAlignment="Right" Canvas.Left="1000" Canvas.Top="20"/>
             <Image x:Name="播放栏专辑" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="HighQuality" Height="70" VerticalAlignment="Bottom" Source="Resources/图标.png" Clip="M-0.10223953,5 C-0.10223953,2.2385763 2.1363367,0 4.8977605,0 L64.89776,0 C67.659184,0 69.89776,2.2385763 69.89776,5 L69.89776,65 C69.89776,67.761424 67.659184,70 64.89776,70 L4.8977605,70 C2.1363367,70 -0.10223953,67.761424 -0.10223953,65 z" Width="70" Stretch="UniformToFill" Canvas.Left="10" Canvas.Top="30"/>
         </Canvas>
-        <SelectiveScrollingGrid x:Name="音量调节1" HorizontalAlignment="Left" Height="220" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" MouseLeave="音量调节1_MouseLeave" Canvas.Left="1056.5" Canvas.Top="400" Margin="55,0,0,0" Visibility="Collapsed">
+        <SelectiveScrollingGrid x:Name="音量调节1" HorizontalAlignment="Left" Height="220" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" MouseLeave="音量调节1_MouseLeave" Canvas.Left="1113" Canvas.Top="400" Visibility="Collapsed">
             <SelectiveScrollingGrid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -2143,7 +2143,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </SelectiveScrollingGrid.RenderTransform>
-            <Rectangle HorizontalAlignment="Left" Height="215" RadiusY="14.5" RadiusX="14.5" VerticalAlignment="Top" Width="75" Fill="#FFF9F9F9"/>
+            <Rectangle HorizontalAlignment="Left" Height="215" RadiusY="14.5" RadiusX="14.5" VerticalAlignment="Top" Width="75" Fill="#FFF9F9F9" Stroke="{Binding Background, ElementName=colorZone}"/>
             <Slider x:Name="音量条"
                 Orientation="Vertical"
                 Minimum="0"
@@ -2157,7 +2157,7 @@
                 <SolidColorBrush Color="Black" Opacity="0.5"/>
             </Rectangle.Fill>
         </Rectangle>
-        <ListBox x:Name="搜索框" ScrollViewer.CanContentScroll="False" HorizontalAlignment="Left" Height="0"  VerticalAlignment="Top" Width="248" RenderTransformOrigin="0.5,0.5" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="{x:Null}" MouseLeave="搜索框_MouseLeave" SelectionChanged="搜索框_SelectionChanged" Foreground="Black" Canvas.Left="103.005" Canvas.Top="55.517">
+        <ListBox x:Name="搜索框" ScrollViewer.CanContentScroll="False" HorizontalAlignment="Left" Height="0"  VerticalAlignment="Top" Width="248" RenderTransformOrigin="0.5,0.5" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="{x:Null}" MouseLeave="搜索框_MouseLeave" SelectionChanged="搜索框_SelectionChanged" Foreground="Black" Canvas.Left="100.008" Canvas.Top="54.518">
             <ListBox.Background>
                 <SolidColorBrush Color="White" Opacity="0.5"/>
             </ListBox.Background>

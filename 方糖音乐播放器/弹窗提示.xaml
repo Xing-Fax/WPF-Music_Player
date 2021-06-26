@@ -360,53 +360,60 @@
 
         </Canvas>
         <Canvas x:Name="模板三" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" d:IsHidden="True">
-            <Rectangle HorizontalAlignment="Left" Height="242" RadiusY="5" RadiusX="5" VerticalAlignment="Top" Width="535" Canvas.Left="10" Canvas.Top="20" Stroke="{Binding Stroke, ElementName=rectangle}"/>
+            <Rectangle x:Name="内边框" HorizontalAlignment="Left" Height="242" RadiusY="5" RadiusX="5" VerticalAlignment="Top" Width="535" Canvas.Left="10" Canvas.Top="20" Stroke="{Binding Stroke, ElementName=rectangle}"/>
             <Label x:Name="label" Content="歌曲详细信息：" Height="25" Width="105" FontSize="14" Canvas.Left="10" Foreground="Black" FontFamily="{Binding FontFamily, ElementName=textBlock}"/>
-            <Canvas HorizontalAlignment="Left" Height="227" VerticalAlignment="Top" Width="230" Canvas.Left="10" Canvas.Top="25">
-                <TextBlock x:Name="textBlock" Height="227" Canvas.Left="20" TextWrapping="Wrap" Width="65" UseLayoutRounding="False" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="文件名称："/><LineBreak/><Run/><LineBreak/><Run Text="歌曲名称："/><LineBreak/><Run/><LineBreak/><Run Text="歌手信息："/><LineBreak/><Run/><LineBreak/><Run Text="专辑信息："/><LineBreak/><Run/><LineBreak/><Run Text="音频比特："/><LineBreak/><Run/><LineBreak/><Run Text="音频频道："/><LineBreak/><Run/><LineBreak/><Run Text="音频采样："/><LineBreak/><Run/><LineBreak/><Run Text="播放时长："/></TextBlock>
-                <materialDesign:PackIcon Kind="FileChartOutline"  Height="15" Width="20"/>
-                <materialDesign:PackIcon Kind="BookmarkMusicOutline" Height="15" Width="20" Canvas.Top="30"/>
-                <materialDesign:PackIcon Kind="Account" Height="15" Width="20" Canvas.Top="60"/>
-                <materialDesign:PackIcon Kind="CardAccountDetailsOutline" Height="15" Width="20" Canvas.Top="90"/>
-                <materialDesign:PackIcon Kind="ContactlessPaymentCircleOutline"  Height="15" Width="20" Canvas.Top="120"/>
-                <materialDesign:PackIcon Kind="AccessPoint" Height="15" Width="20" Canvas.Top="150"/>
-                <materialDesign:PackIcon Kind="Waveform" Height="15" Width="20" Canvas.Top="180"/>
-                <materialDesign:PackIcon Kind="Alarm" Height="15" Width="20" Canvas.Top="210"/>
+            <Canvas x:Name="左侧" HorizontalAlignment="Left" Height="227" VerticalAlignment="Top" Width="230" Canvas.Left="10" Canvas.Top="25">
+                <TextBlock x:Name="textBlock" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" UseLayoutRounding="False" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="文件名称：" FontSize="13"/>
+                <materialDesign:PackIcon x:Name="文件名称图标" Kind="FileChartOutline"  Height="15" Width="20"/>
+                <materialDesign:PackIcon x:Name="歌曲名称图标" Kind="BookmarkMusicOutline" Height="15" Width="20" Canvas.Top="30"/>
+                <materialDesign:PackIcon x:Name="歌手信息图标" Kind="Account" Height="15" Width="20" Canvas.Top="60"/>
+                <materialDesign:PackIcon x:Name="专辑信息图标" Kind="CardAccountDetailsOutline" Height="15" Width="20" Canvas.Top="90"/>
+                <materialDesign:PackIcon x:Name="音频比特图标" Kind="ContactlessPaymentCircleOutline"  Height="15" Width="20" Canvas.Top="120"/>
+                <materialDesign:PackIcon x:Name="音频频道图标" Kind="AccessPoint" Height="15" Width="20" Canvas.Top="150"/>
+                <materialDesign:PackIcon x:Name="音频采样图标" Kind="Waveform" Height="15" Width="20" Canvas.Top="180"/>
+                <materialDesign:PackIcon x:Name="播放时长图标" Kind="Alarm" Height="15" Width="20" Canvas.Top="210"/>
                 <TextBox x:Name="文件名称"
             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
             BorderThickness="0"
-            VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Background="#FFF4F4F5" />
+            VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="歌曲名称"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="30" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="30" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="歌手信息"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="60" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="60" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="专辑信息"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="90" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="90" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="音频比特"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="120" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="120" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="音频频道"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="150" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="150" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="音频采样"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="180" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="180" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="播放时长"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="210" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="145" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="210" Background="#FFF4F4F5" FontSize="13" />
+                <TextBlock x:Name="textBlock_Copy" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" UseLayoutRounding="False" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="30" FontSize="13"><Run Text="歌曲名称"/><Run Text=""/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock_Copy1" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" UseLayoutRounding="False" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="60" FontSize="13"><Run Text="歌手信息"/><Run Text=""/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock_Copy2" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" UseLayoutRounding="False" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="90" FontSize="13"><Run Text="专辑信息"/><Run Text=""/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock_Copy3" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" UseLayoutRounding="False" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="120" FontSize="13"><Run Text="音频比特"/><Run Text=""/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock_Copy4" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" UseLayoutRounding="False" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="150" FontSize="13"><Run Text="音频频道"/><Run Text=""/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock_Copy5" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" UseLayoutRounding="False" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="180" FontSize="13"><Run Text="音频采样"/><Run Text=""/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock_Copy6" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" UseLayoutRounding="False" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="210" FontSize="13"><Run Text="播放时长"/><Run Text=""/><Run Text="："/></TextBlock>
             </Canvas>
-            <Canvas HorizontalAlignment="Left" Height="227" VerticalAlignment="Top" Width="295" Canvas.Left="245" Canvas.Top="25">
-                <TextBlock x:Name="textBlock1" Height="227" Canvas.Left="20" TextWrapping="Wrap" Width="65" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"><Run Text="文件"/><Run Text="描述"/><Run Text="："/><Run/><LineBreak/><Run/><LineBreak/><Run Text="文件路径："/><LineBreak/><Run/><LineBreak/><Run Text="嵌入歌词"/><Run Text="："/><LineBreak/><Run/><LineBreak/><Run Text="专辑图片"/><Run Text="："/><LineBreak/><Run/><Run/><LineBreak/><Run Text="文件大小："/><LineBreak/><Run/><LineBreak/><Run Text="文件类型："/><LineBreak/><Run/><LineBreak/><Run Text="创建日期："/><LineBreak/><Run/><LineBreak/><Run Text="修改日期："/><LineBreak/><Run/><LineBreak/></TextBlock>
+            <Canvas x:Name="右侧" HorizontalAlignment="Left" Height="227" VerticalAlignment="Top" Width="295" Canvas.Left="245" Canvas.Top="25">
+                <TextBlock x:Name="textBlock1" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" FontSize="13"><Run Text="文件"/><Run Text="描述"/><Run Text="："/></TextBlock>
                 <materialDesign:PackIcon Kind="TextBoxOutline"  Height="15" Width="20"/>
                 <materialDesign:PackIcon Kind="FileReplaceOutline"  Height="15" Width="20" Canvas.Top="30"/>
                 <materialDesign:PackIcon Kind="CardBulletedSettingsOutline" Height="15" Width="20" Canvas.Top="60"/>
@@ -418,35 +425,42 @@
                 <TextBox x:Name="文件描述"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="文件路径"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="30" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="30" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="嵌入歌词"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="60" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="60" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="专辑图片"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="90" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="90" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="文件大小"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="120" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="120" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="文件类型"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="150" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="150" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="创建日期"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="180" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="180" Background="#FFF4F4F5" FontSize="13" />
                 <TextBox x:Name="修改日期"
                     materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                     BorderThickness="0"
-                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="210" Background="#FFF4F4F5" />
+                    VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Canvas.Left="85" Width="210" Height="17" Text="暂无信息" Padding="0,-2,0,0" Canvas.Top="210" Background="#FFF4F4F5" FontSize="13" />
+                <TextBlock x:Name="textBlock1_Copy" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="30" FontSize="13"><Run Text="文件路径"/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock1_Copy1" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="60" FontSize="13"><Run Text="嵌入歌词"/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock1_Copy2" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="90" FontSize="13"><Run Text="专辑图片"/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock1_Copy3" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="120" FontSize="13"><Run Text="文件大小"/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock1_Copy4" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="150" FontSize="13"><Run Text="文件类型"/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock1_Copy5" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="180" FontSize="13"><Run Text="创建时间"/><Run Text="："/></TextBlock>
+                <TextBlock x:Name="textBlock1_Copy6" Height="15" Canvas.Left="20" TextWrapping="Wrap" Width="65" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Top="210" FontSize="13"><Run Text="修改日期"/><Run Text="："/></TextBlock>
             </Canvas>
             <Button x:Name="关闭程序"
             Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
@@ -455,12 +469,12 @@
                 <materialDesign:PackIcon Kind="WindowClose"   Height="16.416" Width="20.001" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             </Button>
         </Canvas>
-        <Canvas x:Name="模板四" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555">
+        <Canvas x:Name="模板四" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" d:IsHidden="True">
             <Button Content="朕知道了" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Width="175" FontSize="16" Canvas.Left="190" Canvas.Top="200" BorderBrush="{x:Null}" Background="{Binding Stroke, ElementName=rectangle}" Click="Button_Click_1"/>
             <materialDesign:PackIcon Kind="AlertCircleOutline" HorizontalAlignment="Left" VerticalAlignment="Top" Height="80" Width="80" Foreground="{Binding Background, ElementName=单文件}" Canvas.Left="55" Canvas.Top="45"/>
             <TextBlock x:Name="提示2" HorizontalAlignment="Center" Height="130" TextWrapping="Wrap" Text="提示信息" VerticalAlignment="Center" Width="330" TextAlignment="Justify" Canvas.Left="140" Canvas.Top="65" FontSize="16"/>
         </Canvas>
-        <Canvas x:Name="模板五" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" d:IsHidden="True">
+        <Canvas x:Name="模板五" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555">
             <Button x:Name="知道了" Content="我知道了" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Width="175" FontSize="16" Canvas.Left="190" Canvas.Top="217" BorderBrush="{x:Null}" Background="{Binding Stroke, ElementName=rectangle}" Click="知道了_Click"/>
             <materialDesign:PackIcon Kind="AlertOutline"   HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Canvas.Left="10" Canvas.Top="10" Foreground="{Binding Stroke, ElementName=rectangle}"/>
             <TextBlock HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="555" FontSize="24" TextAlignment="Center" Canvas.Top="15"><Run Text="你的"/><Run Text="程序可能遇到问题"/><Run/><LineBreak/><Run FontSize="12" Text="以下信息或许可以帮助到您"/></TextBlock>

@@ -46,8 +46,8 @@ namespace 方糖音乐播放器
         public 程序设置(Color color)
         {
             InitializeComponent();
-            grid1.Visibility = Visibility.Collapsed;
-            grid2.Visibility = Visibility.Collapsed;
+            帮助.Visibility = Visibility.Collapsed;
+            关于.Visibility = Visibility.Collapsed;
             默认.Background = new SolidColorBrush(color);
             模糊.Value = Properties.Settings.Default.背景模糊程度;
             歌词.IsChecked = Properties.Settings.Default.是否歌词显示;
@@ -190,13 +190,14 @@ namespace 方糖音乐播放器
                 var dialog = new CommonOpenFileDialog();
                 dialog.IsFolderPicker = true;
                 CommonFileDialogResult result = dialog.ShowDialog();
+                Topmost = true;
                 if (dialog.FileName != "")
                 {
                     歌词目录 = dialog.FileName;
                     路径.Content = "当前路径：" + dialog.FileName;
                     路径.ToolTip = dialog.FileName;
                 }
-                Topmost = true;
+                
             }
             catch { }
         }
@@ -360,14 +361,6 @@ namespace 方糖音乐播放器
             GiftOutline.Foreground = new SolidColorBrush(color2);
         }
 
-        private void Github_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            try { System.Diagnostics.Process.Start("https://github.com/xingchuanzhen/WPF-Music_Player"); }
-            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); }
-            fcc5(0);
-            exit();
-        }
-
         private void image_MouseUp(object sender, MouseButtonEventArgs e)
         {
             动画播放("旋转");
@@ -393,15 +386,31 @@ namespace 方糖音乐播放器
             Properties.Settings.Default.网络接口参数 = "酷狗";
         }
 
+        private void Github_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            try { System.Diagnostics.Process.Start("https://github.com/xingchuanzhen/WPF-Music_Player"); }
+            catch (UnauthorizedAccessException ex) { MessageBox.Show(ex.Message); }
+            fcc5(0);
+            exit();
+        }
+
         private void 歌曲路径_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (Properties.Settings.Default.网络歌曲缓存目录 != "系统临时目录")
             {
-                System.Diagnostics.Process.Start(Properties.Settings.Default.网络歌曲缓存目录 + @"\");
+                try
+                {
+                    System.Diagnostics.Process.Start(Properties.Settings.Default.网络歌曲缓存目录 + @"\");
+                }
+                catch { }
             }
             else
             {
-                System.Diagnostics.Process.Start(System.IO.Path.GetTempPath() + @"方糖音乐\");
+                try
+                {
+                    System.Diagnostics.Process.Start(System.IO.Path.GetTempPath() + @"方糖音乐\");
+                }
+                catch { }
             }
         }
 
@@ -413,13 +422,14 @@ namespace 方糖音乐播放器
                 var dialog = new CommonOpenFileDialog();
                 dialog.IsFolderPicker = true;
                 CommonFileDialogResult result = dialog.ShowDialog();
+                Topmost = true;
                 if (dialog.FileName != "")
                 {
                     歌曲目录2 = dialog.FileName;
                     歌曲路径.Content = "当前路径：" + dialog.FileName;
                     歌曲路径.ToolTip = dialog.FileName;
                 }
-                Topmost = true;
+
             }
             catch { }
         }

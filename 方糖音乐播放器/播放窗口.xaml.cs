@@ -23,6 +23,7 @@ namespace 方糖音乐播放器
     {
         System.Timers.Timer t = new System.Timers.Timer(50);//实例化Timer类用于更新时间
         System.Timers.Timer t2 = new System.Timers.Timer(5000);//实例化Timer类用于关闭底部播放栏
+        System.Timers.Timer t3 = new System.Timers.Timer(200);//实例化Timer类用用于判断是否双击屏幕
         private string Song_time;
         private string SP_sile;
         public 播放窗口(Color color, string file)
@@ -39,7 +40,7 @@ namespace 方糖音乐播放器
             TagLib.File Read_information = TagLib.File.Create(file);
             播放窗口1.Title = System.IO.Path.GetFileNameWithoutExtension(file);
             Song_time = Convert.ToString(Read_information.Properties.Duration).Substring(3, 5);//获取时长
-            int second = int.Parse(Convert.ToString(Read_information.Properties.Duration).Substring(3, 2)) * 60 + int.Parse(Convert.ToString(Read_information.Properties.Duration).Substring(6, 2));//计算歌曲秒数
+            int second = int.Parse(Convert.ToString(Read_information.Properties.Duration).Substring(3, 2)) * 60 + int.Parse(Convert.ToString(Read_information.Properties.Duration).Substring(6, 2));//计算视频秒数
             进度条.Maximum = second;//将进度条最大值赋值
             进度条.Value = 0;
 
@@ -47,10 +48,18 @@ namespace 方糖音乐播放器
             t.AutoReset = true;//设置是执行一次（false）还是一直执行(true)
             t.Enabled = false;//是否执行System.Timers.Timer.Elapsed事件
 
+            t2.Elapsed += new System.Timers.ElapsedEventHandler(theout2);//到达时间的时候执行事件
+            t2.AutoReset = true;//设置是执行一次（false）还是一直执行(true)
+            t2.Enabled = false;//是否执行System.Timers.Timer.Elapsed事件
+
+            t3.Elapsed += new System.Timers.ElapsedEventHandler(theout3);//到达时间的时候执行事件
+            t3.AutoReset = false;//设置是执行一次（false）还是一直执行(true)
+            t3.Enabled = false;//是否执行System.Timers.Timer.Elapsed事件
+
             循环.IsChecked = Properties.Settings.Default.循环视频;
 
-            播放器.Source = new Uri(file, UriKind.Relative);
-            播放器.Play();
+            播放器.Source = new Uri(file, UriKind.Relative);//定位视频
+            播放器.Play();//开始播放
             播放_PreviewMouseUp(null, null);
             动画播放("菜单打开");
         }
@@ -103,23 +112,6 @@ namespace 方糖音乐播放器
                      story = (Storyboard)FindResource(a);
                      BeginStoryboard(story);
                  }));
-
-        }
-
-        private void 播放器_MouseUp(object sender, MouseButtonEventArgs e)
-        {
-            //if (底部播放栏 .Visibility == Visibility.Collapsed )
-            //{
-            //    动画播放("菜单打开");
-            //}
-            //else
-            //{
-            //    动画播放("菜单关闭");
-            //    if (音量框架.Visibility == Visibility.Visible)
-            //    {
-            //        动画播放("音量关闭");
-            //    }
-            //}
         }
 
         private void 播放_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -305,20 +297,40 @@ namespace 方糖音乐播放器
             Properties.Settings.Default.循环视频 = (bool)循环.IsChecked;
             Properties.Settings.Default.Save();//保存设置
         }
+        //判断是否双击
+        public void theout3(object source, System.Timers.ElapsedEventArgs e)
+        {
+            if (button2 >= 2)
+            {//双击
 
+            }
+            else if (button2 == 1)
+            {//单机
+                if (底部播放栏.Visibility == Visibility.Collapsed)
+                {
+                    动画播放("菜单打开");
+                }
+                else
+                {
+                    动画播放("菜单关闭");
+                    if (音量框架.Visibility == Visibility.Visible)
+                    {
+                        动画播放("音量关闭");
+                    }
+                }
+            }
+            button2 = 0;
+            boole = true;
+        }
+        int button2 = 0;//判断是双击还是单机
+        bool boole = true;//放在两次触发计数器
         private void 播放窗口1_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            if (底部播放栏.Visibility == Visibility.Collapsed)
+            button2++;
+            if (boole == true)
             {
-                动画播放("菜单打开");
-            }
-            else
-            {
-                动画播放("菜单关闭");
-                if (音量框架.Visibility == Visibility.Visible)
-                {
-                    动画播放("音量关闭");
-                }
+                t3.Start();
+                boole = false;
             }
         }
     }

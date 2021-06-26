@@ -42,24 +42,18 @@ namespace 方糖音乐播放器
             _windowRect.Y = window.Top;
             _windowRect.Width = window.Width;
             _windowRect.Height = window.Height;
-
-
             //变成无边窗体
             window.WindowState = WindowState.Normal;//假如已经是Maximized，就不能进入全屏，所以这里先调整状态
             window.WindowStyle = WindowStyle.None;
             window.ResizeMode = ResizeMode.NoResize;
             window.Topmost = true;//最大化后总是在最上面
-
             //调整窗口最大化,全屏的关键代码就是下面3句
             window.MaxWidth = SystemParameters.PrimaryScreenWidth;
             window.MaxHeight = SystemParameters.PrimaryScreenHeight;
             window.WindowState = WindowState.Maximized;
-
-
             //解决切换应用程序的问题
             window.Activated += new EventHandler(window_Activated);
             window.Deactivated += new EventHandler(window_Deactivated);
-
             //记住成功最大化的窗体
             _fullWindow = window;
         }

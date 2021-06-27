@@ -15,6 +15,7 @@ namespace 方糖音乐播放器
 
     public partial class App : Application
     {
-        
+        public static int 播放状态 = 1;
+
     }
 }

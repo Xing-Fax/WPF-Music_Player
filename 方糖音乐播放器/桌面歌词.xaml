@@ -47,14 +47,22 @@
                 <DropShadowEffect BlurRadius="10" Opacity="0.5"/>
             </Label.Effect>
         </Label>
-        <Grid x:Name="grid" Visibility="Hidden">
+        <Grid x:Name="grid">
             <Button x:Name="播放"
   Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
-  materialDesign:ShadowAssist.ShadowDepth="Depth1" Margin="302.5,35,332.5,35" BorderBrush="{x:Null}" Click="播放_Click" Visibility="Collapsed" >
+  materialDesign:ShadowAssist.ShadowDepth="Depth1" Margin="302.5,35,332.5,35" BorderBrush="{x:Null}" Click="播放_Click" >
                 <Button.Background>
                     <SolidColorBrush Color="White" Opacity="0.2"/>
                 </Button.Background>
                 <materialDesign:PackIcon Kind="play"/>
+            </Button>
+            <Button x:Name="暂停"
+                Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
+                materialDesign:ShadowAssist.ShadowDepth="Depth1" Margin="302.5,35,332.5,35" BorderBrush="{x:Null}" Click="暂停_Click" Visibility="Collapsed" >
+                <Button.Background>
+                    <SolidColorBrush Color="White" Opacity="0.2"/>
+                </Button.Background>
+                <materialDesign:PackIcon Kind="Pause"/>
             </Button>
             <Button x:Name="下一曲"
                 Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
@@ -71,14 +79,6 @@
                     <SolidColorBrush Color="White" Opacity="0.2"/>
                 </Button.Background>
                 <materialDesign:PackIcon Kind="SkipPrevious"/>
-            </Button>
-            <Button x:Name="暂停"
-                Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
-                materialDesign:ShadowAssist.ShadowDepth="Depth1" Margin="302.5,35,332.5,35" BorderBrush="{x:Null}" Click="暂停_Click" Visibility="Collapsed" >
-                <Button.Background>
-                    <SolidColorBrush Color="White" Opacity="0.2"/>
-                </Button.Background>
-                <materialDesign:PackIcon Kind="Pause"/>
             </Button>
         </Grid>
         <!-- the following based on https://material.io/guidelines/components/buttons.html#buttons-toggle-buttons -->

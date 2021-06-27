@@ -209,30 +209,30 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="grid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.784">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseOut"/>
+                        <BackEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseOut"/>
+                        <BackEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.691">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseOut"/>
+                        <BackEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseOut"/>
+                        <BackEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="关闭">
@@ -262,7 +262,7 @@
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
                 <SplineDoubleKeyFrame KeyTime="0" Value="1"/>
-                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Style x:Key="RichTextBoxStyle1" TargetType="{x:Type RichTextBox}">
@@ -344,7 +344,16 @@
                 <TranslateTransform/>
             </TransformGroup>
         </Grid.RenderTransform>
-        <Rectangle x:Name="rectangle" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="272" Stroke="{Binding Background, ElementName=单文件}" VerticalAlignment="Top" Width="555" RadiusX="10" RadiusY="10"/>
+        <Rectangle x:Name="rectangle" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="272" Stroke="{Binding Background, ElementName=单文件}" VerticalAlignment="Top" Width="555" RadiusX="10" RadiusY="10" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
         <Canvas x:Name="模板一" Visibility="Visible" d:IsHidden="True">
 
             <Button x:Name="单文件" Content="单文件夹扫描" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" Background="#FF673AB7" BorderBrush="{x:Null}" Click="单文件_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="10" Canvas.Top="200"/>
@@ -474,7 +483,7 @@
             <materialDesign:PackIcon Kind="AlertCircleOutline" HorizontalAlignment="Left" VerticalAlignment="Top" Height="80" Width="80" Foreground="{Binding Background, ElementName=单文件}" Canvas.Left="55" Canvas.Top="45"/>
             <TextBlock x:Name="提示2" HorizontalAlignment="Center" Height="130" TextWrapping="Wrap" Text="提示信息" VerticalAlignment="Center" Width="330" TextAlignment="Justify" Canvas.Left="140" Canvas.Top="65" FontSize="16"/>
         </Canvas>
-        <Canvas x:Name="模板五" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555">
+        <Canvas x:Name="模板五" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" d:IsHidden="True">
             <Button x:Name="知道了" Content="我知道了" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Width="175" FontSize="16" Canvas.Left="190" Canvas.Top="217" BorderBrush="{x:Null}" Background="{Binding Stroke, ElementName=rectangle}" Click="知道了_Click"/>
             <materialDesign:PackIcon Kind="AlertOutline"   HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Canvas.Left="10" Canvas.Top="10" Foreground="{Binding Stroke, ElementName=rectangle}"/>
             <TextBlock HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="555" FontSize="24" TextAlignment="Center" Canvas.Top="15"><Run Text="你的"/><Run Text="程序可能遇到问题"/><Run/><LineBreak/><Run FontSize="12" Text="以下信息或许可以帮助到您"/></TextBlock>
@@ -485,7 +494,6 @@
                     VerticalAlignment="Center" FontFamily="{Binding FontFamily, ElementName=textBlock}" HorizontalContentAlignment="Left" Text="暂无信息" Padding="0,-2,0,0" Background="#FFF4F4F5" HorizontalAlignment="Center" />
             </ScrollViewer>
             <Button Content="复制问题到剪切板" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="150" Canvas.Left="380" Canvas.Top="226.722" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#DD0051FF" Click="Button_Click"/>
-            <materialDesign:PackIcon Kind="AlertOutline"   HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Canvas.Left="495" Canvas.Top="10" Foreground="{Binding Stroke, ElementName=rectangle}"/>
         </Canvas>
 
     </Grid>

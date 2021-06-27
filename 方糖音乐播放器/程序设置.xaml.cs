@@ -204,12 +204,12 @@ namespace 方糖音乐播放器
 
         private void 默认_Click(object sender, RoutedEventArgs e)
         {
-            Properties.Settings.Default.背景模糊程度 = 5;
+            Properties.Settings.Default.背景模糊程度 = 0;
             Properties.Settings.Default.背景图片 = "默认";
             Properties.Settings.Default.歌词目录 = "无";
             Properties.Settings.Default.音量 = 100;
             Properties.Settings.Default.播放设置 = 0;
-            Properties.Settings.Default.主题颜色 = "System.Windows.Controls.ComboBoxItem: 宝石绿";
+            Properties.Settings.Default.主题颜色 = "System.Windows.Controls.ComboBoxItem: 桃花粉";
             Properties.Settings.Default.是否歌词显示 = true;
             Properties.Settings.Default.背景填充 = 2;
             Properties.Settings.Default.嵌入歌词 = false;

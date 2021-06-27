@@ -45,11 +45,24 @@ namespace 方糖音乐播放器
             }
         }
 
+
+
         [Obsolete]
         private void 桌面歌词主窗口_MouseEnter(object sender, MouseEventArgs e)
         {
-            动画播放("打开");
 
+            动画播放("打开");
+            if (App.播放状态 == 0)
+            {
+                播放.Visibility = Visibility.Collapsed;
+                暂停.Visibility = Visibility.Visible;
+
+            }
+            else
+            {
+                播放.Visibility = Visibility.Visible;
+                暂停.Visibility = Visibility.Collapsed;
+            }
         }
 
         private void 桌面歌词主窗口_MouseLeave(object sender, MouseEventArgs e)
@@ -61,13 +74,15 @@ namespace 方糖音乐播放器
         private void 播放_Click(object sender, RoutedEventArgs e)
         {
             fcc1(1);
-            //MainWindow main = new MainWindow();
-            //main.歌曲名称.Content = "111";
+            播放.Visibility = Visibility.Collapsed;
+            暂停.Visibility = Visibility.Visible;
         }
 
-        private void 下一曲_Click(object sender, RoutedEventArgs e)
+        private void 暂停_Click(object sender, RoutedEventArgs e)
         {
-            fcc1(4);
+            fcc1(2);
+            播放.Visibility = Visibility.Visible;
+            暂停.Visibility = Visibility.Collapsed;
         }
 
         private void 上一曲_Click(object sender, RoutedEventArgs e)
@@ -75,9 +90,9 @@ namespace 方糖音乐播放器
             fcc1(3);
         }
 
-        private void 暂停_Click(object sender, RoutedEventArgs e)
+        private void 下一曲_Click(object sender, RoutedEventArgs e)
         {
-            fcc1(2);
+            fcc1(4);
         }
     }
 }

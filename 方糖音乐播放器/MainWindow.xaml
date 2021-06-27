@@ -77,6 +77,10 @@
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="音量调节1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="音量条关闭">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="音量调节1">
@@ -107,6 +111,10 @@
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
             </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="音量调节1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="黑幕动画开">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(Brush.Opacity)" Storyboard.TargetName="黑幕">
@@ -1348,7 +1356,7 @@
                     <Setter Property="Background" Value="{DynamicResource PrimaryHueDarkBrush}"/>
                     <Setter Property="Foreground" Value="{DynamicResource PrimaryHueDarkForegroundBrush}"/>
                 </Trigger>
-                <Trigger Property="Mode" Value="Accent">
+                <Trigger Property="Mode" Value="PrimaryDark">
                     <Setter Property="Background" Value="{DynamicResource SecondaryHueMidBrush}"/>
                     <Setter Property="Foreground" Value="{DynamicResource SecondaryHueMidForegroundBrush}"/>
                 </Trigger>
@@ -1356,7 +1364,7 @@
                     <Setter Property="Background" Value="{DynamicResource MaterialDesignLightBackground}"/>
                     <Setter Property="Foreground" Value="{DynamicResource MaterialDesignLightForeground}"/>
                 </Trigger>
-                <Trigger Property="Mode" Value="Dark">
+                <Trigger Property="Mode" Value="PrimaryDark">
                     <Setter Property="Background" Value="{DynamicResource MaterialDesignDarkBackground}"/>
                     <Setter Property="Foreground" Value="{DynamicResource MaterialDesignDarkForeground}"/>
                 </Trigger>
@@ -1427,7 +1435,7 @@
                     <Setter Property="Background" Value="{DynamicResource PrimaryHueDarkBrush}"/>
                     <Setter Property="Foreground" Value="{DynamicResource PrimaryHueDarkForegroundBrush}"/>
                 </Trigger>
-                <Trigger Property="Mode" Value="Accent">
+                <Trigger Property="Mode" Value="Dark" >
                     <Setter Property="Background" Value="{DynamicResource SecondaryHueMidBrush}"/>
                     <Setter Property="Foreground" Value="{DynamicResource SecondaryHueMidForegroundBrush}"/>
                 </Trigger>
@@ -1544,12 +1552,12 @@
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="联网播放">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-337">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseOut"/>
+                        <CubicEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseOut"/>
+                        <CubicEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
@@ -1558,45 +1566,37 @@
                 <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="联网播放">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="本地播放">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="切换动画关">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="联网播放">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-337">
-                    <EasingDoubleKeyFrame.EasingFunction>
-                        <CircleEase EasingMode="EaseIn"/>
-                    </EasingDoubleKeyFrame.EasingFunction>
-                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-337"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="本地播放">
                 <EasingDoubleKeyFrame KeyTime="0" Value="-337">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <QuarticEase EasingMode="EaseOut"/>
+                        <CircleEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <QuarticEase EasingMode="EaseOut"/>
+                        <CircleEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="联网播放">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="本地播放">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
@@ -1657,9 +1657,9 @@
 
     <Canvas x:Name="主界面" Clip="M0,20 C0,8.954305 8.954305,0 20,0 L1180,0 C1191.0457,0 1200,8.954305 1200,20 L1200,655 C1200,666.04569 1191.0457,675 1180,675 L20,675 C8.954305,675 0,666.04569 0,655 z" HorizontalAlignment="Left" Height="675" VerticalAlignment="Top" Width="1200" >
 
-        <Image x:Name="背景" RenderOptions.BitmapScalingMode="HighQuality" Source="Resources/默认背景.png" Width="1210" SnapsToDevicePixels="True" ClipToBounds="True" Height="685" Canvas.Left="-5" Canvas.Top="-5">
+        <Image x:Name="背景" RenderOptions.BitmapScalingMode="HighQuality" Source="Resources/默认背景.jpg" Width="1210" SnapsToDevicePixels="True" ClipToBounds="True" Height="685" Canvas.Left="-5" Canvas.Top="-5" Stretch="Fill">
             <Image.Effect>
-                <BlurEffect x:Name="背景模糊"/>
+                <BlurEffect x:Name="背景模糊" Radius="0"/>
             </Image.Effect>
         </Image>
         <materialDesign:ColorZone x:Name="colorZone"
@@ -1672,7 +1672,7 @@
                     <ToggleButton
                         Style="{DynamicResource MaterialDesignHamburgerToggleButton}" Visibility="Collapsed" />
                     <ComboBox x:Name="主题颜色"
-                        SelectedIndex="0"
+                        SelectedIndex="1"
                         Margin="8 0 0 0"
                         BorderThickness="0"
                         materialDesign:ColorZoneAssist.Mode="Standard"
@@ -1748,7 +1748,7 @@
                 </StackPanel>
             </DockPanel>
         </materialDesign:ColorZone>
-        <Grid x:Name="联网播放" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="315" Canvas.Left="10" Canvas.Top="77.667" RenderTransformOrigin="1,0.5" SnapsToDevicePixels="True" d:IsHidden="True">
+        <Grid x:Name="联网播放" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="315" Canvas.Left="10" Canvas.Top="77.667" RenderTransformOrigin="1,0.5" SnapsToDevicePixels="True">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -2069,7 +2069,7 @@
                 <materialDesign:PackIcon Kind="ArrowRight" Height="80" Width="20" Foreground="#FF535353"/>
             </ListBoxItem>
         </ListBox>
-        <MediaElement x:Name="播放器" HorizontalAlignment="Left" Height="484" VerticalAlignment="Top" Width="860" LoadedBehavior="Manual" Volume="1" SpeedRatio="1" SnapsToDevicePixels="True" MediaOpened="播放器_MediaOpened" Canvas.Left="335" Canvas.Top="77" d:IsHidden="True">
+        <MediaElement x:Name="播放器" HorizontalAlignment="Left" Height="484" VerticalAlignment="Top" Width="860" LoadedBehavior="Manual" SpeedRatio="1" SnapsToDevicePixels="True" MediaOpened="播放器_MediaOpened" Canvas.Left="335" Canvas.Top="77" d:IsHidden="True" Volume="1">
             <MediaElement.Effect>
                 <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
             </MediaElement.Effect>
@@ -2098,7 +2098,7 @@
             </Button>
             <Button x:Name="播放"
                 Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
-                materialDesign:ShadowAssist.ShadowDepth="Depth2" Width="60" Height="60" VerticalAlignment="Bottom" Background="{Binding Background, ElementName=colorZone}" BorderBrush="{x:Null}" Click="播放_Click" Canvas.Left="610.019" Canvas.Top="35">
+                materialDesign:ShadowAssist.ShadowDepth="Depth2" Width="60" Height="60" VerticalAlignment="Bottom" Background="{Binding Background, ElementName=colorZone}" BorderBrush="{x:Null}" Click="播放_Click" Canvas.Left="610.019" Canvas.Top="35" x:FieldModifier="public">
                 <materialDesign:PackIcon Width="40" Height="40" Kind="play"/>
             </Button>
             <ListBox x:Name="底部列表"
@@ -2144,13 +2144,11 @@
                 </TransformGroup>
             </SelectiveScrollingGrid.RenderTransform>
             <Rectangle HorizontalAlignment="Left" Height="215" RadiusY="14.5" RadiusX="14.5" VerticalAlignment="Top" Width="75" Fill="#FFF9F9F9" Stroke="{Binding Background, ElementName=colorZone}"/>
-            <Slider x:Name="音量条"
-                Orientation="Vertical"
-                Minimum="0"
-                Maximum="100"
-                Style="{StaticResource MaterialDesignDiscreteSlider}"
-                ToolTip="声音调节" Margin="-6,10,0,0" Foreground="{Binding Background, ElementName=colorZone}" SmallChange="1" IsMoveToPointEnabled="True" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" Height="180" Value="100" ValueChanged="音量条_ValueChanged" />
             <Label x:Name="音量显示" Content="100%" HorizontalAlignment="Left" Height="30" Margin="0,185,0,0" VerticalAlignment="Top" Width="75" FontFamily="Resources/#298-CAI978" FontSize="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Slider x:Name="音量条"
+  TickFrequency="5"
+  Orientation="Vertical"
+  Maximum="100" Margin="27,20,21,35" Foreground="{Binding Background, ElementName=colorZone}" TickPlacement="BottomRight" ValueChanged="音量条_ValueChanged_1" SmallChange="1" Value="100" BorderBrush="{x:Null}" Minimum="1" />
         </SelectiveScrollingGrid>
         <Rectangle x:Name="黑幕" HorizontalAlignment="Left" Height="675" RadiusY="20" RadiusX="20" VerticalAlignment="Top" Width="1200" Visibility="Collapsed" MouseUp="黑幕_MouseUp">
             <Rectangle.Fill>

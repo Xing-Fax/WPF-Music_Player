@@ -37,7 +37,7 @@ namespace 方糖音乐播放器.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("System.Windows.Controls.ComboBoxItem: 宝石绿")]
+        [global::System.Configuration.DefaultSettingValueAttribute("System.Windows.Controls.ComboBoxItem: 桃花粉")]
         public string 主题颜色 {
             get {
                 return ((string)(this["主题颜色"]));
@@ -109,7 +109,7 @@ namespace 方糖音乐播放器.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public double 背景模糊程度 {
             get {
                 return ((double)(this["背景模糊程度"]));

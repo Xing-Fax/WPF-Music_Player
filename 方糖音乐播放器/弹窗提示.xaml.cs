@@ -60,7 +60,7 @@ namespace 方糖音乐播放器.Properties
             }
             else if(parameter == 2)
             {
-                模板三.Visibility = Visibility.Visible;
+
                 TagLib.File Read_information = TagLib.File.Create(file);
                 文件名称.Text = System.IO.Path.GetFileName(file);
                 歌曲名称.Text = Read_information.Tag.Title;
@@ -85,6 +85,7 @@ namespace 方糖音乐播放器.Properties
                 文件类型.Text = System.IO.Path.GetExtension(file);
                 创建日期.Text = f.CreationTimeUtc.ToString();
                 修改日期.Text = f.LastWriteTimeUtc.ToString();
+                模板三.Visibility = Visibility.Visible;
             }
             else if(parameter == 3)
             {
@@ -96,6 +97,7 @@ namespace 方糖音乐播放器.Properties
                 模板五.Visibility = Visibility.Visible;
                 问题.Text  = file;
             }
+            动画播放("打开");
         }
 
         //字节转单位
@@ -159,14 +161,14 @@ namespace 方糖音乐播放器.Properties
                     }));
             }).Start();
         }
-        int a = 0;
+        //int a = 0;
         private void Window_Activated(object sender, EventArgs e)
         {
-            if (a == 0)
-            {
-                动画播放("打开");
-            }
-            a = 1;
+            //if (a == 0)
+            //{
+            //    动画播放("打开");
+            //}
+            //a = 1;
         }
 
         private void 关闭程序_Click(object sender, RoutedEventArgs e)

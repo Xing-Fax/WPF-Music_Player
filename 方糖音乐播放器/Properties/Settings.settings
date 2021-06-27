@@ -6,7 +6,7 @@
       <Value Profile="(Default)">无</Value>
     </Setting>
     <Setting Name="主题颜色" Type="System.String" Scope="User">
-      <Value Profile="(Default)">System.Windows.Controls.ComboBoxItem: 宝石绿</Value>
+      <Value Profile="(Default)">System.Windows.Controls.ComboBoxItem: 桃花粉</Value>
     </Setting>
     <Setting Name="背景图片" Type="System.String" Scope="User">
       <Value Profile="(Default)">默认</Value>
@@ -24,7 +24,7 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="背景模糊程度" Type="System.Double" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="音量" Type="System.Double" Scope="User">
       <Value Profile="(Default)">100</Value>

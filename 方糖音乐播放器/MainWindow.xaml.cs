@@ -263,7 +263,7 @@ namespace 方糖音乐播放器
                         网络搜索结果.SelectedIndex += 1;//定位
                     }
                 }
-                else if (底部列表.SelectedIndex == 1)//单曲循环
+                else if (底部列表.SelectedIndex == 1)//单曲循环 
                 {
                     Program_background(Web_search_results[网络搜索结果.SelectedIndex].ToString());
                 }

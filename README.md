@@ -50,5 +50,16 @@
 
 #### 写到最后：
 
+编译后的exe文件：
+
+蓝奏云：https://wwe.lanzoui.com/iT63Jqyolwh
+网  盘：https://pan.baidu.com/s/1kgXou0jPn-4v2WhfdpaoWw 
+文件特征描述：
+  大小: 17931264 字节
+  文件版本: 1.0.0.0
+  MD5: 8FF653A03F31BDAC278C535E3D046769
+  SHA1: EF78D190197872C6D525489709CF50D38386A7AC
+  CRC32: F8506B02
+
 如果遇到项目无法生成的情况，可以尝试卸载项目后重新加载，或者尝试还原NuGet包
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:方糖音乐播放器"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Name="播放窗口1" x:Class= "方糖音乐播放器.播放窗口"
         mc:Ignorable="d"
-        Title="播放窗口" Height="705" Width="1200" Background="{x:Null}" MinWidth="500" MinHeight="310" MouseDoubleClick="播放窗口1_MouseDoubleClick" SizeChanged="播放窗口1_SizeChanged" MouseMove="播放窗口1_MouseMove" WindowStartupLocation="CenterScreen" KeyUp="播放窗口1_KeyUp" Activated="播放窗口1_Activated" MouseLeftButtonUp="播放窗口1_MouseLeftButtonUp">
+        Title="播放窗口" Height="705" Width="1200" Background="{x:Null}" MinWidth="500" MinHeight="310" MouseDoubleClick="播放窗口1_MouseDoubleClick" SizeChanged="播放窗口1_SizeChanged" MouseMove="播放窗口1_MouseMove" WindowStartupLocation="CenterScreen" KeyUp="播放窗口1_KeyUp" Activated="播放窗口1_Activated" MouseLeftButtonUp="播放窗口1_MouseLeftButtonUp" DragEnter="播放窗口1_DragEnter" Drop="播放窗口1_Drop" AllowDrop="True">
     <Window.Resources>
         <Storyboard x:Key="菜单打开">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="底部播放栏">

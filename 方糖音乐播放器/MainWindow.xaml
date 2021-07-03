@@ -8,7 +8,7 @@
         xmlns:local="clr-namespace:方糖音乐播放器" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:System="clr-namespace:System;assembly=mscorlib" xmlns:WindowsPresentationFoundation="clr-namespace:Microsoft.WindowsAPICodePack.Controls.WindowsPresentationFoundation;assembly=Microsoft.WindowsAPICodePack.Shell" x:Name="window窗体" x:Class="方糖音乐播放器.MainWindow"
         mc:Ignorable="d"
-        Title="播放器主窗口" Height="675" Width="1200" SizeToContent="WidthAndHeight" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Grid.IsSharedSizeScope="True" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" Icon="Resources/图标.png" KeyUp="window窗体_KeyUp" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowDrop="True" Drop="window窗体_Drop" DragEnter="window窗体_DragEnter" Activated="window窗体_Activated" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016">
+        Title="播放器主窗口" Height="675" Width="1200" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" Grid.IsSharedSizeScope="True" Background="{x:Null}" AllowsTransparency="True" WindowStyle="None" Icon="Resources/图标.png" KeyUp="window窗体_KeyUp" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" AllowDrop="True" Drop="window窗体_Drop" DragEnter="window窗体_DragEnter" Activated="window窗体_Activated" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" SnapsToDevicePixels="True">
     <Window.Resources>
         <SolidColorBrush x:Key="ListBorder" Color="#828790"/>
         <Style x:Key="ListBoxStyle1" TargetType="{x:Type ListBox}">
@@ -1664,7 +1664,7 @@
         </Image>
         <materialDesign:ColorZone x:Name="colorZone"
             Mode="PrimaryMid"
-            Padding="16" MouseMove="ColorZone_MouseMove" Background="#FF2CCFA0" Style="{DynamicResource ColorZoneStyle2}" Width="1200">
+            Padding="16" MouseMove="ColorZone_MouseMove" Background="#FFFF9999" Style="{DynamicResource ColorZoneStyle2}" Width="1200">
             <DockPanel>
                 <StackPanel
                     Orientation="Horizontal"
@@ -1708,7 +1708,7 @@
                             <TextBox x:Name="搜索"
                                 Grid.Column="1"
                                 Margin="8 0 0 0"
-                                materialDesign:HintAssist.Hint="搜你所想（￣︶￣）↗[Go]"
+                                materialDesign:HintAssist.Hint="搜你所想(ง •_•)ง↗[Go]"
                                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                 BorderThickness="0"
                                 MinWidth="200"
@@ -1748,7 +1748,7 @@
                 </StackPanel>
             </DockPanel>
         </materialDesign:ColorZone>
-        <Grid x:Name="联网播放" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="315" Canvas.Left="10" Canvas.Top="77.667" RenderTransformOrigin="1,0.5" SnapsToDevicePixels="True">
+        <Grid x:Name="联网播放" HorizontalAlignment="Left" Height="482" VerticalAlignment="Top" Width="315" Canvas.Left="10" Canvas.Top="77.667" RenderTransformOrigin="1,0.5" SnapsToDevicePixels="True" d:IsHidden="True">
             <Grid.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -1762,7 +1762,7 @@
                     <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
                 </Rectangle.Effect>
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="White" Opacity="0.4"/>
+                    <SolidColorBrush Color="White" Opacity="0.55"/>
                 </Rectangle.Fill>
             </Rectangle>
             <Grid x:Name="搜索框1" Margin="0,0,0,441.332">
@@ -1793,7 +1793,7 @@
                         <TextBox x:Name="网络搜索"
                             Grid.Column="1"
                             Margin="8 0 0 0"
-                            materialDesign:HintAssist.Hint="搜你想听（￣︶￣）↗[Go]"
+                            materialDesign:HintAssist.Hint="搜你想听（。＾▽＾）↗[Go]"
                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                             BorderThickness="0"
                             MinWidth="200"
@@ -1816,6 +1816,14 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Grid.RenderTransform>
+            <Rectangle RadiusY="10" RadiusX="10" StrokeThickness="0" Margin="0,60.1,0,0" Height="421" VerticalAlignment="Top">
+                <Rectangle.Fill>
+                    <SolidColorBrush Color="White" Opacity="0.55"/>
+                </Rectangle.Fill>
+                <Rectangle.Effect>
+                    <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
+                </Rectangle.Effect>
+            </Rectangle>
             <ListBox x:Name="主界面菜单选择"
                 Style="{StaticResource MaterialDesignToolToggleListBox}"
                 Width="315" Background="WhiteSmoke" MouseEnter="主界面菜单选择_MouseEnter" Margin="0,0,0,428.594">
@@ -1832,15 +1840,15 @@
                 <ListBoxItem x:Name="打开音乐" ToolTip="打开音频文件" Width="63" HorizontalContentAlignment="Center" MouseUp="打开音乐_MouseUp">
                     <materialDesign:PackIcon
 
-                        Kind="Music" Width="30" Height="30" HorizontalAlignment="Left" Foreground="Black" />
+                        Kind="MusicNotePlus" Width="30" Height="30" HorizontalAlignment="Left" Foreground="Black" />
                 </ListBoxItem>
                 <ListBoxItem x:Name="打开视频" ToolTip="打开视频文件" Width="63" HorizontalContentAlignment="Center" MouseUp="打开视频_MouseUp">
                     <materialDesign:PackIcon
-                        Kind="MovieOpen" Width="30" Height="30" Foreground="Black"/>
+                        Kind="MovieOpenPlay" Width="30" Height="30" Foreground="Black"/>
                 </ListBoxItem>
                 <ListBoxItem x:Name="添加歌曲" ToolTip="添加歌曲" Width="63" HorizontalContentAlignment="Center" MouseUp="添加歌曲_MouseUp">
                     <materialDesign:PackIcon
-                        Kind="FolderMultiplePlus" Width="30" Height="30" Foreground="Black" />
+                        Kind="FolderOpen" Width="30" Height="30" Foreground="Black" />
                 </ListBoxItem>
                 <ListBoxItem x:Name="扫描歌曲" ToolTip="扫描歌曲" Width="63" HorizontalContentAlignment="Center" MouseUp="扫描歌曲_MouseUp">
                     <materialDesign:PackIcon
@@ -1848,27 +1856,14 @@
                 </ListBoxItem>
                 <ListBoxItem x:Name="程序设置" ToolTip="程序设置" Width="63" HorizontalContentAlignment="Center" MouseUp="程序设置_MouseUp">
                     <materialDesign:PackIcon
-                        Kind="Cog" Width="30" Height="30" Foreground="#FC000000" />
+                        Kind="Cogs" Width="30" Height="30" Foreground="#FC000000" />
                 </ListBoxItem>
             </ListBox>
-            <Rectangle HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="315" StrokeThickness="0" DataContext="{Binding DataContext, ElementName=主页的播放列表}" Clip="M0,10 C0,4.4771525 4.4771525,0 10,0 L305,0 C310.52285,0 315,4.4771525 315,10 L315,50 C315,55.522847 310.52285,60 305,60 L10,60 C4.4771525,60 0,55.522847 0,50 z" OpacityMask="Black" Margin="0,60.1,0,0">
-                <Rectangle.Fill>
-                    <SolidColorBrush Color="White" Opacity="0.4"/>
-                </Rectangle.Fill>
-            </Rectangle>
-            <Label  x:Name="播放列表标题"  HorizontalAlignment="Left" Height="32.594" VerticalAlignment="Top" Width="172.68" FontSize="16" VerticalContentAlignment="Center" Padding="4" Effect="{Binding Effect, ElementName=主页的播放列表}" Content="播放列表：" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Foreground="Black" Background="{x:Null}" Margin="0,60.072,0,0"/>
-            <Label x:Name="歌曲数量" Content="共XX首歌曲" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Height="32.594" Width="141.32" HorizontalContentAlignment="Right" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" VerticalContentAlignment="Center" Effect="{Binding Effect, ElementName=播放列表标题}" Foreground="Black" Background="{x:Null}" Margin="173.68,60.072,0,0"/>
+            <Label  x:Name="播放列表标题"  HorizontalAlignment="Left" Height="32.594" VerticalAlignment="Top" Width="173.68" FontSize="16" VerticalContentAlignment="Center" Padding="4" Effect="{Binding Effect, ElementName=主页的播放列表}" Content="播放列表：" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Foreground="Black" Margin="0,59.406,0,0" Clip="M0,10.334 C0,4.8111525 4.4771525,0.334 10,0.334 L305,0.334 C310.52285,0.334 315,4.8111525 315,10.334 L315,38.594 C315,44.116847 310.52285,48.594 305,48.594 L10,48.594 C4.4771525,48.594 0,44.116847 0,38.594 z" Background="{x:Null}"/>
+            <Label x:Name="歌曲数量" Content="共XX首歌曲" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Height="32.594" Width="141.32" HorizontalContentAlignment="Right" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" VerticalContentAlignment="Center" Effect="{Binding Effect, ElementName=播放列表标题}" Foreground="Black" Margin="173.68,59.406,0,0" Clip="M-123.68,10.694 C-123.68,5.1711525 -119.20285,0.694 -113.68,0.694 L131.32,0.694 C136.84285,0.694 141.32,5.1711525 141.32,10.694 L141.32,33.594 C141.32,39.116847 136.84285,43.594 131.32,43.594 L-113.68,43.594 C-119.20285,43.594 -123.68,39.116847 -123.68,33.594 z" Background="{x:Null}"/>
             <ListBox x:Name="主页的播放列表" 
                 VirtualizingPanel.VirtualizationMode="Recycling"
-                HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalAlignment="Stretch" Foreground="#FF1F0000" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden" FontFamily="Resources/#站酷快乐体2016修订版" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Clip="M0,-23.594 C0,-29.116847 4.4771525,-33.594 10,-33.594 L305,-33.594 C310.52285,-33.594 315,-29.116847 315,-23.594 L315,379.072 C315,384.59485 310.52285,389.072 305,389.072 L10,389.072 C4.4771525,389.072 0,384.59485 0,379.072 z" MouseUp="主页的播放列表_MouseUp" MouseEnter="主页的播放列表_MouseEnter" MouseLeave="主页的播放列表_MouseLeave" SnapsToDevicePixels="True" Margin="0,92,0,0" Height="390" BorderBrush="{x:Null}" Cursor="Hand">
-                <ListBox.Background>
-                    <SolidColorBrush Color="White" Opacity="0.4"/>
-                </ListBox.Background>
-                <ListBox.Effect>
-                    <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
-                </ListBox.Effect>
-
-            </ListBox>
+                HorizontalContentAlignment="Left" VerticalContentAlignment="Top" VerticalAlignment="Stretch" Foreground="#FF1F0000" ScrollViewer.CanContentScroll="False" ScrollViewer.VerticalScrollBarVisibility="Hidden" FontFamily="Resources/#站酷快乐体2016修订版" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Clip="M0,-23.594 C0,-29.116847 4.4771525,-33.594 10,-33.594 L305,-33.594 C310.52285,-33.594 315,-29.116847 315,-23.594 L315,379.072 C315,384.59485 310.52285,389.072 305,389.072 L10,389.072 C4.4771525,389.072 0,384.59485 0,379.072 z" MouseUp="主页的播放列表_MouseUp" MouseEnter="主页的播放列表_MouseEnter" MouseLeave="主页的播放列表_MouseLeave" SnapsToDevicePixels="True" Margin="0,92,0,0" BorderBrush="{x:Null}" Cursor="Hand" Background="{x:Null}"/>
         </Grid>
         <Canvas x:Name="播放信息" Height="93.26" Canvas.Left="690" Canvas.Top="90" Width="500">
             <Label x:Name="播放歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" Foreground="#F8000000" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" ToolTip="{Binding Content, ElementName=播放歌曲名称}"/>
@@ -1889,7 +1884,7 @@
                     <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
                 </Image.Effect>
             </Image>
-            <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="330" Canvas.Top="30" Cursor="Hand" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/>
+            <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="330" Canvas.Top="30" Cursor="Hand" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" FontSize="16"/>
         </Canvas>
         <ListBox x:Name="切换菜单" Height="95.335" Canvas.Left="350" Canvas.Top="292.5" Width="20" Margin="-19,0,0,0" BorderBrush="{x:Null}" Background="{x:Null}">
             <ListBoxItem x:Name="切换" ToolTip="在线播放" HorizontalAlignment="Left" VerticalAlignment="Top" Height="95.335" BorderBrush="{x:Null}" Width="20" Padding="0,8" MouseUp="listBoxItem_MouseUp_1">
@@ -2069,7 +2064,7 @@
                 <materialDesign:PackIcon Kind="ArrowRight" Height="80" Width="20" Foreground="#FF535353"/>
             </ListBoxItem>
         </ListBox>
-        <MediaElement x:Name="播放器" HorizontalAlignment="Left" Height="484" VerticalAlignment="Top" Width="860" LoadedBehavior="Manual" SpeedRatio="1" SnapsToDevicePixels="True" MediaOpened="播放器_MediaOpened" Canvas.Left="335" Canvas.Top="77" d:IsHidden="True" Volume="1">
+        <MediaElement x:Name="播放器" HorizontalAlignment="Left" Height="484" VerticalAlignment="Top" Width="860" LoadedBehavior="Manual" SpeedRatio="1" SnapsToDevicePixels="True" MediaOpened="播放器_MediaOpened" Canvas.Left="335" Canvas.Top="77" Volume="1" d:IsHidden="True">
             <MediaElement.Effect>
                 <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
             </MediaElement.Effect>
@@ -2150,7 +2145,7 @@
   Orientation="Vertical"
   Maximum="100" Margin="27,20,21,35" Foreground="{Binding Background, ElementName=colorZone}" TickPlacement="BottomRight" ValueChanged="音量条_ValueChanged_1" SmallChange="1" Value="100" BorderBrush="{x:Null}" Minimum="1" />
         </SelectiveScrollingGrid>
-        <Rectangle x:Name="黑幕" HorizontalAlignment="Left" Height="675" RadiusY="20" RadiusX="20" VerticalAlignment="Top" Width="1200" Visibility="Collapsed" MouseUp="黑幕_MouseUp">
+        <Rectangle x:Name="黑幕" HorizontalAlignment="Left" Height="675" RadiusY="20" RadiusX="20" VerticalAlignment="Top" Width="1200" MouseUp="黑幕_MouseUp" Visibility="Collapsed">
             <Rectangle.Fill>
                 <SolidColorBrush Color="Black" Opacity="0.5"/>
             </Rectangle.Fill>

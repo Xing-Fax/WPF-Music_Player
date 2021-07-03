@@ -94,11 +94,11 @@ namespace 方糖音乐播放器
         {
             for (int i = 0; i < lrc_time.Count; i++)
             { //遍历打印歌词
-                if (lrc_lyrics[i] != null) { Function_list.填充菜单(歌词滚动显示, lrc_lyrics[i].ToString(), null, 470, 35, 15, true); }
+                if (lrc_lyrics[i] != null) { Function_list.填充菜单(歌词滚动显示, lrc_lyrics[i].ToString(), null, 470, 35, 16, true); }
             }
             try { ((ListBoxItem)歌词滚动显示.Items[0]).Foreground = new SolidColorBrush(color); }//将第一句歌词颜色该为红色
             catch { }
-            if (歌词滚动显示.Items.Count > 2)
+            if (歌词滚动显示.Items.Count > 3)
             {
                 for (int i = 0; i < 5; i++) { Function_list.填充菜单(歌词滚动显示, null, null, 470, 35, 15, true); }//多打印空白行5个
             }
@@ -269,18 +269,27 @@ namespace 方糖音乐播放器
                 }
                 else if (底部列表.SelectedIndex == 2)//随机播放
                 {
-                    int stc = 0;//循环条件
-                    while (stc == 0)//循环
+                    if (主页的播放列表.Items.Count == 1)
                     {
-                        Random rd = new Random();//定义随机数
-                        int i = rd.Next(网络搜索结果.Items.Count - 1);//随机范围在列表最大-1
-                        if (网络搜索结果.SelectedIndex != i)//排除当前正在播放的
+                        Program_background(Web_search_results[0].ToString());
+                        网络搜索结果.SelectedIndex = 0;//定位
+                    }
+                    else
+                    {
+                        int stc = 0;//循环条件
+                        while (stc == 0)//循环
                         {
-                            Program_background(Web_search_results[i].ToString());
-                            网络搜索结果.SelectedIndex = i;//定位
-                            stc = 1;//条件排除
+                            Random rd = new Random();//定义随机数
+                            int i = rd.Next(网络搜索结果.Items.Count - 1);//随机范围在列表最大-1
+                            if (网络搜索结果.SelectedIndex != i)//排除当前正在播放的
+                            {
+                                Program_background(Web_search_results[i].ToString());
+                                网络搜索结果.SelectedIndex = i;//定位
+                                stc = 1;//条件排除
+                            }
                         }
                     }
+
                 }
                 else if (底部列表.SelectedIndex == 3)//顺序播放
                 {
@@ -314,18 +323,27 @@ namespace 方糖音乐播放器
                 }
                 else if (底部列表.SelectedIndex == 2)//随机播放
                 {
-                    int stc = 0;//循环条件
-                    while (stc == 0)//循环
+                    if (主页的播放列表 .Items .Count == 1)
                     {
-                        Random rd = new Random();//定义随机数
-                        int i = rd.Next(主页的播放列表.Items.Count - 1);//随机范围在列表最大-1
-                        if (主页的播放列表.SelectedIndex != i)//排除当前正在播放的
+                        Play_Misic(Number[0].ToString());//播放歌曲
+                        主页的播放列表.SelectedIndex = 0;//定位
+                    }
+                    else
+                    {
+                        int stc = 0;//循环条件
+                        while (stc == 0)//循环
                         {
-                            Play_Misic(Number[i].ToString());//播放歌曲
-                            主页的播放列表.SelectedIndex = i;//定位
-                            stc = 1;//条件排除
+                            Random rd = new Random();//定义随机数
+                            int i = rd.Next(主页的播放列表.Items.Count - 1);//随机范围在列表最大-1
+                            if (主页的播放列表.SelectedIndex != i)//排除当前正在播放的
+                            {
+                                Play_Misic(Number[i].ToString());//播放歌曲
+                                主页的播放列表.SelectedIndex = i;//定位
+                                stc = 1;//条件排除
+                            }
                         }
                     }
+
                 }
                 else if (底部列表.SelectedIndex == 3)//顺序播放
                 {

@@ -29,12 +29,12 @@
         </Storyboard>
     </Window.Resources>
     <Grid Margin="10" SnapsToDevicePixels="True" >
-        <Rectangle x:Name="背景" HorizontalAlignment="Left" Height="105" VerticalAlignment="Top" Width="670" RadiusX="20" RadiusY="20" Opacity="0.4">
+        <Rectangle x:Name="背景" HorizontalAlignment="Left" Height="105" VerticalAlignment="Top" Width="670" RadiusX="20" RadiusY="20" Opacity="0.6">
             <Rectangle.Effect>
                 <BlurEffect Radius="10"/>
             </Rectangle.Effect>
             <Rectangle.Fill>
-                <SolidColorBrush Color="#FF787878" Opacity="0.3"/>
+                <SolidColorBrush Color="#FF787878" Opacity="0.5"/>
             </Rectangle.Fill>
         </Rectangle>
         <Label x:Name="主" Content="桌面歌词" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="575" VerticalContentAlignment="Center" FontSize="30" Foreground="#FFFF3838" Margin="10,10,0,0">

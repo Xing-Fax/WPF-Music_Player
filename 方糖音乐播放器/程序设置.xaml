@@ -423,11 +423,20 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
-    <Canvas x:Name="grid" Clip="M0.5,10.5 C0.5,4.9771525 4.9771525,0.5 10.5,0.5 L389.5,0.5 C395.02285,0.5 399.5,4.9771525 399.5,10.5 L399.5,589.5 C399.5,595.02285 395.02285,599.5 389.5,599.5 L10.5,599.5 C4.9771525,599.5 0.5,595.02285 0.5,589.5 z">
-        <Rectangle Fill="White" HorizontalAlignment="Left" Height="600" RadiusY="10" RadiusX="10" Stroke="{Binding Background, ElementName=默认}" VerticalAlignment="Top" Width="400"/>
+    <Canvas x:Name="grid">
+        <Rectangle x:Name="rectangle" Fill="White" HorizontalAlignment="Left" Height="600" RadiusY="10" RadiusX="10" Stroke="{Binding Background, ElementName=默认}" VerticalAlignment="Top" Width="400" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
         <Grid x:Name="标题" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="392" MouseMove="标题_MouseMove" Canvas.Top="20">
             <materialDesign:PackIcon HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40" Kind="CogOutline" Margin="10,0,0,0" Foreground="{Binding Background, ElementName=默认}"/>
-            <Label Content="程序默认设置      " HorizontalAlignment="Left" Height="40" Margin="50,0,0,0" VerticalAlignment="Top" Width="342" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/>
+            <Label Content="程序设置" HorizontalAlignment="Left" Height="40" Margin="50,0,0,0" VerticalAlignment="Top" Width="302" FontSize="20" Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <ListBox HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Margin="352,0,0,0">
                 <ListBoxItem Height="40" ToolTip="我需要帮助" HorizontalContentAlignment="Center" MouseUp="ListBoxItem_MouseUp" Padding="1,8,-1,8">
                     <materialDesign:PackIcon Kind="AccountQuestionOutline"  HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="30" Height="30" Foreground="{Binding Background, ElementName=默认}"/>
@@ -437,7 +446,7 @@
         <Button x:Name="默认" Content="恢复默认" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="115" BorderBrush="{x:Null}" Click="默认_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="10" Canvas.Top="545"/>
         <Button x:Name="保存" Content="保存更改" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="115" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="保存_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="275" Canvas.Top="545"/>
         <Button x:Name="取消" Content="取消更改" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="120" Background="{Binding Background, ElementName=默认}" BorderBrush="{x:Null}" Click="取消_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="140" Canvas.Top="545"/>
-        <ListBox x:Name="设置" HorizontalAlignment="Left" Height="460" Style="{DynamicResource SimpleListBox}" VerticalAlignment="Top" Width="360" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Background="{x:Null}" BorderBrush="{Binding Background, ElementName=默认}" Canvas.Left="20" Canvas.Top="80" VerticalContentAlignment="Top" d:IsHidden="True">
+        <ListBox x:Name="设置" HorizontalAlignment="Left" Height="470" Style="{DynamicResource SimpleListBox}" VerticalAlignment="Top" Width="360" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Background="{x:Null}" BorderBrush="{Binding Background, ElementName=默认}" Canvas.Left="20" Canvas.Top="65" VerticalContentAlignment="Top">
             <ListBoxItem x:Name="默认背景" Height="45" VerticalAlignment="Center" MouseUp="默认背景_MouseUp">
                 <Grid Height="28" Width="337" VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -498,21 +507,50 @@
                 <RadioButton Content="320" HorizontalAlignment="Left" Height="16.4" Margin="244,12.4,0,0" VerticalAlignment="Top" Width="74"/>
             </Grid>
         </ListBox>
-        <Grid x:Name="帮助" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="400" Visibility="Visible">
-            <Rectangle Fill="#FFF4F4F5" Stroke="{Binding Background, ElementName=默认}" RadiusX="10" RadiusY="10"/>
-            <Grid HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="400" MouseMove="Grid_MouseMove_1">
+        <Grid x:Name="帮助" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="400" Visibility="Visible" d:IsHidden="True">
+            <Rectangle x:Name="rectangle1" Fill="#FFF4F4F5" Stroke="{Binding Background, ElementName=默认}" RadiusX="10" RadiusY="10" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="600" Width="400">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Grid x:Name="grid1" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="400" MouseMove="Grid_MouseMove_1">
                 <materialDesign:PackIcon Kind="TimelineHelpOutline" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="40" Width="45" Margin="10,0,0,0" Foreground="{Binding Background, ElementName=默认}"/>
-                <Label Content="程序帮助" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="60,0,0,0" Height="40" Width="300" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/>
+                <Label x:Name="label" Content="程序帮助" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="60,0,0,0" Height="40" Width="280" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/>
+                <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="40" Margin="350,15,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                    <ListBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </ListBox.RenderTransform>
+                    <materialDesign:PackIcon x:Name="packIcon1" ToolTip="展开全文" Kind="ArrowCollapseRight" HorizontalAlignment="Center" Height="25" VerticalAlignment="Center" Width="25" Foreground="{Binding Background, ElementName=默认}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+                </ListBox>
             </Grid>
             <Button ToolTip="返回" HorizontalAlignment="Left" Height="27.167" Margin="10,562.833,0,0" VerticalAlignment="Top" Width="35" Padding="-4,4,-3,4" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="Button_Click">
                 <materialDesign:PackIcon Kind="KeyboardReturn" HorizontalAlignment="Center" VerticalAlignment="Center" Width="20" Height="20"/>
             </Button>
-            <Button Content="关于程序" HorizontalAlignment="Left" Height="25" Margin="300,565,0,0" VerticalAlignment="Top" Width="90" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{Binding Background, ElementName=默认}" Click="Button_Click_2"/>
-            <ScrollViewer x:Name="xx" HorizontalAlignment="Center" Height="507.833" VerticalAlignment="Center" Width="380" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10,57.167,10,35" HorizontalScrollBarVisibility="Visible">
-                <TextBlock HorizontalAlignment="Left" Height="762.833" TextWrapping="Wrap" VerticalAlignment="Top" Width="360" Foreground="#FF426ECD" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" FontSize="13"><Run Text="修改程序默认背景图片："/><Run Foreground="Black" Text="可以修改默认背景图片，支持的格式有"/><Run Foreground="Black" Text="JPG、PNG、JPGE、BMP"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="缩放模式："/><Run Foreground="Black" Text="设置背景图片的在程序中的缩放模式，默认是&quot;填充&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="模糊："/><Run Foreground="Black" Text="设置背景图片在程序中的模糊程度，默认是&quot;5&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="设置歌词路径："/><Run Foreground="Black" Text="可以将歌词文件放置到一个文件夹中，播放时会自动读取，歌词读取优先级；&quot;歌曲内嵌→指定文件夹→歌曲目录下&quot;"/><LineBreak/><LineBreak/><Run Text="当前路径："/><Run Foreground="Black" Text="显示用户设置的歌词目录，单击可以打开目录"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="显示歌词："/><Run Foreground="Black" Text="是否显示滚动歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="平滑滚动："/><Run Foreground="Black" Text="设置歌词滚动方式"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="桌面歌词："/><Run Foreground="Black" Text="打开/关闭桌面歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="独立播放："/><Run Foreground="Black" Text="在独立窗口播放视频"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="嵌入歌词："/><Run Foreground="Black" Text="当读取到有效歌词且歌曲没有内嵌歌词的情况下，可以自动将歌词嵌入歌曲内"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="错误报告"/><Run FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="："/><Run Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="是否显示程序运行中的错误，如果关闭将看不到错误原因"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="恢复默认："/><Run Foreground="Black" Text="将所有设置恢复默认状态"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="取消更改："/><Run Foreground="Black" Text="取消对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="保存更改："/><Run Foreground="Black" Text="保存对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="错误报告："/><Run Foreground="Black" Text="是否向用户发送程序错误原因，以方便排查错误"/><LineBreak/><LineBreak/><Run Text="音乐接口"/><Run FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="："/><Run Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="用于指定搜索引擎接口参数，默认为（腾讯）"/><LineBreak/><Run Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/><LineBreak/><Run FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="设置歌曲缓存目录"/><Run FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="："/><Run Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="用来设置联网播放歌曲自动缓存目录，默认为系统音乐目录"/><LineBreak/></TextBlock>
+            <Button x:Name="button" Content="关于程序" HorizontalAlignment="Left" Height="25" Margin="300,565,0,0" VerticalAlignment="Top" Width="90" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{Binding Background, ElementName=默认}" Click="Button_Click_2" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <ScrollViewer x:Name="xx" HorizontalAlignment="Left" Height="487.833" VerticalAlignment="Top" Width="380" Margin="10,57.167,10,55" HorizontalScrollBarVisibility="Visible">
+                <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF426ECD" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" FontSize="13" SnapsToDevicePixels="True" Height="507.833"><Run Text="修改程序默认背景图片："/><Run Foreground="Black" Text="可以修改默认背景图片，支持的格式有"/><Run Foreground="Black" Text="JPG、PNG、JPGE、BMP"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="缩放模式："/><Run Foreground="Black" Text="设置背景图片的在程序中的缩放模式，默认是&quot;填充&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="模糊："/><Run Foreground="Black" Text="设置背景图片在程序中的模糊程度，默认是&quot;5&quot;"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="设置歌词路径："/><Run Foreground="Black" Text="可以将歌词文件放置到一个文件夹中，播放时会自动读取，歌词读取优先级；&quot;歌曲内嵌→指定文件夹→歌曲目录下&quot;"/><LineBreak/><LineBreak/><Run Text="当前路径："/><Run Foreground="Black" Text="显示用户设置的歌词目录，单击可以打开目录"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="显示歌词："/><Run Foreground="Black" Text="是否显示滚动歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="平滑滚动："/><Run Foreground="Black" Text="设置歌词滚动方式"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="桌面歌词："/><Run Foreground="Black" Text="打开/关闭桌面歌词"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="独立播放："/><Run Foreground="Black" Text="在独立窗口播放视频"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="嵌入歌词："/><Run Foreground="Black" Text="当读取到有效歌词且歌曲没有内嵌歌词的情况下，可以自动将歌词嵌入歌曲内"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="错误报告"/><Run FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="："/><Run Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="是否显示程序运行中的错误，如果关闭将看不到错误原因"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="恢复默认："/><Run Foreground="Black" Text="将所有设置恢复默认状态"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="取消更改："/><Run Foreground="Black" Text="取消对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="保存更改："/><Run Foreground="Black" Text="保存对设置做出的更改"/><LineBreak/><Run Foreground="Black"/><LineBreak/><Run Text="错误报告："/><Run Foreground="Black" Text="是否向用户发送程序错误原因，以方便排查错误"/><LineBreak/><LineBreak/><Run Text="音乐接口"/><Run FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="："/><Run Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="用于指定搜索引擎接口参数，默认为（腾讯）"/><LineBreak/><Run Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/><LineBreak/><Run FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="设置歌曲缓存目录"/><Run FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="："/><Run Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Text="用来设置联网播放歌曲自动缓存目录，默认为系统音乐目录"/><LineBreak/></TextBlock>
             </ScrollViewer>
         </Grid>
-        <Grid x:Name="关于" Height="600" Width="400" MouseMove="Grid_MouseMove">
+        <Grid x:Name="关于" Height="600" Width="400" MouseMove="Grid_MouseMove" d:IsHidden="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="53*"/>
                 <RowDefinition Height="7*"/>

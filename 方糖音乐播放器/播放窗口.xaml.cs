@@ -333,5 +333,21 @@ namespace 方糖音乐播放器
                 boole = false;
             }
         }
+
+        private void 播放窗口1_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) e.Effects = DragDropEffects.Link;
+            else e.Effects = DragDropEffects.None;
+        }
+
+        private void 播放窗口1_Drop(object sender, DragEventArgs e)
+        {
+            string[] filePath = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (System.IO.Path.GetExtension(filePath[0]) == ".mp4" || System.IO.Path.GetExtension(filePath[0]) == ".wmv" || System.IO.Path.GetExtension(filePath[0]) == ".avi")
+            {
+                Play(filePath[0]);
+                SP_sile = filePath[0];
+            }
+        }
     }
 }

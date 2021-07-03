@@ -354,7 +354,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Canvas x:Name="模板一" Visibility="Visible" d:IsHidden="True">
+        <Canvas x:Name="模板一" Visibility="Visible">
 
             <Button x:Name="单文件" Content="单文件夹扫描" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" Background="#FF673AB7" BorderBrush="{x:Null}" Click="单文件_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="10" Canvas.Top="200"/>
             <Button x:Name="全文件" Content="全文件夹扫描" HorizontalAlignment="Left" Height="45" VerticalAlignment="Top" Width="175" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=单文件}" Click="全文件_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="190" Canvas.Top="200"/>
@@ -485,7 +485,7 @@
         </Canvas>
         <Canvas x:Name="模板五" HorizontalAlignment="Left" Height="272" VerticalAlignment="Top" Width="555" d:IsHidden="True">
             <Button x:Name="知道了" Content="我知道了" Height="45" VerticalAlignment="Top" HorizontalAlignment="Center" Width="175" FontSize="16" Canvas.Left="190" Canvas.Top="217" BorderBrush="{x:Null}" Background="{Binding Stroke, ElementName=rectangle}" Click="知道了_Click"/>
-            <materialDesign:PackIcon Kind="AlertOutline"   HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Canvas.Left="10" Canvas.Top="10" Foreground="{Binding Stroke, ElementName=rectangle}"/>
+            <materialDesign:PackIcon Kind="EmoticonLolOutline"   HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="50" Canvas.Left="10" Canvas.Top="10" Foreground="{Binding Stroke, ElementName=rectangle}"/>
             <TextBlock HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="555" FontSize="24" TextAlignment="Center" Canvas.Top="15"><Run Text="你的"/><Run Text="程序可能遇到问题"/><Run/><LineBreak/><Run FontSize="12" Text="以下信息或许可以帮助到您"/></TextBlock>
             <ScrollViewer x:Name="xx" HorizontalAlignment="Center" Height="147" VerticalAlignment="Center" Width="535" Canvas.Left="10" Canvas.Top="65" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalScrollBarVisibility="Visible">
                 <TextBox x:Name="问题"

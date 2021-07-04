@@ -192,7 +192,7 @@ namespace 方糖音乐播放器
         {
             string Ext;
             string[] ssgb = { "mp3", "wav", "flac" };//设置过滤器
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < ssgb .Length; i++)
             {
                 Ext = ssgb[i];
                 if (!info.Exists) return ;

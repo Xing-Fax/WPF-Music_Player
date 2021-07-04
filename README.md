@@ -54,7 +54,7 @@
 
 编译后的exe文件：
 
-蓝奏云：https://wwe.lanzoui.com/b01oe933a               提取码:3wsy
+蓝奏云：https://wwe.lanzoui.com/b01oe933a                 提取码:3wsy
 
 网    盘：https://pan.baidu.com/s/1XrJOIzYeD1BjkClVaM6PGQ 提取码: 2d76 
 

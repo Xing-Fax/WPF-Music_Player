@@ -474,14 +474,12 @@ namespace 方糖音乐播放器
         public MainWindow()
         {
             InitializeComponent();
-
-
-
             //MessageBox.Show(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
             //System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\");
             联网播放.Visibility = Visibility.Collapsed;
             try
             {
+                //MessageBox.Show(System.IO.Path.GetTempPath());
                 if (Properties.Settings.Default.网络歌曲缓存目录 != "系统音乐目录")
                 {
 
@@ -494,10 +492,10 @@ namespace 方糖音乐播放器
                 }
                 else
                 {
-                    if (false == System.IO.Directory.Exists(System.IO.Path.GetTempPath() + @"方糖音乐\"))//判断目录是否存在
+                    if (false == System.IO.Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\"))//判断目录是否存在
                     {
                         //创建临时目录
-                        System.IO.Directory.CreateDirectory(System.IO.Path.GetTempPath() + @"方糖音乐\");
+                        System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\");
                     }
                 }
 

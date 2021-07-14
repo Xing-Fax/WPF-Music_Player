@@ -54,13 +54,13 @@
 
 编译后的exe文件：
 
-蓝奏云：https://wwe.lanzoui.com/b01offuja  密码:gmoo
+蓝奏云：https://wwe.lanzoui.com/b01offuja  密码：gmoo
 
 网    盘： https://pan.baidu.com/s/1-FnUl7YavJTBDkVv4cONmA  提取码: 6aew 
 
 文件特征描述：
 
-文件: C:\Users\邢传真\桌面\方糖音乐播放器_Secure\方糖音乐播放器(32位).exe
+文件:方糖音乐播放器(32位).exe
 
 大小: 14284992 字节
 
@@ -74,7 +74,7 @@ SHA1: 13843D6D7E96E6CD92385F2907A16BDB7DE4D019
 
 CRC32: 5475B65D
 
-文件: C:\Users\邢传真\桌面\方糖音乐播放器_Secure\方糖音乐播放器(64位).exe
+文件:方糖音乐播放器(64位).exe
 
 大小: 14184640 字节
 

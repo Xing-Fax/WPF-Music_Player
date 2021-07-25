@@ -111,7 +111,7 @@ namespace 方糖音乐播放器
             {
                 throw new ArgumentNullException("window");
             }
-            return _fullWindow == window;
+            return _fullWindow == window;  
         }
     }
 }

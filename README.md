@@ -54,21 +54,41 @@
 
 编译后的exe文件：
 
-蓝奏云：https://wwe.lanzoui.com/iT63Jqyolwh
+蓝奏云：https://wwe.lanzoui.com/b01offuja  密码：gmoo
 
-网  盘：https://pan.baidu.com/s/1kgXou0jPn-4v2WhfdpaoWw 提取码: 81rg
+网    盘： https://pan.baidu.com/s/1-FnUl7YavJTBDkVv4cONmA  提取码: 6aew 
 
 文件特征描述：
 
-  大小: 17931264 字节
+文件:方糖音乐播放器(32位).exe
 
-  文件版本: 1.0.0.0
+大小: 14284992 字节
 
-  MD5: 8FF653A03F31BDAC278C535E3D046769
+文件版本: 1.0.0.0
 
-  SHA1: EF78D190197872C6D525489709CF50D38386A7AC
+修改时间: 2021年7月14日, 20:15:35
 
-  CRC32: F8506B02
+MD5: 1DEF48DA0C78DFC2EE79C3586BA155CE
+
+SHA1: 13843D6D7E96E6CD92385F2907A16BDB7DE4D019
+
+CRC32: 5475B65D
+
+文件:方糖音乐播放器(64位).exe
+
+大小: 14184640 字节
+
+文件版本: 1.0.0.0
+
+修改时间: 2021年7月14日, 20:16:01
+
+MD5: 53796E77350257EF64988691A87B4D75
+
+SHA1: EEE8D288C7A5AE71E76A109E5C7B4AE1B03C3E68
+
+CRC32: C4725F7D
+
+
 
 
 如果遇到项目无法生成的情况，可以尝试卸载项目后重新加载，或者尝试还原NuGet包

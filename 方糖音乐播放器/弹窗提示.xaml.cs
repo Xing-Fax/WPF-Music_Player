@@ -1,6 +1,7 @@
 ﻿using System;
 ///using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 //using System.Linq;
 //using System.Text;
 using System.Threading;
@@ -32,6 +33,8 @@ namespace 方糖音乐播放器.Properties
         }
         public event Func<int, int> fcc1;
 
+        [DllImport("winmm.dll")]
+        public static extern bool PlaySound(String Filename, int Mod, int Flags);
         [Obsolete]
         public 弹窗提示(int parameter, Color color,int Other_parameters,string file)
         {
@@ -44,7 +47,9 @@ namespace 方糖音乐播放器.Properties
             单文件.Background = new SolidColorBrush(color);
             if (parameter == 0)
             {
+                //PlaySound(@"C:\Windows\media\Windows Proximity Notification.wav", 0, 1);
                 模板一.Visibility = Visibility.Visible;
+
             }
             else if (parameter == 1)
             {
@@ -89,11 +94,13 @@ namespace 方糖音乐播放器.Properties
             }
             else if(parameter == 3)
             {
+                PlaySound(@"C:\Windows\media\Windows Proximity Notification.wav", 0, 1);
                 模板四.Visibility = Visibility.Visible;
                 提示2.Text = file;
             }
             else if (parameter == 4)
             {
+                PlaySound(@"C:\Windows\media\Windows Proximity Notification.wav", 0, 1);
                 模板五.Visibility = Visibility.Visible;
                 问题.Text  = file;
             }

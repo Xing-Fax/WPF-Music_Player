@@ -8,8 +8,11 @@ using System;
 using System.Collections;
 //using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 //using System.Linq;
 //using System.Text;
 //using System.Runtime.InteropServices;
@@ -470,10 +473,26 @@ namespace 方糖音乐播放器
         弹窗提示 Tips;
         Meting Search_interface;//音乐接口api
 
+        //[DllImport("winmm.dll")]
+        //public static extern bool PlaySound(String Filename, int Mod, int Flags);
         [Obsolete]
         public MainWindow()
         {
             InitializeComponent();
+
+            //以下代码用作校验程序签名是否完整，调试时请将其注释
+
+            //if (Function_list.Document_verification() != true)
+            //{
+            //    Tips = new 弹窗提示(3, color3, 0, "程序签名校验失败，可能程序被恶意软件非法篡改，轻击以退出程序");
+            //    Tips.ShowDialog();
+            //    Environment.Exit(0);
+            //}
+
+            //bool X509 =  Function_list.Document_verification();
+            //MessageBox.Show(X509Certificate.CreateFromSignedFile(@"C:\Users\邢传真\桌面\方糖音乐播放器\方糖音乐播放器(32位).exe").GetCertHashString ());
+            //Clipboard.SetText(X509Certificate.CreateFromSignedFile(@"C:\Users\邢传真\桌面\方糖音乐播放器\方糖音乐播放器(32位).exe").GetCertHashString ());
+            //MessageBox.Show(System.Environment.GetEnvironmentVariable("TMP"));
             //MessageBox.Show(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
             //System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\");
             联网播放.Visibility = Visibility.Collapsed;
@@ -1607,6 +1626,18 @@ namespace 方糖音乐播放器
                 {//填充搜索结果
                     Web_search_results.Add(temp2);
                     string name = Function_list.Substring(Web_search_results[Web_search_results.Count - 1].ToString(), "\"name\":\"", "\"");
+                    //if (name.Length >7)
+                    //{
+                    //    name = name.Substring(0, 7) + "...";
+                    //}
+                    //else
+                    //{
+                    //    while(name.Length < 7)
+                    //    {
+                    //        name += " ";
+                    //    }
+                    //}
+
                     name += "   歌手:" + Function_list.Substring(Web_search_results[Web_search_results.Count - 1].ToString(), "[\"", "\"]").Replace("\"", "").Replace(",", "-");
                     Function_list.填充菜单(网络搜索结果, name, name, 315, 40, 16, false);
                     jsonStr = jsonStr.Replace("{" + temp2 + "}", "");

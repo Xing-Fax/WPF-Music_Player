@@ -4,10 +4,17 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:方糖音乐播放器"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" x:Name="window" x:Class="方糖音乐播放器.程序设置"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" x:Name="window" x:Class="方糖音乐播放器.程序设置"
         mc:Ignorable="d"
         Title="程序设置" Height="600" Width="400" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}" ShowInTaskbar="False" ResizeMode="NoResize">
     <Window.Resources>
+        <ItemsPanelTemplate x:Key="ItemsPanelTemplate3">
+            <StackPanel x:Name="x1" IsItemsHost="True" SnapsToDevicePixels="True" ClipToBounds="True">
+                <i:Interaction.Behaviors>
+                    <ei:FluidMoveBehavior x:Name="x2" Duration="0:0:0.5" AppliesTo="Children"/>
+                </i:Interaction.Behaviors>
+            </StackPanel>
+        </ItemsPanelTemplate>
         <Storyboard x:Key="窗体打开">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="window">
                 <EasingDoubleKeyFrame KeyTime="0" Value="88.125"/>
@@ -203,6 +210,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
         <Style x:Key="RichTextBoxStyle1" TargetType="{x:Type RichTextBox}">
             <Setter Property="materialDesign:TextFieldAssist.TextBoxViewMargin" Value="-4,0,1,0"/>
             <Style.BasedOn>
@@ -434,6 +442,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
+
         <Grid x:Name="标题" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="392" MouseMove="标题_MouseMove" Canvas.Top="20">
             <materialDesign:PackIcon HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40" Kind="CogOutline" Margin="10,0,0,0" Foreground="{Binding Background, ElementName=默认}"/>
             <Label Content="程序设置" HorizontalAlignment="Left" Height="40" Margin="50,0,0,0" VerticalAlignment="Top" Width="302" FontSize="20" Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
@@ -446,7 +455,7 @@
         <Button x:Name="默认" Content="恢复默认" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="115" BorderBrush="{x:Null}" Click="默认_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="10" Canvas.Top="545"/>
         <Button x:Name="保存" Content="保存更改" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="115" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="保存_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="275" Canvas.Top="545"/>
         <Button x:Name="取消" Content="取消更改" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="120" Background="{Binding Background, ElementName=默认}" BorderBrush="{x:Null}" Click="取消_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="140" Canvas.Top="545"/>
-        <ListBox x:Name="设置" HorizontalAlignment="Left" Height="470" Style="{DynamicResource SimpleListBox}" VerticalAlignment="Top" Width="360" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Background="{x:Null}" BorderBrush="{Binding Background, ElementName=默认}" Canvas.Left="20" Canvas.Top="65" VerticalContentAlignment="Top">
+        <ListBox x:Name="设置" ItemsPanel="{DynamicResource ItemsPanelTemplate3}"  HorizontalAlignment="Left" Style="{DynamicResource SimpleListBox}" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Background="{x:Null}" BorderBrush="{Binding Background, ElementName=默认}" Canvas.Left="20" Canvas.Top="65" VerticalContentAlignment="Top">
             <ListBoxItem x:Name="默认背景" Height="45" VerticalAlignment="Center" MouseUp="默认背景_MouseUp">
                 <Grid Height="28" Width="337" VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -454,17 +463,17 @@
                     <Label Content="修改程序默认背景图片" HorizontalAlignment="Left" Height="28" Margin="29,0,0,0" VerticalAlignment="Top" Width="305" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16" Foreground="Black"/>
                 </Grid>
             </ListBoxItem>
-            <Grid Height="30" Width="340">
-                <RadioButton x:Name="原始" Content="原始" Margin="94,3.966,196,6.034" Background="{Binding Background, ElementName=默认}" BorderBrush="{x:Null}" IsChecked="True" Click="原始_Click"/>
-                <Label Content="缩放模式：" Margin="0,0,266,0.667" VerticalContentAlignment="Center" FontSize="14"/>
-                <RadioButton x:Name="填充" Content="填充" Margin="149,3.966,141,6.034" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="填充_Click" IsChecked="True"/>
-                <RadioButton x:Name="居中" Content="拉伸" Margin="264,4.1,21,5.9" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="拉伸_Click"/>
-                <RadioButton x:Name="拉伸" Content="居中" Margin="204,4.1,81,5.9" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="居中_Click"/>
-            </Grid>
-            <Grid Height="40" Width="335" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Slider x:Name="模糊" HorizontalAlignment="Center" Height="20" Margin="39,11,10,9" VerticalAlignment="Center" Width="286" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=默认}" Maximum="30" SmallChange="1" Value="5" ValueChanged="模糊_ValueChanged"/>
-                <Label Content="模糊&#xA;" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="39" VerticalContentAlignment="Center" Margin="0,9,0,6" FontSize="16" Padding="4,2,4,4" Foreground="Black"/>
-            </Grid>
+            <Canvas Height="30" Width="340">
+                <RadioButton x:Name="原始" Content="原始" Background="{Binding Background, ElementName=默认}" BorderBrush="{x:Null}" IsChecked="True" Click="原始_Click" Height="20" Canvas.Left="94" Canvas.Top="3.966" Width="50"/>
+                <Label Content="缩放模式：" VerticalContentAlignment="Center" FontSize="14" Height="29.333" Width="74"/>
+                <RadioButton x:Name="填充" Content="填充" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="填充_Click" IsChecked="True" Height="20" Canvas.Left="149" Canvas.Top="3.966" Width="50"/>
+                <RadioButton x:Name="居中" Content="拉伸" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="拉伸_Click" Height="20" Canvas.Left="264" Canvas.Top="4.1" Width="55"/>
+                <RadioButton x:Name="拉伸" Content="居中" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="居中_Click" Height="20" Canvas.Left="204" Canvas.Top="4.1" Width="55"/>
+            </Canvas>
+            <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="335">
+                <Slider x:Name="模糊" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="286" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=默认}" Maximum="30" SmallChange="1" Value="5" ValueChanged="模糊_ValueChanged" Canvas.Left="39" Canvas.Top="11"/>
+                <Label Content="模糊&#xA;" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="39" VerticalContentAlignment="Center" FontSize="16" Padding="4,2,4,4" Foreground="Black" Canvas.Top="9"/>
+            </Canvas>
             <ListBoxItem x:Name="歌词路径" Height="43" VerticalAlignment="Center">
                 <Grid Height="28" Width="337" VerticalAlignment="Center" HorizontalAlignment="Center" MouseUp="Grid_MouseUp">
                     <materialDesign:PackIcon HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="29" Kind="PlusBoxMultipleOutline" Foreground="{Binding Background, ElementName=默认}"/>
@@ -472,27 +481,27 @@
                 </Grid>
             </ListBoxItem>
             <Label x:Name="路径" Content="当前路径：无" HorizontalAlignment="Left" VerticalAlignment="Top" Width="340" FontSize="14" VerticalContentAlignment="Center" Foreground="Black" MouseUp="路径_MouseUp" Height="31"/>
-            <Grid Height="65" Width="340">
-                <ToggleButton x:Name="歌词" Content="" HorizontalAlignment="Left" Height="17" Margin="64,10,0,0" VerticalAlignment="Top" Width="55" Background="{Binding Background, ElementName=默认}" Foreground="{Binding Background, ElementName=默认}" Click="歌词_Click" IsChecked="True"/>
-                <Label Content="显示歌词" HorizontalAlignment="Left" Height="25" Margin="0,5,0,0" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
-                <Label Content="平滑滚动" HorizontalAlignment="Left" Height="25" Margin="110,5,0,0" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
-                <ToggleButton x:Name="平滑" Content="" HorizontalAlignment="Left" Height="17" Margin="174.5,10,0,0" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" Click="平滑_Click" IsChecked="True" IsEnabled="False"/>
-                <Label x:Name="桌面歌词" Content="桌面歌词" HorizontalAlignment="Left" Height="25" Margin="224,5,0,0" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
-                <ToggleButton x:Name="桌面歌词1" Content="" HorizontalAlignment="Left" Height="17" Margin="285,10,0,0" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" UseLayoutRounding="False" Click="桌面歌词1_Click"/>
-                <ToggleButton x:Name="独立播放1" Content="" HorizontalAlignment="Left" Height="17" Margin="64,39.2,0,-1.2" VerticalAlignment="Top" Width="55" Background="{Binding Background, ElementName=默认}" Foreground="{Binding Background, ElementName=默认}" IsChecked="True" Style="{DynamicResource ToggleButtonStyle1}"/>
-                <Label x:Name="独立播放" Content="独立播放" HorizontalAlignment="Left" Height="25" Margin="0,35,0,-5" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
-                <Label x:Name="嵌入歌词" Content="嵌入歌词" HorizontalAlignment="Left" Height="25" Margin="110,35,0,-5" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
-                <ToggleButton x:Name="嵌入歌词1" Content="" HorizontalAlignment="Left" Height="17" Margin="174.5,39.2,0,-1.2" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" UseLayoutRounding="False"/>
-                <Label x:Name="嵌入歌词_Copy" Content="错误报告" HorizontalAlignment="Left" Height="25" Margin="220.5,35,0,0" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black"/>
-                <ToggleButton x:Name="错误" Content="" HorizontalAlignment="Left" Height="17" Margin="285,39.2,0,0" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" UseLayoutRounding="False"/>
-            </Grid>
-            <Grid x:Name="接口" Height="50" Width="340">
-                <Label Content="音乐接口" Margin="0,11.5,256,10" FontSize="16" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left"/>
-                <RadioButton x:Name="腾讯" Content="腾讯" Margin="84,10,196,10" IsChecked="True" Background="{Binding Background, ElementName=默认}" BorderBrush="{x:Null}" Click="腾讯_Click"/>
-                <RadioButton x:Name="网易" Content="网易" Margin="144,10,136,10" IsChecked="True" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="网易_Click"/>
-                <RadioButton x:Name="酷狗" Content="酷狗" Margin="204,10,76,10" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="酷狗_Click"/>
-                <RadioButton x:Name="虾米" Content="虾米" Margin="264,10,16,10" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" IsEnabled="False"/>
-            </Grid>
+            <Canvas Height="65" Width="340">
+                <ToggleButton x:Name="歌词" Content="" HorizontalAlignment="Left" Height="17" VerticalAlignment="Top" Width="55" Background="{Binding Background, ElementName=默认}" Foreground="{Binding Background, ElementName=默认}" Click="歌词_Click" IsChecked="True" Canvas.Left="64" Canvas.Top="10"/>
+                <Label Content="显示歌词" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black" Canvas.Top="5"/>
+                <Label Content="平滑滚动" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black" Canvas.Left="110" Canvas.Top="5"/>
+                <ToggleButton x:Name="平滑" Content="" HorizontalAlignment="Left" Height="17" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" Click="平滑_Click" IsChecked="True" IsEnabled="False" Canvas.Left="174.5" Canvas.Top="10"/>
+                <Label x:Name="桌面歌词" Content="桌面歌词" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black" Canvas.Left="224" Canvas.Top="5"/>
+                <ToggleButton x:Name="桌面歌词1" Content="" HorizontalAlignment="Left" Height="17" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" UseLayoutRounding="False" Click="桌面歌词1_Click" Canvas.Left="285" Canvas.Top="10"/>
+                <ToggleButton x:Name="独立播放1" Content="" HorizontalAlignment="Left" Height="17" VerticalAlignment="Top" Width="55" Background="{Binding Background, ElementName=默认}" Foreground="{Binding Background, ElementName=默认}" IsChecked="True" Style="{DynamicResource ToggleButtonStyle1}" Canvas.Left="64" Canvas.Top="39.2"/>
+                <Label x:Name="独立播放" Content="独立播放" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black" Canvas.Top="35"/>
+                <Label x:Name="嵌入歌词" Content="嵌入歌词" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black" Canvas.Left="110" Canvas.Top="35"/>
+                <ToggleButton x:Name="嵌入歌词1" Content="" HorizontalAlignment="Left" Height="17" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" UseLayoutRounding="False" Canvas.Left="174.5" Canvas.Top="39.2"/>
+                <Label x:Name="嵌入歌词_Copy" Content="错误报告" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="74" FontSize="16" Foreground="Black" Canvas.Left="220.5" Canvas.Top="35"/>
+                <ToggleButton x:Name="错误" Content="" HorizontalAlignment="Left" Height="17" VerticalAlignment="Top" Width="55" Foreground="{Binding Background, ElementName=默认}" Background="{Binding Background, ElementName=默认}" UseLayoutRounding="False" Canvas.Left="285" Canvas.Top="39.2"/>
+            </Canvas>
+            <Canvas x:Name="接口" Height="50" Width="340">
+                <Label Content="音乐接口" FontSize="16" Foreground="Black" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="28.5" Canvas.Top="11.5"/>
+                <RadioButton x:Name="腾讯" Content="腾讯" IsChecked="True" Background="{Binding Background, ElementName=默认}" BorderBrush="{x:Null}" Click="腾讯_Click" Height="30" Canvas.Left="84" Canvas.Top="10" Width="60"/>
+                <RadioButton x:Name="网易" Content="网易" IsChecked="True" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="网易_Click" Height="30" Canvas.Left="144" Canvas.Top="10" Width="60"/>
+                <RadioButton x:Name="酷狗" Content="酷狗" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="酷狗_Click" Height="30" Canvas.Left="204" Canvas.Top="10" Width="60"/>
+                <RadioButton x:Name="虾米" Content="虾米" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" IsEnabled="False" Height="30" Canvas.Left="264" Canvas.Top="10" Width="60"/>
+            </Canvas>
             <ListBoxItem x:Name="歌曲目录" Height="41" VerticalAlignment="Center" Margin="0" Background="{x:Null}">
                 <Grid Height="28" Width="337" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,1,0,0" MouseUp="Grid_MouseUp_1">
                     <materialDesign:PackIcon HorizontalAlignment="Left" VerticalAlignment="Top" Height="28" Width="29" Kind="PlusBoxMultipleOutline" Foreground="{Binding Background, ElementName=默认}"/>
@@ -500,12 +509,6 @@
                 </Grid>
             </ListBoxItem>
             <Label x:Name="歌曲路径" Content="当前路径：系统临时目录" HorizontalAlignment="Left" VerticalAlignment="Top" Width="340" FontSize="14" VerticalContentAlignment="Center" Foreground="Black" MouseUp="歌曲路径_MouseUp" Padding="4,5,4,4" Height="31"/>
-            <Grid Height="41" Width="340" Visibility="Collapsed">
-                <materialDesign:PackIcon HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="Auto" Width="29" Kind="Music"  Foreground="{Binding Background, ElementName=默认}" Margin="10,6.499,0,6.501"/>
-                <Label Content="在线试听音质：" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="49,8.6,0,0" FontSize="14"/>
-                <RadioButton Content="128" HorizontalAlignment="Left" Height="16.4" Margin="160,12.4,0,0" VerticalAlignment="Top" Width="74"/>
-                <RadioButton Content="320" HorizontalAlignment="Left" Height="16.4" Margin="244,12.4,0,0" VerticalAlignment="Top" Width="74"/>
-            </Grid>
         </ListBox>
         <Grid x:Name="帮助" HorizontalAlignment="Left" Height="600" VerticalAlignment="Top" Width="400" Visibility="Visible" d:IsHidden="True">
             <Rectangle x:Name="rectangle1" Fill="#FFF4F4F5" Stroke="{Binding Background, ElementName=默认}" RadiusX="10" RadiusY="10" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Top" Height="600" Width="400">

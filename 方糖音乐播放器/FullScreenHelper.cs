@@ -9,8 +9,7 @@ using System.Windows.Interop;
 namespace 方糖音乐播放器
 {
     /// <summary>
-    /// Wpf应用程序全屏辅助类
-    /// 
+    /// Wpf应用程序全屏辅助类 
     /// ——全部使用.Net类进行操作
     /// ——可进入全屏和退出全屏
     /// ——可恢复到全屏前的状态

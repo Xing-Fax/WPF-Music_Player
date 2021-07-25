@@ -45,8 +45,6 @@ namespace 方糖音乐播放器
             }
         }
 
-
-
         [Obsolete]
         private void 桌面歌词主窗口_MouseEnter(object sender, MouseEventArgs e)
         {
@@ -56,7 +54,6 @@ namespace 方糖音乐播放器
             {
                 播放.Visibility = Visibility.Collapsed;
                 暂停.Visibility = Visibility.Visible;
-
             }
             else
             {

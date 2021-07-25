@@ -249,13 +249,13 @@ namespace 方糖音乐播放器
 
         private void 播放窗口1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (底部播放栏 .Visibility == Visibility.Collapsed) { 动画播放("菜单打开"); }
-            else
-            {
-                t2.Stop();
-                t2.Interval = 5000;
-                t2.Start();
-            }
+            //if (底部播放栏 .Visibility == Visibility.Collapsed) { 动画播放("菜单打开"); }
+            //else
+            //{
+            //    t2.Stop();
+            //    t2.Interval = 5000;
+            //    t2.Start();
+            //}
         }
 
         private void 打开文件_PreviewMouseUp(object sender, MouseButtonEventArgs e)

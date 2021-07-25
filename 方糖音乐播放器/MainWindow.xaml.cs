@@ -489,6 +489,8 @@ namespace 方糖音乐播放器
             //    Environment.Exit(0);
             //}
 
+            //到此结束
+
             //bool X509 =  Function_list.Document_verification();
             //MessageBox.Show(X509Certificate.CreateFromSignedFile(@"C:\Users\邢传真\桌面\方糖音乐播放器\方糖音乐播放器(32位).exe").GetCertHashString ());
             //Clipboard.SetText(X509Certificate.CreateFromSignedFile(@"C:\Users\邢传真\桌面\方糖音乐播放器\方糖音乐播放器(32位).exe").GetCertHashString ());
@@ -1626,18 +1628,6 @@ namespace 方糖音乐播放器
                 {//填充搜索结果
                     Web_search_results.Add(temp2);
                     string name = Function_list.Substring(Web_search_results[Web_search_results.Count - 1].ToString(), "\"name\":\"", "\"");
-                    //if (name.Length >7)
-                    //{
-                    //    name = name.Substring(0, 7) + "...";
-                    //}
-                    //else
-                    //{
-                    //    while(name.Length < 7)
-                    //    {
-                    //        name += " ";
-                    //    }
-                    //}
-
                     name += "   歌手:" + Function_list.Substring(Web_search_results[Web_search_results.Count - 1].ToString(), "[\"", "\"]").Replace("\"", "").Replace(",", "-");
                     Function_list.填充菜单(网络搜索结果, name, name, 315, 40, 16, false);
                     jsonStr = jsonStr.Replace("{" + temp2 + "}", "");

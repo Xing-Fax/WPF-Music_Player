@@ -35,9 +35,13 @@
                     </EasingThicknessKeyFrame.EasingFunction>
                 </EasingThicknessKeyFrame>
             </ThicknessAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="按键">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="背景">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.7"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.9"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="关闭">
@@ -68,19 +72,23 @@
                     </EasingThicknessKeyFrame.EasingFunction>
                 </EasingThicknessKeyFrame>
             </ThicknessAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="grid">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="按键">
                 <SplineDoubleKeyFrame KeyTime="0" Value="1"/>
                 <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="背景">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.9"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.7"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
     <Grid Margin="10" SnapsToDevicePixels="True" >
-        <Rectangle x:Name="背景" HorizontalAlignment="Left" Height="105" VerticalAlignment="Top" Width="670" RadiusX="20" RadiusY="20" Opacity="0.6">
+        <Rectangle x:Name="背景" HorizontalAlignment="Left" Height="105" VerticalAlignment="Top" Width="670" RadiusX="10" RadiusY="10" Opacity="0.7">
             <Rectangle.Effect>
-                <BlurEffect Radius="10"/>
+                <BlurEffect Radius="7"/>
             </Rectangle.Effect>
             <Rectangle.Fill>
-                <SolidColorBrush Color="#FF787878" Opacity="0.5"/>
+                <SolidColorBrush Color="White" Opacity="0.5"/>
             </Rectangle.Fill>
         </Rectangle>
         <Label x:Name="主" Content="桌面歌词" HorizontalAlignment="Left" Height="50" VerticalAlignment="Top" Width="635" VerticalContentAlignment="Center" FontSize="30" Foreground="#FFFF3838" Margin="10,10,0,0">
@@ -93,7 +101,7 @@
                 <DropShadowEffect BlurRadius="10" Opacity="0.5"/>
             </Label.Effect>
         </Label>
-        <Grid x:Name="grid" Opacity="0">
+        <Grid x:Name="按键">
             <Button x:Name="播放"
   Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"
   materialDesign:ShadowAssist.ShadowDepth="Depth1" Margin="317,35" BorderBrush="{x:Null}" Click="播放_Click" RenderTransformOrigin="0.5,0.5" >

@@ -124,7 +124,11 @@ namespace 方糖音乐播放器
         }
 
 
-        //秒转分钟函数--秒
+        /// <summary>
+        /// 秒转时间
+        /// </summary>
+        /// <param name="duration">单位秒</param>
+        /// <returns>返回“00：00：00”格式的时间</returns>
         public static string sec_to_hms(double duration)
         {
             TimeSpan ts = new TimeSpan(0, 0, Convert.ToInt32(duration));
@@ -143,7 +147,13 @@ namespace 方糖音乐播放器
             }
             return str;
         }
-        //立即回收内存
+        /// <summary>
+        /// 强制回收内存
+        /// </summary>
+        /// <param name="proc"></param>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        /// <returns></returns>
         [System.Runtime.InteropServices.DllImport("kernel32.dll")]
         public static extern bool SetProcessWorkingSetSize(IntPtr proc, int min, int max);
         public static void FlushMemory()
@@ -155,7 +165,13 @@ namespace 方糖音乐播放器
                 SetProcessWorkingSetSize(System.Diagnostics.Process.GetCurrentProcess().Handle, -1, -1);
             }
         }
-        //截取字符串--目标--从这里--到这里
+        /// <summary>
+        /// 截取字符串
+        /// </summary>
+        /// <param name="sourse">目标字符串</param>
+        /// <param name="startstr">从哪里</param>
+        /// <param name="endstr">到这里</param>
+        /// <returns>返回不包含传入参数的字符串</returns>
         public static string Substring(string sourse, string startstr, string endstr)
         {
             string result = string.Empty;
@@ -178,8 +194,12 @@ namespace 方糖音乐播放器
             catch { }
             return result;
         }
-        //图片转bitmapImage对象，防止图片被占用
-        public  static BitmapImage Album_pictures(string file)
+        /// <summary>
+        /// 图片转bitmapImage对象
+        /// </summary>
+        /// <param name="file">图片路径</param>
+        /// <returns>返回bitmapImage对象</returns>
+        public static BitmapImage Album_pictures(string file)
         {
             if (file != null)
             {
@@ -197,7 +217,12 @@ namespace 方糖音乐播放器
             }
             else { return null; }
         }
-        //读取专辑文件
+        /// <summary>
+        /// 读取专辑图片
+        /// 有些图片格式不支持会导致NET框架内部出错，会自动将图片转换为.png格式的图片文件
+        /// </summary>
+        /// <param name="path">歌曲路径</param>
+        /// <returns></returns>
         public static BitmapImage GetCover(string path)
         {
             BitmapImage bmp = new BitmapImage();
@@ -237,7 +262,16 @@ namespace 方糖音乐播放器
             }
             return null;
         }
-        //填充菜单-要填充的对象--名称--鼠标悬浮提示--对象宽度--对象高度--字体大小--文本内容上下居中
+        /// <summary>
+        /// 填充ListBox菜单
+        /// </summary>
+        /// <param name="box">要填充的ListBox对象</param>
+        /// <param name="name">要显示的名称字符串</param>
+        /// <param name="tooltip">鼠标悬浮提示</param>
+        /// <param name="width">对象宽度</param>
+        /// <param name="height">对象高度</param>
+        /// <param name="fontsize">字体大小</param>
+        /// <param name="Centered">是否文本内容上下左右居中，true 为居中，false 为不居中</param>
         public static void 填充菜单(ListBox box, string name, string tooltip, int width, int height, int fontsize, bool Centered)
         {
             ListBoxItem item = new ListBoxItem();
@@ -251,6 +285,11 @@ namespace 方糖音乐播放器
             if (Centered == true) { item.HorizontalContentAlignment = HorizontalAlignment.Center; }//设置文本上下左右居中
             box.Items.Add(item);//将控件添加到集合里
         }
+        /// <summary>
+        /// 读取歌词函数
+        /// </summary>
+        /// <param name="file">歌词文件路径</param>
+        /// <returns>返回格式化后的字符串</returns>
         //读取歌词函数--歌词文件路径
         public  static string 读取歌词(string file)
         {
@@ -262,16 +301,29 @@ namespace 方糖音乐播放器
             }
             return lrc;
         }
-        //错误弹窗
+        /// <summary>
+        /// 错误弹窗
+        /// </summary>
+        /// <param name="str">提示字符串</param>
+        /// <param name="Tips">窗体对象</param>
+        /// <param name="color3">主题颜色</param>
         [Obsolete]
         public  static void Error_capture(string str,弹窗提示 Tips,Color color3)
         {
-            if (Properties.Settings.Default.错误报告 == true)
+            if (Properties.Settings.Default.错误报告 == true)//判断是否开启的错误报告
             {
                 Tips = new 弹窗提示(4, color3, 0, str);
                 Tips.ShowDialog();
             }
         }
+        /// <summary>
+        /// 单玩家夹扫描歌曲，并将他添加到ListBox上，还添加到歌曲目录数组内
+        /// </summary>
+        /// <param name="list">ListBox对象</param>
+        /// <param name="file">文件夹路径</param>
+        /// <param name="array">歌曲目录数组</param>
+        /// <param name="Tips">窗体对象</param>
+        /// <param name="color3">主题颜色</param>
         //单文件夹扫描歌曲
         [Obsolete]//--要填充的控件--路径--歌曲目录数组--错误弹窗对象--主题颜色
         public static void  query(ListBox list ,string file, ArrayList array, 弹窗提示 Tips, Color color3)
@@ -294,8 +346,18 @@ namespace 方糖音乐播放器
                 }
             }
         }
-        //全盘递归扫描歌曲
-        [Obsolete]//--要填充的控件--路径--歌曲目录数组--错误弹窗对象--主题颜色
+        /// <summary>
+        /// 全盘扫描歌曲
+        /// 采用递归方式扫描
+        /// 添加到ListBox控件内
+        /// 添加到歌曲目录数组内
+        /// </summary>
+        /// <param name="list">要填的listbox对象</param>
+        /// <param name="info">路径</param>
+        /// <param name="array">歌曲目录数组</param>
+        /// <param name="Tips">窗体对象</param>
+        /// <param name="color3">错误提示</param>
+        [Obsolete]
         public static void  ListFiles(ListBox list, FileSystemInfo info, ArrayList array, 弹窗提示 Tips, Color color3)
         {
             string Ext;

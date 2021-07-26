@@ -8,11 +8,11 @@ using System;
 using System.Collections;
 //using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
+//using System.Diagnostics;
 using System.IO;
 using System.Net;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
+//using System.Runtime.InteropServices;
+//using System.Security.Cryptography.X509Certificates;
 //using System.Linq;
 //using System.Text;
 //using System.Runtime.InteropServices;
@@ -223,6 +223,10 @@ namespace 方糖音乐播放器
                             ((ListBoxItem)歌词滚动显示.SelectedItem).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
                             歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex]);
                             t1.Start();//歌词滚动
+                            if (Get != null)//如果启用了桌面歌词
+                            {
+                                Get.主.Content = 播放歌曲名称.Content;
+                            }
                         }
                         catch { }
                     }
@@ -828,6 +832,7 @@ namespace 方糖音乐播放器
         //    }
         //}
         //单击播放按钮
+
         [Obsolete]
         private void 播放_Click(object sender, RoutedEventArgs e)
         {
@@ -1617,6 +1622,7 @@ namespace 方糖音乐播放器
 
         void bw_RunWorkerCompleted2(object sender, RunWorkerCompletedEventArgs e)//更新控件
         {
+            Clipboard.SetText(jsonStr);
             //MessageBox.Show(jsonStr);
             //序列化数据
             bool temp = true;

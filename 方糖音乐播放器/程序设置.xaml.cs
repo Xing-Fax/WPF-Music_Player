@@ -207,6 +207,7 @@ namespace 方糖音乐播放器
             Properties.Settings.Default.背景模糊程度 = 0;
             Properties.Settings.Default.背景图片 = "默认";
             Properties.Settings.Default.歌词目录 = "无";
+            Properties.Settings.Default.歌单路径 = "五";
             Properties.Settings.Default.音量 = 100;
             Properties.Settings.Default.播放设置 = 0;
             Properties.Settings.Default.主题颜色 = "System.Windows.Controls.ComboBoxItem: 桃花粉";
@@ -432,6 +433,16 @@ namespace 方糖音乐播放器
 
             }
             catch { }
+        }
+
+        private void GiftOutline_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            动画播放("收款码打开");
+        }
+
+        private void 关闭_Click(object sender, RoutedEventArgs e)
+        {
+            动画播放("收款码关闭");
         }
     }
 }

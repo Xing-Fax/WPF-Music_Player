@@ -35,6 +35,7 @@ namespace 方糖音乐播放器
             InitializeComponent();
             Topmost = true;
             背景.Fill = new SolidColorBrush(color);
+            按键.Opacity = 0;
         }
 
         private void Window_MouseMove(object sender, MouseEventArgs e)
@@ -45,11 +46,12 @@ namespace 方糖音乐播放器
             }
         }
 
+
         [Obsolete]
         private void 桌面歌词主窗口_MouseEnter(object sender, MouseEventArgs e)
         {
+             动画播放("打开"); 
 
-            动画播放("打开");
             if (App.播放状态 == 0)
             {
                 播放.Visibility = Visibility.Collapsed;
@@ -64,7 +66,7 @@ namespace 方糖音乐播放器
 
         private void 桌面歌词主窗口_MouseLeave(object sender, MouseEventArgs e)
         {
-            动画播放("关闭");
+            动画播放("关闭"); 
         }
 
         [Obsolete]

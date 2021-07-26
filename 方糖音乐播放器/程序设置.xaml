@@ -748,7 +748,7 @@
                     </TransformGroup>
                 </materialDesign:PackIcon.RenderTransform>
             </materialDesign:PackIcon>
-            <materialDesign:PackIcon x:Name="_32位版本_" ToolTip="64位应用" Kind="Cpu32Bit"  HorizontalAlignment="Left" Height="25" Margin="218.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" Background="#FFF4F4F5" MouseEnter="_32位版本__MouseEnter" MouseLeave="_32位版本__MouseLeave"/>
+            <materialDesign:PackIcon x:Name="_32位版本_" ToolTip="32位应用" Kind="Cpu32Bit"  HorizontalAlignment="Left" Height="25" Margin="218.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" Background="#FFF4F4F5" MouseEnter="_32位版本__MouseEnter" MouseLeave="_32位版本__MouseLeave"/>
             <materialDesign:PackIcon x:Name="Github" ToolTip="获取开源项目" Kind="Github" HorizontalAlignment="Left" Height="25" Margin="58.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" MouseEnter="Github_MouseEnter" MouseLeave="Github_MouseLeave" Background="#FFF4F4F5" MouseUp="Github_MouseUp"/>
         </Grid>
         <Rectangle x:Name="黑幕" Fill="Black" HorizontalAlignment="Left" Height="600" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Top" Width="400" Visibility="Collapsed"/>

@@ -47,7 +47,6 @@ namespace 方糖音乐播放器
         {
             Kill();
             主页的播放列表.Items.Clear();//清空原始歌曲
-            //播放列队.Items.Clear();
             Number.Clear();//清空数组
             if (a == 1)
             {
@@ -72,21 +71,21 @@ namespace 方糖音乐播放器
         private void Read_lyrics_string(string lrc)
         {
             int a = 0;
-            string[] temp = lrc.Split('\n');
+            string[] temp = lrc.Split('\n');//拆分字符串
             for (int i = 0; i < temp.Length; i++)
             {
                 //去除歌词前部分歌曲信息
                 if (temp[i] != "" && temp[i].Substring(1, 2) != "ar" && temp[i].Substring(1, 2) != "ti" && temp[i].Substring(1, 2) != "al" && temp[i].Substring(1, 2) != "by" && temp[i].Substring(1, 2) != "of")
                 {
                     temp[i] = temp[i].Replace(@"\r", "");
-                    lrc_time.Add(Function_list.Substring(temp[i], "[", "]"));
+                    lrc_time.Add(Function_list.Substring(temp[i], "[", "]"));//截取字符串，分离时间
                     lrc_lyrics.Add(temp[i].Substring(lrc_time[a].ToString().Length + 2, temp[i].Length - lrc_time[a].ToString().Length - 2));//截取歌词
                     if (lrc_lyrics[a].ToString() == "" || lrc_lyrics[a].ToString() == "//\r") //剔除空行和"//"
                     {
                         lrc_time.RemoveAt(a);
                         lrc_lyrics.RemoveAt(a);
                     }
-                    else { a++; }//当符合条件数组下标才会定位到下一行
+                    else { a ++; }//当符合条件数组下标才会定位到下一行
                 }
             }
             打印歌词();//将读取后的歌词打印到滚动歌词控件上
@@ -350,7 +349,6 @@ namespace 方糖音乐播放器
                             }
                         }
                     }
-
                 }
                 else if (底部列表.SelectedIndex == 3)//顺序播放
                 {
@@ -371,8 +369,8 @@ namespace 方糖音乐播放器
             lrc_lyrics.Clear();
             if (Get != null)
             {
-                Get.主.Content = "";
-                Get.父.Content = "";
+                Get.主.Content = "请选择要播放的歌曲";
+                Get.父.Content = "§(*￣▽￣*)§";
             }
             //重置专辑图片
             播放栏专辑.Source = null;
@@ -435,7 +433,7 @@ namespace 方糖音乐播放器
                             {
                                 歌词滚动显示.SelectedIndex = i;
                                 ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
-                                if (Rolling_condition == 0)
+                                if (Rolling_condition == false)
                                 {
                                     歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
                                 }
@@ -460,25 +458,57 @@ namespace 方糖音乐播放器
                     catch { }
                 }));
         }
-        ArrayList Number = new ArrayList();//存储歌单列表，格式为绝对路径
-        ArrayList lrc_time = new ArrayList();//存储时间
-        ArrayList lrc_lyrics = new ArrayList();//存储与时间对应的歌词
-        ArrayList Web_search_results = new ArrayList();//存储网络搜索结果
-
-        bool current_state = true;//设置是本地模式还是联网模式
-        string Web_file = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\";//系统默认歌曲目录，用于歌曲默认缓存目录
-
-        bool lyrics_display;//决定是否要显示滚动歌词
-        int Number_of_songs = 0;//存储歌曲数量
-        int Rolling_condition = 0;//用户鼠标停留在歌词，歌词不会自动滚动
-        System.Timers.Timer t1 = new System.Timers.Timer(50);//实例化Timer类用于刷新歌词
-        System.Timers.Timer t2 = new System.Timers.Timer(100);//实例化Timer类用于更新时间
-        桌面歌词 Get;
-        弹窗提示 Tips;
+        /// <summary>
+        /// 存储歌单列表，格式为绝对路径
+        /// </summary>
+        ArrayList Number = new ArrayList();
+        /// <summary>
+        /// 存储歌词分离出的时间
+        /// </summary>
+        ArrayList lrc_time = new ArrayList();
+        /// <summary>
+        /// 存储与时间对应的歌词
+        /// </summary>
+        ArrayList lrc_lyrics = new ArrayList();
+        /// <summary>
+        /// 用于存储网络搜索结果
+        /// </summary>
+        ArrayList Web_search_results = new ArrayList();
+        /// <summary>
+        /// 判断是本地播放还是在线播放，true为本地，false为在线
+        /// </summary>
+        bool current_state = true;
+        /// <summary>
+        /// 默认歌曲缓存目录
+        /// </summary>
+        string Web_file = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\";
+        /// <summary>
+        /// 是否要显示滚动格式，true为显示，false为不显示
+        /// </summary>
+        bool lyrics_display;
+        /// <summary>
+        /// 用于指示本地导入的歌曲数量
+        /// </summary>
+        int Number_of_songs = 0;
+        /// <summary>
+        /// 用于指示是否用户鼠标停留在了滚动歌词上，true为停留在上，false为木有停留
+        /// </summary>
+        bool Rolling_condition = false;
+        /// <summary>
+        /// 实例化Timer类用于刷新歌词
+        /// </summary>
+        System.Timers.Timer t1 = new System.Timers.Timer(50);
+        /// <summary>
+        /// 实例化Timer类用于更新播放进度和时间
+        /// </summary>
+        System.Timers.Timer t2 = new System.Timers.Timer(100);
+        /// <summary>
+        /// 用于指示默认播放音乐接口供应商
+        /// </summary>
         Meting Search_interface;//音乐接口api
 
-        //[DllImport("winmm.dll")]
-        //public static extern bool PlaySound(String Filename, int Mod, int Flags);
+        桌面歌词 Get;
+        弹窗提示 Tips;
         [Obsolete]
         public MainWindow()
         {
@@ -495,40 +525,34 @@ namespace 方糖音乐播放器
 
             //到此结束
 
-            //bool X509 =  Function_list.Document_verification();
-            //MessageBox.Show(X509Certificate.CreateFromSignedFile(@"C:\Users\邢传真\桌面\方糖音乐播放器\方糖音乐播放器(32位).exe").GetCertHashString ());
-            //Clipboard.SetText(X509Certificate.CreateFromSignedFile(@"C:\Users\邢传真\桌面\方糖音乐播放器\方糖音乐播放器(32位).exe").GetCertHashString ());
-            //MessageBox.Show(System.Environment.GetEnvironmentVariable("TMP"));
-            //MessageBox.Show(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic));
-            //System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\");
-            联网播放.Visibility = Visibility.Collapsed;
+            联网播放.Visibility = Visibility.Collapsed;//隐藏联网播放的listbox
             try
             {
-                //MessageBox.Show(System.IO.Path.GetTempPath());
-                if (Properties.Settings.Default.网络歌曲缓存目录 != "系统音乐目录")
+                if (Properties.Settings.Default.网络歌曲缓存目录 != "系统音乐目录")//判断用户是否设置了网络缓存目录
                 {
-
-                    if (false == System.IO.Directory.Exists(Properties.Settings.Default.网络歌曲缓存目录 + @"\"))//判断目录是否存在
+                    //如果用户创建了，先判断目录是否存在
+                    if (false == System.IO.Directory.Exists(Properties.Settings.Default.网络歌曲缓存目录 + @"\"))
                     {
-                        //创建临时目录
+                        //如果不在，则创建临时目录
                         System.IO.Directory.CreateDirectory(Properties.Settings.Default.网络歌曲缓存目录 + @"\");
                     }
+                    //默认目录替换为用户设定的目录
                     Web_file = Properties.Settings.Default.网络歌曲缓存目录 + @"\";
                 }
                 else
                 {
-                    if (false == System.IO.Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\"))//判断目录是否存在
+                    //如果用户木有设置缓存目录，先判断目录是否存在
+                    if (false == System.IO.Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\"))
                     {
-                        //创建临时目录
+                        //如果不在，则创建临时目录
                         System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\");
                     }
+                    //默认状态目录已经在加载时被赋值
                 }
-
-                //速度.Visibility = Visibility.Collapsed;
-
+                //设置滚动歌词缩放模式，有助于提高性能
                 RenderOptions.SetBitmapScalingMode(歌词滚动显示, BitmapScalingMode.NearestNeighbor);
-                //RenderOptions.SetBitmapScalingMode(播放列队框架, BitmapScalingMode.NearestNeighbor);
 
+                //初始化计时器
                 t1.Elapsed += new System.Timers.ElapsedEventHandler(theout1);//到达时间的时候执行事件
                 t1.AutoReset = true;//设置是执行一次（false）还是一直执行(true)
                 t1.Enabled = false;//是否执行System.Timers.Timer.Elapsed事件
@@ -740,12 +764,12 @@ namespace 方糖音乐播放器
         //当鼠标悬浮在歌词上时，歌词不会自动滚动
         private void 歌词滚动显示_MouseEnter(object sender, MouseEventArgs e)
         {
-            Rolling_condition = 1;
+            Rolling_condition = true;
         }
         //当鼠标离开歌词时，开始重新定位，开始滚动
         private void 歌词滚动显示_MouseLeave(object sender, MouseEventArgs e)
         {
-            Rolling_condition = 0;
+            Rolling_condition = false;
             try
             {
                 if (歌词滚动显示.SelectedIndex <= 5)
@@ -1487,12 +1511,8 @@ namespace 方糖音乐播放器
         {
             try
             {
-
                 App.播放状态 = 0;
                 主页的播放列表.ScrollIntoView(主页的播放列表.Items[主页的播放列表.SelectedIndex]);
-                //double a = 1;
-                //播放器.Volume = a;
-                //MessageBox.Show(a.ToString());
             }
             catch { }
         }
@@ -1622,7 +1642,7 @@ namespace 方糖音乐播放器
 
         void bw_RunWorkerCompleted2(object sender, RunWorkerCompletedEventArgs e)//更新控件
         {
-            Clipboard.SetText(jsonStr);
+            //Clipboard.SetText(jsonStr);
             //MessageBox.Show(jsonStr);
             //序列化数据
             bool temp = true;

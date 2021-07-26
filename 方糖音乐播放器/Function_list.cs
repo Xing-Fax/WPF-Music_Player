@@ -23,7 +23,7 @@ namespace 方糖音乐播放器
         /// </summary>
         /// <param name="sourceFolder">原文件路径</param>
         /// <param name="destFolder">目标文件路径</param>
-        /// <returns></returns>
+        /// <returns>返回是否正常被复制</returns>
         public static int CopyFolder2(string sourceFolder, string destFolder)
         {
             try
@@ -67,7 +67,7 @@ namespace 方糖音乐播放器
         /// MD5校验工具
         /// </summary>
         /// <param name="fileName">文件路径</param>
-        /// <returns></returns>
+        /// <returns>返回运算后的字符串</returns>
         public static string GetMD5HashFromFile(string fileName)
         {
             try
@@ -89,38 +89,22 @@ namespace 方糖音乐播放器
                 throw new Exception("GetMD5HashFromFile() fail, error:" +ex.Message);
             }
         }
-
+        /// <summary>
+        /// 检测自己身签名指纹是否匹配
+        /// </summary>
+        /// <returns>true为正常状态</returns>
         public static bool Document_verification()
         {
-            //将自己复制到系统临时文件目录
-            //File.Copy(Process.GetCurrentProcess().MainModule.FileName, System.Environment.GetEnvironmentVariable("TMP") + @"\校验.temp", true);
-            //string Check_value = GetMD5HashFromFile(System.Environment.GetEnvironmentVariable("TMP") + @"\校验.temp.");
-            //MessageBox.Show(Check_value);
             try
             {
                 X509Certificate cert = X509Certificate.CreateFromSignedFile(Process.GetCurrentProcess().MainModule.FileName);
                 string f = cert.GetCertHashString();
-                //MessageBox.Show(cert.GetCertHashString());
                 if (f == "36A888B9F2A505BF92AC6B2796C2188E639AB1D1")
-                {
-                    //MessageBox.Show("成功");
-                    return true;
-                }
+                { return true; }
                 else
-                {
-                    //MessageBox.Show("失败");
-                    return false;
-                }
-
+                { return false; }
             }
-            catch
-            {
-                //MessageBox.Show("错误");
-                return false;
-            }
-            
-            //MessageBox.Show(cert.GetCertHashString());
-
+            catch { return false;}
         }
 
 

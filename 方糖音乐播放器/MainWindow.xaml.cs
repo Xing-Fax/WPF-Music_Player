@@ -661,7 +661,7 @@ namespace 方糖音乐播放器
                 Properties.Settings.Default.播放设置 = 0;
                 Properties.Settings.Default.独立播放视频 = true;
                 Properties.Settings.Default.桌面歌词 = false;
-                Properties.Settings.Default.错误报告 = false;
+                Properties.Settings.Default.错误报告 = true;
                 Properties.Settings.Default.网络接口参数 = "腾讯";
                 Properties.Settings.Default.Save();
                 Environment.Exit(0);

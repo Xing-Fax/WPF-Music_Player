@@ -55,6 +55,7 @@ namespace 方糖音乐播放器
             桌面歌词1.IsChecked = Properties.Settings.Default.桌面歌词;
             嵌入歌词1.IsChecked = Properties.Settings.Default.嵌入歌词;
             错误.IsChecked = Properties.Settings.Default.错误报告;
+            专辑图片1.IsChecked = Properties.Settings.Default.显示专辑;
             if (Properties.Settings.Default.背景填充 == 1) { 原始.IsChecked = true; }
             else if (Properties.Settings.Default.背景填充 == 2) { 填充.IsChecked = true; }
             else if (Properties.Settings.Default.背景填充 == 3) { 居中.IsChecked = true; }
@@ -156,6 +157,8 @@ namespace 方糖音乐播放器
             Properties.Settings.Default.嵌入歌词 = (bool)嵌入歌词1.IsChecked;
             Properties.Settings.Default.背景模糊程度 = 模糊.Value;
             Properties.Settings.Default.错误报告 = (bool)错误.IsChecked;
+            Properties.Settings.Default.显示专辑 = (bool)专辑图片1.IsChecked;
+            Properties.Settings.Default.是否歌词显示 = (bool)歌词.IsChecked;
             Properties.Settings.Default.Save();//保存设置
 
             fcc5(0);
@@ -443,6 +446,15 @@ namespace 方糖音乐播放器
         private void 关闭_Click(object sender, RoutedEventArgs e)
         {
             动画播放("收款码关闭");
+        }
+
+        private void 专辑图片1_Click(object sender, RoutedEventArgs e)
+        {
+            if (专辑图片1 .IsChecked == false)
+            {
+                fcc3(7);
+            }
+            else { fcc3(8); }
         }
     }
 }

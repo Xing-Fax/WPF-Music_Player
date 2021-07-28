@@ -161,24 +161,45 @@
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="搜索框打开">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="本地播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="联网播放">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="搜索框">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="搜索框">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="搜索框">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.114">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.001">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="搜索框">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-213.25">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.302">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuinticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="搜索框">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="250"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="搜索框关闭">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="搜索框">
-                <EasingDoubleKeyFrame KeyTime="0" Value="243"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
-            </DoubleAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="搜索框">
-                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
-            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="滚动条打开">
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(ScrollViewer.VerticalScrollBarVisibility)" Storyboard.TargetName="主页的播放列表">
@@ -1653,10 +1674,36 @@
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="搜索框关闭">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="本地播放">
+                <SplineDoubleKeyFrame KeyTime="0" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="联网播放">
+                <SplineDoubleKeyFrame KeyTime="0" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="搜索框">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="搜索框">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.11"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="搜索框">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-214.125"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="搜索框">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
     </Window.Resources>
 
 
-    <Canvas x:Name="主界面" Clip="M0,20 C0,8.954305 8.954305,0 20,0 L1180,0 C1191.0457,0 1200,8.954305 1200,20 L1200,655 C1200,666.04569 1191.0457,675 1180,675 L20,675 C8.954305,675 0,666.04569 0,655 z" HorizontalAlignment="Left" Height="675" VerticalAlignment="Top" Width="1200" >
+    <Canvas x:Name="主界面" Clip="M0,20 C0,8.954305 8.954305,0 20,0 L1180,0 C1191.0457,0 1200,8.954305 1200,20 L1200,655 C1200,666.04569 1191.0457,675 1180,675 L20,675 C8.954305,675 0,666.04569 0,655 z" HorizontalAlignment="Left" Height="675" VerticalAlignment="Top" Width="1200" Background="White" >
 
         <Image x:Name="背景" RenderOptions.BitmapScalingMode="HighQuality" Source="Resources/默认背景.jpg" Width="1210" SnapsToDevicePixels="True" ClipToBounds="True" Height="685" Canvas.Left="-5" Canvas.Top="-5" Stretch="Fill">
             <Image.Effect>
@@ -1665,7 +1712,10 @@
         </Image>
         <materialDesign:ColorZone x:Name="colorZone"
             Mode="PrimaryMid"
-            Padding="16" MouseMove="ColorZone_MouseMove" Background="#FFFF9999" Style="{DynamicResource ColorZoneStyle2}" Width="1200">
+            Padding="16" MouseMove="ColorZone_MouseMove" Style="{DynamicResource ColorZoneStyle2}" Width="1200">
+            <materialDesign:ColorZone.Background>
+                <SolidColorBrush Color="#FFFF9999"/>
+            </materialDesign:ColorZone.Background>
             <DockPanel>
                 <StackPanel
                     Orientation="Horizontal"
@@ -1763,7 +1813,7 @@
                     <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
                 </Rectangle.Effect>
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="White" Opacity="0.55"/>
+                    <SolidColorBrush Color="White" Opacity="0.4"/>
                 </Rectangle.Fill>
             </Rectangle>
             <Grid x:Name="搜索框1" Margin="0,0,0,441.332">
@@ -1819,7 +1869,7 @@
             </Grid.RenderTransform>
             <Rectangle RadiusY="10" RadiusX="10" StrokeThickness="0" Margin="0,60.1,0,0" Height="421" VerticalAlignment="Top">
                 <Rectangle.Fill>
-                    <SolidColorBrush Color="White" Opacity="0.55"/>
+                    <SolidColorBrush Color="White" Opacity="0.4"/>
                 </Rectangle.Fill>
                 <Rectangle.Effect>
                     <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
@@ -1827,7 +1877,10 @@
             </Rectangle>
             <ListBox x:Name="主界面菜单选择"
                 Style="{StaticResource MaterialDesignToolToggleListBox}"
-                Width="315" Background="WhiteSmoke" MouseEnter="主界面菜单选择_MouseEnter" Margin="0,0,0,428.594">
+                Width="315" MouseEnter="主界面菜单选择_MouseEnter" Margin="0,0,0,428.594">
+                <ListBox.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"/>
+                </ListBox.Background>
                 <ListBox.ToolTip>
                     <StackPanel>
                         <TextBlock
@@ -1864,7 +1917,7 @@
             <Label x:Name="歌曲数量" Content="共XX首歌曲" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="16" Height="32.594" Width="141.32" HorizontalContentAlignment="Right" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" VerticalContentAlignment="Center" Effect="{Binding Effect, ElementName=播放列表标题}" Foreground="Black" Margin="173.68,59.406,0,0" Clip="M-123.68,10.694 C-123.68,5.1711525 -119.20285,0.694 -113.68,0.694 L131.32,0.694 C136.84285,0.694 141.32,5.1711525 141.32,10.694 L141.32,33.594 C141.32,39.116847 136.84285,43.594 131.32,43.594 L-113.68,43.594 C-119.20285,43.594 -123.68,39.116847 -123.68,33.594 z" Background="{x:Null}"/>
             <ListBox x:Name="主页的播放列表" 
                 VirtualizingPanel.VirtualizationMode="Recycling"
-                HorizontalContentAlignment="Left" ItemsPanel="{DynamicResource ItemsPanelTemplate3}" VerticalContentAlignment="Top" VerticalAlignment="Stretch" Foreground="#FF1F0000" ScrollViewer.CanContentScroll="True"   ScrollViewer.VerticalScrollBarVisibility="Hidden" FontFamily="Resources/#站酷快乐体2016修订版" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Clip="M0,-23.594 C0,-29.116847 4.4771525,-33.594 10,-33.594 L305,-33.594 C310.52285,-33.594 315,-29.116847 315,-23.594 L315,379.072 C315,384.59485 310.52285,389.072 305,389.072 L10,389.072 C4.4771525,389.072 0,384.59485 0,379.072 z" MouseUp="主页的播放列表_MouseUp" MouseEnter="主页的播放列表_MouseEnter" MouseLeave="主页的播放列表_MouseLeave" SnapsToDevicePixels="True" Margin="0,92,0,0" BorderBrush="{x:Null}" Cursor="Hand" Background="{x:Null}"/>
+                HorizontalContentAlignment="Left" ItemsPanel="{DynamicResource ItemsPanelTemplate3}" VerticalContentAlignment="Top" VerticalAlignment="Stretch" Foreground="#FF1F0000" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Hidden" FontFamily="Resources/#站酷快乐体2016修订版" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Clip="M0,-23.594 C0,-29.116847 4.4771525,-33.594 10,-33.594 L305,-33.594 C310.52285,-33.594 315,-29.116847 315,-23.594 L315,379.072 C315,384.59485 310.52285,389.072 305,389.072 L10,389.072 C4.4771525,389.072 0,384.59485 0,379.072 z" MouseUp="主页的播放列表_MouseUp" MouseEnter="主页的播放列表_MouseEnter" MouseLeave="主页的播放列表_MouseLeave" SnapsToDevicePixels="True" Margin="0,92,0,0" BorderBrush="{x:Null}" Cursor="Hand" Background="{x:Null}"/>
         </Grid>
         <Canvas x:Name="播放信息" Height="93.26" Canvas.Left="690" Canvas.Top="90" Width="500">
             <Label x:Name="播放歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="500" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="24" Foreground="#F8000000" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" ToolTip="{Binding Content, ElementName=播放歌曲名称}"/>
@@ -2151,7 +2204,7 @@
                 <SolidColorBrush Color="Black" Opacity="0.5"/>
             </Rectangle.Fill>
         </Rectangle>
-        <ListBox x:Name="搜索框" ScrollViewer.CanContentScroll="False" HorizontalAlignment="Left" Height="0"  VerticalAlignment="Top" Width="248" RenderTransformOrigin="0.5,0.5" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="{x:Null}" MouseLeave="搜索框_MouseLeave" SelectionChanged="搜索框_SelectionChanged" Foreground="Black" Canvas.Left="100.008" Canvas.Top="54.518">
+        <ListBox x:Name="搜索框" ScrollViewer.CanContentScroll="False" HorizontalAlignment="Left" Height="481.25"  VerticalAlignment="Top" Width="315" RenderTransformOrigin="0.5,0.5" ScrollViewer.HorizontalScrollBarVisibility="Disabled" BorderBrush="{x:Null}" MouseLeave="搜索框_MouseLeave" SelectionChanged="搜索框_SelectionChanged" Foreground="Black" Canvas.Left="10" Canvas.Top="77" Clip="M0,5.667 C0,2.9055763 2.2385763,0.667 5,0.667 L310,0.667 C312.76142,0.667 315,2.9055763 315,5.667 L315,476.25 C315,479.01142 312.76142,481.25 310,481.25 L5,481.25 C2.2385763,481.25 0,479.01142 0,476.25 z" Visibility="Collapsed">
             <ListBox.Background>
                 <SolidColorBrush Color="White" Opacity="0.5"/>
             </ListBox.Background>

@@ -56,5 +56,8 @@
     <Setting Name="网络歌曲缓存目录" Type="System.String" Scope="User">
       <Value Profile="(Default)">系统音乐目录</Value>
     </Setting>
+    <Setting Name="显示专辑" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

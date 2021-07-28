@@ -225,6 +225,7 @@ namespace 方糖音乐播放器
                             if (Get != null)//如果启用了桌面歌词
                             {
                                 Get.主.Content = 播放歌曲名称.Content;
+                                Get.父.Content = Singer_collection;
                             }
                         }
                         catch { }
@@ -579,11 +580,26 @@ namespace 方糖音乐播放器
                 {
                     lyrics_display = true;
                     歌词滚动显示.Visibility = Visibility.Visible;
+                    播放歌曲名称.Visibility = Visibility.Visible;
+                    歌手专辑.Visibility = Visibility.Visible;
+                    歌手专辑2.Visibility = Visibility.Visible;
                 }
-                else if (Properties.Settings.Default.是否歌词显示 == false)
+                else
                 {
                     lyrics_display = false;
                     歌词滚动显示.Visibility = Visibility.Collapsed;
+                    播放歌曲名称.Visibility = Visibility.Collapsed;
+                    歌手专辑.Visibility = Visibility.Collapsed;
+                    歌手专辑2.Visibility = Visibility.Collapsed;
+                }
+                //是否要显示专辑
+                if (Properties.Settings.Default.显示专辑 == true)
+                {
+                    大专辑.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    大专辑.Visibility = Visibility.Collapsed;
                 }
                 //加载背景
                 if (Properties.Settings.Default.背景图片 != "默认" && System.IO.File.Exists(Properties.Settings.Default.背景图片))
@@ -1258,7 +1274,7 @@ namespace 方糖音乐播放器
         [Obsolete]
         private void 搜索框_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (搜索框.SelectedIndex != -1 && ID[0] != null)
+            if (搜索框.SelectedIndex != -1 && ID.Count != 0)
             {
                 Kill();//清除播放器状态
                 for (int i = 0; i < Number.Count; i++)
@@ -1291,18 +1307,19 @@ namespace 方糖音乐播放器
                     {
                         ID.Add(Number[i].ToString());//记录文件路径
                         //向列表框中添加搜索结果
-                        Function_list.填充菜单(搜索框, System.IO.Path.GetFileNameWithoutExtension(Number[i].ToString()), System.IO.Path.GetFileNameWithoutExtension(Number[i].ToString()), 248, 40, 15, false);
+                        Function_list.填充菜单(搜索框, System.IO.Path.GetFileNameWithoutExtension(Number[i].ToString()), System.IO.Path.GetFileNameWithoutExtension(Number[i].ToString()), 315, 40, 15, false);
                     }
                 }
             }
             if (ID.Count == 0 && 搜索.Text != "")
             {
-                Label item = new Label();
-                item.Content = "什么也木有找到w(ﾟДﾟ)w";//设置显示名称
-                item.Width = 248;//设置宽度
-                item.Height = 35;//设置高度
-                item.FontSize = 15;//设置字号
-                搜索框.Items.Add(item);//将控件添加到集合里
+                Function_list.填充菜单(搜索框, "什么也木有找到w(ﾟДﾟ)w", null, 315, 40, 15, false);
+                //Label item = new Label();
+                //item.Content = "什么也木有找到w(ﾟДﾟ)w";//设置显示名称
+                //item.Width = 315;//设置宽度
+                //item.Height = 35;//设置高度
+                //item.FontSize = 15;//设置字号
+                //搜索框.Items.Add(item);//将控件添加到集合里
             }
             if (sub == 0 && 搜索.Text != "")//打开列表框
             {
@@ -1379,11 +1396,17 @@ namespace 方糖音乐播放器
             if (sum == 1)
             {
                 歌词滚动显示.Visibility = Visibility.Collapsed;
+                播放歌曲名称.Visibility = Visibility.Collapsed;
+                歌手专辑.Visibility = Visibility.Collapsed;
+                歌手专辑2.Visibility = Visibility.Collapsed;
                 lyrics_display = false;
             }
             else if (sum == 2)
             {
                 歌词滚动显示.Visibility = Visibility.Visible;
+                播放歌曲名称.Visibility = Visibility.Visible;
+                歌手专辑.Visibility = Visibility.Visible;
+                歌手专辑2.Visibility = Visibility.Visible;
                 lyrics_display = true;
             }
             else if (sum == 3)//开
@@ -1408,6 +1431,14 @@ namespace 方糖音乐播放器
             {
                 Get.Visibility = Visibility.Collapsed;
                 Get = null;
+            }
+            else if (sum == 7)
+            {
+                大专辑.Visibility = Visibility.Collapsed;
+            }
+            else if (sum == 8)
+            {
+                大专辑.Visibility = Visibility.Visible;
             }
             return 0;
         }

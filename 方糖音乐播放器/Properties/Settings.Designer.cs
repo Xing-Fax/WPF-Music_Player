@@ -238,5 +238,17 @@ namespace 方糖音乐播放器.Properties {
                 this["网络歌曲缓存目录"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool 显示专辑 {
+            get {
+                return ((bool)(this["显示专辑"]));
+            }
+            set {
+                this["显示专辑"] = value;
+            }
+        }
     }
 }

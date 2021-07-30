@@ -62,7 +62,7 @@
         <ItemsPanelTemplate x:Key="ItemsPanelTemplate3">
             <StackPanel x:Name="x1" IsItemsHost="True" SnapsToDevicePixels="True" ClipToBounds="True">
                 <i:Interaction.Behaviors>
-                    <ei:FluidMoveBehavior x:Name="x2" Duration="0:0:0.3" AppliesTo="Children"/>
+                    <ei:FluidMoveBehavior x:Name="x2" Duration="0:0:0.25" AppliesTo="Children"/>
                 </i:Interaction.Behaviors>
             </StackPanel>
         </ItemsPanelTemplate>
@@ -1872,7 +1872,7 @@
                     <SolidColorBrush Color="White" Opacity="0.4"/>
                 </Rectangle.Fill>
                 <Rectangle.Effect>
-                    <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
+                    <DropShadowEffect BlurRadius="15" Opacity="0.3" Direction="300"/>
                 </Rectangle.Effect>
             </Rectangle>
             <ListBox x:Name="主界面菜单选择"
@@ -1938,7 +1938,7 @@
                     <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
                 </Image.Effect>
             </Image>
-            <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="330" Canvas.Top="30" Cursor="Hand" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" FontSize="16"/>
+            <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="330" Canvas.Top="30" Cursor="Hand" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" FontSize="16" IsSynchronizedWithCurrentItem="False"/>
         </Canvas>
         <ListBox x:Name="切换菜单" Height="95.335" Canvas.Left="350" Canvas.Top="292.5" Width="20" Margin="-19,0,0,0" BorderBrush="{x:Null}" Background="{x:Null}">
             <ListBoxItem x:Name="切换" ToolTip="在线播放" HorizontalAlignment="Left" VerticalAlignment="Top" Height="95.335" BorderBrush="{x:Null}" Width="20" Padding="0,8" MouseUp="listBoxItem_MouseUp_1">
@@ -2126,7 +2126,7 @@
         <Canvas x:Name="底部播放栏" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="564.072" Height="110" Width="1200" Cursor="Hand">
             <Rectangle x:Name="播放栏背景" Fill="{Binding Background, ElementName=colorZone}" HorizontalAlignment="Left" Height="105.928" VerticalAlignment="Bottom" Width="1200" Opacity="0.4" Canvas.Top="5">
                 <Rectangle.Effect>
-                    <BlurEffect/>
+                    <BlurEffect Radius="10"/>
                 </Rectangle.Effect>
             </Rectangle>
             <Slider x:Name="进度条" Height="21.012" VerticalAlignment="Top" Foreground="{Binding Background, ElementName=colorZone}" PreviewMouseDown="进度条_PreviewMouseDown" PreviewMouseUp="进度条_PreviewMouseUp"  IsMoveToPointEnabled="True" ValueChanged="进度条_ValueChanged" MouseEnter="进度条_MouseEnter" MouseLeave="进度条_MouseLeave" Maximum="100" BorderBrush="{x:Null}" SnapsToDevicePixels="True" IsEnabled="False" TickFrequency="0.001" SmallChange="0.001" AutoToolTipPrecision="2" Style="{DynamicResource SliderStyle2}" Cursor="Hand"  Canvas.Left="10" Canvas.Top="5" Width="1180"  />

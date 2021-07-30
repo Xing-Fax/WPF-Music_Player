@@ -109,7 +109,7 @@ namespace 方糖音乐播放器
 
 
         /// <summary>
-        /// 秒转时间
+        /// 秒转时间格式
         /// </summary>
         /// <param name="duration">单位秒</param>
         /// <returns>返回“00：00：00”格式的时间</returns>

@@ -47,7 +47,6 @@ namespace 方糖音乐播放器.Properties
             单文件.Background = new SolidColorBrush(color);
             if (parameter == 0)
             {
-                //PlaySound(@"C:\Windows\media\Windows Proximity Notification.wav", 0, 1);
                 模板一.Visibility = Visibility.Visible;
 
             }

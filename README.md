@@ -56,8 +56,6 @@
 
 蓝奏云：https://wwe.lanzoui.com/b01offuja  密码：gmoo
 
-网    盘：https://pan.baidu.com/s/1uaCbwXdptNPfMtEQLoJwQQ 提取码: pur2 
-
 文件特征描述：
 
 文件: 方糖音乐播放器(32位).exe

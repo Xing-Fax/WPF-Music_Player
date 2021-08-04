@@ -432,118 +432,134 @@
         </Storyboard>
         <Storyboard x:Key="收款码打开">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="捐赠">
-                <SplineDoubleKeyFrame KeyTime="0" Value="0.677"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.677">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseInOut"/>
+                        <QuadraticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="捐赠">
-                <SplineDoubleKeyFrame KeyTime="0" Value="0.787"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.787">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseInOut"/>
+                        <QuadraticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="捐赠">
-                <SplineDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseInOut"/>
+                        <QuadraticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="捐赠">
-                <SplineDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseInOut"/>
+                        <QuadraticEase EasingMode="EaseOut"/>
+                    </EasingDoubleKeyFrame.EasingFunction>
+                </EasingDoubleKeyFrame>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
+                    <EasingDoubleKeyFrame.EasingFunction>
+                        <QuadraticEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="捐赠">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="捐赠">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="黑幕">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseInOut"/>
+                        <QuarticEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.5">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.5">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <BackEase EasingMode="EaseInOut"/>
+                        <QuarticEase EasingMode="EaseOut"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="黑幕">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="收款码关闭">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="捐赠">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <QuinticEase EasingMode="EaseIn"/>
+                        <ExponentialEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.677">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.677">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <QuinticEase EasingMode="EaseIn"/>
+                        <ExponentialEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="捐赠">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <QuinticEase EasingMode="EaseIn"/>
+                        <ExponentialEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.787">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0.787">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <QuinticEase EasingMode="EaseIn"/>
+                        <ExponentialEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="捐赠">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <QuinticEase EasingMode="EaseIn"/>
+                        <ExponentialEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <QuinticEase EasingMode="EaseIn"/>
+                        <ExponentialEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="捐赠">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <QuinticEase EasingMode="EaseIn"/>
+                        <ExponentialEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
-                        <QuinticEase EasingMode="EaseIn"/>
+                        <ExponentialEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="捐赠">
                 <SplineDoubleKeyFrame KeyTime="0" Value="1"/>
-                <SplineDoubleKeyFrame KeyTime="0:0:0.2" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="捐赠">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
             </ObjectAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="黑幕">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0.5">
@@ -551,7 +567,7 @@
                         <QuinticEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
                 </EasingDoubleKeyFrame>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0">
                     <EasingDoubleKeyFrame.EasingFunction>
                         <QuinticEase EasingMode="EaseIn"/>
                     </EasingDoubleKeyFrame.EasingFunction>
@@ -559,7 +575,7 @@
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="黑幕">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.2" Value="{x:Static Visibility.Collapsed}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
             </ObjectAnimationUsingKeyFrames>
         </Storyboard>
     </Window.Resources>
@@ -575,7 +591,7 @@
             </Rectangle.RenderTransform>
         </Rectangle>
 
-        <Grid x:Name="标题" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="392" MouseMove="标题_MouseMove" Canvas.Top="20">
+        <Grid x:Name="标题" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="392" MouseMove="标题_MouseMove" Canvas.Top="10">
             <materialDesign:PackIcon HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="40" Kind="CogOutline" Margin="10,0,0,0" Foreground="{Binding Background, ElementName=默认}"/>
             <Label Content="程序设置" HorizontalAlignment="Left" Height="40" Margin="50,0,0,0" VerticalAlignment="Top" Width="302" FontSize="20" Foreground="Black" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <ListBox HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Margin="352,0,0,0">
@@ -587,7 +603,7 @@
         <Button x:Name="默认" Content="恢复默认" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="115" BorderBrush="{x:Null}" Click="默认_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="10" Canvas.Top="545"/>
         <Button x:Name="保存" Content="保存更改" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="115" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="保存_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="275" Canvas.Top="545"/>
         <Button x:Name="取消" Content="取消更改" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="120" Background="{Binding Background, ElementName=默认}" BorderBrush="{x:Null}" Click="取消_Click" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Canvas.Left="140" Canvas.Top="545"/>
-        <ListBox x:Name="设置" ItemsPanel="{DynamicResource ItemsPanelTemplate3}"   ScrollViewer.CanContentScroll="True"  HorizontalAlignment="Left" Style="{DynamicResource SimpleListBox}" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Background="{x:Null}" BorderBrush="{Binding Background, ElementName=默认}" Canvas.Left="20" Canvas.Top="65" VerticalContentAlignment="Top" Height="475">
+        <ListBox x:Name="设置" ItemsPanel="{DynamicResource ItemsPanelTemplate3}"   ScrollViewer.CanContentScroll="True"  HorizontalAlignment="Left" Style="{DynamicResource SimpleListBox}" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Background="{x:Null}" BorderBrush="{Binding Background, ElementName=默认}" Canvas.Left="20" Canvas.Top="55" VerticalContentAlignment="Top" Height="485">
             <ListBoxItem x:Name="默认背景" Height="45" VerticalAlignment="Center" MouseUp="默认背景_MouseUp">
                 <Grid Height="28" Width="337" VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -655,7 +671,7 @@
                     </TransformGroup>
                 </Rectangle.RenderTransform>
             </Rectangle>
-            <Grid x:Name="grid1" HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="400" MouseMove="Grid_MouseMove_1">
+            <Grid x:Name="grid1" HorizontalAlignment="Left" Height="52.167" VerticalAlignment="Top" Width="400" MouseMove="Grid_MouseMove_1">
                 <materialDesign:PackIcon Kind="TimelineHelpOutline" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="40" Width="45" Margin="10,0,0,0" Foreground="{Binding Background, ElementName=默认}"/>
                 <Label x:Name="label" Content="程序帮助" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="60,0,0,0" Height="40" Width="280" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016"/>
                 <ListBox x:Name="listBox" HorizontalAlignment="Left" Height="40" Margin="350,15,0,0" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
@@ -753,7 +769,7 @@
             <materialDesign:PackIcon x:Name="_32位版本_" ToolTip="32位应用" Kind="Cpu32Bit"  HorizontalAlignment="Left" Height="25" Margin="218.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" Background="#FFF4F4F5" MouseEnter="_32位版本__MouseEnter" MouseLeave="_32位版本__MouseLeave"/>
             <materialDesign:PackIcon x:Name="Github" ToolTip="获取开源项目" Kind="Github" HorizontalAlignment="Left" Height="25" Margin="58.167,40,0,0" Grid.Row="1" VerticalAlignment="Top" Width="40" Foreground="#FF595959" MouseEnter="Github_MouseEnter" MouseLeave="Github_MouseLeave" Background="#FFF4F4F5" MouseUp="Github_MouseUp"/>
         </Grid>
-        <Rectangle x:Name="黑幕" Fill="Black" HorizontalAlignment="Left" Height="600" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Top" Width="400" Visibility="Collapsed" d:IsHidden="True"/>
+        <Rectangle x:Name="黑幕" Fill="Black" HorizontalAlignment="Left" Height="600" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Top" Width="400" Visibility="Collapsed"/>
         <Grid x:Name="捐赠" Height="470" Width="310" Canvas.Left="45" Canvas.Top="65" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" d:IsHidden="True">
             <Grid.RenderTransform>
                 <TransformGroup>
@@ -764,13 +780,13 @@
                 </TransformGroup>
             </Grid.RenderTransform>
             <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="470" Stroke="{Binding Background, ElementName=默认}" VerticalAlignment="Top" Width="310" RadiusX="10" RadiusY="10"/>
-            <Label Content="如果您喜欢这款软件，并且手头比较富裕的情&#xA;    况下，就请给我一个大大的鼓励吧！&#xA;              φ(゜▽゜*)♪" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Width="290" Height="60" FontSize="14"/>
-            <Image HorizontalAlignment="Left" Height="355" Margin="10,70,0,0" VerticalAlignment="Top" Width="290" Source="Resources/收款码.png">
+            <Label  Content="如果您喜欢这款软件，并且手头比较富裕的情&#xA;    况下，就请给我一个大大的鼓励吧！&#xA;              φ(゜▽゜*)♪" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Width="290" Height="60" FontSize="14"/>
+            <Image UseLayoutRounding="True" RenderOptions.BitmapScalingMode="HighQuality"  HorizontalAlignment="Left" Height="355" Margin="10,70,0,0" VerticalAlignment="Top" Width="290" Source="Resources/收款码.png">
                 <Image.Effect>
                     <DropShadowEffect Opacity="0.5" Direction="281" BlurRadius="10" ShadowDepth="3"/>
                 </Image.Effect>
             </Image>
-            <Label Content="您的支持是我前进的动力！！！" HorizontalAlignment="Left" Height="25" Margin="20,435,0,0" VerticalAlignment="Top" Width="260" HorizontalContentAlignment="Center"/>
+            <Label Content="您的支持是我前进的动力！！！" HorizontalAlignment="Left" Height="25" Margin="10,435,0,0" VerticalAlignment="Top" Width="220" HorizontalContentAlignment="Center"/>
             <Button x:Name="关闭" Content="关闭" HorizontalAlignment="Left" Height="25" Margin="230,435,0,0" VerticalAlignment="Top" Width="70" Background="{Binding Background, ElementName=默认}" BorderBrush="{x:Null}" Click="关闭_Click"/>
         </Grid>
     </Canvas>

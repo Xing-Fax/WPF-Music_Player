@@ -74,8 +74,9 @@ namespace 方糖音乐播放器
             string[] temp = lrc.Split('\n');//拆分字符串
             for (int i = 0; i < temp.Length; i++)
             {
+
                 //去除歌词前部分歌曲信息
-                if (temp[i] != "" && temp[i].Substring(1, 2) != "ar" && temp[i].Substring(1, 2) != "ti" && temp[i].Substring(1, 2) != "al" && temp[i].Substring(1, 2) != "by" && temp[i].Substring(1, 2) != "of")
+                if (temp[i].Length > 10 && DateTime.TryParse(temp[i].Substring(1, 5), out _))//只要歌词部分，其他全部去除
                 {
                     temp[i] = temp[i].Replace(@"\r", "");//某些歌词可能存在\r字符串
                     lrc_time.Add(Function_list.Substring(temp[i], "[", "]"));//截取字符串，分离时间
@@ -85,8 +86,9 @@ namespace 方糖音乐播放器
                         lrc_time.RemoveAt(a);
                         lrc_lyrics.RemoveAt(a);
                     }
-                    else { a ++; }//当符合条件数组下标才会定位到下一行
+                    else { a++; }//当符合条件数组下标才会定位到下一行
                 }
+
             }
             打印歌词();//将读取后的歌词打印到滚动歌词控件上
         }
@@ -105,6 +107,7 @@ namespace 方糖音乐播放器
                 for (int i = 0; i < 5; i++) { Function_list.填充菜单(歌词滚动显示, null, null, 470, 35, 15, true); }//多打印空白行5个
             }
         }
+
         //自动嵌入歌词函数
         private string Embedded_lyrics()
         {
@@ -222,6 +225,7 @@ namespace 方糖音乐播放器
                             ((ListBoxItem)歌词滚动显示.SelectedItem).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
                             歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex]);
                             t1.Start();//歌词滚动
+
                             if (Get != null)//如果启用了桌面歌词
                             {
                                 Get.主.Content = 播放歌曲名称.Content;
@@ -398,29 +402,30 @@ namespace 方糖音乐播放器
         private void theout2(object source, System.Timers.ElapsedEventArgs e)
         {
             Dispatcher.Invoke(new Action(delegate
-                 {
-                     if (进度条.Value == 进度条.Maximum && button == 0)//判断进度条是否到底
-                     {//如果到底
-                         Kill();//初始化播放器
-                         if (Temp5 == 0) { Playing_conditions(); }
-                     }
-                     else
-                     {//如果没有到底，继续更新时间
-                      //刷新播放时间
-                         if (button == 0)
-                         {//刷新时间
-                             播放时间.Content = Convert.ToString(播放器.Position).Substring(3, 5) + "-" + Song_time;
-                             进度条.Value = 播放器.Position.TotalSeconds;//定位进度条
-                         }
-                     }
-                 }));
+            {
+                if (进度条.Value == 进度条.Maximum && button == 0)//判断进度条是否到底
+                {//如果到底
+                    Kill();//初始化播放器
+                    if (Temp5 == 0) { Playing_conditions(); }
+                }
+                else
+                {//如果没有到底，继续更新时间
+                 //刷新播放时间
+                    if (button == 0)
+                    {//刷新时间
+                        播放时间.Content = Convert.ToString(播放器.Position).Substring(3, 5) + "-" + Song_time;
+                        进度条.Value = 播放器.Position.TotalSeconds;//定位进度条
+                    }
+                }
+            }));
         }
+
 
         Color color = (Color)ColorConverter.ConvertFromString("#F8BF2424");//红色
         Color color2 = (Color)ColorConverter.ConvertFromString("#FF000000");//黑色
         private void theout1(object source, System.Timers.ElapsedEventArgs e)
         {
-            Dispatcher.Invoke(//同步线程
+            Dispatcher.Invoke (//同步线程
                   new Action(
                 delegate
                 {
@@ -431,21 +436,24 @@ namespace 方糖音乐播放器
                             if (lrc_time[i].ToString().Substring(0, 7) == Convert.ToString(播放器.Position).Substring(3, 7) && lyrics_display == true)
                             {
                                 歌词滚动显示.SelectedIndex = i;
+
                                 ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
+                                
                                 if (Rolling_condition == false)
                                 {
                                     歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
                                 }
 
-                                for (int j = 0; j < 歌词滚动显示.SelectedIndex; j ++)//上面歌词改颜色为黑色
+                                for (int j = 0; j < 歌词滚动显示.SelectedIndex; j++)//上面歌词改颜色为黑色
                                 {
                                     ((ListBoxItem)歌词滚动显示.Items[j]).Foreground = new SolidColorBrush(color2);
                                 }
 
-                                for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o --)//下面歌词修改为黑色
+                                for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o--)//下面歌词修改为黑色
                                 {
                                     ((ListBoxItem)歌词滚动显示.Items[o]).Foreground = new SolidColorBrush(color2);
                                 }
+
                                 if (Get != null)//如果启用了桌面歌词
                                 {
                                     Get.主.Content = lrc_lyrics[i];
@@ -513,6 +521,7 @@ namespace 方糖音乐播放器
         {
             InitializeComponent();
 
+
             //以下代码用作校验程序签名是否完整，调试时请将其注释
 
             //if (Function_list.Document_verification() != true)
@@ -521,6 +530,7 @@ namespace 方糖音乐播放器
             //    Tips.ShowDialog();
             //    Environment.Exit(0);
             //}
+
 
             //到此结束
 
@@ -1358,7 +1368,11 @@ namespace 方糖音乐播放器
         {
             try
             {
-                if (d == "默认") { 背景.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/默认背景.jpg")); }
+                if (d == "默认") {
+                    背景.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/默认背景.jpg"));
+                    主题颜色.SelectedIndex = 1;
+                    背景模糊.Radius = 0;
+                }
                 else { 背景.Source = new BitmapImage(new Uri(d)); }
             }
             catch (Exception ex)
@@ -1827,8 +1841,8 @@ namespace 方糖音乐播放器
                     Lyrics_path = Lyrics_path.Replace(@"\n", "\n");//自动换行
                     System.IO.StreamWriter f2 = new System.IO.StreamWriter(lrc, true, System.Text.Encoding.Default);
                     f2.WriteLine(Lyrics_path);//写入本地文件
-                    f2.Close();
-                    f2.Dispose();//关闭文件流
+                    f2.Close();//关闭文件流
+                    f2.Dispose();
                 }
             }
             catch { }

@@ -40,6 +40,9 @@ namespace 方糖音乐播放器
         public event Func<int, int> fcc4;//如果取消修改
         public event Func<int, int> fcc5;//设置只能打开一个设置窗口
         public event Func<int, int> fcc6;//背景的
+
+
+
         private string 背景路径;
         private string 歌词目录;
         private string 歌曲目录2;
@@ -216,12 +219,13 @@ namespace 方糖音乐播放器
             Properties.Settings.Default.主题颜色 = "System.Windows.Controls.ComboBoxItem: 桃花粉";
             Properties.Settings.Default.是否歌词显示 = true;
             Properties.Settings.Default.背景填充 = 2;
-            Properties.Settings.Default.嵌入歌词 = false;
+            Properties.Settings.Default.嵌入歌词 = true;
             Properties.Settings.Default.独立播放视频 = true;
             Properties.Settings.Default.桌面歌词 = false;
             Properties.Settings.Default.错误报告 = true;
             Properties.Settings.Default.网络接口参数 = "腾讯";
             Properties.Settings.Default.网络歌曲缓存目录 = "系统音乐目录";
+            Properties.Settings.Default.显示专辑 = true;
             Properties.Settings.Default.Save();
             fcc5(0);
             fcc6(2);

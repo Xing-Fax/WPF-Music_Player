@@ -619,7 +619,7 @@
                 <RadioButton x:Name="拉伸" Content="居中" BorderBrush="{x:Null}" Background="{Binding Background, ElementName=默认}" Click="居中_Click" Height="20" Canvas.Left="204" Canvas.Top="4.1" Width="55"/>
             </Canvas>
             <Canvas HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="335">
-                <Slider x:Name="模糊" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="286" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=默认}" Maximum="30" SmallChange="1" Value="5" ValueChanged="模糊_ValueChanged" Canvas.Left="39" Canvas.Top="11"/>
+                <Slider x:Name="模糊" HorizontalAlignment="Center" Height="20" VerticalAlignment="Center" Width="286" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Foreground="{Binding Background, ElementName=默认}" Maximum="30" SmallChange="1" Value="5" ValueChanged="模糊_ValueChanged" Canvas.Left="39" Canvas.Top="11" Focusable="False"/>
                 <Label Content="模糊&#xA;" HorizontalAlignment="Left" Height="25" VerticalAlignment="Center" Width="39" VerticalContentAlignment="Center" FontSize="16" Padding="4,2,4,4" Foreground="Black" Canvas.Top="9"/>
             </Canvas>
             <ListBoxItem x:Name="歌词路径" Height="43" VerticalAlignment="Center">

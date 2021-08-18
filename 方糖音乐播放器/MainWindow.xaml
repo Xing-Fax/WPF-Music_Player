@@ -1763,7 +1763,7 @@
                                 materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                                 BorderThickness="0"
                                 MinWidth="200"
-                                VerticalAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" KeyUp="搜索_KeyUp" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" />
+                                VerticalAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" KeyUp="搜索_KeyUp" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" MaxWidth="200" />
                         </Grid>
                     </materialDesign:ColorZone>
                     <ToggleButton x:Name="前端显示"
@@ -1810,7 +1810,7 @@
             </Grid.RenderTransform>
             <Rectangle HorizontalAlignment="Left" Height="436.332" StrokeThickness="0" VerticalAlignment="Top" Width="315" RadiusX="5" RadiusY="5" Margin="0,45.667,0,0">
                 <Rectangle.Effect>
-                    <DropShadowEffect BlurRadius="15" Opacity="0.5"/>
+                    <DropShadowEffect BlurRadius="15" Opacity="0.3" Direction="300"/>
                 </Rectangle.Effect>
                 <Rectangle.Fill>
                     <SolidColorBrush Color="White" Opacity="0.4"/>
@@ -1938,7 +1938,7 @@
                     <DropShadowEffect BlurRadius="20" Opacity="0.41" ShadowDepth="11" Direction="325"/>
                 </Image.Effect>
             </Image>
-            <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="330" Canvas.Top="30" Cursor="Hand" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" FontSize="16" IsSynchronizedWithCurrentItem="False"/>
+            <ListBox x:Name="歌词滚动显示" HorizontalAlignment="Left" Height="360" ScrollViewer.CanContentScroll="True"  VerticalAlignment="Top" Width="470" ItemsPanel="{DynamicResource ItemsPanelTemplate2}" BorderBrush="{x:Null}" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" MouseEnter="歌词滚动显示_MouseEnter" ScrollViewer.VerticalScrollBarVisibility="Hidden" MouseLeave="歌词滚动显示_MouseLeave" MouseUp="歌词滚动显示_MouseUp" Background="{x:Null}" SnapsToDevicePixels="True" RenderTransformOrigin="0,0.5" Canvas.Left="330" Canvas.Top="30" Cursor="Hand" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" FontSize="16" IsSynchronizedWithCurrentItem="False" Focusable="False"/>
         </Canvas>
         <ListBox x:Name="切换菜单" Height="95.335" Canvas.Left="350" Canvas.Top="292.5" Width="20" Margin="-19,0,0,0" BorderBrush="{x:Null}" Background="{x:Null}">
             <ListBoxItem x:Name="切换" ToolTip="在线播放" HorizontalAlignment="Left" VerticalAlignment="Top" Height="95.335" BorderBrush="{x:Null}" Width="20" Padding="0,8" MouseUp="listBoxItem_MouseUp_1">
@@ -2181,11 +2181,7 @@
             </ListBox>
             <Label x:Name="歌曲名称" Content="请选择要播放的歌曲..." HorizontalAlignment="Left" Height="35" VerticalAlignment="Bottom" VerticalContentAlignment="Center" FontSize="18" FontFamily="/方糖音乐播放器;component/Resources/#HappyZcool-2016" Foreground="#FD000000" Canvas.Left="88.29" Canvas.Top="26.012" ToolTip="{Binding Content, ElementName=歌曲名称}" MaxWidth="440"/>
             <Label x:Name="播放时间" Content="00:00-00:00" HorizontalAlignment="Left" Height="28.988" VerticalAlignment="Top" Width="190" FontSize="20" FontFamily="/方糖音乐播放器;component/Resources/#298-CAI978" HorizontalContentAlignment="Right" Canvas.Left="1000" Canvas.Top="20"/>
-            <Image x:Name="播放栏专辑" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="HighQuality" Height="70" VerticalAlignment="Bottom" Source="Resources/图标.png" Width="70" Stretch="UniformToFill" Canvas.Left="10" Canvas.Top="30">
-                <Image.Effect>
-                    <DropShadowEffect Opacity="0.5" Direction="300" BlurRadius="7" ShadowDepth="1"/>
-                </Image.Effect>
-            </Image>
+            <Image x:Name="播放栏专辑" UseLayoutRounding="True" RenderOptions.BitmapScalingMode="HighQuality" Height="70" VerticalAlignment="Bottom" Source="Resources/图标.png" Width="70" Stretch="UniformToFill" Canvas.Left="10" Canvas.Top="30" Clip="M0.5,5 C0.5,2.5147186 2.5147186,0.5 5,0.5 L65,0.5 C67.485281,0.5 69.5,2.5147186 69.5,5 L69.5,65 C69.5,67.485281 67.485281,69.5 65,69.5 L5,69.5 C2.5147186,69.5 0.5,67.485281 0.5,65 z"/>
         </Canvas>
         <SelectiveScrollingGrid x:Name="音量调节1" HorizontalAlignment="Left" Height="220" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5" MouseLeave="音量调节1_MouseLeave" Canvas.Left="1113" Canvas.Top="400" Visibility="Collapsed">
             <SelectiveScrollingGrid.RenderTransform>
@@ -2201,7 +2197,7 @@
             <Slider x:Name="音量条"
   TickFrequency="5"
   Orientation="Vertical"
-  Maximum="100" Margin="27,20,21,35" Foreground="{Binding Background, ElementName=colorZone}" TickPlacement="BottomRight" ValueChanged="音量条_ValueChanged_1" SmallChange="1" Value="100" BorderBrush="{x:Null}" Minimum="1" />
+  Maximum="100" Margin="27,20,21,35" Foreground="{Binding Background, ElementName=colorZone}" TickPlacement="BottomRight" ValueChanged="音量条_ValueChanged_1" SmallChange="1" Value="100" BorderBrush="{x:Null}" Minimum="1" Focusable="False" />
         </SelectiveScrollingGrid>
         <Rectangle x:Name="黑幕" HorizontalAlignment="Left" Height="675" RadiusY="20" RadiusX="20" VerticalAlignment="Top" Width="1200" MouseUp="黑幕_MouseUp" Visibility="Collapsed">
             <Rectangle.Fill>

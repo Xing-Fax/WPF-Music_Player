@@ -92,7 +92,7 @@
                     <SolidColorBrush Color="Black" Opacity="0.5"/>
                 </Rectangle.Fill>
             </Rectangle>
-            <Slider x:Name="进度条" IsMoveToPointEnabled="True" Height="21" Margin="10,-5,10,34" Foreground="{Binding Fill, ElementName=方块一}" PreviewMouseDown="进度条_PreviewMouseDown" ValueChanged="进度条_ValueChanged" PreviewMouseUp="进度条_PreviewMouseUp" MouseEnter="进度条_MouseEnter" MouseLeave="进度条_MouseLeave"/>
+            <Slider x:Name="进度条" IsMoveToPointEnabled="True" Height="21" Margin="10,-5,10,34" Foreground="{Binding Fill, ElementName=方块一}" PreviewMouseDown="进度条_PreviewMouseDown" ValueChanged="进度条_ValueChanged" PreviewMouseUp="进度条_PreviewMouseUp" MouseEnter="进度条_MouseEnter" MouseLeave="进度条_MouseLeave" Focusable="False"/>
             <Label x:Name="播放时间" Content="00:00" HorizontalAlignment="Right" Height="23.667" Margin="0,0,7,27.333" VerticalAlignment="Bottom" Width="112" HorizontalContentAlignment="Right" VerticalContentAlignment="Bottom" FontFamily="/方糖音乐播放器;component/Resources/#298-CAI978" Foreground="#DDFFFFFF" FontSize="16"/>
             <StackPanel Height="46" Margin="0,10,0,0" Width="{Binding ActualWidth, ElementName=底部播放栏}">
                 <ListBox x:Name="播放暂停" Style="{StaticResource MaterialDesignToolToggleListBox}" HorizontalAlignment="Center" VerticalContentAlignment="Center" Foreground="White" Background="{x:Null}" BorderBrush="{x:Null}" Height="44.5" HorizontalContentAlignment="Center" Width="130" VerticalAlignment="Center">
@@ -140,7 +140,7 @@
                         <BlurEffect/>
                     </Rectangle.Effect>
                 </Rectangle>
-                <Slider x:Name="音量条" HorizontalAlignment="Left" Height="25" Margin="40,17.997,0,0" VerticalAlignment="Top" Width="155" BorderBrush="{x:Null}" Foreground="{Binding Fill, ElementName=方块一}" Maximum="100" SmallChange="1" Value="100" ValueChanged="音量条_ValueChanged"/>
+                <Slider x:Name="音量条" HorizontalAlignment="Left" Height="25" Margin="40,17.997,0,0" VerticalAlignment="Top" Width="155" BorderBrush="{x:Null}" Foreground="{Binding Fill, ElementName=方块一}" Maximum="100" SmallChange="1" Value="100" ValueChanged="音量条_ValueChanged" Focusable="False"/>
                 <Label x:Name="音量显示" Content="100%" HorizontalAlignment="Left" Height="26.665" Margin="190,13.335,0,0" VerticalAlignment="Top" Width="55" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontFamily="/方糖音乐播放器;component/Resources/#298-CAI978" FontSize="18" Foreground="#DDFFFFFF"/>
                 <materialDesign:PackIcon x:Name="有" Kind="VolumeHigh" HorizontalAlignment="Left" Height="30" Margin="10,12.997,0,0" VerticalAlignment="Top" Width="30" Foreground="White"/>
                 <materialDesign:PackIcon x:Name="无" Kind="VolumeMute" HorizontalAlignment="Left" Height="30" Margin="10,12.997,0,0" VerticalAlignment="Top" Width="30" Foreground="White" Visibility="Collapsed"/>

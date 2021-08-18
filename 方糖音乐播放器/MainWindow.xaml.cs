@@ -425,45 +425,88 @@ namespace 方糖音乐播放器
         Color color2 = (Color)ColorConverter.ConvertFromString("#FF000000");//黑色
         private void theout1(object source, System.Timers.ElapsedEventArgs e)
         {
-            Dispatcher.Invoke (//同步线程
-                  new Action(
-                delegate
+            string time = "";
+            Dispatcher.Invoke(new Action(delegate { time = Convert.ToString(播放器.Position).Substring(3, 7); }));
+            if (lyrics_display == true)
+                for (int i = 0; i < lrc_time.Count; i++)
                 {
-                    try
+                    if (lrc_time[i].ToString().Substring(0, 7) == time)
                     {
-                        for (int i = 0; i < lrc_time.Count; i++)
+                        Dispatcher.Invoke(new Action(delegate
                         {
-                            if (lrc_time[i].ToString().Substring(0, 7) == Convert.ToString(播放器.Position).Substring(3, 7) && lyrics_display == true)
+                            歌词滚动显示.SelectedIndex = i;
+
+                            ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
+
+                            if (Rolling_condition == false)
                             {
-                                歌词滚动显示.SelectedIndex = i;
-
-                                ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
-                                
-                                if (Rolling_condition == false)
-                                {
-                                    歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
-                                }
-
-                                for (int j = 0; j < 歌词滚动显示.SelectedIndex; j++)//上面歌词改颜色为黑色
-                                {
-                                    ((ListBoxItem)歌词滚动显示.Items[j]).Foreground = new SolidColorBrush(color2);
-                                }
-
-                                for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o--)//下面歌词修改为黑色
-                                {
-                                    ((ListBoxItem)歌词滚动显示.Items[o]).Foreground = new SolidColorBrush(color2);
-                                }
-
-                                if (Get != null)//如果启用了桌面歌词
-                                {
-                                    Get.主.Content = lrc_lyrics[i];
-                                    Get.父.Content = lrc_lyrics[i + 1];
-                                }
+                                歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
                             }
-                        }
+
+                            for (int j = 0; j < 歌词滚动显示.SelectedIndex; j++)//上面歌词改颜色为黑色
+                            {
+                                ((ListBoxItem)歌词滚动显示.Items[j]).Foreground = new SolidColorBrush(color2);
+                            }
+
+                            for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o--)//下面歌词修改为黑色
+                            {
+                                ((ListBoxItem)歌词滚动显示.Items[o]).Foreground = new SolidColorBrush(color2);
+                            }
+
+                            if (Get != null)//如果启用了桌面歌词
+                            {
+                                Get.主.Content = lrc_lyrics[i];
+                                if (i + 1 == lrc_lyrics.Count)
+                                { Get.父.Content = "到底了哦ˋ( ° ▽、° ) "; }
+                                else
+                                { Get.父.Content = lrc_lyrics[i + 1]; }
+                            }
+                        }));
+                        break;
                     }
-                    catch { }
-                }));
+                }
+            //Dispatcher.Invoke (//同步线程
+            //      new Action(
+            //    delegate
+            //    {
+            //        try
+            //        {
+            //            for (int i = 0; i < lrc_time.Count; i++)
+            //            {
+            //                if (lrc_time[i].ToString().Substring(0, 7) == Convert.ToString(播放器.Position).Substring(3, 7) && lyrics_display == true)
+            //                {
+            //                    歌词滚动显示.SelectedIndex = i;
+
+            //                    ((ListBoxItem)歌词滚动显示.Items[i]).Foreground = new SolidColorBrush(color);//将当前一句颜色该为红色
+
+            //                    if (Rolling_condition == false)
+            //                    {
+            //                        歌词滚动显示.ScrollIntoView(歌词滚动显示.Items[歌词滚动显示.SelectedIndex + 5]);//让歌词显示在中间
+            //                    }
+
+            //                    for (int j = 0; j < 歌词滚动显示.SelectedIndex; j++)//上面歌词改颜色为黑色
+            //                    {
+            //                        ((ListBoxItem)歌词滚动显示.Items[j]).Foreground = new SolidColorBrush(color2);
+            //                    }
+
+            //                    for (int o = 歌词滚动显示.Items.Count - 5; o > 歌词滚动显示.SelectedIndex; o--)//下面歌词修改为黑色
+            //                    {
+            //                        ((ListBoxItem)歌词滚动显示.Items[o]).Foreground = new SolidColorBrush(color2);
+            //                    }
+
+            //                    if (Get != null)//如果启用了桌面歌词
+            //                    {
+            //                        Get.主.Content = lrc_lyrics[i];
+            //                        if (i < lrc_lyrics.Count)
+            //                        {Get.父.Content = lrc_lyrics[i + 1];}
+            //                        else
+            //                        { Get.父.Content = "到底了哦ψ(._. )>"; }
+            //                    }
+            //                }
+            //            }
+            //        }
+            //        catch { }
+            //    }));
         }
         /// <summary>
         /// 存储歌单列表，格式为绝对路径
@@ -490,7 +533,7 @@ namespace 方糖音乐播放器
         /// </summary>
         string Web_file = Environment.GetFolderPath(Environment.SpecialFolder.MyMusic) + @"\方糖音乐\";
         /// <summary>
-        /// 是否要显示滚动格式，true为显示，false为不显示
+        /// 是否要显示滚动歌词，true为显示，false为不显示
         /// </summary>
         bool lyrics_display;
         /// <summary>

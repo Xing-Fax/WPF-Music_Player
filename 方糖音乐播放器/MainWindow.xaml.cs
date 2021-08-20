@@ -697,6 +697,7 @@ namespace 方糖音乐播放器
                     Get.fcc1 += Playback_status;
                     Get.Show();
                 }
+
                 播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标2.png"));//从资源文件加载图片
                 音量条.Value = Properties.Settings.Default.音量;
                 播放器.Volume = Properties.Settings.Default.音量 / 100;
@@ -937,9 +938,15 @@ namespace 方糖音乐播放器
                     App.播放状态 = 0;
                 }
             }
-            else
+            else if(Number.Count >= 1)
             {
                 Play_Misic(Number[0].ToString());//播放歌曲
+                主页的播放列表.SelectedIndex = 0;
+            }
+            else
+            {
+                Tips = new 弹窗提示(3, color3, 0, "木有任何歌曲（；´д｀）ゞ");
+                Tips.ShowDialog();
             }
         }
         //单击暂停按钮
@@ -982,8 +989,16 @@ namespace 方糖音乐播放器
                     }
                     else//正常上一曲
                     {
-                        Play_Misic(Number[主页的播放列表.SelectedIndex - 1].ToString());
-                        主页的播放列表.SelectedIndex -= 1;
+                        if (主页的播放列表.SelectedIndex == -1)
+                        {
+                            Play_Misic(Number[主页的播放列表.Items .Count - 1].ToString());
+                            主页的播放列表.SelectedIndex = 主页的播放列表.Items.Count - 1;
+                        }
+                        else
+                        {
+                            Play_Misic(Number[主页的播放列表.SelectedIndex - 1].ToString());
+                            主页的播放列表.SelectedIndex -= 1;
+                        }
                     }
                 }
                 else if (r == 2)
@@ -1038,7 +1053,7 @@ namespace 方糖音乐播放器
         {
             if (current_state == true)
             {
-                if (底部列表.SelectedIndex != -1)
+                if (底部列表.SelectedIndex != -1 && Number.Count >= 1)
                 {
                     if (底部列表.SelectedIndex == 0 || 底部列表.SelectedIndex == 1 || 底部列表.SelectedIndex == 3) { 选择判断(2); }
                     else if (底部列表.SelectedIndex == 2) { Playing_conditions(); }
@@ -1052,7 +1067,7 @@ namespace 方糖音乐播放器
                     }
                     else
                     {
-                        Tips = new 弹窗提示(3, color3, 0, "歌木有任何歌曲（；´д｀）ゞ");
+                        Tips = new 弹窗提示(3, color3, 0, "木有任何歌曲（；´д｀）ゞ");
                         Tips.ShowDialog();
                     }
                 }
@@ -1061,7 +1076,7 @@ namespace 方糖音乐播放器
             {
                 if (load == false)
                 {
-                    if (网络搜索结果.SelectedIndex != -1)
+                    if (网络搜索结果.SelectedIndex != -1 && Web_search_results.Count >= 1)
                     {
                         if (底部列表.SelectedIndex == 0 || 底部列表.SelectedIndex == 1 || 底部列表.SelectedIndex == 3) { 选择判断(2); }
                         else if (底部列表.SelectedIndex == 2) { Playing_conditions(); }
@@ -1075,7 +1090,7 @@ namespace 方糖音乐播放器
                         }
                         else
                         {
-                            Tips = new 弹窗提示(3, color3, 0, "歌木有任何歌曲（；´д｀）ゞ");
+                            Tips = new 弹窗提示(3, color3, 0, "木有任何歌曲（；´д｀）ゞ");
                             Tips.ShowDialog();
                         }
                     }
@@ -1088,25 +1103,22 @@ namespace 方糖音乐播放器
         {
             if (current_state == true)
             {
-                if (主页的播放列表.SelectedIndex != -1)
+                if (底部列表.SelectedIndex != -1 && Number.Count >= 1)
                 {
-                    if (底部列表.SelectedIndex != -1)
+                    if (底部列表.SelectedIndex == 0 || 底部列表.SelectedIndex == 1 || 底部列表.SelectedIndex == 3) { 选择判断(1); }
+                    else if (底部列表.SelectedIndex == 2) { Playing_conditions(); }
+                }
+                else
+                {
+                    if (主页的播放列表.Items.Count != 0)
                     {
-                        if (底部列表.SelectedIndex == 0 || 底部列表.SelectedIndex == 1 || 底部列表.SelectedIndex == 3) { 选择判断(1); }
-                        else if (底部列表.SelectedIndex == 2) { Playing_conditions(); }
+                        底部列表.SelectedIndex = 0;
+                        上一曲_Click(null, null);
                     }
                     else
                     {
-                        if (主页的播放列表.Items.Count != 0)
-                        {
-                            底部列表.SelectedIndex = 0;
-                            上一曲_Click(null, null);
-                        }
-                        else
-                        {
-                            Tips = new 弹窗提示(3, color3, 0, "歌木有任何歌曲（；´д｀）ゞ");
-                            Tips.ShowDialog();
-                        }
+                        Tips = new 弹窗提示(3, color3, 0, "木有任何歌曲（；´д｀）ゞ");
+                        Tips.ShowDialog();
                     }
                 }
             }
@@ -1114,25 +1126,23 @@ namespace 方糖音乐播放器
             {
                 if (load == false)
                 {
-                    if (网络搜索结果.SelectedIndex != -1)
+                    
+                    if (网络搜索结果.SelectedIndex != -1 && Web_search_results.Count >= 1)
                     {
-                        if (底部列表.SelectedIndex != -1)
+                        if (底部列表.SelectedIndex == 0 || 底部列表.SelectedIndex == 1 || 底部列表.SelectedIndex == 3) { 选择判断(1); }
+                        else if (底部列表.SelectedIndex == 2) { Playing_conditions(); }
+                    }
+                    else
+                    {
+                        if (网络搜索结果.Items.Count != 0)
                         {
-                            if (底部列表.SelectedIndex == 0 || 底部列表.SelectedIndex == 1 || 底部列表.SelectedIndex == 3) { 选择判断(1); }
-                            else if (底部列表.SelectedIndex == 2) { Playing_conditions(); }
+                            网络搜索结果.SelectedIndex = 0;
+                            上一曲_Click(null, null);
                         }
                         else
                         {
-                            if (网络搜索结果.Items.Count != 0)
-                            {
-                                底部列表.SelectedIndex = 0;
-                                上一曲_Click(null, null);
-                            }
-                            else
-                            {
-                                Tips = new 弹窗提示(3, color3, 0, "歌木有任何歌曲（；´д｀）ゞ");
-                                Tips.ShowDialog();
-                            }
+                            Tips = new 弹窗提示(3, color3, 0, "木有任何歌曲（；´д｀）ゞ");
+                            Tips.ShowDialog();
                         }
                     }
                 }

@@ -46,7 +46,7 @@
     <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -57,7 +57,7 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>图标.ico</ApplicationIcon>
+    <ApplicationIcon>256x256.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>DC9CECC4A07C82273BBA10F472F69F5942AD8738</ManifestCertificateThumbprint>
@@ -364,9 +364,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="图标.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\图标.png" />
   </ItemGroup>
   <ItemGroup>
@@ -393,9 +390,11 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="256x256.ico" />
     <Content Include="Microsoft.Expression.Interactions.dll" />
     <Resource Include="Resources\默认背景.jpg" />
     <Resource Include="Resources\收款码.png" />
+    <Resource Include="Resources\图标2.png" />
     <Content Include="System.Windows.Interactivity.dll" />
     <Content Include="DLL\taglib-sharp.dll" />
   </ItemGroup>

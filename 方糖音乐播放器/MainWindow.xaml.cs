@@ -210,7 +210,7 @@ namespace 方糖音乐播放器
                     if (Read_information.Tag.Pictures != null && Read_information.Tag.Pictures.Length != 0)
                     {
                         if (Function_list.GetCover(File_s) != null) { 播放栏专辑.Source = Function_list.GetCover(File_s); }
-                        else { 播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标.png")); }
+                        else { 播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标2.png")); }
                     }
 
                     进度条.IsEnabled = true;//进度条可用
@@ -375,7 +375,7 @@ namespace 方糖音乐播放器
             //重置专辑图片
             播放栏专辑.Source = null;
             播放器.Source = null;
-            播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标.png"));
+            播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标2.png"));
             歌词滚动显示.Items.Clear();//清空滚动歌词列表
             歌曲名称.Content = "请选择要播放的歌曲...";//清空歌曲名称
             播放时间.Content = "00:00-00:00";//初始化播放时间
@@ -555,7 +555,7 @@ namespace 方糖音乐播放器
         /// <summary>
         /// 用于指示默认播放音乐接口供应商
         /// </summary>
-        Meting Search_interface;//音乐接口api
+        Meting Search_interface;
 
         桌面歌词 Get;
         弹窗提示 Tips;
@@ -697,7 +697,7 @@ namespace 方糖音乐播放器
                     Get.fcc1 += Playback_status;
                     Get.Show();
                 }
-                播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标.png"));//从资源文件加载图片
+                播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标2.png"));//从资源文件加载图片
                 音量条.Value = Properties.Settings.Default.音量;
                 播放器.Volume = Properties.Settings.Default.音量 / 100;
                 背景模糊.Radius = Properties.Settings.Default.背景模糊程度;
@@ -1778,7 +1778,7 @@ namespace 方糖音乐播放器
                 try
                 {
                     if (Function_list.Album_pictures(Album_path) != null) { 播放栏专辑.Source = Function_list.Album_pictures(Album_path); }
-                    else { 播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标.png")); }
+                    else { 播放栏专辑.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/图标2.png")); }
                 }
                 catch { }
             }
